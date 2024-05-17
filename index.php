@@ -3,6 +3,4 @@
  * Template Name: Homepage
  */
 
-echo do_shortcode('[myslideshow]');
-
-
+echo 'test';
