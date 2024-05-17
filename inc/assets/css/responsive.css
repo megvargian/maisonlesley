@@ -1,0 +1,710 @@
+@media (max-width: 1359px) {
+  .first_section.background_img .inner_section {
+    padding: 13.5rem 0;
+  }
+  .first_section.background_img .inner_section .h1_style {
+    width: auto;
+  }
+}
+
+@media (max-width: 1199px) {
+  .first_section.background_img {
+    height: 590px;
+  }
+  .first_section.background_img .inner_section {
+    padding: 12.5rem 0;
+  }
+  .fourth_section .inner_section_project .background_img {
+    height: 295px;
+  }
+  .third_section_services .inner_section .h2_style {
+    line-height: 1.2;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  section {
+    padding: 3rem 0;
+  }
+  .yellow_block_image {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .mobile_menu {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    position: fixed;
+    padding-top: 150px;
+    top: 0px;
+    left: 0;
+    background-color: #000;
+    z-index: 3;
+    overflow: auto;
+    transform: translateY(-100%);
+    transition: cubic-bezier(0.32, 0.17, 0, 1) 0.5s;
+    transform-origin: top;
+  }
+  .mobile_menu .mobile_inner_cont {
+    visibility: visible;
+    transition: cubic-bezier(0.32, 0.17, 0, 1) 0.5s;
+    padding-bottom: 70px;
+  }
+  .mobile_menu .play_elements .menu_el {
+    font-family: "nudista-semibold-regular";
+    font-size: 17px;
+    letter-spacing: 1.32px;
+  }
+  .mobile_menu .menu_elements {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative;
+  }
+  .mobile_menu .menu_elements:first-child {
+    padding-top: 0px;
+  }
+  .mobile_menu .menu_el a {
+    padding: 15px 0px;
+    cursor: pointer;
+    display: block;
+    font-size: 15px;
+    color: #fff;
+  }
+  .mobile_menu .menu_el {
+    padding: 0px 10px;
+    border-bottom: 1px solid #2D2D2D;
+  }
+  .mobile_menu .menu_el:last-child {
+    border-bottom: none;
+  }
+  .mobile_menu .menu_el a:hover {
+    color: #FFDD00;
+  }
+  .mobile_menu .menu_el.current-menu-item a {
+    color: #FFDD00;
+  }
+  .mobile_menu .menu_el a.active {
+    color: #FFDD00;
+  }
+  .mobile_menu .menu_el a.active {
+    color: #FFDD00;
+  }
+  .mobile_menu.active {
+    transform: translateX(0px);
+    transition: cubic-bezier(0.32, 0.17, 0, 1) 0.5s;
+  }
+  .noscroll {
+    overflow: hidden !important;
+  }
+  .mobile_active_blur_part.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  .first_section.background_img {
+    height: 420px;
+  }
+  .first_section.background_img .inner_section {
+    padding: 7rem 0;
+  }
+  .first_section.background_img .mouse_icon {
+    display: none;
+  }
+  .second_section .inner_section {
+    padding-bottom: 0rem;
+  }
+  .second_section .h2_style {
+    padding: 0;
+    padding-bottom: 2rem;
+  }
+  .second_section .on_responsive_d_none {
+    display: none;
+  }
+  .second_section .on_responsive_image {
+    display: block;
+    padding-bottom: 2rem;
+  }
+  .third_section .h2_style {
+    padding-top: 0;
+    padding-bottom: 2rem;
+  }
+  .third_section .background_img {
+    height: 420px;
+  }
+  .third_section .view_all_section {
+    padding: 1rem 0 0 0;
+    text-align: center;
+  }
+  .third_section .view_all_section .buttonstyle_underline_yellow {
+    padding-left: 2rem;
+  }
+  .fourth_section .inner_section_project .background_img {
+    height: 400px;
+  }
+  .contact_us_footer .h2_style {
+    font-size: 2rem;
+    padding-top: 4rem;
+  }
+  .main_footer_section {
+    padding: 2rem 0;
+  }
+  .main_footer_section ul li {
+    font-size: 1rem;
+    padding: 1rem;
+    padding-left: 0;
+    min-width: 130px;
+  }
+  .main_company_section .nav_buttons .menu li {
+    margin: 4rem 2rem 0 2rem;
+  }
+  .second_section_about_us .inner_section p:last-child {
+    margin-bottom: 0;
+  }
+  .second_section_about_us .inner_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .second_section_about_us .padding_custom {
+    padding-bottom: 3rem;
+  }
+  .third_section_about_us {
+    padding-bottom: 0;
+  }
+  .third_section_about_us .background_img {
+    height: 550px;
+    margin-bottom: 3rem;
+  }
+  .third_section_about_us .h2_style {
+    padding-bottom: 3rem;
+  }
+  .fourth_section_about_us .inner_section {
+    padding-bottom: 3rem;
+  }
+  .fourth_section_about_us .inner_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .fourth_section_about_us .background_img {
+    height: 550px;
+  }
+  .second_section_core_values .inner_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .second_section_core_values .inner_section .padding_for_button {
+    padding: 3rem 0;
+  }
+  .third_section_core_values .inner_section .h2_style {
+    padding: 3rem 0;
+  }
+  .third_section_core_values .inner_section .padding_for_button {
+    padding-top: 3rem;
+  }
+  .third_section_core_values .background_img {
+    height: 450px;
+  }
+  .fourth_sixth_section_core_values .inner_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .fourth_sixth_section_core_values .inner_section p {
+    padding-bottom: 0rem;
+  }
+  .fourth_sixth_section_core_values .inner_section .padding_for_button {
+    padding: 3rem 0;
+  }
+  .team_structure_second_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .team_structure_second_section .padding_custom {
+    padding: 3rem 0;
+  }
+  .team_structure_second_section .background_img {
+    height: 400px;
+  }
+  .team_structure_second_section .yellow_block_image {
+    display: none;
+  }
+  .team_structure_third_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .team_structure_third_section .background_img {
+    height: 550px;
+  }
+  .team_structure_third_section .inner_section .h2_style_yellow {
+    padding: 3rem 0;
+  }
+  .team_structure_third_section .inner_section .padding_custom {
+    padding-top: 3rem;
+  }
+  .team_structire_fourth_section .background_img {
+    height: 550px;
+  }
+  .team_structire_fourth_section .inner_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .team_structire_fourth_section .inner_section .padding_for_button {
+    padding: 3rem 0;
+  }
+  .team_structire_fourth_section .yellow_block_image {
+    display: none;
+  }
+  .team_structire_fifth_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .team_structire_fifth_section .p_style {
+    padding-bottom: 3rem;
+  }
+  .team_structire_fifth_section .padding_for_button {
+    padding-top: 3rem;
+  }
+  .team_structure_sixth_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .team_structure_sixth_section .background_img {
+    height: 550px;
+  }
+  .team_structure_sixth_section .padding_custom {
+    padding: 3rem 0;
+  }
+  .team_structure_sixth_section .yellow_block_image {
+    display: none;
+  }
+  .team_structure_seventh_section .background_img {
+    height: 550px;
+  }
+  .team_structure_seventh_section .inner_section .h2_style {
+    padding: 3rem 0;
+  }
+  .team_structure_seventh_section .padding_custom {
+    padding-top: 3rem;
+  }
+  .team_structure_heighth_section .background_img {
+    height: 400px;
+  }
+  .team_structure_heighth_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .team_structure_heighth_section p {
+    padding-bottom: 3rem;
+  }
+  .second_section_services .inner_section .h2_style {
+    padding-bottom: 3rem;
+  }
+  .second_section_services .inner_section .padding_for_button {
+    padding: 3rem 0;
+  }
+  .third_section_services .h2_style {
+    padding: 3rem 0;
+  }
+  .third_section_services .padding_for_button {
+    padding-top: 3rem;
+  }
+  .fourth_section_services .h2_style {
+    padding-bottom: 3rem;
+  }
+  .fourth_section_services .padding_custom {
+    padding-bottom: 3rem;
+  }
+  .single_project {
+    padding: 3rem 0;
+  }
+  .single_project .h1_style {
+    padding: 3rem 0.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .h1_style {
+    font-size: 1.5rem;
+  }
+  .h2_style {
+    font-size: 1.5rem;
+  }
+  .p_style {
+    font-size: .9rem;
+  }
+  p {
+    font-size: .9rem;
+  }
+  .buttonstyle {
+    font-size: .8rem;
+  }
+  .buttonstyle_white {
+    font-size: .8rem;
+  }
+  .first_section.background_img {
+    height: 350px;
+  }
+  .first_section.background_img .inner_section {
+    padding: 5.8rem 0;
+  }
+  .second_section .background_img {
+    height: 350px;
+  }
+  .third_section {
+    padding: 3rem 0;
+  }
+  .third_section .h2_style {
+    font-size: 1.5rem;
+  }
+  .third_section .background_img {
+    height: 350px;
+  }
+  .third_section .background_img h2 {
+    font-size: 0.9rem;
+  }
+  .third_section .view_all_section .buttonstyle_underline_yellow {
+    font-size: .9rem;
+  }
+  .fourth_section .inner_section_project .background_img {
+    height: 330px;
+  }
+  .contact_us_footer .h2_style {
+    padding-top: 5rem;
+  }
+  .contact_us_footer .button_style {
+    font-size: .9rem;
+  }
+  .main_footer_section {
+    padding: 2rem 0;
+  }
+  .main_footer_section .header-logo {
+    width: 150px;
+  }
+  .main_footer_section ul li {
+    font-size: .9rem;
+    padding: .2rem;
+  }
+  .main_company_section .nav_buttons .menu li {
+    margin: 1.1rem;
+  }
+  .main_company_section .nav_buttons .menu li a {
+    padding-bottom: 1.2rem;
+  }
+  .main_company_section .main_company_img {
+    height: 200px;
+  }
+  .main_company_section .h1_style {
+    font-size: 1.5rem;
+    padding: 3.2rem 0.5rem;
+  }
+  .main_company_section .nav_buttons .menu li {
+    margin: 1.1rem 1rem 0 1rem;
+  }
+  .second_section_about_us .background_img {
+    height: 450px;
+  }
+  .third_section_about_us .background_img {
+    height: 450px;
+  }
+  .fourth_section_about_us .background_img {
+    height: 450px;
+  }
+  .second_section_core_values .background_img {
+    height: 450px;
+  }
+  .third_section_core_values .background_img {
+    height: 450px;
+  }
+  .fourth_sixth_section_core_values .background_img {
+    height: 450px;
+  }
+  .team_structure_third_section .background_img {
+    height: 450px;
+  }
+  .team_structire_fourth_section .background_img {
+    height: 450px;
+  }
+  .team_structure_sixth_section .h2_style {
+    font-size: 1.5rem;
+  }
+  .team_structure_sixth_section .background_img {
+    height: 450px;
+  }
+  .team_structure_seventh_section .background_img {
+    height: 450px;
+  }
+  .main_sevices_section .main_service_img {
+    height: 200px;
+  }
+  .main_sevices_section .h1_style {
+    font-size: 1.5rem;
+    padding: 3rem 0.5rem;
+  }
+  .second_section_services .inner_section .h2_style {
+    font-size: 1.5rem;
+  }
+  .second_section_services .background_img {
+    height: 450px;
+  }
+  .third_section_services .background_img {
+    height: 320px;
+  }
+  .fourth_section_services .background_img {
+    height: 320px;
+  }
+  .main_contact_us {
+    height: 200px;
+  }
+  .contact_us_content .form_validation_parent {
+    padding: 2rem;
+  }
+  .main_project_listing {
+    height: 200px;
+  }
+  .search_form {
+    padding-top: 3rem;
+  }
+  .single_project .background_img {
+    height: 400px;
+  }
+  .single_project .p_style {
+    font-size: .9rem;
+  }
+  .single_project .description p {
+    font-size: .9rem;
+  }
+  .related_projects {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 575px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+  .h1_style {
+    font-size: 1.3rem;
+  }
+  .h2_style {
+    font-size: 1.2rem;
+  }
+  .p_style {
+    font-size: .9rem;
+  }
+  p {
+    font-size: .9rem;
+  }
+  .hamburger {
+    right: 0;
+  }
+  .first_section.background_img {
+    height: 300px;
+  }
+  .first_section.background_img .inner_section {
+    padding: 4rem 0 1.7rem 0;
+  }
+  .first_section.background_img .inner_section .h1_style {
+    max-width: none;
+  }
+  .first_section.background_img .mouse_icon {
+    display: none;
+  }
+  .second_section .background_img {
+    height: 300px;
+  }
+  .second_section .p {
+    line-height: 0;
+    letter-spacing: 0;
+  }
+  .third_section .background_img {
+    height: 300px;
+  }
+  .third_section .background_img h2 {
+    font-size: 0.9rem;
+  }
+  .fourth_section .inner_section_project .background_img {
+    height: 290px;
+  }
+  .fourth_section .inner_section_project .title_section p {
+    font-size: 0.8rem;
+  }
+  .fourth_section .inner_section_project .title_section .h2_style {
+    font-size: 1rem;
+  }
+  .fourth_section .inner_section_project .title_section .button_section .inner_button_section .button_style {
+    font-size: 0.8rem;
+    padding: 0.3rem .9rem;
+    min-width: 120px;
+  }
+  .fourth_section .buttonstyle_white {
+    max-width: 180px;
+  }
+  .contact_us_footer {
+    height: 300px;
+  }
+  .contact_us_footer .h2_style {
+    text-align: center;
+    padding-top: 3rem;
+    font-size: 1.3rem;
+  }
+  .main_footer_section {
+    padding: 2rem 0;
+  }
+  .main_footer_section ul li {
+    padding: 1rem;
+    display: block;
+    text-align: left;
+  }
+  .copyright_text {
+    font-size: 0.7rem;
+  }
+  .main_company_section .nav_buttons {
+    display: none;
+  }
+  .main_company_section .nav_buttons_mobile {
+    display: block;
+    padding-top: 1.4rem;
+  }
+  .main_company_section .nav_buttons_mobile .swiper {
+    height: 50px;
+  }
+  .main_company_section .nav_buttons_mobile .active {
+    color: #FFDD00;
+    border-bottom: 3px solid #FFDD00;
+  }
+  .main_company_section .nav_buttons_mobile li a {
+    color: #fff;
+    font-family: "nudista-semibold-regular";
+    font-size: 1rem;
+    padding-bottom: 1.2rem;
+    text-transform: uppercase;
+  }
+  .main_company_section .nav_buttons_mobile li a:hover {
+    color: #FFDD00;
+    border-bottom: 3px solid #FFDD00;
+  }
+  .second_section_about_us {
+    padding-bottom: 0;
+  }
+  .second_section_about_us .background_img {
+    height: 300px;
+  }
+  .second_section_about_us .yellow_block_image {
+    display: none;
+  }
+  .second_section_about_us .padding_custom {
+    padding-bottom: 0;
+  }
+  .third_section_about_us .background_img {
+    height: 300px;
+  }
+  .fourth_section_about_us .background_img {
+    height: 300px;
+  }
+  .second_section_core_values .background_img {
+    height: 300px;
+  }
+  .second_section_core_values .inner_section .padding_for_button {
+    padding-bottom: 0;
+  }
+  .third_section_core_values .background_img {
+    height: 300px;
+  }
+  .fourth_sixth_section_core_values .background_img {
+    height: 300px;
+  }
+  .project_listing .inner_section_project .background_img {
+    height: 290px;
+  }
+  .project_listing .inner_section_project .background_img {
+    height: 290px;
+  }
+  .project_listing .inner_section_project .title_section p {
+    font-size: 0.8rem;
+  }
+  .project_listing .inner_section_project .title_section .h2_style {
+    font-size: 1rem;
+  }
+  .project_listing .inner_section_project .title_section .button_section .inner_button_section .button_style {
+    font-size: 0.8rem;
+    padding: 0.3rem .9rem;
+    min-width: 120px;
+  }
+  .related_projects {
+    padding-top: 0;
+  }
+  .related_projects .inner_section_project .background_img {
+    height: 290px;
+  }
+  .related_projects .inner_section_project .title_section p {
+    font-size: 0.8rem;
+  }
+  .related_projects .inner_section_project .title_section .h2_style {
+    font-size: 1rem;
+  }
+  .related_projects .inner_section_project .title_section .button_section .inner_button_section .button_style {
+    font-size: 0.8rem;
+    padding: 0.3rem .9rem;
+    min-width: 120px;
+  }
+  .team_structure_second_section .background_img {
+    height: 300px;
+  }
+  .team_structure_second_section .inner_section .padding_custom {
+    padding-bottom: 0;
+  }
+  .team_structure_third_section .background_img {
+    height: 300px;
+  }
+  .team_structire_fourth_section .background_img {
+    height: 300px;
+  }
+  .team_structure_sixth_section .h2_style {
+    font-size: 1.2rem;
+  }
+  .team_structure_sixth_section .background_img {
+    height: 300px;
+  }
+  .team_structure_seventh_section {
+    background-color: #000;
+  }
+  .team_structure_seventh_section .background_img {
+    height: 300px;
+  }
+  .team_structure_heighth_section .background_img {
+    height: 300px;
+  }
+  .second_section_services .background_img {
+    height: 300px;
+  }
+  .second_section_services .inner_section .padding_for_button {
+    padding-bottom: 0;
+  }
+  .third_section_services .background_img {
+    height: 300px;
+  }
+  .fourth_section_services .background_img {
+    height: 300px;
+  }
+  .contact_us_content .inner_contact_us {
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .copyright_text {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .contact_us_footer .h2_style {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 350px) {
+  .contact_us_footer .h2_style {
+    max-width: fit-content;
+  }
+}
+
+@media (min-width: 1390px) {
+  /* change this, by default 1140px */
+  .container {
+    max-width: 1360px;
+  }
+}
