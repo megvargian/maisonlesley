@@ -13,9 +13,7 @@ function wp_bootstrap_starter_scripts()
 
     // load WP Bootstrap Starter styles
     wp_enqueue_style('wp-bootstrap-starter-style', get_stylesheet_uri());
-
     // ============= Load Custom stylesheets =============
-
     wp_enqueue_style('maze-swiper', get_template_directory_uri() . '/inc/assets/css/swiper.min.css');
 
     if (is_front_page()) {
