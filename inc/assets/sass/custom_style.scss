@@ -66,7 +66,7 @@ p{
 }
 body{
 	color: $text_black;
-	font-family: $montserrat-regular;
+	font-family: $Rutan-Regular;
 	background-color: $text_white;
 	overflow: auto;
 	overflow-x: hidden !important;
@@ -115,7 +115,230 @@ body.hide_scroll{
 :focus {
     outline: none !important;
 }
-// header
-.icon-pin:before {
-    content: "\E02A";
+
+// general
+h2{
+	font-size: 1.7rem;
+	font-weight: 500;
+	font-family: $Rutan-Light;
+	color: #000;
+	margin-top: 10px !important;
+	margin-bottom: 10px;
 }
+h3{
+
+}
+.main-link{
+	margin-top: 1.2rem;
+	font-size: 16px;
+	font-family: $Rutan-Regular;
+	color: #000;
+	-webkit-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-transition: padding .3s ease-in-out;
+    -o-transition: padding ease-in-out .3s;
+    transition: padding .3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 5px 0;
+    font-weight: 500;
+	cursor: pointer;
+	text-align: left;
+	width: fit-content !important;
+}
+.main-link::before{
+	content: "";
+    margin-right: 5px;
+    padding-top: 2px;
+    background-color: #000;
+	-webkit-transition: width .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    transition: width .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    -o-transition: width ease-in-out .3s, transform ease-in-out .3s;
+    transition: width .3s ease-in-out, transform .3s ease-in-out;
+    transition: width .3s ease-in-out, transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    width: 32px;
+}
+.main-link::after{
+	-webkit-transition: width .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    transition: width .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    -o-transition: width ease-in-out .3s, transform ease-in-out .3s;
+    transition: width .3s ease-in-out, transform .3s ease-in-out;
+    transition: width .3s ease-in-out, transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    width: 42px;
+	content: "\E001";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translate(100%, -50%);
+    -ms-transform: translate(100%, -50%);
+    transform: translate(100%, -50%);
+    padding-left: 5px;
+    font-size: 1rem;
+	font-family: $mm-icons;
+    font-style: normal;
+    -webkit-font-feature-settings: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+}
+.main-link:hover{
+	padding-right: 42px;
+}
+.main-link:hover::before{
+    width: 0;
+}
+.main-link:hover::after{
+	-webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+// header
+.default-button{
+	text-decoration: none;
+	border: none;
+	background-color: transparent;
+	color: #fff;
+	outline: none;
+	font-family: $Rutan-Regular;
+	font-size: 12px;
+	font-weight: 400;
+	margin: auto 0;
+	cursor: pointer;
+}
+.default-button:hover{
+	color: #fff;
+}
+.float-left {
+	.default-button::before{
+		content: "\E01A";
+		font-family: $mm-icons;
+		height: 20px;
+		margin-right: 10px;
+	}
+}
+.float-right{
+	.default-button::before{
+		content: "\E02A";
+		font-family: $mm-icons;
+		height: 20px;
+		margin-right: 10px;
+	}
+}
+.custom-first-header-padding{
+	padding: .30rem 0;
+}
+.main-logo{
+	width: 250px;
+	height: auto;
+}
+
+.main-nav{
+	ul{
+		li:first-child{
+			padding-left: 0;
+		}
+		li{
+			padding: 20px 17px;
+			font-size: .85rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			position: relative;
+			.level-two{
+				visibility: hidden;
+				opacity: 0;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				right: 0;
+				height: auto;
+				background-color: white;
+				padding: 40px 0;
+				margin: 0;
+				display: flex;
+				width: 100%;
+				.category{
+					position: relative;
+				}
+				.category::after{
+					-webkit-transition: -webkit-transform .2s ease-in-out;
+					transition: -webkit-transform .2s ease-in-out;
+					-o-transition: transform ease-in-out .2s;
+					transition: transform .2s ease-in-out;
+					transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+					-webkit-transform-origin: left bottom;
+					-ms-transform-origin: left bottom;
+					transform-origin: left bottom;
+					content: "";
+					display: block;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 1px;
+					-webkit-transform: scale(0);
+					-ms-transform: scale(0);
+					transform: scale(0);
+					background-color: #000;
+				}
+				.category::after:hover{
+					-webkit-transform: scale(1);
+					-ms-transform: scale(1);
+					transform: scale(1);
+				}
+			}
+		}
+		li::after{
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 18px;
+			right: 18px;
+			height: 2px;
+			background-color: #000;
+			-webkit-transition: all .4s ease;
+			-o-transition: all .4s ease;
+			transition: all .4s ease;
+			-webkit-transform: scaleX(0);
+			-ms-transform: scaleX(0);
+			transform: scaleX(0);
+		}
+		li:first-child::after{
+			left: 0px;
+		}
+		li:hover::after{
+			-webkit-transform: scaleX(1);
+			-ms-transform: scaleX(1);
+			transform: scaleX(1);
+		}
+		li:hover{
+			.level-two{
+				visibility: visible;
+				opacity: 1;
+				z-index: 2;
+			}
+		}
+	}
+}
+
