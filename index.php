@@ -19,7 +19,7 @@ get_header();
 <section class="py-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-10">
                 <div class="row">
                     <div class="col-6">
                         <img class="w-100" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/second-image.png" alt="">
@@ -38,3 +38,106 @@ get_header();
         </div>
     </div>
 </section>
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-6">
+                        <div>
+                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/cerimonia.jpg" alt="cerimonia">
+                            <h3 class="pt-3">An Elgant Affair</h3>
+                            <a href="#" class="main-link mt-4">Discover more</a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="pt-5 mt-5">
+                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/shirts.jpg" alt="shirts">
+                            <h3 class="pt-3">Perfect parters</h3>
+                            <a href="#" class="main-link mt-4">Discover more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 my-5">
+    <div class="container">
+        <div class="row text-center justify-content-center">
+            <h3>Trending now: the best loved styles</h3>
+        </div>
+        <div class="row justify-content-center">
+           <div class="col-11 px-0">
+                <div class="swiper swiperProduct">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+           </div>
+        </div>
+    </div>
+</section>
+<section class="py-5" style="background-color: #f0f0f0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row justify-content-between">
+                    <div class="col-6">
+                        <div>
+                            <h3>Maison Lesley News</h3>
+                            <p>Sign up to our newsletter and receive updates on <br> events, collections and exclusive promotions.</p>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <form class="w-100" action="/">
+                            <input class="input-newsletter w-100" placeholder="Email" type="email" requierd>
+                            <div class="check-policy d-block mt-3">
+                                <input class="input-checkbox" name="policy-check" type="checkbox" required>
+                                <label class="pb-1" for="policy-check">
+                                    I have read the <a href="#">Privacy Policy</a>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    jQuery(document).ready(function($) {
+        var swiper = new Swiper(".swiperProduct", {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+</script>
+
+<?php
+get_footer();

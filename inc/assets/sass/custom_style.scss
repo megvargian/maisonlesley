@@ -126,7 +126,17 @@ h2{
 	margin-bottom: 10px;
 }
 h3{
-
+	font-size: 1.4rem;
+	font-weight: 500;
+	font-family: $Rutan-Light;
+	color: #000;
+}
+p{
+	margin-top: 15px;
+	font-size: .9rem;
+	font-weight: 500;
+	font-family: $Rutan-Light;
+	color: #000;
 }
 .main-link{
 	margin-top: 1.2rem;
@@ -342,3 +352,86 @@ h3{
 	}
 }
 
+
+//newsletter section
+.input-newsletter{
+	padding: 10px 15px !important;
+	height: 50px;
+    color: #595959;
+    font-size: 1.3rem;
+    font-family: $Rutan-Regular, sans-serif !important;
+    line-height: 30px;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+    -webkit-appearance: none !important;
+	font-family: $mm-icons;
+}
+
+.check-policy{
+	font-family: $Rutan-Light, sans-serif;
+	font-size: .6rem;
+	.input-checkbox{
+		border-radius: 0;
+		background-color: transparent;
+		stroke: transparent;
+	}
+	a{
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
+.swiper-button-prev,
+.swiper-button-next{
+	z-index: 10;
+}
+.swiperProduct{
+	padding: 0 50px;
+}
+.swiper-button-prev::after{
+	display: inline-block;
+    font-family: $mm-icons;
+    font-style: normal;
+    -webkit-font-feature-settings: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\E003";
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+	color: #000;
+	font-size: 20px;
+	z-index: 10;
+}
+.swiper-button-next::after{
+	display: inline-block;
+    font-family: $mm-icons;
+    font-style: normal;
+    -webkit-font-feature-settings: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\E003";
+	color: #000;
+	font-size: 20px;
+	z-index: 10;
+}
+
+// footer
+.footer-after{
+	p{
+		color: #fff;
+		font-family: $Rutan-Regular;
+		font-size: .8rem;
+		padding: 10px 0;
+		margin: 0;
+	}
+}

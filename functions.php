@@ -36,8 +36,6 @@ function wp_bootstrap_starter_scripts()
     // Add all custom js libraries here
     wp_enqueue_script('maze-swiper-js', get_template_directory_uri() . '/inc/assets/js/swiper.min.js', array(), '1', true);
 
-    // query loader
-    wp_enqueue_script('queryloader2-js', get_template_directory_uri() . '/inc/assets/js/queryloader2.min.js', array(), '1', true);
     // jquery visibale
     wp_enqueue_script('queryvisible-js', get_template_directory_uri() . '/inc/assets/js/jquery.visible.js', array(), '1', true);
     // wp_enqueue_script('wp-bootstrap-starter-themejs', get_template_directory_uri() . '/inc/assets/js/theme-script.js', array(), '', true );
