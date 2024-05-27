@@ -444,10 +444,6 @@ p {
   z-index: 10;
 }
 
-.swiperProduct {
-  padding: 0 50px;
-}
-
 .swiper-button-prev::after {
   display: inline-block;
   font-family: "mm-icons";
