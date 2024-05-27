@@ -64,7 +64,7 @@ get_header();
 </section>
 <section class="py-5 my-5">
     <div class="container">
-        <div class="row text-center justify-content-center">
+        <div class="row text-center justify-content-center pb-3">
             <h3>Trending now: the best loved styles</h3>
         </div>
         <div class="row justify-content-center">
