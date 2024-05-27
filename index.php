@@ -68,7 +68,7 @@ get_header();
             <h3>Trending now: the best loved styles</h3>
         </div>
         <div class="row justify-content-center">
-           <div class="col-11 px-0">
+           <div class="col-11 px-0" style="position: relative;">
                 <div class="swiper swiperProduct">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -90,9 +90,10 @@ get_header();
                             <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
                         </div>
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+
                 </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
            </div>
         </div>
     </div>

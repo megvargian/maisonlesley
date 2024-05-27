@@ -444,6 +444,14 @@ p {
   z-index: 10;
 }
 
+.swiper-button-next {
+  right: -5%;
+}
+
+.swiper-button-prev {
+  left: -5%;
+}
+
 .swiper-button-prev::after {
   display: inline-block;
   font-family: "mm-icons";
