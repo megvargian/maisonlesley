@@ -73,21 +73,27 @@ get_header();
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                            <h4>Flowing cady trousers</h4>
                         </div>
                         <div class="swiper-slide">
                             <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                            <h4>Flowing cady trousers</h4>
                         </div>
                         <div class="swiper-slide">
                             <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                            <h4>Flowing cady trousers</h4>
                         </div>
                         <div class="swiper-slide">
                             <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                            <h4>Flowing cady trousers</h4>
                         </div>
                         <div class="swiper-slide">
                             <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                            <h4>Flowing cady trousers</h4>
                         </div>
                         <div class="swiper-slide">
                             <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
+                            <h4>Flowing cady trousers</h4>
                         </div>
                     </div>
 

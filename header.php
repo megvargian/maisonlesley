@@ -40,106 +40,86 @@
                     </div>
                 </div>
             </section>
-            <section class="bg-white">
+            <section class="bg-white main-logo-section">
                 <div class="container">
                     <div class="row justify-content-center pt-4">
                         <img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main_logo.png" alt="">
                     </div>
                 </div>
             </section>
-            <section class="bg-white">
+            <section class="bg-white main-nav-section">
                 <div class="container px-0">
                     <nav class="text-left main-nav">
-                        <ul class="d-flex justify-content-start">
-                            <li>
+                        <ul class="d-flex justify-content-start main-menu-list">
+                            <li class="main-menu-link">
                                 <a class="link" href="#">New Arrivals</a>
-                                <!-- <div class="level-two">
+                                <div class="sub-full-menu">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-sm-6 col-lg-3 sub-menu-component">
-                                                <div class="sub-navigation-links-list">
-                                                    <ul class="list-default">
-                                                        <li class="list-title d-none d-sm-block"><strong>Category</strong></li>
-                                                        <li class="category"><a title="New Arrivals" href="/new-arrivals">New Arrivals</a></li>
-                                                        <li class="category"><a title="MM Eyewear" href="/accessories/womens-sunglasses">MM Eyewear</a></li>
-                                                        <li class="category"><a title="Ceremony" href="/editorial/ceremonies-evening-outfits">Ceremony</a></li>
-                                                        <li class="category"><a title="Max Mara's Magic Circus" href="/editorial/pre-fall">Max Mara's Magic Circus</a></li>
+                                            <div class="col-3">
+                                                <div class="sub-div">
+                                                    <div class="sub-label mb-3">
+                                                        <h5>CATEGORY</h5>
+                                                    </div>
+                                                    <ul class="sub-menu-list">
+                                                        <li class="sub-menu-link"><a href="#">Test1</a></li>
+                                                        <li class="sub-menu-link"><a href="#">Test1</a></li>
+                                                        <li class="sub-menu-link"><a href="#">Test1</a></li>
+                                                        <li class="sub-menu-link"><a href="#">Test1</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-lg-3 sub-menu-component">
-                                                <div class="sub-navigation-banner card horizontal single"><a href="/editorial/pre-fall" class="banner-link" title="Max Mara's Magic Circus" target="_self" rel=" ">
-                                                        <figure>
-                                                            <picture>
-                                                                <source media="(max-width: 767px)" srcset="//world.maxmara.com/mediaObject/maxmara/Prefall-2024/Prefall-2024/dd-menu/original/dd-menu.jpg"><img class="image" src="//world.maxmara.com/mediaObject/maxmara/Prefall-2024/Prefall-2024/dd-menu/original/dd-menu.jpg" alt="Dd Menu Max Mara" title="Dd Menu Max Mara" data-image-ratio-md="1.0" data-image-ratio-sm="1.0" data-image-ratio-xs="1.0" data-image-ratio-lg="1.0">
-                                                            </picture>
-                                                            <figcaption class="">
-                                                                <div class="caption ">
-                                                                    <div class="">
-                                                                        <div class="">
-                                                                            <h2 data-link="/editorial/pre-fall" class="h2 h2-editorial-primary js-multiline-ellipsis-text">Max Mara's Magic Circus</h2>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </a></div>
+                                            <div class="col-3">
+                                                <a class="sub-menu-image-link" href="#">
+                                                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
+                                                    <p class="sub-menu-image-text">Test1</p>
+                                                </a>
                                             </div>
-                                            <div class="col-12 col-lg-3 sub-menu-component">
-                                                <div class="sub-navigation-banner card horizontal single"><a href="/editorial/ceremonies-evening-outfits" class="banner-link" title="Ceremony" target="_self" rel=" ">
-                                                        <figure>
-                                                            <picture>
-                                                                <source media="(max-width: 767px)" srcset="//world.maxmara.com/mediaObject/maxmara/HP_20_05/mobile-cerimonia/original/mobile+cerimonia.jpg"><img class="image" src="//world.maxmara.com/mediaObject/maxmara/HP_20_05/mobile-cerimonia/original/mobile+cerimonia.jpg" alt="Mobile Cerimonia Max Mara" title="Mobile Cerimonia Max Mara" data-image-ratio-md="1.0" data-image-ratio-sm="1.0" data-image-ratio-xs="1.0" data-image-ratio-lg="1.0">
-                                                            </picture>
-                                                            <figcaption class="">
-                                                                <div class="caption ">
-                                                                    <div class="">
-                                                                        <div class="">
-                                                                            <h2 data-link="/editorial/ceremonies-evening-outfits" class="h2 h2-editorial-primary js-multiline-ellipsis-text">Ceremony</h2>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </a></div>
+                                            <div class="col-3">
+                                                <a class="sub-menu-image-link" href="#">
+                                                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
+                                                    <p class="sub-menu-image-text">Test1</p>
+                                                </a>
                                             </div>
-                                            <div class="col-12 col-lg-3 sub-menu-component">
-                                                <div class="sub-navigation-banner card horizontal single"><a href="/accessories/womens-sunglasses" class="banner-link" title="MM Eyewear" target="_self" rel=" ">
-                                                        <figure>
-                                                            <picture>
-                                                                <source media="(max-width: 767px)" srcset="//world.maxmara.com/mediaObject/maxmara/HP-29-04/HP-29-04/Occhiali-mobile/original/Occhiali+mobile.jpg"><img class="image" src="//world.maxmara.com/mediaObject/maxmara/HP-29-04/HP-29-04/Occhiali-mobile/original/Occhiali+mobile.jpg" alt="Occhiali Mobile Max Mara" title="Occhiali Mobile Max Mara" data-image-ratio-md="1.0" data-image-ratio-sm="1.0" data-image-ratio-xs="1.0" data-image-ratio-lg="1.0">
-                                                            </picture>
-                                                            <figcaption class="">
-                                                                <div class="caption ">
-                                                                    <div class="">
-                                                                        <div class="">
-                                                                            <h2 data-link="/accessories/womens-sunglasses" class="h2 h2-editorial-primary js-multiline-ellipsis-text">MM Eyewear</h2>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </a></div>
+                                            <div class="col-3">
+                                                <a class="sub-menu-image-link" href="#">
+                                                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
+                                                    <p class="sub-menu-image-text">Test1</p>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                             </li>
-                            <li>clothing</li>
-                            <li>Coats and Jackets</li>
-                            <li>Teddy ten</li>
-                            <li>Bags and shoes</li>
-                            <li>gifts</li>
-                            <li>accesories</li>
-                            <li>runway</li>
-                            <li>bridal</li>
-                            <li>mm world</li>
+                            <li class="main-menu-link"><a href="#">clothing</a></li>
+                            <li class="main-menu-link"><a href="#">Coats and Jackets</a></li>
+                            <li class="main-menu-link"><a href="#">Teddy ten</a></li>
+                            <li class="main-menu-link"><a href="#">Bags and shoes</a></li>
+                            <li class="main-menu-link"><a href="#">gifts</a></li>
+                            <li class="main-menu-link"><a href="#">accesories</a></li>
+                            <li class="main-menu-link"><a href="#">runway</a></li>
+                            <li class="main-menu-link"><a href="#">bridal</a></li>
+                            <li class="main-menu-link"><a href="#">mm world</a></li>
                         </ul>
                     </nav>
                 </div>
             </section>
         </header>
         <script>
-            jQuery(document).ready(function($) {});
+            jQuery(document).ready(function($) {
+                $(window).scroll(function(){
+                    var currentScreenPosition  = $(document).scrollTop();
+                    if (currentScreenPosition > 250) {
+                        $("header").addClass("active");
+                        $('.main-nav-section').addClass("active");
+                        $('.main-logo-section').addClass("active");
+                    }
+                    if (currentScreenPosition < 125){
+                        $("header").removeClass("active");
+                        $('.main-nav-section').removeClass("active");
+                        $('.main-logo-section').removeClass("active");
+                    }
+                });
+            });
         </script>
         <div id="content" class="site-content">
