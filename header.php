@@ -26,14 +26,31 @@
         <header>
             <section class="first-header bg-black">
                 <div class="container">
-                    <div class="row justify-content-between custom-first-header-padding">
+                    <div class="row justify-content-between">
                         <div class="col">
-                            <div class="d-flex float-left">
+                            <div class="d-flex float-left hover-js-drop-down custom-first-header-padding">
                                 <a class="default-button">Customer service</a>
+                                <div class="drop-down-customer-service">
+                                    <div class="headeing text-center">
+                                        <h6>Need any Help?</h6>
+                                    </div>
+                                    <ul class="d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <a class="icon-mail" href="#">
+                                                <span>Write to us</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Send your request</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="icon-pin d-flex float-right" href="#">
+                            <div class="icon-pin d-flex float-right custom-first-header-padding">
                                 <a class="default-button">Find your nearest store</a>
                             </div>
                         </div>
@@ -49,9 +66,9 @@
             </section>
             <section class="bg-white main-nav-section">
                 <div class="container px-0">
-                    <nav class="text-left main-nav">
+                    <nav class="text-left main-nav d-flex justify-content-between">
                         <ul class="d-flex justify-content-start main-menu-list">
-                            <li class="main-menu-link">
+                            <li class="main-menu-link sub-menu">
                                 <a class="link" href="#">New Arrivals</a>
                                 <div class="sub-full-menu">
                                     <div class="container">
@@ -101,10 +118,15 @@
                             <li class="main-menu-link"><a href="#">bridal</a></li>
                             <li class="main-menu-link"><a href="#">mm world</a></li>
                         </ul>
+                        <div class="right-side">
+                            <button class="search-icon">
+                            </button>
+                        </div>
                     </nav>
                 </div>
             </section>
         </header>
+        <div class="header-active-background-gray"></div>
         <script>
             jQuery(document).ready(function($) {
                 $(window).scroll(function(){
@@ -113,13 +135,18 @@
                         $("header").addClass("active");
                         $('.main-nav-section').addClass("active");
                         $('.main-logo-section').addClass("active");
+                        $('.first-header').addClass("active");
                     }
                     if (currentScreenPosition < 125){
                         $("header").removeClass("active");
                         $('.main-nav-section').removeClass("active");
                         $('.main-logo-section').removeClass("active");
+                        $('.first-header').removeClass("active");
                     }
                 });
+                $('.main-menu-link.sub-menu').hover(function(){
+                    $('.header-active-background-gray').toggleClass("active");
+                })
             });
         </script>
         <div id="content" class="site-content">

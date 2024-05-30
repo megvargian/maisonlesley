@@ -421,19 +421,32 @@ header{
 	top: 0;
 	transition: transform .25s ease-out, -webkit-transform .25s ease-out;
 	transform: translateY(0);
+	background-color: #fff;
+}
+.header-active-background-gray{
+	visibility: hidden;
+	width: 100%;
+	height: 100%;
+	z-index: 11;
+	background-color: rgba(0, 0, 0, 0.4);
+	position: absolute;
+}
+.header-active-background-gray.active{
+	visibility: visible;
 }
 header.active{
-	transform: translateY(0%);
+	transform: translateY(-50%);
 }
 .main-logo-section{
 	transition: transform .25s ease-out, -webkit-transform .25s ease-out;
 	transform: translateY(0);
 	background-color: white;
+	transition-duration: .4s;
 }
 .main-logo-section.active{
 	transform: translateY(-100%);
 	background-color: white;
-	transition-delay: .08s;
+	transition-duration: .4s;
 }
 .main-nav-section{
 	transition: transform .25s ease-out, -webkit-transform .25s ease-out;
@@ -441,14 +454,137 @@ header.active{
 	background-color: white;
 }
 .main-nav-section.active{
-	transform: translateY(-164%);
+	transform: translateY(-15%);
 	background-color: white;
+}
+.hover-js-drop-down:hover{
+	.drop-down-customer-service{
+		opacity: 1;
+		visibility: visible;
+	}
+	.default-button::after{
+		opacity: 1;
+		visibility: visible;
+	}
+}
+.drop-down-customer-service{
+	display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    top: 100%;
+    left: 0%;
+    right: auto;
+    padding: 20px;
+    -webkit-box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    color: #000;
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	z-index: 15;
+	height: fit-content;
+	width: 300px;
+	background-color: #fff;
+	ul{
+		li {
+			font-size: 0.8rem;
+			margin-bottom: 13px;
+			padding: 0;
+			font-family: "Rutan-Light";
+			font-weight: 300;
+		}
+	}
+}
+.headeing{
+	margin-bottom: 3rem;
+	h6{
+		font-size: 1rem;
+	}
+}
+.hover-js-drop-down{
+	position: relative;
+	.default-button{
+		position: relative;
+	}
+	.default-button::after{
+		content: "";
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		background: #fff;
+		border-top: 1px solid #d8d8d8;
+		border-right: 1px solid #d8d8d8;
+		-webkit-transform: rotate(-45deg) translateX(-58%);
+		-ms-transform: rotate(-45deg) translateX(-58%);
+		transform: rotate(-45deg) translateX(-58%);
+		left: 50%;
+		top: 37px;
+		z-index: 10;
+		width: 8px;
+		height: 8px;
+		top: 100%;
+		left: 12%;
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+.icon-mail{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.icon-mail::before{
+    margin-right: 10px;
+    font-size: 1.4em;
+    color: #595959;
+	content: "\E01D";
+	font-family: $mm-icons;
 }
 .first-header{
 	z-index: 1;
 	position: fixed;
 	top: 0;
 	width: 100%;
+	transform: translateY(0%);
+	transition-duration: .4s;
+}
+.first-header.active{
+	transform: translateY(315%);
+	transition-duration: .4s;
+}
+.right-side{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	vertical-align: middle;
+	margin-left: auto;
+}
+.search-icon{
+	opacity: 1;
+    visibility: visible;
+	-webkit-transition: all .25s linear;
+    -o-transition: all .25s linear;
+    transition: all .25s linear;
+	font-family: $mm-icons;
+	outline: none;
+	border: none;
+	text-decoration: none;
+	background-color: transparent;
+	padding-right: 0;
+}
+.search-icon::before{
+	content: '\E031';
+
 }
 //newsletter section
 .input-newsletter{
@@ -595,37 +731,37 @@ header.active{
 	}
 	li:nth-child(4){
 		i::before{
-			content: "\E035";
+			content: "\E03E";
 		}
 	}
 	li:nth-child(5){
 		i::before{
-			content: "\E03F";
+			content: "\E039";
 		}
 	}
 	li:nth-child(6){
 		i::before{
-			content: "\E03A";
+			content: "\E02B";
 		}
 	}
 	li:nth-child(7){
 		i::before{
-			content: "\E02C";
+			content: "\E03C";
 		}
 	}
 	li:nth-child(8){
 		i::before{
+			content: "\E035";
+		}
+	}
+	li:nth-child(9){
+		i::before{
 			content: "\E03D";
 		}
 	}
-	li:nth-child(9){
+	li:nth-child(10){
 		i::before{
-			content: "\E03C";
-		}
-	}
-	li:nth-child(9){
-		i::before{
-			content: "\E038";
+			content: "\E037";
 		}
 	}
 }

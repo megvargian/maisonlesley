@@ -92,11 +92,6 @@
                                     <i class="icon-social-instagram"></i>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-social-instagram"></i>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
