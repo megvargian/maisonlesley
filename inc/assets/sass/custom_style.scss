@@ -426,7 +426,7 @@ header{
 .header-active-background-gray{
 	visibility: hidden;
 	width: 100%;
-	height: 100%;
+	height: 95%;
 	z-index: 11;
 	background-color: rgba(0, 0, 0, 0.4);
 	position: absolute;
@@ -454,7 +454,7 @@ header.active{
 	background-color: white;
 }
 .main-nav-section.active{
-	transform: translateY(-15%);
+	transform: translateY(0%);
 	background-color: white;
 }
 .hover-js-drop-down:hover{
@@ -556,7 +556,7 @@ header.active{
 	top: 0;
 	width: 100%;
 	transform: translateY(0%);
-	transition-duration: .4s;
+	transition-duration: 0s;
 }
 .first-header.active{
 	transform: translateY(315%);

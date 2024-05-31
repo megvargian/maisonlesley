@@ -118,9 +118,9 @@ get_header();
                     <div class="col-5">
                         <form class="w-100" action="/">
                             <input class="input-newsletter w-100" placeholder="Email" type="email" requierd>
-                            <div class="check-policy d-block mt-3">
+                            <div class="check-policy d-flex justify-content-start mt-3">
                                 <input class="input-checkbox" name="policy-check" type="checkbox" required>
-                                <label class="pb-1" for="policy-check">
+                                <label for="policy-check" style="margin-left: 5px;">
                                     I have read the <a href="#">Privacy Policy</a>
                                 </label>
                             </div>
