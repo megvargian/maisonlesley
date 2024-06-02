@@ -14,7 +14,7 @@
     <section class="bg-white py-5">
         <div class="container">
             <div class="row">
-                <div class="col-2">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                     <div class="first-col">
                         <div>
                             <h5 class="mb-3">Corporate</h5>
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                     <div class="second-col">
                         <div>
                             <h5 class="mb-3">Legal Area</h5>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2 third-col social-links">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 third-col social-links">
                     <div class="row">
                         <ul>
                             <li>
@@ -95,7 +95,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col"></div>
+                <div class="col-sm-0 col"></div>
             </div>
         </div>
     </section>

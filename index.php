@@ -109,13 +109,13 @@ get_header();
         <div class="row justify-content-center">
             <div class="col-10">
                 <div class="row justify-content-between">
-                    <div class="col-6">
+                    <div class=" col-md-6 col-12">
                         <div>
                             <h3>Maison Lesley News</h3>
                             <p>Sign up to our newsletter and receive updates on <br> events, collections and exclusive promotions.</p>
                         </div>
                     </div>
-                    <div class="col-5">
+                    <div class="col-md-5 col-12">
                         <form class="w-100" action="/">
                             <input class="input-newsletter w-100" placeholder="Email" type="email" requierd>
                             <div class="check-policy d-flex justify-content-start mt-3">
@@ -142,6 +142,27 @@ get_header();
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
+            breakpoints: {
+				// when window width is >= 320px
+				320: {
+					slidesPerView: 1.5,
+					spaceBetween: 20
+				},
+				// when window width is >= 480px
+				480: {
+					slidesPerView: 1.5,
+					spaceBetween: 30
+				},
+				// when window width is >= 640px
+				640: {
+					slidesPerView: 3,
+					spaceBetween: 30
+				},
+				991: {
+					slidesPerView: 5,
+					spaceBetween: 30
+				}
+			}
         });
     });
 </script>

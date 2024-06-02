@@ -24,106 +24,227 @@
 
     <div id="page" class="site main_page_wrapper">
         <header>
-            <section class="first-header bg-black">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col">
-                            <div class="d-flex float-left hover-js-drop-down custom-first-header-padding">
-                                <a class="default-button">Customer service</a>
-                                <div class="drop-down-customer-service">
-                                    <div class="headeing text-center">
-                                        <h6>Need any Help?</h6>
+            <section class="desktop-header d-none d-xl-block">
+                <section class="first-header bg-black">
+                    <div class="container">
+                        <div class="row justify-content-between">
+                            <div class="col">
+                                <div class="d-flex float-left hover-js-drop-down custom-first-header-padding">
+                                    <a class="default-button">Customer service</a>
+                                    <div class="drop-down-customer-service">
+                                        <div class="headeing text-center">
+                                            <h6>Need any Help?</h6>
+                                        </div>
+                                        <ul class="d-flex justify-content-between align-items-center">
+                                            <li>
+                                                <a class="icon-mail" href="#">
+                                                    <span>Write to us</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span>Send your request</span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <ul class="d-flex justify-content-between align-items-center">
-                                        <li>
-                                            <a class="icon-mail" href="#">
-                                                <span>Write to us</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span>Send your request</span>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="icon-pin d-flex float-right custom-first-header-padding">
+                                    <a class="default-button">Find your nearest store</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="icon-pin d-flex float-right custom-first-header-padding">
-                                <a class="default-button">Find your nearest store</a>
-                            </div>
+                    </div>
+                </section>
+                <section class="bg-white main-logo-section">
+                    <div class="container">
+                        <div class="row justify-content-center pt-4">
+                            <img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main_logo.png" alt="">
                         </div>
                     </div>
-                </div>
-            </section>
-            <section class="bg-white main-logo-section">
-                <div class="container">
-                    <div class="row justify-content-center pt-4">
-                        <img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main_logo.png" alt="">
-                    </div>
-                </div>
-            </section>
-            <section class="bg-white main-nav-section">
-                <div class="container px-0">
-                    <nav class="text-left main-nav d-flex justify-content-between">
-                        <ul class="d-flex justify-content-start main-menu-list">
-                            <li class="main-menu-link sub-menu">
-                                <a class="link" href="#">New Arrivals</a>
-                                <div class="sub-full-menu">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <div class="sub-div">
-                                                    <div class="sub-label mb-3">
-                                                        <h5>CATEGORY</h5>
+                </section>
+                <section class="bg-white main-nav-section">
+                    <div class="container px-0">
+                        <nav class="text-left main-nav d-flex justify-content-between">
+                            <ul class="d-flex justify-content-start main-menu-list">
+                                <li class="main-menu-link sub-menu">
+                                    <a class="link" href="#">New Arrivals</a>
+                                    <div class="sub-full-menu">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <div class="sub-div">
+                                                        <div class="sub-label mb-3">
+                                                            <h5>CATEGORY</h5>
+                                                        </div>
+                                                        <ul class="sub-menu-list">
+                                                            <li class="sub-menu-link"><a href="#">Test1</a></li>
+                                                            <li class="sub-menu-link"><a href="#">Test1</a></li>
+                                                            <li class="sub-menu-link"><a href="#">Test1</a></li>
+                                                            <li class="sub-menu-link"><a href="#">Test1</a></li>
+                                                        </ul>
                                                     </div>
-                                                    <ul class="sub-menu-list">
-                                                        <li class="sub-menu-link"><a href="#">Test1</a></li>
-                                                        <li class="sub-menu-link"><a href="#">Test1</a></li>
-                                                        <li class="sub-menu-link"><a href="#">Test1</a></li>
-                                                        <li class="sub-menu-link"><a href="#">Test1</a></li>
-                                                    </ul>
                                                 </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <a class="sub-menu-image-link" href="#">
-                                                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
-                                                    <p class="sub-menu-image-text">Test1</p>
-                                                </a>
-                                            </div>
-                                            <div class="col-3">
-                                                <a class="sub-menu-image-link" href="#">
-                                                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
-                                                    <p class="sub-menu-image-text">Test1</p>
-                                                </a>
-                                            </div>
-                                            <div class="col-3">
-                                                <a class="sub-menu-image-link" href="#">
-                                                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
-                                                    <p class="sub-menu-image-text">Test1</p>
-                                                </a>
+                                                <div class="col-3">
+                                                    <a class="sub-menu-image-link" href="#">
+                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
+                                                        <p class="sub-menu-image-text">Test1</p>
+                                                    </a>
+                                                </div>
+                                                <div class="col-3">
+                                                    <a class="sub-menu-image-link" href="#">
+                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
+                                                        <p class="sub-menu-image-text">Test1</p>
+                                                    </a>
+                                                </div>
+                                                <div class="col-3">
+                                                    <a class="sub-menu-image-link" href="#">
+                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
+                                                        <p class="sub-menu-image-text">Test1</p>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </li>
+                                <li class="main-menu-link"><a href="#">clothing</a></li>
+                                <li class="main-menu-link"><a href="#">Coats and Jackets</a></li>
+                                <li class="main-menu-link"><a href="#">Teddy ten</a></li>
+                                <li class="main-menu-link"><a href="#">Bags and shoes</a></li>
+                                <li class="main-menu-link"><a href="#">gifts</a></li>
+                                <li class="main-menu-link"><a href="#">accesories</a></li>
+                                <li class="main-menu-link"><a href="#">runway</a></li>
+                                <li class="main-menu-link"><a href="#">bridal</a></li>
+                                <li class="main-menu-link"><a href="#">mm world</a></li>
+                            </ul>
+                            <div class="right-side">
+                                <button class="search-icon">
+                                </button>
+                            </div>
+                        </nav>
+                    </div>
+                </section>
+            </section>
+            <section class="tablet-header d-lg-block d-xl-none">
+                <section class="first-header-tablet bg-black">
+                    <div class="container">
+                        <div class="row justify-content-between">
+                            <div class="col">
+                                <div class="d-flex float-left hover-js-drop-down custom-first-header-padding">
+                                    <a class="default-button">Customer service</a>
+                                    <div class="drop-down-customer-service">
+                                        <div class="headeing text-center">
+                                            <h6>Need any Help?</h6>
+                                        </div>
+                                        <ul class="d-flex justify-content-between align-items-center">
+                                            <li>
+                                                <a class="icon-mail" href="#">
+                                                    <span>Write to us</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span>Send your request</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </li>
-                            <li class="main-menu-link"><a href="#">clothing</a></li>
-                            <li class="main-menu-link"><a href="#">Coats and Jackets</a></li>
-                            <li class="main-menu-link"><a href="#">Teddy ten</a></li>
-                            <li class="main-menu-link"><a href="#">Bags and shoes</a></li>
-                            <li class="main-menu-link"><a href="#">gifts</a></li>
-                            <li class="main-menu-link"><a href="#">accesories</a></li>
-                            <li class="main-menu-link"><a href="#">runway</a></li>
-                            <li class="main-menu-link"><a href="#">bridal</a></li>
-                            <li class="main-menu-link"><a href="#">mm world</a></li>
-                        </ul>
-                        <div class="right-side">
-                            <button class="search-icon">
-                            </button>
+                            </div>
+                            <div class="col">
+                                <div class="icon-pin d-flex float-right custom-first-header-padding">
+                                    <a class="default-button">Find your nearest store</a>
+                                </div>
+                            </div>
                         </div>
-                    </nav>
-                </div>
+                    </div>
+                </section>
+                <section class="bg-white main-nav-section-tablet">
+                    <div class="container px-0">
+                        <nav class="text-left main-nav d-flex justify-content-between">
+                            <ul class="d-flex justify-content-start main-menu-list align-items-center">
+                                <li>
+                                    <button class="hamburger hamburger--collapse mt-0" type="button">
+                                        <div class="menu_mobile_nav">
+                                            <div class="hamburger_menu_icon">
+                                                <div class="line"></div>
+                                                <div class="line middle_line"></div>
+                                                <div class="line"></div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </li>
+                                <li>
+                                    <img class="main-logo-tablet ml-5" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main_logo.png" alt="">
+                                </li>
+                            </ul>
+                            <div class="right-side">
+                                <button class="search-icon">
+                                </button>
+                            </div>
+                            <div id="menu_mobile" class="menu_on_mobile d-block d-xl-none">
+                                <div class="menu_on_mobile_wrapper">
+                                    <div class="menu_on_mobile_inner_wrapper" style="position: relative;">
+                                        <div>
+                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
+                                                <div class="menu_item active_page line_animation">
+                                                    New Arrivals
+                                                </div>
+                                            </a>
+                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
+                                                <div class="menu_item active_page line_animation">
+                                                    clothing
+                                                </div>
+                                            </a>
+                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
+                                                <div class="menu_item active_page line_animation">
+                                                    Coats and Jackets
+                                                </div>
+                                            </a>
+                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
+                                                <div class="menu_item active_page line_animation">
+                                                    Teddy ten
+                                                </div>
+                                            </a>
+                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
+                                                <div class="menu_item active_page line_animation">
+                                                    Bags and shoes
+                                                </div>
+                                            </a>
+                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
+                                                <div class="menu_item active_page line_animation">
+                                                    gifts
+                                                </div>
+                                            </a>
+                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
+                                                <div class="menu_item active_page line_animation">
+                                                    accesories
+                                                </div>
+                                            </a>
+                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
+                                                <div class="menu_item active_page line_animation">
+                                                    runway
+                                                </div>
+                                            </a>
+                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
+                                                <div class="menu_item active_page line_animation">
+                                                    bridal
+                                                </div>
+                                            </a>
+                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
+                                                <div class="menu_item active_page line_animation">
+                                                    mm world
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </section>
             </section>
         </header>
         <div class="header-active-background-gray"></div>
@@ -147,6 +268,12 @@
                 $('.main-menu-link.sub-menu').hover(function(){
                     $('.header-active-background-gray').toggleClass("active");
                 })
+                $('.menu_mobile_nav').click(function(event) {
+                    $(this).toggleClass('active');
+                    $('html, body').toggleClass('hide_scroll');
+                    $('.menu_on_mobile').toggleClass('active');
+                    $('.display_background_of_the_page').toggleClass('mobile_active');
+                });
             });
         </script>
         <div id="content" class="site-content">
