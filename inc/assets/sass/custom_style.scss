@@ -68,12 +68,11 @@ body{
 	color: $text_black;
 	font-family: $Rutan-Regular;
 	background-color: $text_white;
-	overflow: auto;
 	overflow-x: hidden !important;
 }
 body.hide_scroll{
 	padding-right: 17px;
-	overflow: hidden !important;
+	overflow-y: hidden !important;
 }
 // seting up boostrap breakpoints
 $grid-breakpoints: (

@@ -184,7 +184,7 @@
                                 <button class="search-icon">
                                 </button>
                             </div>
-                            <div id="menu_mobile" class="menu_on_mobile d-block d-xl-none">
+                            <div id="menu_mobile" class="menu_on_mobile">
                                 <div class="menu_on_mobile_wrapper">
                                     <div class="menu_on_mobile_inner_wrapper" style="position: relative;">
                                         <div>

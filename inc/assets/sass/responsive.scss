@@ -230,6 +230,9 @@
 @media (max-width: 767px){
 }
 @media (max-width: 575px){
+	body.hide_scroll{
+		padding-right: 0;
+	}
 	.main-nav-section-tablet{
 		padding: 0 5px;
 	}

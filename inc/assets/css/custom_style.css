@@ -80,13 +80,12 @@ body {
   color: #000;
   font-family: "Rutan-Regular";
   background-color: #fff;
-  overflow: auto;
   overflow-x: hidden !important;
 }
 
 body.hide_scroll {
   padding-right: 17px;
-  overflow: hidden !important;
+  overflow-y: hidden !important;
 }
 
 .float-left {
