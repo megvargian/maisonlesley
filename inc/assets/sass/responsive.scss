@@ -5,6 +5,10 @@
 	header.active{
 		transform: translateY(0%);
 	}
+}
+@media (max-width: 1199px){
+}
+@media screen and (max-width: 991px) {
 	.main-logo-tablet{
 		width: 150px;
 		height: auto;
@@ -66,7 +70,7 @@
 		position: fixed;
 		top: 0px;
 		right: 0px;
-		transform: translateX(100vw);
+		transform: translateX(-100vw);
 		transition: cubic-bezier(0.32, 0.17, 0, 1) 1s;
 		background-color: white;
 		text-align: right;
@@ -222,10 +226,6 @@
 			opacity: 1;
 		}
 	}
-}
-@media (max-width: 1199px){
-}
-@media screen and (max-width: 991px) {
 }
 @media (max-width: 767px){
 }
