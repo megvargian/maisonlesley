@@ -301,33 +301,10 @@
     margin-right: 20px;
     font-size: 25px;
   }
-  .accordion-header {
-    outline: none !important;
-    background-color: transparent !important;
-  }
   .accordion-button:focus {
     outline: none !important;
     background-color: transparent !important;
-  }
-  .accordion-button {
-    outline: none !important;
-    background-color: transparent !important;
-  }
-  .accordion-button.collapsed {
-    outline: none !important;
-    background-color: transparent !important;
-  }
-  .accordion-header.collapsed {
-    outline: none !important;
-    background-color: transparent !important;
-  }
-  .accordion-collapse.collapse.show {
-    outline: none !important;
-    background-color: transparent !important;
-  }
-  .accordion-collapse.collapse {
-    outline: none !important;
-    background-color: transparent !important;
+    box-shadow: none !important;
   }
   .border-bottom {
     border-bottom: 1px solid #d8d8d8;
