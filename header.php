@@ -128,7 +128,7 @@
                 </section>
             </section>
             <section class="tablet-header d-lg-block d-xl-none">
-                <section class="first-header-tablet bg-black">
+                <section class="first-header-tablet bg-black d-sm-block d-none">
                     <div class="container">
                         <div class="row justify-content-between">
                             <div class="col">
