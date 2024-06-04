@@ -24,7 +24,7 @@
 
     <div id="page" class="site main_page_wrapper">
         <header>
-            <section class="desktop-header d-none d-xl-block">
+            <section class="desktop-header d-none d-lg-block">
                 <section class="first-header bg-black">
                     <div class="container">
                         <div class="row justify-content-between">
@@ -127,7 +127,7 @@
                     </div>
                 </section>
             </section>
-            <section class="tablet-header d-lg-block d-xl-none">
+            <section class="tablet-header d-block d-lg-none">
                 <section class="first-header-tablet bg-black d-sm-block d-none">
                     <div class="container">
                         <div class="row justify-content-between">

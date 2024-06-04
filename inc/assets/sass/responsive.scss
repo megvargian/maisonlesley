@@ -2,13 +2,22 @@
 @charset "utf-8";
 
 @media (max-width: 1240px){
+
+}
+@media (max-width: 1199px){
+	.main-nav{
+		.main-menu-list{
+			.main-menu-link {
+				padding: 20px 8px;
+				font-size: 0.8rem;
+			}
+		}
+	}
+}
+@media screen and (max-width: 991px) {
 	header.active{
 		transform: translateY(0%);
 	}
-}
-@media (max-width: 1199px){
-}
-@media screen and (max-width: 991px) {
 	.main-logo-tablet{
 		width: 150px;
 		height: auto;
@@ -228,6 +237,67 @@
 	}
 }
 @media (max-width: 767px){
+	.location-mobile{
+		.default-button{
+			display: flex;
+			justify-content: start;
+			align-items: center;
+			font-size: 14px;
+			font-family: $Rutan-Light;
+		}
+		.default-button::before{
+			content: "\E02A";
+			font-family: $mm-icons;
+			margin-right: 20px;
+			font-size: 25px;
+		}
+	}
+	.call-mobile{
+		.default-button{
+			display: flex;
+			justify-content: start;
+			align-items: center;
+			font-size: 14px;
+			font-family: $Rutan-Light;
+		}
+		.default-button::before{
+			content: "\E00E";
+			font-family: $mm-icons;
+			margin-right: 20px;
+			font-size: 25px;
+		}
+	}
+	.accordion-header{
+		outline: none !important;
+		background-color: transparent !important;
+	}
+	.accordion-button:focus{
+		outline: none !important;
+		background-color: transparent !important;
+	}
+	.accordion-button{
+		outline: none !important;
+		background-color: transparent !important;
+	}
+	.accordion-button.collapsed{
+		outline: none !important;
+		background-color: transparent !important;
+	}
+	.accordion-header.collapsed{
+		outline: none !important;
+		background-color: transparent !important;
+	}
+	.accordion-collapse.collapse.show{
+		outline: none !important;
+		background-color: transparent !important;
+	}
+	.accordion-collapse.collapse{
+		outline: none !important;
+		background-color: transparent !important;
+	}
+	.border-bottom{
+		border-bottom: 1px solid #d8d8d8;
+	}
 }
 @media (max-width: 575px){
 	// general

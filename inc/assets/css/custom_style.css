@@ -670,6 +670,32 @@ header.active {
   font-family: "mm-icons";
 }
 
+.subscription-button {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  color: #000;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  outline: none;
+  font-family: "mm-icons";
+  cursor: pointer;
+}
+.subscription-button .submit-txt {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.subscription-button::before {
+  content: "\e003";
+}
+
 .check-policy {
   font-family: "Rutan-Light", sans-serif;
   font-size: 0.6rem;
