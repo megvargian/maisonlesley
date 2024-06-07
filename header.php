@@ -23,6 +23,29 @@
 <body <?php body_class(); ?>>
 
     <div id="page" class="site main_page_wrapper">
+        <div class="modal fade" id="search" tabindex="-1" aria-labelledby="searchLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <!-- <div class="modal-header justify-content-end" style="border: none;">
+                        <button type="button" class="btn-close m-0 remove-border-onFocus" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div> -->
+                    <form action="/" method="post">
+                        <!-- <div class="modal-body">
+                            <input type="text" style="border: 1px solid black; border-radius: 30px; text-align: left" class="w-100" placeholder="Search" required name="s">
+                        </div>
+                        <div class="modal-footer  text-center d-flex justify-content-center" style="border: none;">
+                            <button type="submit" class="main_button">Search</button>
+                        </div> -->
+                        <div class="position-relative">
+                            <input class="input-newsletter input-search w-100" placeholder="Search" type="text" name="search" requierd>
+                            <button class="search-button subscription-button">
+                                <span class="submit-txt">Submit</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <header>
             <section class="desktop-header d-none d-lg-block">
                 <section class="first-header bg-black">
@@ -89,19 +112,19 @@
                                                 </div>
                                                 <div class="col-3">
                                                     <a class="sub-menu-image-link" href="#">
-                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
+                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-1.jpg" alt="sub-menu-image-1">
                                                         <p class="sub-menu-image-text">Test1</p>
                                                     </a>
                                                 </div>
                                                 <div class="col-3">
                                                     <a class="sub-menu-image-link" href="#">
-                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
+                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-2.jpg" alt="sub-menu-image-1">
                                                         <p class="sub-menu-image-text">Test1</p>
                                                     </a>
                                                 </div>
                                                 <div class="col-3">
                                                     <a class="sub-menu-image-link" href="#">
-                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-image-1.jpg" alt="sub-menu-image-1">
+                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-3.jpg" alt="sub-menu-image-1">
                                                         <p class="sub-menu-image-text">Test1</p>
                                                     </a>
                                                 </div>
@@ -120,7 +143,7 @@
                                 <li class="main-menu-link"><a href="#">mm world</a></li>
                             </ul>
                             <div class="right-side">
-                                <button class="search-icon">
+                                <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search">
                                 </button>
                             </div>
                         </nav>
@@ -181,7 +204,7 @@
                                 </li>
                             </ul>
                             <div class="right-side">
-                                <button class="search-icon">
+                                <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search">
                                 </button>
                             </div>
                             <div id="menu_mobile" class="menu_on_mobile">

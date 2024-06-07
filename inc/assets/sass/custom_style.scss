@@ -606,8 +606,8 @@ header.active{
     font-size: 1.3rem;
     font-family: $Rutan-Regular, sans-serif !important;
     line-height: 30px;
-    -webkit-border-radius: 0 !important;
-    border-radius: 0 !important;
+    -webkit-border-radius: 0;
+    border-radius: 0;
     -webkit-appearance: none !important;
 	font-family: $mm-icons;
 }
@@ -634,6 +634,11 @@ header.active{
 }
 .subscription-button::before{
     content: "\E003";
+}
+
+.input-search{
+	border-radius: 12px !important;
+	margin-bottom: 0 !important;
 }
 
 .check-policy{

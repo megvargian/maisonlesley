@@ -8,7 +8,7 @@ get_header();
 <section>
     <div class="container">
         <div class="row">
-            <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/image-2.jpg" alt="">
+            <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/first-img.jpg" alt="">
         </div>
         <div class="row text-left">
             <h2 class="px-3 px-sm-0">Max Mara's Magic Circus</h2>
@@ -22,7 +22,7 @@ get_header();
             <div class="col-10">
                 <div class="row">
                     <div class="col-6">
-                        <img class="w-100" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/second-image.png" alt="">
+                        <img class="w-100" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/second-img.jpg" alt="second-img">
                     </div>
                     <div class="col-6 d-flex justify-content-center align-items-center">
                         <div class="d-block">
@@ -44,7 +44,7 @@ get_header();
             <div class="col-10 bg-white px-0">
                 <div class="row gx-0">
                     <div class="col-3 px-0">
-                        <img class="w-100 h-100" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/second-image-mobile.png" alt="">
+                        <img class="w-100 h-100" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/second-img-mobile.jpg" alt="">
                     </div>
                     <div class="col px-0 d-flex justify-content-start align-items-center position-relative">
                         <div class="d-block">
@@ -66,14 +66,14 @@ get_header();
                 <div class="row">
                     <div class="col-sm-6 col-12">
                         <div>
-                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/cerimonia.jpg" alt="cerimonia">
+                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/third.jpg" alt="third">
                             <h3 class="pt-3">An Elgant Affair</h3>
                             <a href="#" class="main-link mt-4">Discover more</a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="pt-sm-5 mt-5 pt-0">
-                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/shirts.jpg" alt="shirts">
+                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/fourth.jpg" alt="fourth">
                             <h3 class="pt-3">Perfect parters</h3>
                             <a href="#" class="main-link mt-4">Discover more</a>
                         </div>
@@ -92,30 +92,16 @@ get_header();
            <div class="col-11 px-0" style="position: relative;">
                 <div class="swiper swiperProduct">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
-                            <h4>Flowing cady trousers</h4>
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
-                            <h4>Flowing cady trousers</h4>
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
-                            <h4>Flowing cady trousers</h4>
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
-                            <h4>Flowing cady trousers</h4>
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
-                            <h4>Flowing cady trousers</h4>
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/example-product.jpg" alt="example-product">
-                            <h4>Flowing cady trousers</h4>
-                        </div>
+                        <?php
+                            for($i=1; $i<13; $i++){
+                            ?>
+                            <div class="swiper-slide">
+                                <img class="w-100" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/product-slider/slider-<?php echo $i; ?>.jpg" alt="example-product">
+                                <h4>Flowing cady trousers</h4>
+                            </div>
+                        <?php
+                            }
+                        ?>
                     </div>
 
                 </div>
