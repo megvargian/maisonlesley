@@ -11,6 +11,54 @@
 ?>
 </div><!-- #content -->
 <footer>
+    <section class="py-5 pb-md-5 pb-0" style="background-color: #f0f0f0;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="row justify-content-between">
+                        <div class="col-md-6 col-12">
+                            <div>
+                                <h3>Maison Lesley News</h3>
+                                <p>Sign up to our newsletter and receive updates on <br> events, collections and exclusive promotions.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 pb-md-0 pb-3">
+                            <form class="w-100" action="/" method="post">
+                                <div class="position-relative">
+                                    <input class="input-newsletter w-100" placeholder="Email" type="email" requierd>
+                                    <button class="subscription-button">
+                                        <span class="submit-txt">Submit</span>
+                                    </button>
+                                </div>
+                                <div class="check-policy d-flex justify-content-start mt-3">
+                                    <input class="input-checkbox" name="policy-check" type="checkbox" required>
+                                    <label for="policy-check" style="margin-left: 5px;">
+                                        I have read the <a href="#">Privacy Policy</a>
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="border-1 d-md-none d-block">
+            <a href="#" class="w-100">
+                <div class="py-3 px-3" style="border-top: 1px solid #d8d8d8;">
+                    <div class="d-flex justify-content-start align-items-center location-mobile">
+                        <span class="default-button text-black">Find your nearest store</span>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="w-100">
+                <div class="py-3 px-3" style="border-top: 1px solid #d8d8d8;">
+                    <div class="d-flex justify-content-start align-items-center call-mobile">
+                        <span class="default-button text-black">Customer service 08001114431</span>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </section>
     <section class="bg-white py-5 w-100 pt-md-5 pt-0">
         <div class="container d-md-block d-none">
             <div class="row">
