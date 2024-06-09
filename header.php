@@ -84,7 +84,7 @@
                 <section class="bg-white main-logo-section">
                     <div class="container">
                         <div class="row justify-content-center pt-4">
-                            <a href="<?php echo home_url();?>">
+                            <a class="d-flex justify-content-center" style="width:fit-content;" href="<?php echo home_url();?>">
                                 <img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main_logo.png" alt="">
                             </a>
                         </div>
