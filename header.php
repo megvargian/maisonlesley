@@ -29,7 +29,7 @@
                     <!-- <div class="modal-header justify-content-end" style="border: none;">
                         <button type="button" class="btn-close m-0 remove-border-onFocus" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div> -->
-                    <form action="/search.php" method="post">
+                    <form action="/search" method="post">
                         <!-- <div class="modal-body">
                             <input type="text" style="border: 1px solid black; border-radius: 30px; text-align: left" class="w-100" placeholder="Search" required name="s">
                         </div>
