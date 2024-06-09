@@ -8,7 +8,14 @@ get_header();
 <section>
     <div class="container">
         <div class="row">
-            <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/first-img.jpg" alt="">
+            <div class="swiper Mainswiper">
+                <div class="swiper-wrapper">
+                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/first-img.jpg" alt="first-img">
+                </div>
+                <div class="swiper-wrapper">
+                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/first-img-2.jpg" alt="first-img-2">
+                </div>
+            </div>
         </div>
         <div class="row text-left">
             <h2 class="px-3 px-sm-0">Max Mara's Magic Circus</h2>
@@ -103,7 +110,6 @@ get_header();
                             }
                         ?>
                     </div>
-
                 </div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
@@ -143,6 +149,11 @@ get_header();
 					spaceBetween: 30
 				}
 			}
+        });
+        var swiper = new Swiper(".Mainswiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
         });
     });
 </script>
