@@ -21,20 +21,6 @@ $query = new WC_Product_Query( $args );
 
 // Get the products
 $products = $query->get_products();
-
-// Loop through the products and display their information
-foreach ( $products as $product ) {
-	// Get product object
-	$product_obj = wc_get_product( $product->get_id() );
-
-	// Display product information
-	echo 'Product ID: ' . $product_obj->get_id() . '<br>';
-	echo 'Product Name: ' . $product_obj->get_name() . '<br>';
-	echo 'Product Price: ' . $product_obj->get_price() . '<br>';
-	echo 'Product SKU: ' . $product_obj->get_sku() . '<br>';
-	echo 'Product Stock Status: ' . $product_obj->get_stock_status() . '<br>';
-	echo '<br>';
-}
 ?>
 <section class="single_search">
 	<div class="container">
@@ -49,7 +35,7 @@ foreach ( $products as $product ) {
 			?>
 				<div class="col-3">
 					<a href="<?php echo get_permalink($product_obj->get_id()); ?>">
-						<img src="<?php echo get_the_post_thumbnail_url( $product_obj->get_id()); ?>" alt="<?php echo $product_obj->get_name() ?>">
+						<img class="w-100" src="<?php echo get_the_post_thumbnail_url( $product_obj->get_id()); ?>" alt="<?php echo $product_obj->get_name() ?>">
 						<h2><?php echo $product_obj->get_name() ?></h2>
 					</a>
 				</div>
