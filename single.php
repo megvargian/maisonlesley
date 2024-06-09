@@ -10,9 +10,9 @@
 get_header(); ?>
 <div class="container">
 	<?php
-	while ( have_posts() ) : the_post();?>
-		<img class="w-100" src="<?php echo get_the_post_thumbnail(get_the_ID()); ?>" alt="test-1">
-	<?php endwhile; // End of the loop.
+		while ( have_posts() ) : the_post();
+			the_content();
+		endwhile; // End of the loop.
 	?>
 </div>
 <?php
