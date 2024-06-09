@@ -10,10 +10,12 @@ get_header();
         <div class="row">
             <div class="swiper Mainswiper">
                 <div class="swiper-wrapper">
-                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/first-img.jpg" alt="first-img">
-                </div>
-                <div class="swiper-wrapper">
-                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/first-img-2.jpg" alt="first-img-2">
+                    <div class="swiper-slide">
+                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/first-img.jpg" alt="first-img">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/first-img-2.jpg" alt="first-img-2">
+                    </div>
                 </div>
             </div>
         </div>
@@ -152,11 +154,11 @@ get_header();
         });
         var swiper = new Swiper(".Mainswiper", {
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 0,
             autoplay: {
                 delay: 4000,
             },
-
+            loop: true,
         });
     });
 </script>
