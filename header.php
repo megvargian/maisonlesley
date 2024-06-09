@@ -29,7 +29,7 @@
                     <!-- <div class="modal-header justify-content-end" style="border: none;">
                         <button type="button" class="btn-close m-0 remove-border-onFocus" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div> -->
-                    <form action="/" method="post">
+                    <form action="/search.php" method="post">
                         <!-- <div class="modal-body">
                             <input type="text" style="border: 1px solid black; border-radius: 30px; text-align: left" class="w-100" placeholder="Search" required name="s">
                         </div>
@@ -37,7 +37,7 @@
                             <button type="submit" class="main_button">Search</button>
                         </div> -->
                         <div class="position-relative">
-                            <input class="input-newsletter input-search w-100" placeholder="Search" type="text" name="search" requierd>
+                            <input class="input-newsletter input-search w-100" placeholder="Search" type="text" name="s" requierd>
                             <button class="search-button subscription-button">
                                 <span class="submit-txt">Submit</span>
                             </button>

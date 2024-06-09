@@ -11,7 +11,7 @@ get_header(); ?>
 
 	<section id="primary" class="content-area col-sm-12 col-lg-8">
 		<main id="main" class="site-main" role="main">
-
+			<?php echo $_GET['s']; ?>
 		<?php
 		if ( have_posts() ) : ?>
 

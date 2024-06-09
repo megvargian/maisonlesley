@@ -153,7 +153,10 @@ get_header();
         var swiper = new Swiper(".Mainswiper", {
             slidesPerView: 1,
             spaceBetween: 20,
-            loop: true,
+            autoplay: {
+                delay: 4000,
+            },
+
         });
     });
 </script>
