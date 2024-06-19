@@ -272,7 +272,7 @@
                 </section>
             </section>
         </header>
-        <div class="header-active-background-gray"></div>
+        <!-- <div class="header-active-background-gray"></div> -->
         <script>
             jQuery(document).ready(function($) {
                 $(window).scroll(function(){
