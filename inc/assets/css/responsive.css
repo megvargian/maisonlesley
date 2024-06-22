@@ -8,6 +8,9 @@
   header.active {
     transform: translateY(0%);
   }
+  .first-header.active {
+    transform: translateY(350%);
+  }
   .main-logo-tablet {
     width: 150px;
     height: auto;
@@ -373,6 +376,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     content: "\e002";
+  }
+  .padding-left {
+    padding-left: 1rem;
   }
 }
 @media (min-width: 1390px) {

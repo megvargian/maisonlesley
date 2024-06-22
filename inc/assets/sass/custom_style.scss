@@ -577,7 +577,7 @@ header.active{
 	transition-duration: 0s;
 }
 .first-header.active{
-	transform: translateY(315%);
+	transform: translateY(330%);
 	transition-duration: .4s;
 }
 .right-side{
@@ -965,5 +965,28 @@ header.active{
 	margin-right: 5px;
 	a{
 		text-decoration: underline;
+	}
+}
+.info_content{
+	.accordion-button:focus{
+		outline: none !important;
+		background-color: transparent !important;
+		box-shadow: none !important;
+	}
+	.accordion-button{
+		border-radius: 0 !important;
+		font-family: $Rutan-Light;
+		font-weight: 600;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+	.accordion-body{
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+	.accordion-item{
+		border-top: none;
+		border-left: none;
+		border-right: none;
 	}
 }

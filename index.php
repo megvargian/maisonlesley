@@ -20,8 +20,8 @@ get_header();
             </div>
         </div>
         <div class="row text-left">
-            <h2 class="px-3 px-sm-0">Max Mara's Magic Circus</h2>
-            <a class=" px-3 px-sm-0 main-link" href="#">Discover more</a>
+            <h2 class="pl-3 px-sm-0">Max Mara's Magic Circus</h2>
+            <a class="main-link padding-left" href="#">Discover more</a>
         </div>
     </div>
 </section>
