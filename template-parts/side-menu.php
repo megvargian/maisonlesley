@@ -2,27 +2,27 @@
     <nav>
         <ul>
             <li>
-                <a class="<?=is_page('contact-us') ? 'active': '';?>" href="<?php echo get_permalink('contact-us'); ?>">
+                <a class="<?=is_page('contact-us') ? 'active': '';?>" href="<?php echo get_permalink(75); ?>">
                     <?php echo get_the_title(75) ?>
                 </a>
             </li>
             <li>
-                <a class="<?=is_page('faqs') ? 'active': '';?>" href="<?php echo get_permalink('faqs'); ?>">
+                <a class="<?=is_page('faqs') ? 'active': '';?>" href="<?php echo get_permalink(79); ?>">
                     <?php echo get_the_title(79) ?>
                 </a>
             </li>
             <li>
-                <a class="<?=is_page('shipping-info') ? 'active': '';?>" href="<?php echo get_permalink('shipping-info'); ?>">
+                <a class="<?=is_page('shipping-info') ? 'active': '';?>" href="<?php echo get_permalink(81); ?>">
                     <?php echo get_the_title(81) ?>
                 </a>
             </li>
             <li>
-                <a class="<?=is_page('return-and-refunds') ? 'active': '';?>" href="<?php echo get_permalink('return-and-refunds'); ?>">
+                <a class="<?=is_page('return-and-refunds') ? 'active': '';?>" href="<?php echo get_permalink(83); ?>">
                     <?php echo get_the_title(83) ?>
                 </a>
             </li>
             <li>
-                <a class="<?=is_page('payment-security') ? 'active': '';?>" href="<?php echo get_permalink('payment-security'); ?>">
+                <a class="<?=is_page('payment-security') ? 'active': '';?>" href="<?php echo get_permalink(85); ?>">
                     <?php echo get_the_title(85) ?>
                 </a>
             </li>
