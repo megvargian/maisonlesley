@@ -204,10 +204,8 @@ function gutenberg_editor_assets()
 add_action('acf/init', 'my_acf_init_block_types');
 function my_acf_init_block_types()
 {
-
     // Check function exists.
     if (function_exists('acf_register_block_type')) {
-
         // register a testimonial block.
         acf_register_block_type(
             array(
@@ -215,6 +213,17 @@ function my_acf_init_block_types()
                 'title'             => __('Block1'),
                 'description'       => __('This is the first Block of Homepage'),
                 'render_template'   => 'blocks/test.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
+        acf_register_block_type(
+            array(
+                'name'              => 'Block Info Content',
+                'title'             => __('Block Info Content'),
+                'description'       => __('this is the info Content Accordion'),
+                'render_template'   => 'blocks/info-content.php',
                 'category'          => 'formatting',
                 'icon'              => 'admin-comments',
                 'keywords'          => array('testimonial', 'quote'),
