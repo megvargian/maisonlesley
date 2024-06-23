@@ -67,15 +67,6 @@ get_header();
 					</div>
 					<?php echo do_shortcode('[contact-form-7 id="786fd68" title="Contact form 1"]') ?>
 				</div>
-
-				<div class="form_validation_parent">
-					<div class="contact_success_message">
-						<?php echo __('All right reserved Your message has been sent and we will contact you as soon as possible. Thank you!', 'contactuspage')?>
-					</div>
-					<div class="contact_fail_message">
-						<?php echo __('An error has occurred. Please try again!', 'contactuspage')?>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

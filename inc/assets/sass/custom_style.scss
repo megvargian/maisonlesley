@@ -998,3 +998,17 @@ header.active{
 		align-items: center;
 	}
 }
+.wpcf7 form.invalid .wpcf7-response-output{
+	border: none !important;
+	font-size: 0.8rem;
+	font-family: $Rutan-Light;
+	font-weight: 600;
+	color: #dc3232;
+}
+.wpcf7 form.sent .wpcf7-response-output{
+	border: none !important;
+	font-size: 0.8rem;
+	font-family: $Rutan-Light;
+	font-weight: 600;
+	color: #46b450 !important;
+}
