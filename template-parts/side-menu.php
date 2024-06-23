@@ -2,35 +2,18 @@
 $getGeneralFields = get_fields('options');
 $side_menu = $getGeneralFields['side_menu'];
 ?>
-<pre><?php print_r($side_menu); ?></pre>
 <div class="side-menu">
     <nav>
         <ul>
-            <li>
-                <a class="<?=is_page('contact-us') ? 'active': '';?>" href="<?php echo get_permalink(75); ?>">
-                    <?php echo get_the_title(75) ?>
-                </a>
-            </li>
-            <li>
-                <a class="<?=is_page('faqs') ? 'active': '';?>" href="<?php echo get_permalink(79); ?>">
-                    <?php echo get_the_title(79) ?>
-                </a>
-            </li>
-            <li>
-                <a class="<?=is_page('shipping-info') ? 'active': '';?>" href="<?php echo get_permalink(81); ?>">
-                    <?php echo get_the_title(81) ?>
-                </a>
-            </li>
-            <li>
-                <a class="<?=is_page('return-and-refunds') ? 'active': '';?>" href="<?php echo get_permalink(83); ?>">
-                    <?php echo get_the_title(83) ?>
-                </a>
-            </li>
-            <li>
-                <a class="<?=is_page('payment-security') ? 'active': '';?>" href="<?php echo get_permalink(85); ?>">
-                    <?php echo get_the_title(85) ?>
-                </a>
-            </li>
+            <?php foreach( $side_menu as $page){ ?>
+                <pre><?php print_r($page -> post_name); ?></pre>
+                <pre><?php print_r($page -> ID); ?></pre>
+                <li>
+                    <a class="<?=is_page($page -> post_name) ? 'active': '';?>" href="<?php echo get_permalink($page -> ID); ?>">
+                        <?php echo get_the_title($page -> ID) ?>
+                    </a>
+                </li>
+            <?php } ?>
         </ul>
     </nav>
 </div>
