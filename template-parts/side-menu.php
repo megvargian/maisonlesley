@@ -1,3 +1,8 @@
+<?php
+$getGeneralFields = get_fields('options');
+$side_menu = $getGeneralFields['side_menu'];
+?>
+<pre><?php print_r($side_menu); ?></pre>
 <div class="side-menu">
     <nav>
         <ul>
