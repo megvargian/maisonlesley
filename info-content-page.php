@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: FAQs page
+ * Template Name: Info Content page
  */
 get_header();
 ?>

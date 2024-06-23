@@ -2,21 +2,19 @@
 $getGeneralFields = get_fields('options');
 $side_menu = $getGeneralFields['side_menu'];
 ?>
-<pre><?php print_r($side_menu[0]['page'] -> ID); ?></pre>
 <div class="side-menu">
     <nav>
         <ul>
-            <?php foreach( $side_menu as $page){ ?>
+            <?php foreach ($side_menu as $page) { ?>
                 <li>
-                    <a class="<?=is_page($page['page'] -> post_name) ? 'active': '';?>" href="<?php echo get_permalink($page['page'] -> ID); ?>">
-                        <?php echo get_the_title($page['page'] -> ID) ?>
+                    <a class="<?= is_page($page['page']->post_name) ? 'active' : ''; ?>" href="<?php echo get_permalink($page['page']->ID); ?>">
+                        <?php echo get_the_title($page['page']->ID) ?>
                     </a>
                 </li>
             <?php } ?>
         </ul>
     </nav>
 </div>
-
 <script>
     jQuery(document).ready(function($) {
         $('.side-menu li a').click(function() {
