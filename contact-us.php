@@ -65,7 +65,8 @@ get_header();
 							</p>
 						</div>
 					</div>
-					<form action="/" method="post">
+					<?php echo do_shortcode('[contact-form-7 id="786fd68" title="Contact form 1"]') ?>
+					<!-- <form action="/" method="post">
 						<div class="row pt-4">
 							<div class="col-md-6 col-12">
 								<label class="main-label" for="name">NAME*</label>
@@ -103,7 +104,7 @@ get_header();
 								<button class="submit-button" type="submit">SEND MESSAGE</button>
 							</div>
 						</div>
-					</form>
+					</form> -->
 				</div>
 
 				<div class="form_validation_parent">
