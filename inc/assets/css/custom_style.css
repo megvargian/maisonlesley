@@ -1004,13 +1004,13 @@ header.active {
   margin-right: 5px;
 }
 
-.checkbox-label {
+.checkbox-label, .wpcf7-list-item-label {
   font-size: 0.6rem;
   font-family: "Rutan-Light";
   color: #000;
   margin-right: 5px;
 }
-.checkbox-label a {
+.checkbox-label a, .wpcf7-list-item-label a {
   text-decoration: underline;
 }
 

@@ -66,54 +66,14 @@ get_header();
 						</div>
 					</div>
 					<?php echo do_shortcode('[contact-form-7 id="786fd68" title="Contact form 1"]') ?>
-					<!-- <form action="/" method="post">
-						<div class="row pt-4">
-							<div class="col-md-6 col-12">
-								<label class="main-label" for="name">NAME*</label>
-								<input class="main-input" type="text" name="name" required>
-							</div>
-							<div class="col-md-6 col-12">
-								<label class="main-label" for="name">SURNAME*</label>
-								<input class="main-input" type="text" name="surname" required>
-							</div>
-							<div class="col-md-6 col-12">
-								<label class="main-label" for="email">EMAIL*</label>
-								<input class="main-input" type="email" name="email" required>
-							</div>
-							<div class="col-md-6 col-12">
-								<label class="main-label" for="topic">SELECT A TOPIC*</label>
-								<select class="select-topic" name="topic" id="topic">
-									<option value="" disabled selected>Select a topic</option>
-									<option value="test1">test1</option>
-									<option value="test2">test2</option>
-									<option value="test3">test3</option>
-									<option value="test1">test1</option>
-									<option value="test1">test1</option>
-									<option value="test1">test1</option>
-								</select>
-							</div>
-							<div class="col-12">
-								<label class="main-label" for="message">WRITE YOUR MESSAGE*</label>
-								<textarea class="main-message" name="message" id="message" placeholder="Please insert you message" required></textarea>
-							</div>
-							<div class="col-md-6 col-12 d-flex justify-content-start align-items-center">
-								<input class="consent-checkbox" type="checkbox" name="consent-privacy-policy" required>
-								<label class="checkbox-label" for="consent-privacy-policy">I have read the <a href="#">Privacy Policy</a></label>
-							</div>
-							<div class="col-md-6 col-12 mt-3">
-								<button class="submit-button" type="submit">SEND MESSAGE</button>
-							</div>
-						</div>
-					</form> -->
 				</div>
 
 				<div class="form_validation_parent">
-					<?php //echo do_shortcode('[contact-form-7 id="388" title="Contact Us form"]') ?>
 					<div class="contact_success_message">
-						<?php //echo __('All right reserved Your message has been sent and we will contact you as soon as possible. Thank you!', 'contactuspage')?>
+						<?php echo __('All right reserved Your message has been sent and we will contact you as soon as possible. Thank you!', 'contactuspage')?>
 					</div>
 					<div class="contact_fail_message">
-						<?php //echo __('An error has occurred. Please try again!', 'contactuspage')?>
+						<?php echo __('An error has occurred. Please try again!', 'contactuspage')?>
 					</div>
 				</div>
 			</div>
