@@ -6,8 +6,8 @@ $side_menu = $getGeneralFields['side_menu'];
     <nav>
         <ul>
             <?php foreach( $side_menu as $page){ ?>
-                <pre><?php print_r($page -> post_name); ?></pre>
-                <pre><?php print_r($page -> ID); ?></pre>
+                <pre><?php print_r($page['post_name']); ?></pre>
+                <pre><?php print_r($page['ID']); ?></pre>
                 <li>
                     <a class="<?=is_page($page -> post_name) ? 'active': '';?>" href="<?php echo get_permalink($page -> ID); ?>">
                         <?php echo get_the_title($page -> ID) ?>
