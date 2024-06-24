@@ -207,6 +207,7 @@ function my_acf_init_block_types()
     // Check function exists.
     if (function_exists('acf_register_block_type')) {
         // register a testimonial block.
+        // the first one is a demo
         acf_register_block_type(
             array(
                 'name'              => 'Block1',
