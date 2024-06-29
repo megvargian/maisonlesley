@@ -8,6 +8,8 @@
  *
  * @package WP_Bootstrap_Starter
  */
+$getGeneralFields = get_fields('options');
+$main_footer_fields = $getGeneralFields['footer_sub_menu'];
 ?>
 </div><!-- #content -->
 <footer>
@@ -62,31 +64,37 @@
     <section class="bg-white py-5 w-100 pt-md-5 pt-0">
         <div class="container d-md-block d-none">
             <div class="row">
-                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                    <div class="first-col">
-                        <div>
-                            <h5 class="mb-3">Corporate</h5>
-                            <ul class="sub-menus-footer">
-                                <li>Find a boutique</li>
-                                <li>Careers</li>
-                                <li>Size guide</li>
-                            </ul>
+                <?php foreach($main_footer_fields as $single_footer_feilds){?>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                        <div class="first-col">
+                            <div>
+                                <h5 class="mb-3"><?php echo $single_footer_feilds['main_label']; ?></h5>
+                                <ul class="sub-menus-footer">
+                                    <?php foreach($single_footer_feilds['sub_menu_button'] as $single_button){ ?>
+                                        <li>
+                                            <a href="<?php echo $single_button['sub_menu_button_link']; ?>">
+                                                <?php echo $single_button['sub_menu_button_text']; ?>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                    <div class="second-col">
-                        <div>
-                            <h5 class="mb-3">Legal Area</h5>
-                            <ul class="sub-menus-footer">
-                                <li>Privacy Policy</li>
-                                <li>Cookie Policy</li>
-                                <li>Your cookie prefrences</li>
-                                <li>legal notes</li>
-                            </ul>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                        <div class="second-col">
+                            <div>
+                                <h5 class="mb-3">Legal Area</h5>
+                                <ul class="sub-menus-footer">
+                                    <li>Privacy Policy</li>
+                                    <li>Cookie Policy</li>
+                                    <li>Your cookie prefrences</li>
+                                    <li>legal notes</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 third-col social-links">
                     <div class="row">
                         <ul>
@@ -148,22 +156,28 @@
         </div>
         <section class="mobile-footer d-block d-md-none">
             <div class="accordion w-100" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header mt-0" id="headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Corporate
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <ul class="sub-menus-footer">
-                                <li>Find a boutique</li>
-                                <li>Careers</li>
-                                <li>Size guide</li>
-                            </ul>
+                <?php foreach($main_footer_fields as $single_footer_feilds){?>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header mt-0" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <?php echo $single_footer_feilds['main_label']; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul class="sub-menus-footer">
+                                    <?php foreach($single_footer_feilds['sub_menu_button'] as $single_button){ ?>
+                                        <li>
+                                            <a href="<?php echo $single_button['sub_menu_button_link']; ?>">
+                                                <?php echo $single_button['sub_menu_button_text']; ?>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
                 <div class="accordion-item">
                     <h2 class="accordion-header mt-0" id="headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
