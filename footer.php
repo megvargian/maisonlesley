@@ -142,15 +142,15 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
             </div>
         </div>
         <section class="mobile-footer d-block d-md-none">
-            <div class="accordion w-100" id="accordionExample">
+            <div class="accordion w-100" id="accordionExample-footer">
                 <?php foreach($main_footer_fields as $single_footer_feilds){ $count++?>
                     <div class="accordion-item">
-                        <h2 class="accordion-header mt-0" id="headingOne">
+                        <h2 class="accordion-header mt-0" id="headingOne-footer-<?php echo $count;?>">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-footer-<?php echo $count; ?>" aria-expanded="true" aria-controls="collapseOne-footer-<?php echo $count; ?>">
                                 <?php echo $single_footer_feilds['main_label']; ?>
                             </button>
                         </h2>
-                        <div id="collapseOne-footer-<?php echo $count; ?>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div id="collapseOne-footer-<?php echo $count; ?>" class="accordion-collapse collapse" aria-labelledby="headingOne-footer-<?php echo $count;?>" data-bs-parent="#accordionExample-footer">
                             <div class="accordion-body">
                                 <ul class="sub-menus-footer">
                                     <?php foreach($single_footer_feilds['sub_menu_button'] as $single_button){ ?>
