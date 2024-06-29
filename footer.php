@@ -81,19 +81,6 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                        <div class="second-col">
-                            <div>
-                                <h5 class="mb-3">Legal Area</h5>
-                                <ul class="sub-menus-footer">
-                                    <li>Privacy Policy</li>
-                                    <li>Cookie Policy</li>
-                                    <li>Your cookie prefrences</li>
-                                    <li>legal notes</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 <?php } ?>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 third-col social-links">
                     <div class="row">
@@ -178,23 +165,6 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                         </div>
                     </div>
                 <?php } ?>
-                <div class="accordion-item">
-                    <h2 class="accordion-header mt-0" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Legal Area
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <ul class="sub-menus-footer">
-                                <li>Privacy Policy</li>
-                                <li>Cookie Policy</li>
-                                <li>Your cookie prefrences</li>
-                                <li>legal notes</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="border-bottom third-col social-links py-3">
                 <ul class="d-flex justify-content-center align-items-center">
