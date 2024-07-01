@@ -315,7 +315,7 @@ p {
   text-decoration: none;
   border: none;
   background-color: transparent;
-  color: #fff;
+  color: #fff !important;
   outline: none;
   font-family: "Rutan-Regular";
   font-size: 12px;
