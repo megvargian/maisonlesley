@@ -9,6 +9,11 @@
  *
  * @package WP_Bootstrap_Starter
  */
+
+$all_generalFields = get_fields('options');
+$top_header_fields = $all_generalFields['top_header_fields'];
+$left_side_top_header_fields = $top_header_fields['left_side_top_header'];
+$right_side_top_header_fields = $top_header_fields['right_side_top_header'];
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -26,16 +31,7 @@
         <div class="modal fade" id="search" tabindex="-1" aria-labelledby="searchLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <!-- <div class="modal-header justify-content-end" style="border: none;">
-                        <button type="button" class="btn-close m-0 remove-border-onFocus" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div> -->
                     <form action="/" method="post">
-                        <!-- <div class="modal-body">
-                            <input type="text" style="border: 1px solid black; border-radius: 30px; text-align: left" class="w-100" placeholder="Search" required name="s">
-                        </div>
-                        <div class="modal-footer  text-center d-flex justify-content-center" style="border: none;">
-                            <button type="submit" class="main_button">Search</button>
-                        </div> -->
                         <div class="position-relative">
                             <input class="input-newsletter input-search w-100" type="text" name="s" requierd placeholder="Search">
                             <button class="search-button subscription-button">
@@ -53,20 +49,22 @@
                         <div class="row justify-content-between">
                             <div class="col">
                                 <div class="d-flex float-left hover-js-drop-down custom-first-header-padding">
-                                    <a class="default-button">Customer service</a>
+                                    <a href="<?php echo $left_side_top_header_fields['main_link']; ?>" class="default-button">
+                                        <?php echo $left_side_top_header_fields['main_text']; ?>
+                                    </a>
                                     <div class="drop-down-customer-service">
                                         <div class="headeing text-center">
-                                            <h6>Need any Help?</h6>
+                                            <h6><?php echo $left_side_top_header_fields['sub_main_label']; ?></h6>
                                         </div>
                                         <ul class="d-flex justify-content-between align-items-center">
                                             <li>
-                                                <a class="icon-mail" href="#">
-                                                    <span>Write to us</span>
+                                                <a href="<?php echo $left_side_top_header_fields['first_sub_text_link']; ?>" class="icon-mail">
+                                                    <span><?php echo $left_side_top_header_fields['first_sub_text']; ?></span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
-                                                    <span>Send your request</span>
+                                                <a href="<?php echo $left_side_top_header_fields['second_sub_text_link']; ?>">
+                                                    <span><?php echo $left_side_top_header_fields['second_sub_text']; ?></span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -75,7 +73,9 @@
                             </div>
                             <div class="col">
                                 <div class="icon-pin d-flex float-right custom-first-header-padding">
-                                    <a class="default-button">Find your nearest store</a>
+                                    <a class="default-button" href="<?php echo $right_side_top_header_fields['main_link'] ?>">
+                                        <?php echo $right_side_top_header_fields['mian_text'] ?>
+                                    </a>
                                 </div>
                             </div>
                         </div>
