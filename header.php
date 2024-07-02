@@ -114,8 +114,8 @@ $header_menu = $all_generalFields['header_menu'];
                                                                 <ul class="sub-menu-list">
                                                                     <?php foreach($single_menu['sub_menu_section']['left_side_sub_menu_list'] as $single_sub_menu){ ?>
                                                                         <li class="sub-menu-link">
-                                                                            <a href="<?php echo $single_menu['url'] ?>">
-                                                                                <?php echo $single_menu['text']; ?>
+                                                                            <a href="<?php echo $single_sub_menu['url'] ?>">
+                                                                                <?php echo $single_sub_menu['text']; ?>
                                                                             </a>
                                                                         </li>
                                                                     <?php } ?>
@@ -151,20 +151,22 @@ $header_menu = $all_generalFields['header_menu'];
                         <div class="row justify-content-between">
                             <div class="col">
                                 <div class="d-flex float-left hover-js-drop-down custom-first-header-padding">
-                                    <a class="default-button">Customer service</a>
+                                    <a href="<?php echo $left_side_top_header_fields['main_link']; ?>" class="default-button">
+                                        <?php echo $left_side_top_header_fields['main_text']; ?>
+                                    </a>
                                     <div class="drop-down-customer-service">
                                         <div class="headeing text-center">
-                                            <h6>Need any Help?</h6>
+                                            <h6><?php echo $left_side_top_header_fields['sub_main_label']; ?></h6>
                                         </div>
                                         <ul class="d-flex justify-content-between align-items-center">
                                             <li>
-                                                <a class="icon-mail" href="#">
-                                                    <span>Write to us</span>
+                                                <a class="icon-mail" href="<?php echo $left_side_top_header_fields['first_sub_text_link']; ?>">
+                                                    <span><?php echo $left_side_top_header_fields['first_sub_text']; ?></span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
-                                                    <span>Send your request</span>
+                                                <a href="<?php echo $left_side_top_header_fields['second_sub_text_link']; ?>">
+                                                    <span><?php echo $left_side_top_header_fields['second_sub_text']; ?></span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -173,7 +175,9 @@ $header_menu = $all_generalFields['header_menu'];
                             </div>
                             <div class="col">
                                 <div class="icon-pin d-flex float-right custom-first-header-padding">
-                                    <a class="default-button">Find your nearest store</a>
+                                    <a href="<?php echo $right_side_top_header_fields['main_link'] ?>" class="default-button">
+                                        <?php echo $right_side_top_header_fields['mian_text'] ?>
+                                    </a>
                                 </div>
                             </div>
                         </div>
