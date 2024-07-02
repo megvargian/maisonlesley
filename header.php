@@ -122,7 +122,7 @@ $header_menu = $all_generalFields['header_menu'];
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <?php foreach($header_menu['sub_menu_section']['right_side_images'] as $single_image_section){ ?>
+                                                        <?php foreach($single_menu['sub_menu_section']['right_side_images'] as $single_image_section){ ?>
                                                             <div class="col-3">
                                                                 <a class="sub-menu-image-link" href="<?php echo $single_image_section['url']; ?>">
                                                                     <img class="w-100 px-0" src="<?php echo $single_image_section['image']; ?>" alt="<?php echo $single_image_section['text']; ?>">
