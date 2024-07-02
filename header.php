@@ -199,7 +199,9 @@ $header_menu = $all_generalFields['header_menu'];
                                     </button>
                                 </li>
                                 <li>
-                                    <img class="main-logo-tablet ml-5" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main_logo.png" alt="">
+                                    <a href="<?php echo $main_logo_link;?>">
+                                        <img class="main-logo-tablet ml-5" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
+                                    </a>
                                 </li>
                             </ul>
                             <div class="right-side">
@@ -210,56 +212,13 @@ $header_menu = $all_generalFields['header_menu'];
                                 <div class="menu_on_mobile_wrapper">
                                     <div class="menu_on_mobile_inner_wrapper" style="position: relative;">
                                         <div>
-                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
-                                                <div class="menu_item active_page line_animation">
-                                                    New Arrivals
-                                                </div>
-                                            </a>
-                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
-                                                <div class="menu_item active_page line_animation">
-                                                    clothing
-                                                </div>
-                                            </a>
-                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
-                                                <div class="menu_item active_page line_animation">
-                                                    Coats and Jackets
-                                                </div>
-                                            </a>
-                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
-                                                <div class="menu_item active_page line_animation">
-                                                    Teddy ten
-                                                </div>
-                                            </a>
-                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
-                                                <div class="menu_item active_page line_animation">
-                                                    Bags and shoes
-                                                </div>
-                                            </a>
-                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
-                                                <div class="menu_item active_page line_animation">
-                                                    gifts
-                                                </div>
-                                            </a>
-                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
-                                                <div class="menu_item active_page line_animation">
-                                                    accesories
-                                                </div>
-                                            </a>
-                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
-                                                <div class="menu_item active_page line_animation">
-                                                    runway
-                                                </div>
-                                            </a>
-                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
-                                                <div class="menu_item active_page line_animation">
-                                                    bridal
-                                                </div>
-                                            </a>
-                                            <a class="d-block mb-3 page_font animated_menu_el" href="#">
-                                                <div class="menu_item active_page line_animation">
-                                                    mm world
-                                                </div>
-                                            </a>
+                                            <?php foreach($header_menu as $single_menu){ ?>
+                                                <a class="d-block mb-3 page_font animated_menu_el" href="<?php echo $single_menu['url']; ?>">
+                                                    <div class="menu_item active_page line_animation">
+                                                        <?php echo $single_menu['text']; ?>
+                                                    </div>
+                                                </a>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
