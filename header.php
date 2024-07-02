@@ -14,6 +14,9 @@ $all_generalFields = get_fields('options');
 $top_header_fields = $all_generalFields['top_header_fields'];
 $left_side_top_header_fields = $top_header_fields['left_side_top_header'];
 $right_side_top_header_fields = $top_header_fields['right_side_top_header'];
+$main_logo_image = $all_generalFields['main_logo'];
+$main_logo_link = $all_generalFields['main_logo_link'];
+$header_menu = $all_generalFields['header_menu'];
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -84,8 +87,8 @@ $right_side_top_header_fields = $top_header_fields['right_side_top_header'];
                 <section class="bg-white main-logo-section">
                     <div class="container">
                         <div class="row justify-content-center pt-4">
-                            <a class="d-flex justify-content-center" style="width:fit-content;" href="<?php echo home_url();?>">
-                                <img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main_logo.png" alt="">
+                            <a class="d-flex justify-content-center" style="width:fit-content;" href="<?php echo $main_logo_link;?>">
+                                <img class="main-logo" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                             </a>
                         </div>
                     </div>
@@ -94,55 +97,45 @@ $right_side_top_header_fields = $top_header_fields['right_side_top_header'];
                     <div class="container px-0">
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list">
-                                <li class="main-menu-link sub-menu">
-                                    <a class="link" href="#">New Arrivals</a>
-                                    <div class="sub-full-menu">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <div class="sub-div">
-                                                        <div class="sub-label mb-3">
-                                                            <h5>CATEGORY</h5>
+                                <?php foreach($header_menu as $single_menu){ ?>
+                                    <li class="main-menu-link <?php echo $single_menu['has_sub_menu'] ? 'sub-menu': ''; ?>">
+                                        <a class="link" href="<?php echo $single_menu['url']; ?>">
+                                            <?php echo $single_menu['text']; ?>
+                                        </a>
+                                        <?php if($single_menu['has_sub_menu']){?>
+                                            <div class="sub-full-menu">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-3">
+                                                            <div class="sub-div">
+                                                                <div class="sub-label mb-3">
+                                                                    <h5><?php echo $single_menu['sub_menu_section']['left_side_menu_label'] ?></h5>
+                                                                </div>
+                                                                <ul class="sub-menu-list">
+                                                                    <?php foreach($single_menu['sub_menu_section']['left_side_sub_menu_list'] as $single_sub_menu){ ?>
+                                                                        <li class="sub-menu-link">
+                                                                            <a href="<?php echo $single_menu['url'] ?>">
+                                                                                <?php echo $single_menu['text']; ?>
+                                                                            </a>
+                                                                        </li>
+                                                                    <?php } ?>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                        <ul class="sub-menu-list">
-                                                            <li class="sub-menu-link"><a href="#">Test1</a></li>
-                                                            <li class="sub-menu-link"><a href="#">Test1</a></li>
-                                                            <li class="sub-menu-link"><a href="#">Test1</a></li>
-                                                            <li class="sub-menu-link"><a href="#">Test1</a></li>
-                                                        </ul>
+                                                        <?php foreach($header_menu['sub_menu_section']['right_side_images'] as $single_image_section){ ?>
+                                                            <div class="col-3">
+                                                                <a class="sub-menu-image-link" href="<?php echo $single_image_section['url']; ?>">
+                                                                    <img class="w-100 px-0" src="<?php echo $single_image_section['image']; ?>" alt="<?php echo $single_image_section['text']; ?>">
+                                                                    <p class="sub-menu-image-text"><?php echo $single_image_section['text']; ?></p>
+                                                                </a>
+                                                            </div>
+                                                        <?php } ?>
                                                     </div>
                                                 </div>
-                                                <div class="col-3">
-                                                    <a class="sub-menu-image-link" href="#">
-                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-1.jpg" alt="sub-menu-image-1">
-                                                        <p class="sub-menu-image-text">Test1</p>
-                                                    </a>
-                                                </div>
-                                                <div class="col-3">
-                                                    <a class="sub-menu-image-link" href="#">
-                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-2.jpg" alt="sub-menu-image-1">
-                                                        <p class="sub-menu-image-text">Test1</p>
-                                                    </a>
-                                                </div>
-                                                <div class="col-3">
-                                                    <a class="sub-menu-image-link" href="#">
-                                                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/sub-menu-3.jpg" alt="sub-menu-image-1">
-                                                        <p class="sub-menu-image-text">Test1</p>
-                                                    </a>
-                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="main-menu-link"><a href="#">clothing</a></li>
-                                <li class="main-menu-link"><a href="#">Coats and Jackets</a></li>
-                                <li class="main-menu-link"><a href="#">Teddy ten</a></li>
-                                <li class="main-menu-link"><a href="#">Bags and shoes</a></li>
-                                <li class="main-menu-link"><a href="#">gifts</a></li>
-                                <li class="main-menu-link"><a href="#">accesories</a></li>
-                                <li class="main-menu-link"><a href="#">runway</a></li>
-                                <li class="main-menu-link"><a href="#">bridal</a></li>
-                                <li class="main-menu-link"><a href="#">mm world</a></li>
+                                        <?php } ?>
+                                    </li>
+                                <?php } ?>
                             </ul>
                             <div class="right-side">
                                 <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search">
