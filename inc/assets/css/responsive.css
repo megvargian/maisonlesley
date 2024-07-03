@@ -196,17 +196,6 @@
   .menu_on_mobile .menu_on_mobile_wrapper .menu_on_mobile_inner_wrapper ul li a {
     width: fit-content;
   }
-  .menu_on_mobile .menu_on_mobile_wrapper .menu_on_mobile_inner_wrapper ul li .accordion-button::after {
-    flex-shrink: 0;
-    width: var(--bs-accordion-btn-icon-width);
-    height: var(--bs-accordion-btn-icon-width);
-    margin-left: auto;
-    content: "";
-    background-image: var(--bs-accordion-btn-icon);
-    background-repeat: no-repeat;
-    background-size: var(--bs-accordion-btn-icon-width);
-    transition: var(--bs-accordion-btn-icon-transition);
-  }
   .menu_on_mobile .menu_on_mobile_wrapper.submenu-active {
     height: 130vh;
   }

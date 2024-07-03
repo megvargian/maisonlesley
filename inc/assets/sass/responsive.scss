@@ -229,17 +229,6 @@
 				a{
 					width: fit-content;
 				}
-				.accordion-button::after{
-					flex-shrink: 0;
-					width: var(--bs-accordion-btn-icon-width);
-					height: var(--bs-accordion-btn-icon-width);
-					margin-left: auto;
-					content: "";
-					background-image: var(--bs-accordion-btn-icon);
-					background-repeat: no-repeat;
-					background-size: var(--bs-accordion-btn-icon-width);
-					transition: var(--bs-accordion-btn-icon-transition);
-				}
 			}
 		}
 		.menu_on_mobile_wrapper.submenu-active{
