@@ -200,9 +200,13 @@
     height: 1.25rem;
     width: 1.25rem;
     display: inline-flex;
+    margin-left: 5px;
   }
   .menu_on_mobile .menu_on_mobile_wrapper .menu_on_mobile_inner_wrapper ul li #accordionExample-header .accordion-button {
     padding: 0 !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
   }
   .menu_on_mobile .menu_on_mobile_wrapper.submenu-active {
     height: 130vh;

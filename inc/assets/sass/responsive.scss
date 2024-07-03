@@ -234,9 +234,13 @@
 						height: 1.25rem;
 						width: 1.25rem;
 						display: inline-flex;
+						margin-left: 5px;
 					}
 					.accordion-button{
 						padding: 0 !important;
+						display: flex !important;
+						justify-content: center;
+						align-items: center;
 					}
 				}
 			}
