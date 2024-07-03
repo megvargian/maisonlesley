@@ -15,6 +15,11 @@
 	}
 }
 @media screen and (max-width: 991px) {
+	:root{
+		--bs-accordion-btn-icon-width: var(1.25rem);
+		--bs-accordion-btn-icon: var(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23212529' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e"));
+		--bs-accordion-btn-icon-transition: var(0.2s ease-in-out);
+	}
 	header.active{
 		transform: translateY(0%);
 	}
@@ -224,6 +229,17 @@
 				a{
 					width: fit-content;
 				}
+				.accordion-button::after{
+					flex-shrink: 0;
+					width: var(--bs-accordion-btn-icon-width);
+					height: var(--bs-accordion-btn-icon-width);
+					margin-left: auto;
+					content: "";
+					background-image: var(--bs-accordion-btn-icon);
+					background-repeat: no-repeat;
+					background-size: var(--bs-accordion-btn-icon-width);
+					transition: var(--bs-accordion-btn-icon-transition);
+				}
 			}
 		}
 		.menu_on_mobile_wrapper.submenu-active{
@@ -247,34 +263,30 @@
 	}
 }
 @media (max-width: 767px){
-	.location-mobile{
+	.location-mobile, .call-mobile{
 		.default-button{
 			display: flex;
 			justify-content: start;
 			align-items: center;
 			font-size: 14px;
 			font-family: $Rutan-Light;
+			color: #000 !important;
 		}
 		.default-button::before{
-			content: "\E02A";
 			font-family: $mm-icons;
 			margin-right: 20px;
 			font-size: 25px;
+			color: #000 !important;
+		}
+	}
+	.location-mobile{
+		.default-button::before{
+			content: "\E02A";
 		}
 	}
 	.call-mobile{
-		.default-button{
-			display: flex;
-			justify-content: start;
-			align-items: center;
-			font-size: 14px;
-			font-family: $Rutan-Light;
-		}
 		.default-button::before{
 			content: "\E00E";
-			font-family: $mm-icons;
-			margin-right: 20px;
-			font-size: 25px;
 		}
 	}
 	.accordion-button:focus{
