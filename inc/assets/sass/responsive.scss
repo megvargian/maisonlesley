@@ -218,6 +218,13 @@
 					}
 				}
 			}
+			.menu_on_mobile_inner_wrapper ul li{
+				justify-content: center;
+				display: flex;
+				a{
+					width: fit-content;
+				}
+			}
 		}
 		.menu_on_mobile_wrapper.submenu-active{
 			height: 130vh;

@@ -184,6 +184,13 @@
   .menu_on_mobile .menu_on_mobile_wrapper .menu_on_mobile_inner_wrapper .followUs-class ul li:last-child {
     margin-right: 0px;
   }
+  .menu_on_mobile .menu_on_mobile_wrapper .menu_on_mobile_inner_wrapper ul li {
+    justify-content: center;
+    display: flex;
+  }
+  .menu_on_mobile .menu_on_mobile_wrapper .menu_on_mobile_inner_wrapper ul li a {
+    width: fit-content;
+  }
   .menu_on_mobile .menu_on_mobile_wrapper.submenu-active {
     height: 130vh;
   }
