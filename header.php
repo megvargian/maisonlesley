@@ -212,13 +212,39 @@ $header_menu = $all_generalFields['header_menu'];
                                 <div class="menu_on_mobile_wrapper">
                                     <div class="menu_on_mobile_inner_wrapper" style="position: relative;">
                                         <div>
-                                            <?php foreach($header_menu as $single_menu){ ?>
+                                            <?php
+                                            $count = 0;
+                                            foreach($header_menu as $single_menu) {
+                                                if($single_menu['has_sub_menu']){
+                                                    $count++;
+                                            ?>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header mt-0" id="headingOne-header-<?php echo $count;?>">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-header-<?php echo $count; ?>" aria-expanded="true" aria-controls="collapseOne-header-<?php echo $count; ?>">
+                                                            <?php echo $single_menu['text']; ?>
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseOne-header-<?php echo $count; ?>" class="accordion-collapse collapse" aria-labelledby="headingOne-header-<?php echo $count;?>" data-bs-parent="#accordionExample-header">
+                                                        <div class="accordion-body">
+                                                            <ul class="sub-menus-header">
+                                                                <?php foreach($single_menu['sub_menu_section']['left_side_sub_menu_list'] as $single_sub_menu){ ?>
+                                                                    <li>
+                                                                        <a href="<?php echo $single_sub_menu['url'] ?>">
+                                                                            <?php echo $single_sub_menu['text']; ?>
+                                                                        </a>
+                                                                    </li>
+                                                                <?php } ?>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php } else { ?>
                                                 <a class="d-block mb-3 page_font animated_menu_el" href="<?php echo $single_menu['url']; ?>">
                                                     <div class="menu_item active_page line_animation">
                                                         <?php echo $single_menu['text']; ?>
                                                     </div>
                                                 </a>
-                                            <?php } ?>
+                                            <?php }}?>
                                         </div>
                                     </div>
                                 </div>

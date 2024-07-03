@@ -9,7 +9,7 @@
     transform: translateY(0%);
   }
   .first-header.active {
-    transform: translateY(350%);
+    transform: translateY(349%);
   }
   .main-logo-tablet {
     width: 150px;
