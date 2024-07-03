@@ -217,8 +217,8 @@ $header_menu = $all_generalFields['header_menu'];
                                                         $count++;
                                                 ?>
                                                     <li>
-                                                        <div class="accordion w-100" id="accordionExample-header">
-                                                            <div class="accordion-item">
+                                                        <div class="accordion" id="accordionExample-header">
+                                                            <div class="accordion-item" style="border: none;">
                                                                 <h2 class="accordion-header mt-0" id="headingOne-header-<?php echo $count;?>">
                                                                     <button class="accordion-button d-block mb-3 page_font animated_menu_el collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-header-<?php echo $count; ?>" aria-expanded="true" aria-controls="collapseOne-header-<?php echo $count; ?>">
                                                                         <?php echo $single_menu['text']; ?>
