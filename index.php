@@ -4,9 +4,7 @@
  */
 get_header();
 ?>
-<?php
-    the_content();
-?>
+<?php the_content(); ?>
 <section class="py-5 my-5 swiper-products-section">
     <div class="container">
         <div class="row text-center justify-content-center pb-3">
@@ -34,7 +32,6 @@ get_header();
         </div>
     </div>
 </section>
-
 <script>
     jQuery(document).ready(function($) {
         var swiper = new Swiper(".swiperProduct", {
@@ -77,6 +74,5 @@ get_header();
         });
     });
 </script>
-
 <?php
 get_footer();
