@@ -37,7 +37,7 @@ $mutli_fields = $homepage_second_block_fields['multi_field'];
                 <a href="<?php echo $single_field['button_url']; ?>">
                     <div class="row gx-0">
                         <div class="col-3 px-0">
-                            <img class="w-100 h-100" src="<?php echo $single_field['image']; ?>" alt="<?php echo $single_field['title']; ?>">
+                            <img class="w-100 h-100" src="<?php echo $single_field['mobile_image']; ?>" alt="<?php echo $single_field['title']; ?>">
                         </div>
                         <div class="col px-0 d-flex justify-content-start align-items-center position-relative">
                             <div class="d-block">
