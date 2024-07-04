@@ -221,10 +221,21 @@ function my_acf_init_block_types()
         );
         acf_register_block_type(
             array(
-                'name'              => 'HomepageFirstBlock',
-                'title'             => __('HomepageFirstBlock'),
+                'name'              => 'Homepage First Block',
+                'title'             => __('Homepage First Block'),
                 'description'       => __('This is the first Block of Homepage'),
                 'render_template'   => 'blocks/Homepage/First_Block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
+        acf_register_block_type(
+            array(
+                'name'              => 'Homepage Second Block',
+                'title'             => __('Homepage Second Block'),
+                'description'       => __('This is the second Block of Homepage'),
+                'render_template'   => 'blocks/Homepage/Second_Block.php',
                 'category'          => 'formatting',
                 'icon'              => 'admin-comments',
                 'keywords'          => array('testimonial', 'quote'),
