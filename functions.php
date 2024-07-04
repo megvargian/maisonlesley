@@ -243,6 +243,17 @@ function my_acf_init_block_types()
         );
         acf_register_block_type(
             array(
+                'name'              => 'Homepage Third Block',
+                'title'             => __('Homepage Third Block'),
+                'description'       => __('This is the Third Block of Homepage'),
+                'render_template'   => 'blocks/HomePage/Third_Block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
+        acf_register_block_type(
+            array(
                 'name'              => 'Block Info Content',
                 'title'             => __('Block Info Content'),
                 'description'       => __('this is the info Content Accordion'),
