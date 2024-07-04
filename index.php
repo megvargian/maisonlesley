@@ -4,7 +4,11 @@
  */
 get_header();
 ?>
-<?php the_content(); ?>
+<?php
+	while ( have_posts() ) : the_post();
+        the_content();
+	endwhile;
+?>
 <section class="py-5 my-5 swiper-products-section">
     <div class="container">
         <div class="row text-center justify-content-center pb-3">
