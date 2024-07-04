@@ -3,6 +3,8 @@
  * HomePage Second Block Template
  */
 $homepage_second_block_fields = get_fields();
+$single_field = $homepage_second_block_fields['single_field'];
+$mutli_fields = $homepage_second_block_fields['multi_field'];
 ?>
 <section class="py-5 d-sm-block d-none">
     <div class="container">
@@ -10,14 +12,16 @@ $homepage_second_block_fields = get_fields();
             <div class="col-10">
                 <div class="row">
                     <div class="col-6">
-                        <img class="w-100" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/second-img.jpg" alt="second-img">
+                        <img class="w-100" src="<?php echo $single_field['image']; ?>" alt="<?php echo $single_field['title']; ?>">
                     </div>
                     <div class="col-6 d-flex justify-content-center align-items-center">
                         <div class="d-block">
                             <div class="">
-                                <h3>Yours new forever dress</h3>
-                                <p>Timeless style is one easy piece</p>
-                                <a href="#" class="main-link">Discover more</a>
+                                <h3><?php echo $single_field['title']; ?></h3>
+                                <p><?php echo $single_field['sub_title']; ?></p>
+                                <a href="<?php echo $single_field['button_url']; ?>" class="main-link">
+                                    <?php echo $single_field['button_text']; ?>
+                                </a>
                             </div>
                         </div>
                     </div>
