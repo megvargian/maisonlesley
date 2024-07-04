@@ -5,26 +5,6 @@
 get_header();
 ?>
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="swiper Mainswiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/first-img.jpg" alt="first-img">
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="w-100 px-0" src="<?php echo get_template_directory_uri() ?>/inc/assets/images/first-img-2.jpg" alt="first-img-2">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row text-left">
-            <h2 class="pl-3 px-sm-0">Max Mara's Magic Circus</h2>
-            <a class="main-link padding-left" href="#">Discover more</a>
-        </div>
-    </div>
-</section>
 <section class="py-5 d-sm-block d-none">
     <div class="container">
         <div class="row justify-content-center">

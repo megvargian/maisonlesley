@@ -221,6 +221,17 @@ function my_acf_init_block_types()
         );
         acf_register_block_type(
             array(
+                'name'              => 'HomepageFirstBlock',
+                'title'             => __('HomepageFirstBlock'),
+                'description'       => __('This is the first Block of Homepage'),
+                'render_template'   => 'blocks/Homepage/First_Block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
+        acf_register_block_type(
+            array(
                 'name'              => 'Block Info Content',
                 'title'             => __('Block Info Content'),
                 'description'       => __('this is the info Content Accordion'),
