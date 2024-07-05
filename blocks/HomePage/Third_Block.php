@@ -18,7 +18,8 @@ $homepage_third_block_fields = get_fields();
                             foreach($homepage_third_block_fields['products'] as $single_product){
                         ?>
                             <div class="swiper-slide">
-                                <img class="w-100" src="<?php echo $single_product['image']; ?>" alt="<?php echo $single_product['title']; ?>">
+                                <img class="w-100" src="<?php echo $single_product['image']; ?>" alt="<?php echo $single_product['title']; ?>" loading="lazy">
+                                <div class="swiper-lazy-preloader"></div>
                                 <h4><?php echo $single_product['title']; ?></h4>
                             </div>
                         <?php
