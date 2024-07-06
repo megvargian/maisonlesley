@@ -16,7 +16,7 @@ get_header();
         </div>
     </section>
     <section>
-        <div class="container-fluid px-0">
+        <div class="container-fluid px-sm-0">
             <div class="row">
                 <div class="col-md-6 col-12 px-0">
                     <img class="w-100 px-0" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-half-mystique-rose.jpg" alt="">
@@ -101,7 +101,7 @@ get_header();
         </div>
     </section>
     <section class="d-md-none d-block">
-        <div class="container-fluid px-0">
+        <div class="container-fluid px-sm-0">
             <div class="row">
                 <img class="w-100 px-0" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/home-swim-mystique-rose.avif" alt="">
             </div>
@@ -131,7 +131,7 @@ get_header();
         </div>
     </section>
     <section class="d-md-none d-block">
-        <div class="container-fluid px-0">
+        <div class="container-fluid px-sm-0">
             <div class="row">
                 <img class="w-100 px-0" src="<?php echo get_template_directory_uri( ); ?>/inc/assets/images/home-mobile-sexy-tee.avif" alt="">
             </div>
@@ -161,7 +161,7 @@ get_header();
         </div>
     </section>
     <section class="d-md-none d-block">
-        <div class="container-fluid px-0 position-relative">
+        <div class="container-fluid px-sm-0 position-relative">
             <div class="row text-center position-absolute top-0 absolute-container-mobile pt-4">
                 <h5>TODAY ONLY</h5>
                 <h3>Additional 10% off your Purchase</h3>
