@@ -19,7 +19,7 @@ get_header();
         <div class="container-fluid px-0">
             <div class="row">
                 <div class="col-md-6 col-12 px-0">
-                    <img class="w-100" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-half-mystique-rose.jpg" alt="">
+                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-half-mystique-rose.jpg" alt="">
                 </div>
                 <div class="col-md-6 col-12 d-flex justify-content-center align-items-center" style="background-color: #D0212F;">
                     <div class="row py-3 py-md-0 justify-content-center d-flex align-items-center">
@@ -100,14 +100,14 @@ get_header();
             </div>
         </div>
     </section>
-    <section class="d-md-none d-md-block">
+    <section class="d-md-none d-block">
         <div class="container-fluid px-0">
             <div class="row">
-                <img class="w-100" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/home-swim-mystique-rose.avif" alt="">
+                <img class="w-100 px-0" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/home-swim-mystique-rose.avif" alt="">
             </div>
         </div>
     </section>
-    <section class="py-4 d-md-none d-md-block" style="background-color: #F1DFC9;">
+    <section class="py-4 d-md-none d-block" style="background-color: #F1DFC9;">
         <div class="container">
             <div class="row text-center">
                 <h5>TODAY ONLY</h5>
@@ -130,14 +130,14 @@ get_header();
             </div>
         </div>
     </section>
-    <section class="d-md-none d-md-block">
+    <section class="d-md-none d-block">
         <div class="container-fluid px-0">
             <div class="row">
-                <img class="w-100" src="<?php echo get_template_directory_uri( ); ?>/inc/assets/images/home-mobile-sexy-tee.avif" alt="">
+                <img class="w-100 px-0" src="<?php echo get_template_directory_uri( ); ?>/inc/assets/images/home-mobile-sexy-tee.avif" alt="">
             </div>
         </div>
     </section>
-    <section class="py-4 d-md-none d-md-block">
+    <section class="py-4 d-md-none d-block">
         <div class="container">
             <div class="row text-center">
                 <h5>TODAY ONLY</h5>
@@ -160,7 +160,7 @@ get_header();
             </div>
         </div>
     </section>
-    <section class="d-md-none d-md-block">
+    <section class="d-md-none d-block">
         <div class="container-fluid px-0 position-relative">
             <div class="row text-center position-absolute top-0 absolute-container-mobile pt-4">
                 <h5>TODAY ONLY</h5>
@@ -169,7 +169,7 @@ get_header();
                 <a href="#">Shop Now</a>
             </div>
             <div class="row">
-                <img class="w-100" src="<?php echo get_template_directory_uri( ); ?>/inc/assets/images/cowgirl-mob-control.avif" alt="">
+                <img class="w-100 px-0" src="<?php echo get_template_directory_uri( ); ?>/inc/assets/images/cowgirl-mob-control.avif" alt="">
             </div>
         </div>
     </section>
