@@ -162,7 +162,7 @@ get_header();
     </section>
     <section class="d-md-none d-block">
         <div class="container-fluid px-sm-0 position-relative">
-            <div class="row text-center position-absolute top-0 absolute-container-mobile pt-4">
+            <div class="row text-center position-absolute top-0 absolute-container-mobile pt-4 w-100">
                 <h5>TODAY ONLY</h5>
                 <h3>Additional 10% off your Purchase</h3>
                 <p>Online only. Exclusion apply. <a href="#">Details</a></p>
