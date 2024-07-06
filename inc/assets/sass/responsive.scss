@@ -366,6 +366,32 @@
 	.padding-left{
 		padding-left: 1rem;
 	}
+	.mystique-rose-page{
+		h2{
+			font-size: 2rem;
+		}
+		h3{
+			font-size: 1.2rem;
+			font-weight: bold;
+		}
+	}
+	.absolute-container-mobile{
+		h5{
+			color: #fff;
+		}
+		h3{
+			color: #fff;
+		}
+		p{
+			color: #fff;
+			a{
+				color: #fff;
+			}
+		}
+		a{
+			color: #fff;
+		}
+	}
 }
 @media (max-width: 350px){
 }

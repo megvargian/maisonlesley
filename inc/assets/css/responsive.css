@@ -399,6 +399,28 @@
   .padding-left {
     padding-left: 1rem;
   }
+  .mystique-rose-page h2 {
+    font-size: 2rem;
+  }
+  .mystique-rose-page h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .absolute-container-mobile h5 {
+    color: #fff;
+  }
+  .absolute-container-mobile h3 {
+    color: #fff;
+  }
+  .absolute-container-mobile p {
+    color: #fff;
+  }
+  .absolute-container-mobile p a {
+    color: #fff;
+  }
+  .absolute-container-mobile a {
+    color: #fff;
+  }
 }
 @media (min-width: 1390px) {
   /* change this, by default 1140px */
