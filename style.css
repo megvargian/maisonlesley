@@ -264,3 +264,26 @@ th {
   font-weight: normal;
   font-style: normal;
 }
+
+/* for muystique rose page */
+@font-face {
+  font-family: "calibre-light";
+  src: url("./inc/assets/fonts/Calibre-Light.woff") format("woff"),
+  url("./inc/assets/fonts/Calibre-Light.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "calibre-bold";
+  src: url("./inc/assets/fonts/Calibre-Bold.woff") format("woff"),
+  url("./inc/assets/fonts/Calibre-Bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+/* @font-face {
+  font-family: "victorian-two-regular";
+  src: url("./inc/assets/fonts/victorian-designs-two-regular.ttf") format("truetype"),
+  url("./inc/assets/fonts/victorian-designs-two-regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+} */

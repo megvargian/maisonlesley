@@ -1012,3 +1012,58 @@ header.active{
 	font-weight: 600;
 	color: #46b450 !important;
 }
+.mystique-rose-page{
+	h2{
+		font-size: 6rem;
+	}
+	h3{
+		font-size: 2rem;
+		font-weight: bold;
+	}
+	h6{
+		font-family: $calibre-bold;
+	}
+	p{
+		font-family: $calibre-light;
+		a{
+			font-family: $calibre-light;
+			text-decoration: underline;
+			display: inline-block;
+		}
+	}
+	a{
+		font-family: $calibre-bold;
+		text-align: center;
+		display: flex;
+		margin: 0 auto;
+		justify-content: center;
+		width: fit-content;
+	}
+	.background-img-section, .background-img-section-second{
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		height: 900px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		h5{
+			color: #fff;
+		}
+		h3{
+			color: #fff;
+		}
+		p{
+			color: #fff;
+			a{
+				color: #fff;
+			}
+		}
+		a{
+			color: #fff;
+		}
+	}
+	.background-img-section-second{
+		height: 510px !important;
+	}
+}
