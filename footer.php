@@ -229,6 +229,13 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
     jQuery(document).ready(function($) {
     });
 </script>
+<script>
+    jQuery(document).ready(function($) {
+        $('#custom-filter').change(function() {
+            $('#custom-filter-form').submit();
+        });
+    });
+</script>
 <?php wp_footer(); ?>
 </body>
 </html>

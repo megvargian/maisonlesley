@@ -266,3 +266,34 @@ function my_acf_init_block_types()
 
     }
 }
+
+add_action('pre_get_posts', 'apply_custom_product_filter');
+
+function apply_custom_product_filter($query) {
+    if (is_admin() || !$query->is_main_query() || !is_shop()) {
+        return;
+    }
+
+    if (isset($_GET['custom_filter']) && !empty($_GET['custom_filter'])) {
+        $custom_filter = sanitize_text_field($_GET['custom_filter']);
+
+        // Apply custom filter logic based on the selected value
+        if ($custom_filter == 'filter_value_1') {
+            $query->set('meta_query', array(
+                array(
+                    'key' => 'custom_meta_key',
+                    'value' => 'meta_value_1',
+                    'compare' => '='
+                )
+            ));
+        } elseif ($custom_filter == 'filter_value_2') {
+            $query->set('meta_query', array(
+                array(
+                    'key' => 'custom_meta_key',
+                    'value' => 'meta_value_2',
+                    'compare' => '='
+                )
+            ));
+        }
+    }
+}
