@@ -297,3 +297,32 @@ function apply_custom_product_filter($query) {
         }
     }
 }
+
+function load_more_posts() {
+    $page = $_POST['page'];
+    $category_id = $_POST['category_id'];
+
+    $args = array(
+        'cat' => $category_id,
+        'post_type'         => 'product',
+        'posts_per_page'    => 6,
+        'paged'             => $page,
+        'order'             =>      'DSC',
+        'orderby'           =>      'date',
+    );
+
+    $query = new WP_Query($args);
+    $count = 0;
+    ?>
+    <pre><?php print_r($query); ?></pre>
+    <?php
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+                $count++;
+           ?>
+
+           <?php
+        endwhile;
+    endif;
+    wp_die();
+}
