@@ -326,3 +326,5 @@ function load_more_posts() {
     endif;
     wp_die();
 }
+// you need to add this to overwrite woocommerce files from your theme
+add_theme_support( 'woocommerce' );
