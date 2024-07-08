@@ -16,17 +16,7 @@
  */
 
 
-echo 'test';
 defined( 'ABSPATH' ) || exit;
-?>
-<form id="custom-filter-form">
-    <select id="custom-filter" name="custom_filter">
-        <option value="">Select a filter</option>
-        <option value="filter_value_1">Filter Option 1</option>
-        <option value="filter_value_2">Filter Option 2</option>
-    </select>
-</form>
-<?php
 get_header( 'shop' );
 
 /**
@@ -45,8 +35,16 @@ do_action( 'woocommerce_before_main_content' );
  *
  * @hooked woocommerce_product_taxonomy_archive_header - 10
  */
-do_action( 'woocommerce_shop_loop_header' );
-
+// do_action( 'woocommerce_shop_loop_header' );
+?>
+<form id="custom-filter-form">
+    <select id="custom-filter" name="custom_filter">
+        <option value="">Select a filter</option>
+        <option value="filter_value_1">Filter Option 1</option>
+        <option value="filter_value_2">Filter Option 2</option>
+    </select>
+</form>
+<?php
 if ( woocommerce_product_loop() ) {
 
 	/**
