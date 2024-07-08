@@ -311,14 +311,14 @@ function load_more_posts() {
     $page = $_POST['page'];
     $category_id = $_POST['category_id'];
 
-    $args = array(
-        'cat' => $category_id,
-        'post_type'         => 'product',
-        'posts_per_page'    => 6,
-        'paged'             => $page,
-        'order'             =>      'DSC',
-        'orderby'           =>      'date',
-    );
+    // $args = array(
+    //     'cat' => $category_id,
+    //     'post_type'         => 'product',
+    //     'posts_per_page'    => 6,
+    //     'paged'             => $page,
+    //     'order'             =>      'DSC',
+    //     'orderby'           =>      'date',
+    // );
 
     $custom_filter = sanitize_text_field($_POST['attr_value']);
     // Set custom attribute name and value to search for
@@ -328,17 +328,17 @@ function load_more_posts() {
     $serialized_value = serialize( 'name' ) . serialize( $attribute_name ) . serialize( 'value' ) . serialize( $attribute_value ); // extended version: $serialized_value = serialize( $attribute_name ) . 'a:6:{' . serialize( 'name' ) . serialize( $attribute_name ) . serialize( 'value' ) . serialize( $attribute_value ) . serialize( 'position' );
     $args = array(
         'post_type'      => 'product',
-        'post_status'    => 'any',
+        'cat'            => $category_id,
         'posts_per_page' => -1,
         'orderby'        => 'title',
         'order'          => 'ASC',
-        'meta_query' => array(
-            array(
-                'key'     => '_product_attributes',
-                'value'   => $serialized_value,
-                'compare' => 'LIKE',
-            ),
-        ),
+        // 'meta_query' => array(
+        //     array(
+        //         'key'     => '_product_attributes',
+        //         'value'   => $serialized_value,
+        //         'compare' => 'LIKE',
+        //     ),
+        // ),
     );
     $loop = new WP_Query( $args );
     while ( $loop->have_posts() ) {
