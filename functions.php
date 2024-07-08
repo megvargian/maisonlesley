@@ -353,3 +353,7 @@ function load_more_posts() {
 }
 // you need to add this to overwrite woocommerce files from your theme
 add_theme_support( 'woocommerce' );
+// for recaptcha added in the header script tag
+add_action('wp_head', function() {
+    echo '<script src="https://www.google.com/recaptcha/api.js?render=6Lduc_8pAAAAAJDfVdJ5UT2-KbdaxA6IgSFY5fDG"></script>';
+});

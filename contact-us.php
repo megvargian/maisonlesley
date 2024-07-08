@@ -86,6 +86,17 @@ $all_feilds = get_fields();
 				$(el).find('form').find('.wpcf7-submit').addClass('disabled');
 				$(el).parents('.form_validation_parent').find('.contact_success_message').hide();
 				$(el).parents('.form_validation_parent').find('.contact_fail_message').hide();
+				event.preventDefault();
+				grecaptcha.ready(function() {
+					grecaptcha.execute('6Lduc_8pAAAAAJDfVdJ5UT2-KbdaxA6IgSFY5fDG', {action: 'submit'}).then(function(token) {
+						const recaptchaResponse = document.createElement('input');
+						recaptchaResponse.setAttribute('type', 'hidden');
+						recaptchaResponse.setAttribute('name', 'g-recaptcha-response');
+						recaptchaResponse.setAttribute('value', token);
+						form.appendChild(recaptchaResponse);
+						form.submit();
+					});
+				});
 			});
 			el.addEventListener( 'wpcf7mailsent', function( event ) {
 				$(el).parents('.form_validation_parent').find('.contact_success_message').slideDown(300);
