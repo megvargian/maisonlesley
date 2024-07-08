@@ -42,6 +42,7 @@ do_action( 'woocommerce_shop_loop_header' );
 	<option value="red">Red</option>
 	<option value="blue">Blue</option>
 </select>
+<?php echo get_query_var('cat'); ?>;
 <?php
 if ( woocommerce_product_loop() ) {
 
@@ -128,15 +129,11 @@ jQuery(document).ready(function($) {
                 }
             },
         });
-
-		console.log($('#custom_filter').find(":selected").val());
     }
-    // Trigger the AJAX call when the button is clicked
-    $('#load-more-button').click(function() {
-        loadMorePosts();
-    });
-	$('#custom-filter').change(function() {
+	$(document).on('change','#custom-filter',function(){
 		loadMorePosts();
+		console.log($('#custom-filter').find(":selected").val());
+		alert("PROBANDO");
     });
 });
 </script>
