@@ -35,15 +35,13 @@ do_action( 'woocommerce_before_main_content' );
  *
  * @hooked woocommerce_product_taxonomy_archive_header - 10
  */
-// do_action( 'woocommerce_shop_loop_header' );
+do_action( 'woocommerce_shop_loop_header' );
 ?>
-<form id="custom-filter-form">
-    <select id="custom-filter" name="custom_filter">
-        <option value="">Select a filter</option>
-        <option value="filter_value_1">Filter Option 1</option>
-        <option value="filter_value_2">Filter Option 2</option>
-    </select>
-</form>
+<select id="custom-filter" name="custom_filter">
+	<option value="">Select a Color</option>
+	<option value="red">Red</option>
+	<option value="blue">Blue</option>
+</select>
 <?php
 if ( woocommerce_product_loop() ) {
 
@@ -101,5 +99,46 @@ do_action( 'woocommerce_after_main_content' );
  * @hooked woocommerce_get_sidebar - 10
  */
 // do_action( 'woocommerce_sidebar' );
+?>
+<script>
+jQuery(document).ready(function($) {
+    var page = 2; // Set the initial page number
+    var category_id = <?php echo get_query_var('cat'); ?>; // Get the current category ID
+    // Function to load more posts via AJAX
+    function loadMorePosts() {
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo admin_url('admin-ajax.php'); ?>',
+            data: {
+                action: 'load_more_posts',
+                attribute: 'color',
+				attr_value: $('#custom_filter').find(":selected").val(),
+                category_id: category_id,
+            },
+            success: function(response) {
+                if (response === ''){
+                    $('#load-more-button').hide();
+                }
+                if (response) {
+                    $('.products columns-4').append(response);
+                    page++;
+                } else {
+                    // No more posts to load
+                    $('#load-more-button').hide();
+                }
+            },
+        });
 
+		console.log($('#custom_filter').find(":selected").val());
+    }
+    // Trigger the AJAX call when the button is clicked
+    $('#load-more-button').click(function() {
+        loadMorePosts();
+    });
+	$('#custom-filter').change(function() {
+		loadMorePosts();
+    });
+});
+</script>
+<?php
 get_footer( 'shop' );

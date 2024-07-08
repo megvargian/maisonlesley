@@ -273,28 +273,37 @@ function apply_custom_product_filter($query) {
     if (is_admin() || !$query->is_main_query() || !is_shop()) {
         return;
     }
-
     if (isset($_GET['custom_filter']) && !empty($_GET['custom_filter'])) {
         $custom_filter = sanitize_text_field($_GET['custom_filter']);
+        // Set custom attribute name and value to search for
+        $attribute_name  = 'color';
+        $attribute_value = $custom_filter;
 
-        // Apply custom filter logic based on the selected value
-        if ($custom_filter == 'filter_value_1') {
-            $query->set('meta_query', array(
+        $serialized_value = serialize( 'name' ) . serialize( $attribute_name ) . serialize( 'value' ) . serialize( $attribute_value ); // extended version: $serialized_value = serialize( $attribute_name ) . 'a:6:{' . serialize( 'name' ) . serialize( $attribute_name ) . serialize( 'value' ) . serialize( $attribute_value ) . serialize( 'position' );
+        $args = array(
+            'post_type'      => 'product',
+            'post_status'    => 'any',
+            'posts_per_page' => -1,
+            'orderby'        => 'title',
+            'order'          => 'ASC',
+            'meta_query' => array(
                 array(
-                    'key' => 'custom_meta_key',
-                    'value' => 'meta_value_1',
-                    'compare' => '='
-                )
-            ));
-        } elseif ($custom_filter == 'filter_value_2') {
-            $query->set('meta_query', array(
-                array(
-                    'key' => 'custom_meta_key',
-                    'value' => 'meta_value_2',
-                    'compare' => '='
-                )
-            ));
+                    'key'     => '_product_attributes',
+                    'value'   => $serialized_value,
+                    'compare' => 'LIKE',
+                ),
+            ),
+        );
+        $loop = new WP_Query( $args );
+        while ( $loop->have_posts() ) {
+            $loop->the_post();
+            ?>
+                <li>
+                    <pre><?php print_r(get_the_ID()); ?></pre>
+                </li>
+            <?php
         }
+        wp_reset_postdata();
     }
 }
 
@@ -311,19 +320,35 @@ function load_more_posts() {
         'orderby'           =>      'date',
     );
 
-    $query = new WP_Query($args);
-    $count = 0;
-    ?>
-    <pre><?php print_r($query); ?></pre>
-    <?php
-    if ($query->have_posts()) :
-        while ($query->have_posts()) : $query->the_post();
-                $count++;
-           ?>
+    $custom_filter = sanitize_text_field($_POST['attr_value']);
+    // Set custom attribute name and value to search for
+    $attribute_name  = sanitize_text_field($_POST['attribute']);
+    $attribute_value = $custom_filter;
 
-           <?php
-        endwhile;
-    endif;
+    $serialized_value = serialize( 'name' ) . serialize( $attribute_name ) . serialize( 'value' ) . serialize( $attribute_value ); // extended version: $serialized_value = serialize( $attribute_name ) . 'a:6:{' . serialize( 'name' ) . serialize( $attribute_name ) . serialize( 'value' ) . serialize( $attribute_value ) . serialize( 'position' );
+    $args = array(
+        'post_type'      => 'product',
+        'post_status'    => 'any',
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC',
+        'meta_query' => array(
+            array(
+                'key'     => '_product_attributes',
+                'value'   => $serialized_value,
+                'compare' => 'LIKE',
+            ),
+        ),
+    );
+    $loop = new WP_Query( $args );
+    while ( $loop->have_posts() ) {
+        $loop->the_post();
+        ?>
+            <li>
+                <pre><?php print_r(get_the_ID()); ?></pre>
+            </li>
+        <?php
+    }
     wp_die();
 }
 // you need to add this to overwrite woocommerce files from your theme
