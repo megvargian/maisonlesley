@@ -360,14 +360,13 @@ add_action('wp_head', function() {
 
 function custom_product_filter() {
     $filter_attributes = array( 'color', 'size' ); // Replace with your attribute slugs
-
     if ( ! empty( $filter_attributes ) ) {
         echo '<div class="custom-product-filter">';
         echo '<form action="' . esc_url( get_pagenum_link() ) . '" method="get">';
 
         foreach ( $filter_attributes as $attribute ) {
             $terms = get_terms( $attribute );
-
+            echo '<pre>'; print_r($terms); echo'</pre>';
             if ( ! empty( $terms ) ) {
                 $current_term = isset( $_GET[ $attribute ] ) ? sanitize_key( $_GET[ $attribute ] ) : '';
 
