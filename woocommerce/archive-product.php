@@ -42,19 +42,6 @@ if ( woocommerce_product_loop() ) {
 	/**
 	 * Hook: woocommerce_before_shop_loop.
 	 */
-	$filter_attributes = array( 'pa_color', 'pa_size' );
-	if ( ! empty( $filter_attributes ) ) {
-		echo '<div class="custom-product-filter">';
-		woocommerce_layered_nav(
-			array(
-				'taxonomy' => $filter_attributes,
-				'query_type' => 'and',
-			)
-		);
-		echo '</div>';
-	}
-	do_action( 'woocommerce_before_shop_loop' );
-
 	woocommerce_product_loop_start();
 
 	if ( wc_get_loop_prop( 'total' ) ) {
