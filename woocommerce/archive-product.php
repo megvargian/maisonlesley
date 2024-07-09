@@ -1,68 +1,106 @@
 <?php
 /**
-* Template Name: Archive Product (Custom Filter)
-*
-* @package WooCommerce
-*/
+ * The Template for displaying product archives, including the main shop page which is a post type archive
+ *
+ * This template can be overridden by copying it to yourtheme/woocommerce/archive-product.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
+ *
+ * @see https://woocommerce.com/document/template-structure/
+ * @package WooCommerce\Templates
+ * @version 8.6.0
+ */
+
 
 defined( 'ABSPATH' ) || exit;
+get_header( 'shop' );
 
-wc_get_template_header(); ?>
+/**
+ * Hook: woocommerce_before_main_content.
+ *
+ * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+ * @hooked woocommerce_breadcrumb - 20
+ * @hooked WC_Structured_Data::generate_website_data() - 30
+ */
+do_action( 'woocommerce_before_main_content' );
 
-<main id="main" class="site-main">
-    <?php
-    /**
-     * Hook: woocommerce_archive_before_loop.
-     *
-     * @hooked woocommerce_show_page_title - 5
-     */
-    do_action( 'woocommerce_archive_before_loop' );
+/**
+ * Hook: woocommerce_shop_loop_header.
+ *
+ * @since 8.6.0
+ *
+ * @hooked woocommerce_product_taxonomy_archive_header - 10
+ */
+do_action( 'woocommerce_shop_loop_header' );
 
-    if ( have_posts() ) {
+if ( woocommerce_product_loop() ) {
 
-        /**
-         * Filter: woocommerce_archive_product_attributes.
-         *
-         * @param array $attributes An array of attribute taxonomies that should be displayed on the archive page.
-         * @return array Maybe modified array of attribute taxonomies.
-         */
-        $filter_attributes = apply_filters( 'woocommerce_archive_product_attributes', array( 'pa_color', 'pa_size' ) ); // Replace 'pa_color' and 'pa_size' with your actual attribute slugs
+	/**
+	 * Hook: woocommerce_before_shop_loop.
+	 */
+	do_action( 'woocommerce_before_shop_loop' );
+	// Define the attribute taxonomies for filtering (replace with your actual slugs)
+	$filter_attributes = array( 'pa_color', 'pa_size' );
 
-        if ( ! empty( $filter_attributes ) ) {
-            echo '<div class="custom-product-filter">';
-            woocommerce_layered_nav(
-                array(
-                    'taxonomy' => $filter_attributes,
-                    'query_type' => 'and', // Adjust to 'or' if you want products matching any selected attribute
-                )
-            );
-            echo '</div>';
-        }
+	// Check if attributes are defined
+	if ( ! empty( $filter_attributes ) ) {
+		echo '<div class="custom-product-filter">';
+		woocommerce_layered_nav(
+			array(
+				'taxonomy' => $filter_attributes,
+				'query_type' => 'and', // Adjust to 'or' if you want products matching any selected attribute
+			)
+		);
+		echo '</div>';
+	}
 
-        /**
-         * Hook: woocommerce_archive_content.
-         */
-        do_action( 'woocommerce_archive_content' );
+	woocommerce_product_loop_start();
 
-    } else {
-        /**
-         * Hook: woocommerce_archive_empty.
-         *
-         * @hooked wc_get_template_part - 5
-         *
-         * @action woocommerce_archive_empty
-         */
-        do_action( 'woocommerce_archive_empty' );
-    }
+	if ( wc_get_loop_prop( 'total' ) ) {
+		while ( have_posts() ) {
+			the_post();
 
-    /**
-     * Hook: woocommerce_archive_after_loop.
-     *
-     * @hooked woocommerce_pagination - 10
-     */
-    do_action( 'woocommerce_archive_after_loop' );
-    ?>
-</main>
+			/**
+			 * Hook: woocommerce_shop_loop.
+			 */
+			do_action( 'woocommerce_shop_loop' );
 
-<?php
-wc_get_template_footer();
+			wc_get_template_part( 'content', 'product' );
+		}
+	}
+
+	woocommerce_product_loop_end();
+
+	/**
+	 * Hook: woocommerce_after_shop_loop.
+	 *
+	 * @hooked woocommerce_pagination - 10
+	 */
+	do_action( 'woocommerce_after_shop_loop' );
+} else {
+	/**
+	 * Hook: woocommerce_no_products_found.
+	 *
+	 * @hooked wc_no_products_found - 10
+	 */
+	do_action( 'woocommerce_no_products_found' );
+}
+
+/**
+ * Hook: woocommerce_after_main_content.
+ *
+ * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+ */
+do_action( 'woocommerce_after_main_content' );
+
+/**
+ * Hook: woocommerce_sidebar.
+ *
+ * @hooked woocommerce_get_sidebar - 10
+ */
+// do_action( 'woocommerce_sidebar' );
+get_footer( 'shop' );
