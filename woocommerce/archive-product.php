@@ -42,7 +42,6 @@ if ( woocommerce_product_loop() ) {
 	/**
 	 * Hook: woocommerce_before_shop_loop.
 	 */
-	do_action( 'woocommerce_before_shop_loop' );
 	// Define the attribute taxonomies for filtering (replace with your actual slugs)
 	$filter_attributes = array( 'pa_color', 'pa_size' );
 
@@ -57,6 +56,7 @@ if ( woocommerce_product_loop() ) {
 		);
 		echo '</div>';
 	}
+	do_action( 'woocommerce_before_shop_loop' );
 
 	woocommerce_product_loop_start();
 
