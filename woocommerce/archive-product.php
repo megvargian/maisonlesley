@@ -42,16 +42,13 @@ if ( woocommerce_product_loop() ) {
 	/**
 	 * Hook: woocommerce_before_shop_loop.
 	 */
-	// Define the attribute taxonomies for filtering (replace with your actual slugs)
 	$filter_attributes = array( 'pa_color', 'pa_size' );
-
-	// Check if attributes are defined
 	if ( ! empty( $filter_attributes ) ) {
 		echo '<div class="custom-product-filter">';
 		woocommerce_layered_nav(
 			array(
 				'taxonomy' => $filter_attributes,
-				'query_type' => 'and', // Adjust to 'or' if you want products matching any selected attribute
+				'query_type' => 'and',
 			)
 		);
 		echo '</div>';
