@@ -414,15 +414,19 @@ function custom_product_filter() {
 
     ?>
     <script>
+        <?php $category = get_queried_object(); ?>
         jQuery(document).ready(function($) {
-            $('#pa_color').on('change', function() {
-                var color = $(this).val();
+            $('#pa_color', '#pa-size').on('change', function() {
+                var color = $('#pa_color').val();
+                var size = $('#pa_size').val();
                 $.ajax({
                     url: '<?php echo admin_url('admin-ajax.php'); ?>',
                     type: 'POST',
                     data: {
                         action: 'filter_products',
                         color: color,
+                        size: size,
+                        cat_id: '<?php echo $category->term_id; ?>'
                     },
                     success: function(response) {
                         $('#product-list').html(response);
@@ -435,29 +439,63 @@ function custom_product_filter() {
 }
 
 function filter_products() {
-    $color = $_POST['color'];
+    $color = isset($_POST['color']) ? sanitize_text_field($_POST['color']) : '';
+    $size = isset($_POST['size']) ? sanitize_text_field($_POST['size']) : '';
+    $category_id = isset($_POST['category_id']) ? sanitize_text_field($_POST['cat_id']) : '';
 
+    $tax_query = array('relation' => 'AND');
+
+    if (!empty($color)) {
+        $tax_query[] = array(
+            'taxonomy' => 'pa_color', // Replace 'pa_color' with the attribute taxonomy slug
+            'field' => 'slug',
+            'terms' => $color,
+        );
+    }
+
+    if (!empty($size)) {
+        $tax_query[] = array(
+            'taxonomy' => 'pa_size', // Replace 'pa_size' with the attribute taxonomy slug
+            'field' => 'slug',
+            'terms' => $size,
+        );
+    }
+
+    if (!empty($category_id)) {
+        $tax_query[] = array(
+            'taxonomy' => 'product_cat',
+            'field' => 'term_id',
+            'terms' => $category_id,
+        );
+    }
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => -1,
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'pa_color', // Replace 'pa_color' with the attribute taxonomy slug
-                'field' => 'slug',
-                'terms' => $color,
-            ),
-        ),
+        'tax_query' => $tax_query,
     );
 
     $query = new WP_Query($args);
 
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
-            wc_get_template_part('content', 'product');
+            ?>
+            <div class="container">
+                <div class="row">
+                    <ul class="products columns-4">
+                        <?php wc_get_template_part('content', 'product'); ?>
+                    </ul>
+                </div>
+            </div>
+            <?php
         endwhile;
         wp_reset_postdata();
-    else :
-        echo '<p>No products found</p>';
+    else : ?>
+        <div class="container">
+            <div class="row text-center">
+                <h2>No products found</h2>
+            </div>
+        </div>
+    <?php
     endif;
 
     wp_die();
