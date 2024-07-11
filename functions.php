@@ -399,7 +399,7 @@ function custom_product_filter() {
                 $current_term = isset( $_GET[ $attribute ] ) ? sanitize_key( $_GET[ $attribute ] ) : '';
 
                 echo '<select id="'. esc_attr( $attribute ) .'" name="' . esc_attr( $attribute ) . '">';
-                // echo '<option value="">All ' . ucfirst( $attribute ) . '</option>';
+                echo '<option value="">All ' . ucfirst( $attribute ) . '</option>';
 
                 foreach ( $terms as $term ) {
                     $selected = $current_term === $term->slug ? 'selected' : '';
