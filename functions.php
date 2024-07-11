@@ -429,7 +429,7 @@ function custom_product_filter() {
                         cat_id: '<?php echo $category->term_id; ?>'
                     },
                     success: function(response) {
-                        $('#product-list').html(response);
+                        $('.products.columns-4').html(response);
                     }
                 });
             });
@@ -478,15 +478,7 @@ function filter_products() {
 
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
-            ?>
-            <div class="container">
-                <div class="row">
-                    <ul class="products columns-4">
-                        <?php wc_get_template_part('content', 'product'); ?>
-                    </ul>
-                </div>
-            </div>
-            <?php
+            wc_get_template_part('content', 'product');
         endwhile;
         wp_reset_postdata();
     else : ?>
