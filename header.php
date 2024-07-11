@@ -34,7 +34,7 @@ $header_menu = $all_generalFields['header_menu'];
                     <form action="/" method="post">
                         <div class="position-relative">
                             <input class="input-newsletter input-search w-100" type="text" name="s" requierd placeholder="Search">
-                            <button class="search-button subscription-button">
+                            <button class="search-button subscription-button" name="submit-search">
                                 <span class="submit-txt">Submit</span>
                             </button>
                         </div>
@@ -135,7 +135,7 @@ $header_menu = $all_generalFields['header_menu'];
                                 <?php } ?>
                             </ul>
                             <div class="right-side">
-                                <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search">
+                                <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search" name="search-button">
                                 </button>
                             </div>
                         </nav>
@@ -185,7 +185,7 @@ $header_menu = $all_generalFields['header_menu'];
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list align-items-center">
                                 <li>
-                                    <button class="hamburger hamburger--collapse mt-0" type="button">
+                                    <button class="hamburger hamburger--collapse mt-0" type="button" name="hamburger-button">
                                         <div class="menu_mobile_nav">
                                             <div class="hamburger_menu_icon">
                                                 <div class="line"></div>
@@ -202,7 +202,7 @@ $header_menu = $all_generalFields['header_menu'];
                                 </li>
                             </ul>
                             <div class="right-side">
-                                <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search">
+                                <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search" name="search-button">
                                 </button>
                             </div>
                             <div id="menu_mobile" class="menu_on_mobile">

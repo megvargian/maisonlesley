@@ -359,20 +359,47 @@ add_action('wp_head', function() {
 });
 
 function custom_product_filter() {
+    // $filter_attributes = array( 'pa_color', 'pa_size' ); // Replace with your attribute slugs
+
+    // if ( ! empty( $filter_attributes ) ) {
+    //     echo '<div class="custom-product-filter">';
+    //     echo '<form action="' . esc_url( get_pagenum_link() ) . '" method="get">';
+
+    //     foreach ( $filter_attributes as $attribute ) {
+    //         $terms = get_terms( $attribute );
+    //         echo '<pre>'; print_r($terms); echo '</pre>';
+    //         if ( ! empty( $terms ) ) {
+    //             $current_term = isset( $_GET[ $attribute ] ) ? sanitize_key( $_GET[ $attribute ] ) : '';
+
+    //             echo '<select name="' . esc_attr( $attribute ) . '">';
+    //             echo '<option value="">All ' . ucfirst( $attribute ) . '</option>';
+
+    //             foreach ( $terms as $term ) {
+    //                 $selected = $current_term === $term->slug ? 'selected' : '';
+    //                 echo '<option value="' . esc_attr( $term->slug ) . '" ' . $selected . '>' . esc_html( $term->name ) . '</option>';
+    //             }
+
+    //             echo '</select>';
+    //         }
+    //     }
+
+    //     echo '<button type="submit">Filter</button>';
+    //     echo '</form>';
+    //     echo '</div>';
+    // }
+
     $filter_attributes = array( 'pa_color', 'pa_size' ); // Replace with your attribute slugs
 
     if ( ! empty( $filter_attributes ) ) {
         echo '<div class="custom-product-filter">';
-        echo '<form action="' . esc_url( get_pagenum_link() ) . '" method="get">';
 
         foreach ( $filter_attributes as $attribute ) {
             $terms = get_terms( $attribute );
-            echo '<pre>'; print_r($terms); echo '</pre>';
             if ( ! empty( $terms ) ) {
                 $current_term = isset( $_GET[ $attribute ] ) ? sanitize_key( $_GET[ $attribute ] ) : '';
 
-                echo '<select name="' . esc_attr( $attribute ) . '">';
-                echo '<option value="">All ' . ucfirst( $attribute ) . '</option>';
+                echo '<select id="'. esc_attr( $attribute ) .'" name="' . esc_attr( $attribute ) . '">';
+                // echo '<option value="">All ' . ucfirst( $attribute ) . '</option>';
 
                 foreach ( $terms as $term ) {
                     $selected = $current_term === $term->slug ? 'selected' : '';
@@ -382,9 +409,58 @@ function custom_product_filter() {
                 echo '</select>';
             }
         }
-
-        echo '<button type="submit">Filter</button>';
-        echo '</form>';
         echo '</div>';
     }
+
+    ?>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#pa_color').on('change', function() {
+                var color = $(this).val();
+                $.ajax({
+                    url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                    type: 'POST',
+                    data: {
+                        action: 'filter_products',
+                        color: color,
+                    },
+                    success: function(response) {
+                        $('#product-list').html(response);
+                    }
+                });
+            });
+        });
+    </script>
+    <?php
 }
+
+function filter_products() {
+    $color = $_POST['color'];
+
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'pa_color', // Replace 'pa_color' with the attribute taxonomy slug
+                'field' => 'slug',
+                'terms' => $color,
+            ),
+        ),
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+            wc_get_template_part('content', 'product');
+        endwhile;
+        wp_reset_postdata();
+    else :
+        echo '<p>No products found</p>';
+    endif;
+
+    wp_die();
+}
+add_action('wp_ajax_filter_products', 'filter_products');
+add_action('wp_ajax_nopriv_filter_products', 'filter_products');

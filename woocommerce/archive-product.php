@@ -37,6 +37,9 @@ do_action( 'woocommerce_before_main_content' );
  */
 do_action( 'woocommerce_shop_loop_header' );
 custom_product_filter();
+?>
+<div id="product-list">
+<?php
 if ( woocommerce_product_loop() ) {
 	/**
 	 * Hook: woocommerce_before_shop_loop.
@@ -72,7 +75,9 @@ if ( woocommerce_product_loop() ) {
 	 */
 	do_action( 'woocommerce_no_products_found' );
 }
-
+?>
+</div>
+<?php
 /**
  * Hook: woocommerce_after_main_content.
  *
