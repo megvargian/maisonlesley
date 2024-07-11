@@ -416,7 +416,7 @@ function custom_product_filter() {
     <script>
         <?php $category = get_queried_object(); ?>
         jQuery(document).ready(function($) {
-            $('#pa_color', '#pa-size').on('change', function() {
+            $('#pa_color , #pa_size').on('change', function() {
                 var color = $('#pa_color').val();
                 var size = $('#pa_size').val();
                 $.ajax({
