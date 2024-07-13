@@ -471,18 +471,29 @@ function filter_products() {
             'terms' => $category_id,
         );
     }
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     $args = array(
         'post_type' => 'product',
-        'posts_per_page' => -1,
+        'posts_per_page' => 1,
+        'paged' => $paged, // Current page number
         'tax_query' => $tax_query,
     );
-    echo '<pre>'; print_r($args); echo'</pre>';
     $query = new WP_Query($args);
-    echo '<pre>'; print_r($query); echo'</pre>';
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
             wc_get_template_part('content', 'product');
         endwhile;
+        $total_pages = $query->max_num_pages;
+        if ($total_pages > 1) {
+            $current_page = max(1, get_query_var('paged'));
+
+            echo paginate_links(array(
+                'base' => get_pagenum_link(1) . '%_%',
+                'format' => 'page/%#%',
+                'current' => $current_page,
+                'total' => $total_pages,
+            ));
+        }
         wp_reset_postdata();
     else : ?>
         <div class="container">
