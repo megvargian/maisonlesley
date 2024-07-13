@@ -475,7 +475,6 @@ function filter_products() {
         'post_type' => 'product',
         'posts_per_page' => -1,
         'tax_query' => $tax_query,
-        'cat' => $category_id,
     );
     echo '<pre>'; print_r($args); echo'</pre>';
     $query = new WP_Query($args);
