@@ -1191,3 +1191,11 @@ header.active {
   border-color: none !important;
   box-shadow: none !important;
 }
+
+.product-list h2 {
+  font-size: 1.2rem;
+}
+.product-list .price {
+  font-family: "Rutan-Light";
+  font-weight: 500;
+}

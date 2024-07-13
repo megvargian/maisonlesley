@@ -22,6 +22,7 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
+echo $counter_products;
 ?>
 
 <div class="col-lg-3 col-md-6 col-12" <?php wc_product_class( '', $product ); ?>>

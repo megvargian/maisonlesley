@@ -18,6 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 get_header( 'shop' );
+global $counter_products;
 ?>
 <div class="container">
 	<div class="row">
@@ -51,17 +52,19 @@ get_header( 'shop' );
 					/**
 					 * Hook: woocommerce_before_shop_loop.
 					 */
-
+					$counter_products = 0;
 					if ( wc_get_loop_prop( 'total' ) ) {
 						while ( have_posts() ) {
 							the_post();
+
 
 							/**
 							 * Hook: woocommerce_shop_loop.
 							 */
 							do_action( 'woocommerce_shop_loop' );
 
-							wc_get_template_part( 'content', 'product' );
+							wc_get_template_part( 'content', 'product');
+							$counter_products++;
 						}
 					}
 					/**
