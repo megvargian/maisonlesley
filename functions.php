@@ -388,27 +388,26 @@ function custom_product_filter() {
     //     echo '</div>';
     // }
 
-    $filter_attributes = array( 'pa_color', 'pa_size' ); // Replace with your attribute slugs
+    $filter_attributes = array( 'pa_color', 'pa_size' );
 
     if ( ! empty( $filter_attributes ) ) {
         echo '<div class="custom-product-filter">';
+            foreach ( $filter_attributes as $attribute ) {
+                $terms = get_terms( $attribute );
+                if ( ! empty( $terms ) ) {
+                    $current_term = isset( $_GET[ $attribute ] ) ? sanitize_key( $_GET[ $attribute ] ) : '';
 
-        foreach ( $filter_attributes as $attribute ) {
-            $terms = get_terms( $attribute );
-            if ( ! empty( $terms ) ) {
-                $current_term = isset( $_GET[ $attribute ] ) ? sanitize_key( $_GET[ $attribute ] ) : '';
+                    echo '<select class="filter_id" id="'. esc_attr( $attribute ) .'" name="' . esc_attr( $attribute ) . '">';
+                    echo '<option value="">' . ($attribute === 'pa_color') ? 'color' : 'size'; echo '</option>';
 
-                echo '<select id="'. esc_attr( $attribute ) .'" name="' . esc_attr( $attribute ) . '">';
-                echo '<option value="">All ' . ucfirst( $attribute ) . '</option>';
+                    foreach ( $terms as $term ) {
+                        $selected = $current_term === $term->slug ? 'selected' : '';
+                        echo '<option value="' . esc_attr( $term->slug ) . '" ' . $selected . '>' . esc_html( $term->name ) . '</option>';
+                    }
 
-                foreach ( $terms as $term ) {
-                    $selected = $current_term === $term->slug ? 'selected' : '';
-                    echo '<option value="' . esc_attr( $term->slug ) . '" ' . $selected . '>' . esc_html( $term->name ) . '</option>';
+                    echo '</select>';
                 }
-
-                echo '</select>';
             }
-        }
         echo '</div>';
     }
 

@@ -252,6 +252,9 @@
 			opacity: 1;
 		}
 	}
+	.woocommerce-breadcrumb{
+		display: none !important;
+	}
 }
 @media (max-width: 767px){
 	.location-mobile, .call-mobile{

@@ -296,6 +296,9 @@
   .menu_on_mobile.active .menu_on_mobile_wrapper .menu_on_mobile_inner_wrapper .animated_menu_el_follow_us:nth-child(13) {
     transition: all 0.8s 0.98s cubic-bezier(0.32, 0.17, 0, 1);
   }
+  .woocommerce-breadcrumb {
+    display: none !important;
+  }
 }
 @media (max-width: 767px) {
   .location-mobile .default-button, .call-mobile .default-button {
