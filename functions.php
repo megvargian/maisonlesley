@@ -486,12 +486,9 @@ function filter_products() {
         $total_pages = $query->max_num_pages;
         if ($total_pages > 1) {
             $current_page = max(1, get_query_var('paged'));
-            if (is_product_category()) {
-                $current_category = get_queried_object();
-                $category_name = $current_category->name;
-            }
+            $category_slug = get_category_slug_by_id($category_id);
             echo paginate_links(array(
-                'base' => 'https://new.maisonlesley.com/product-category/'.$category_name.'/' . '%_%',
+                'base' => 'https://new.maisonlesley.com/product-category/'.$category_slug.'/' . '%_%',
                 'format' => 'page/%#%',
                 'current' => $current_page,
                 'total' => $total_pages,
