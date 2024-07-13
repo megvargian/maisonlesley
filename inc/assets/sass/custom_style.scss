@@ -1129,7 +1129,11 @@ header.active{
 	margin-right: 20px;
 	outline: none !important;
 	option{
-		border-radius: none !important;
+		border-radius: 0 !important;
+		text-align: center;
+	}
+	option:checked{
+		background-color: #fff !important;
 	}
 }
 .filter_id:focus{

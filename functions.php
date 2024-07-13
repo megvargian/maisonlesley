@@ -463,7 +463,7 @@ function filter_products() {
             'terms' => $size,
         );
     }
-
+    echo $category_id;
     if (!empty($category_id)) {
         $tax_query[] = array(
             'taxonomy' => 'product_cat',

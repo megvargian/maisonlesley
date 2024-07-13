@@ -1177,7 +1177,11 @@ header.active {
   outline: none !important;
 }
 .filter_id option {
-  border-radius: none !important;
+  border-radius: 0 !important;
+  text-align: center;
+}
+.filter_id option:checked {
+  background-color: #fff !important;
 }
 
 .filter_id:focus {
