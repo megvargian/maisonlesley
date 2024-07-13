@@ -24,8 +24,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 
-<div class="col-lg-3 col-md-6 col-12" <?php wc_product_class( '', $product ); ?>>
-    <pre><?php echo $counter_products; ?></pre>
+<div class="col-lg-<?php echo (($counter_products - 3) % 5 == 0) ? '6' : '3' ?> col-md-6 col-12" <?php wc_product_class( '', $product ); ?>>
         <?php
         /**
          * Hook: woocommerce_before_shop_loop_item.
