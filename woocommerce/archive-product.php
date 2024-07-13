@@ -61,8 +61,19 @@ global $counter_products;
 							 */
 							do_action( 'woocommerce_shop_loop' );
 
-							wc_get_template_part( 'content', 'product');
-							$counter_products++;
+							if($counter_products % 5 != 0){
+								?>
+								<div class="col-6">
+									<div class="row">
+							 <?php
+							}
+									wc_get_template_part( 'content', 'product');
+									$counter_products++;
+							if($counter_products % 5 != 0){
+							?>
+								</div>
+							</div>
+							<?php }
 						}
 					}
 					/**
