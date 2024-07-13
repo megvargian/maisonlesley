@@ -477,9 +477,9 @@ function filter_products() {
         'tax_query' => $tax_query,
         'cat' => $category_id,
     );
-
+    echo '<pre>'; print_r($args); echo'</pre>';
     $query = new WP_Query($args);
-
+    echo '<pre>'; print_r($query); echo'</pre>';
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
             wc_get_template_part('content', 'product');
