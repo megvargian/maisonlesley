@@ -441,6 +441,14 @@ function custom_product_filter() {
     <?php
 }
 
+function get_category_slug_by_id($category_id) {
+    $term = get_term($category_id, 'product_cat');
+    if (!is_wp_error($term) && $term) {
+        return $term->slug;
+    }
+    return '';
+}
+
 function filter_products() {
     $color = isset($_POST['color']) ? sanitize_text_field($_POST['color']) : '';
     $size = isset($_POST['size']) ? sanitize_text_field($_POST['size']) : '';
