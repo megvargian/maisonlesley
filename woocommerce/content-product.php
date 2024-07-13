@@ -17,15 +17,15 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product;
-
+global $counter_products;
 // Ensure visibility.
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
-echo $counter_products;
 ?>
 
 <div class="col-lg-3 col-md-6 col-12" <?php wc_product_class( '', $product ); ?>>
+    <pre><?php echo $counter_products; ?></pre>
         <?php
         /**
          * Hook: woocommerce_before_shop_loop_item.
