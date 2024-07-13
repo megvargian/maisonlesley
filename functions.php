@@ -482,7 +482,7 @@ function filter_products() {
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     $args = array(
         'post_type' => 'product',
-        'posts_per_page' => 1,
+        'posts_per_page' => 20,
         'paged' => $paged, // Current page number
         'tax_query' => $tax_query,
     );
