@@ -486,12 +486,19 @@ function filter_products() {
         $total_pages = $query->max_num_pages;
         if ($total_pages > 1) {
             $current_page = max(1, get_query_var('paged'));
-
+            if (is_product_category()) {
+                $current_category = get_queried_object();
+                $category_name = $current_category->name;
+            }
             echo paginate_links(array(
-                'base' => get_pagenum_link(1) . '%_%',
+                'base' => 'https://new.maisonlesley.com/product-category/'.$category_name.'/' . '%_%',
                 'format' => 'page/%#%',
                 'current' => $current_page,
                 'total' => $total_pages,
+                'prev_text' => __('« Prev'),
+                'next_text' => __('Next »'),
+                'mid_size' => 1,
+                'type' => 'plain',
             ));
         }
         wp_reset_postdata();
