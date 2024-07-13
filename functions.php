@@ -398,7 +398,9 @@ function custom_product_filter() {
                     $current_term = isset( $_GET[ $attribute ] ) ? sanitize_key( $_GET[ $attribute ] ) : '';
 
                     echo '<select class="filter_id" id="'. esc_attr( $attribute ) .'" name="' . esc_attr( $attribute ) . '">';
-                    echo '<option value="">' . ($attribute === 'pa_color') ? 'color' : 'size'; echo '</option>';
+                    ?>
+                        <option value=""><?php echo ($attribute === 'pa_color') ? 'color' : 'size'; ?></option>
+                    <?php
 
                     foreach ( $terms as $term ) {
                         $selected = $current_term === $term->slug ? 'selected' : '';
