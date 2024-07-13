@@ -1170,4 +1170,17 @@ header.active {
   background-color: #f0f0f0;
   cursor: pointer;
   margin-bottom: 0;
+  width: auto !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin-right: 20px;
+  outline: none !important;
+}
+.filter_id option {
+  border-radius: none !important;
+}
+
+.filter_id:focus {
+  border-color: none !important;
+  box-shadow: none !important;
 }

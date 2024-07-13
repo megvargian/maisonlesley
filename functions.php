@@ -396,7 +396,7 @@ function custom_product_filter() {
                 $terms = get_terms( $attribute );
                 if ( ! empty( $terms ) ) {
                     $current_term = isset( $_GET[ $attribute ] ) ? sanitize_key( $_GET[ $attribute ] ) : '';
-                    echo '<select class="filter_id" id="'. esc_attr( $attribute ) .'" name="' . esc_attr( $attribute ) . '">';
+                    echo '<select class="filter_id form-select" id="'. esc_attr( $attribute ) .'" name="' . esc_attr( $attribute ) . '">';
                     ?>
                         <option value="" selected>
                             <?php echo ($attribute === 'pa_color') ? 'color' : 'size'; ?>
@@ -408,7 +408,6 @@ function custom_product_filter() {
                         echo '<option value="' . esc_attr( $term->slug ) . '" ' . $selected . '>' . esc_html( $term->name ) . '</option>';
                     }
                     ?>
-                        <button class="icon-arrow"></button>
                     </select>
                 <?php
                 }
@@ -436,9 +435,6 @@ function custom_product_filter() {
                         $('.products.columns-4').html(response);
                     }
                 });
-            });
-            $('.filter_id').click(function(){
-                $(this).find('.icon-arrow').addClass('is-active');
             });
         });
     </script>
