@@ -1083,6 +1083,9 @@ header.active{
 		font-size: 12px;
 		line-height: 12px;
 		font-family: $mm-icons;
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
 	.icon-arrow::before{
 		-webkit-transform: rotate(270deg);
