@@ -17,12 +17,11 @@
 
 
 defined( 'ABSPATH' ) || exit;
+get_header( 'shop' );
 ?>
 <div class="container">
 	<div class="row">
 		<?php
-			get_header( 'shop' );
-
 			/**
 			 * Hook: woocommerce_before_main_content.
 			 *
@@ -44,7 +43,6 @@ defined( 'ABSPATH' ) || exit;
 		?>
 	</div>
 </div>
-?>
 <div id="product-list">
 	<div class="container">
 		<div class="row">
