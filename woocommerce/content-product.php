@@ -24,8 +24,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 
-<div class="col-lg-3 col-md-6 col-12">
-    <li <?php wc_product_class( '', $product ); ?>>
+<div class="col-lg-3 col-md-6 col-12" <?php wc_product_class( '', $product ); ?>>
         <?php
         /**
          * Hook: woocommerce_before_shop_loop_item.
@@ -84,5 +83,4 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         // Display the add to cart button
         // echo woocommerce_template_loop_add_to_cart();
         ?>
-    </li>
 </div>

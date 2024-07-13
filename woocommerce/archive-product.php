@@ -51,7 +51,6 @@ get_header( 'shop' );
 					/**
 					 * Hook: woocommerce_before_shop_loop.
 					 */
-					woocommerce_product_loop_start();
 
 					if ( wc_get_loop_prop( 'total' ) ) {
 						while ( have_posts() ) {
@@ -65,9 +64,6 @@ get_header( 'shop' );
 							wc_get_template_part( 'content', 'product' );
 						}
 					}
-
-					woocommerce_product_loop_end();
-
 					/**
 					 * Hook: woocommerce_after_shop_loop.
 					 *
