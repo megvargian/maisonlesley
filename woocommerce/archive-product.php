@@ -56,8 +56,6 @@ global $counter_products;
 					if ( wc_get_loop_prop( 'total' ) ) {
 						while ( have_posts() ) {
 							the_post();
-
-
 							/**
 							 * Hook: woocommerce_shop_loop.
 							 */
