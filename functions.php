@@ -463,18 +463,19 @@ function filter_products() {
             'terms' => $size,
         );
     }
-    echo $category_id;
-    if (!empty($category_id)) {
-        $tax_query[] = array(
-            'taxonomy' => 'product_cat',
-            'field' => 'term_id',
-            'terms' => $category_id,
-        );
-    }
+
+    // if (!empty($category_id)) {
+    //     $tax_query[] = array(
+    //         'taxonomy' => 'product_cat',
+    //         'field' => 'term_id',
+    //         'terms' => $category_id,
+    //     );
+    // }
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => -1,
         'tax_query' => $tax_query,
+        'cat' => $category_id,
     );
 
     $query = new WP_Query($args);

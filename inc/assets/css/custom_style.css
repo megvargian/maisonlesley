@@ -1183,6 +1183,9 @@ header.active {
 .filter_id option:checked {
   background-color: #fff !important;
 }
+.filter_id option:hover {
+  background-color: #fff !important;
+}
 
 .filter_id:focus {
   border-color: none !important;

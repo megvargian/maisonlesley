@@ -1135,6 +1135,9 @@ header.active{
 	option:checked{
 		background-color: #fff !important;
 	}
+	option:hover{
+		background-color: #fff !important;
+	}
 }
 .filter_id:focus{
 	border-color: none !important;
