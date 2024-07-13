@@ -43,7 +43,7 @@ get_header( 'shop' );
 		?>
 	</div>
 </div>
-<div id="product-list">
+<div id="product-list" class="pt-4">
 	<div class="container">
 		<div class="row">
 			<?php

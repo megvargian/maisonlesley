@@ -399,7 +399,10 @@ function custom_product_filter() {
 
                     echo '<select class="filter_id" id="'. esc_attr( $attribute ) .'" name="' . esc_attr( $attribute ) . '">';
                     ?>
-                        <option value=""><?php echo ($attribute === 'pa_color') ? 'color' : 'size'; ?></option>
+                        <option value="" selected>
+                            <?php echo ($attribute === 'pa_color') ? 'color' : 'size'; ?>
+                            <button class="icon-arrow"></button>
+                        </option>
                     <?php
 
                     foreach ( $terms as $term ) {
@@ -433,6 +436,9 @@ function custom_product_filter() {
                         $('.products.columns-4').html(response);
                     }
                 });
+            });
+            $('.filter_id').click(function(){
+                $(this).find('.icon-arrow').addClass('is-active');
             });
         });
     </script>

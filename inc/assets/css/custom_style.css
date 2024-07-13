@@ -1112,6 +1112,10 @@ header.active {
   height: 510px !important;
 }
 
+.content-area {
+  padding: 0;
+}
+
 .woocommerce-products-header__title.page-title {
   padding-left: 10px;
 }
@@ -1120,6 +1124,22 @@ header.active {
   padding: 10px 0;
   border-top: 1px solid #f0f0f0;
   border-bottom: 1px solid #f0f0f0;
+}
+.custom-product-filter .icon-arrow {
+  font-size: 12px;
+  line-height: 12px;
+  font-family: "mm-icons";
+}
+.custom-product-filter .icon-arrow::before {
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+  content: "\e002";
+}
+.custom-product-filter .icon-arrow.is-active::before {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .woocommerce-products-header {
