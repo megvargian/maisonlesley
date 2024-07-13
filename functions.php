@@ -444,7 +444,7 @@ function custom_product_filter() {
 function filter_products() {
     $color = isset($_POST['color']) ? sanitize_text_field($_POST['color']) : '';
     $size = isset($_POST['size']) ? sanitize_text_field($_POST['size']) : '';
-    $category_id = isset($_POST['category_id']) ? sanitize_text_field($_POST['cat_id']) : '';
+    $category_id = isset($_POST['cat_id']) ? sanitize_text_field($_POST['cat_id']) : '';
 
     $tax_query = array('relation' => 'AND');
 
@@ -464,13 +464,13 @@ function filter_products() {
         );
     }
 
-    // if (!empty($category_id)) {
-    //     $tax_query[] = array(
-    //         'taxonomy' => 'product_cat',
-    //         'field' => 'term_id',
-    //         'terms' => $category_id,
-    //     );
-    // }
+    if (!empty($category_id)) {
+        $tax_query[] = array(
+            'taxonomy' => 'product_cat',
+            'field' => 'term_id',
+            'terms' => $category_id,
+        );
+    }
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => -1,
