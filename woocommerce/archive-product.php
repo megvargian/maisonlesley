@@ -46,20 +46,32 @@ global $counter_products;
 </div>
 <div id="product-list" class="pt-4">
 	<div class="container">
-		<div class="row">
+		<div class="row pb-4">
 			<?php
 				if ( woocommerce_product_loop() ) {
 					/**
 					 * Hook: woocommerce_before_shop_loop.
 					 */
+					$counter_products = 1;
 					if ( wc_get_loop_prop( 'total' ) ) {
 						while ( have_posts() ) {
 							the_post();
+
 							/**
 							 * Hook: woocommerce_shop_loop.
 							 */
 							do_action( 'woocommerce_shop_loop' );
-							wc_get_template_part( 'content', 'product');
+							if($counter_products % 5 == 0){
+							?>
+								<div class="col-6">
+									<div class="row">
+										<?php wc_get_template_part( 'content', 'product'); ?>
+									</div>
+								</div>
+							<?php
+							} else {
+								wc_get_template_part( 'content', 'product');
+							}
 							$counter_products++;
 						}
 					}

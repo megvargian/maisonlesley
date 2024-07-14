@@ -509,7 +509,7 @@ function filter_products() {
         wp_reset_postdata();
     else : ?>
         <div class="container">
-            <div class="row text-center">
+            <div class="row text-center pb-4">
                 <h2>No products found</h2>
             </div>
         </div>
