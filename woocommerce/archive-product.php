@@ -54,26 +54,52 @@ global $counter_products;
 					 */
 					$counter_products = 1;
 					if ( wc_get_loop_prop( 'total' ) ) {
-						if($counter_products % 5 != 0){ ?>
-						<div class="col-6">
-							<div class="row">
-						<?php }
-								while ( have_posts() ) {
-									the_post();
-									/**
-									 * Hook: woocommerce_shop_loop.
-									 */
-									do_action( 'woocommerce_shop_loop' );
+						// while ( have_posts() ) {
+						// 	the_post();
+						// 	/**
+						// 	 * Hook: woocommerce_shop_loop.
+						// 	 */
+						// 	do_action( 'woocommerce_shop_loop' );
 
-										wc_get_template_part( 'content', 'product');
+						// 		wc_get_template_part( 'content', 'product');
 
-									$counter_products++;
-								}
-								if($counter_products % 5 != 0){ ?>
-							</div>
-						</div>
-						<?php
+						// 	$counter_products++;
+						// }
+						$posts = []; // Initialize an array to hold the posts
+
+						// Populate the array with posts
+						while ( have_posts() ) {
+							the_post();
+							$posts[] = get_post(); // Add the current post to the array
 						}
+
+						$total_posts = count($posts); // Get the total number of posts
+
+						for ( $i = 1; $i < $total_posts; $i++ ) {
+							$post = $posts[$i]; // Get the current post
+							setup_postdata($post); // Set up post data for the current post
+
+							/**
+							 * Hook: woocommerce_shop_loop.
+							 */
+							do_action( 'woocommerce_shop_loop' );
+
+							if ( $i % 5 != 0  ) {
+								?>
+								<div class="col-6">
+									<div class="row">
+									<?php
+										wc_get_template_part( 'content', 'product' );
+									?>
+									</div>
+								</div>
+							<?php
+							} else {
+								wc_get_template_part( 'content', 'product' );
+							}
+						}
+
+						wp_reset_postdata(); // Reset post data after the loop
 					}
 					/**
 					 * Hook: woocommerce_after_shop_loop.
