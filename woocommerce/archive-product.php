@@ -61,7 +61,7 @@ global $counter_products;
 							 * Hook: woocommerce_shop_loop.
 							 */
 							do_action( 'woocommerce_shop_loop' );
-							if($counter_products % 5 == 0){
+							if($counter_products % 5 != 0){
 							?>
 								<div class="col-6">
 									<div class="row">
