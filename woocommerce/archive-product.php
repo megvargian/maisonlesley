@@ -122,8 +122,8 @@ global $counter_products;
 					do_action( 'woocommerce_no_products_found' );
 				}
 			?>
-		</>
-	</>
+		</div>
+	</div>
 </div>
 <?php
 /**
