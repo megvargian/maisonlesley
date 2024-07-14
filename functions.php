@@ -432,7 +432,7 @@ function custom_product_filter() {
                         cat_id: '<?php echo $category->term_id; ?>'
                     },
                     success: function(response) {
-                        $('#product-list .contianer .row').html(response);
+                        $('#product-list').find('.row').html(response);
                     }
                 });
             });
