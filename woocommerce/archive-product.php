@@ -54,17 +54,17 @@ global $counter_products;
 					 */
 					$counter_products = 1;
 					if ( wc_get_loop_prop( 'total' ) ) {
-						// while ( have_posts() ) {
-						// 	the_post();
-						// 	/**
-						// 	 * Hook: woocommerce_shop_loop.
-						// 	 */
-						// 	do_action( 'woocommerce_shop_loop' );
+						while ( have_posts() ) {
+							the_post();
+							/**
+							 * Hook: woocommerce_shop_loop.
+							 */
+							do_action( 'woocommerce_shop_loop' );
 
-						// 		wc_get_template_part( 'content', 'product');
+								wc_get_template_part( 'content', 'product');
 
-						// 	$counter_products++;
-						// }
+							$counter_products++;
+						}
 
 
 						$posts = []; // Initialize an array to hold the posts
