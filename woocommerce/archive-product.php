@@ -76,7 +76,7 @@ global $counter_products;
 							 * Hook: woocommerce_shop_loop.
 							*/
 							do_action( 'woocommerce_shop_loop' );
-							$posts[] = get_post(); // Add the current post to the array
+							array_push($posts, get_post()); // Add the current post to the array
 						}
 						$total_posts = count($posts); // Get the total number of posts
 						$four_porduct_right_side = array_slice($posts, 0, 4);
