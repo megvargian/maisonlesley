@@ -54,25 +54,25 @@ global $counter_products;
 					 */
 					$counter_products = 1;
 					if ( wc_get_loop_prop( 'total' ) ) {
-						while ( have_posts() ) {
-							the_post();
+						if($counter_products % 5 != 0){ ?>
+						<div class="col-6">
+							<div class="row">
+						<?php }
+								while ( have_posts() ) {
+									the_post();
+									/**
+									 * Hook: woocommerce_shop_loop.
+									 */
+									do_action( 'woocommerce_shop_loop' );
 
-							/**
-							 * Hook: woocommerce_shop_loop.
-							 */
-							do_action( 'woocommerce_shop_loop' );
-							if($counter_products % 5 != 0){
-							?>
-								<div class="col-6">
-									<div class="row">
-										<?php wc_get_template_part( 'content', 'product'); ?>
-									</div>
-								</div>
-							<?php
-							} else {
-								wc_get_template_part( 'content', 'product');
-							}
-							$counter_products++;
+										wc_get_template_part( 'content', 'product');
+
+									$counter_products++;
+								}
+								if($counter_products % 5 != 0){ ?>
+							</div>
+						</div>
+						<?php
 						}
 					}
 					/**
@@ -90,8 +90,8 @@ global $counter_products;
 					do_action( 'woocommerce_no_products_found' );
 				}
 			?>
-		</div>
-	</div>
+		</>
+	</>
 </div>
 <?php
 /**
