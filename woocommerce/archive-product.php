@@ -54,17 +54,17 @@ global $counter_products;
 					 */
 					$counter_products = 1;
 					if ( wc_get_loop_prop( 'total' ) ) {
-						while ( have_posts() ) {
-							the_post();
-							/**
-							 * Hook: woocommerce_shop_loop.
-							 */
-							do_action( 'woocommerce_shop_loop' );
+						// while ( have_posts() ) {
+						// 	the_post();
+							// /**
+							//  * Hook: woocommerce_shop_loop.
+							//  */
+							// do_action( 'woocommerce_shop_loop' );
 
-								wc_get_template_part( 'content', 'product');
+						// 		wc_get_template_part( 'content', 'product');
 
-							$counter_products++;
-						}
+						// 	$counter_products++;
+						// }
 
 
 						$posts = []; // Initialize an array to hold the posts
@@ -72,9 +72,12 @@ global $counter_products;
 						// Populate the array with posts
 						while ( have_posts() ) {
 							the_post();
+							/**
+							 * Hook: woocommerce_shop_loop.
+							*/
+							do_action( 'woocommerce_shop_loop' );
 							$posts[] = get_post(); // Add the current post to the array
 						}
-
 						$total_posts = count($posts); // Get the total number of posts
 						$four_porduct_right_side = array_slice($posts, 0, 4);
 						?>
