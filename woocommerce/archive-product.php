@@ -72,8 +72,6 @@ global $counter_products;
 						$current_index = 0;
 						while ( have_posts() ) {
 							the_post();
-
-
 							array_push($posts, get_post());
 							$current_count = count($posts);
 							if($current_index % 4 == 0){
@@ -96,7 +94,7 @@ global $counter_products;
 										</div>
 									</div>
 								<?php
-							} else {
+							} else if ($current_index % 5 == 0) {
 								for ( $i = 0; $i < count($posts); $i++ ) {
 									$post = $posts[$i]; // Get the current post
 									setup_postdata($post); // Set up post data for the current post
