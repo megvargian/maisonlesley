@@ -19,6 +19,7 @@
 defined( 'ABSPATH' ) || exit;
 get_header( 'shop' );
 global $counter_products;
+global $product;
 ?>
 <div class="container">
 	<div class="row">
@@ -83,7 +84,7 @@ global $counter_products;
 										<div class="row">
 										<?php
 											foreach($four_porduct_right_side as $post) {
-												setup_postdata($post); // Set up post data for the current post
+												$product = $post;
 												/**
 												 * Hook: woocommerce_shop_loop.
 												*/
@@ -91,6 +92,7 @@ global $counter_products;
 												wc_get_template_part( 'content', 'product' );
 
 											}
+											wp_reset_postdata(); // Reset post data after the loop
 										?>
 										</div>
 									</div>
