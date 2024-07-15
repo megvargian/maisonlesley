@@ -69,7 +69,7 @@ global $counter_products;
 
 						$posts = []; // Initialize an array to hold the posts
 						// Populate the array with posts
-						$current_index = 0;
+						$current_index = 1;
 						while ( have_posts() ) {
 							the_post();
 							array_push($posts, get_post());
