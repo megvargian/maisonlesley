@@ -84,7 +84,7 @@ global $product;
 										<div class="row">
 										<?php
 											foreach($four_porduct_right_side as $post) {
-												$product = $post;
+												setup_postdata($post); // Set up post data for the current post
 												/**
 												 * Hook: woocommerce_shop_loop.
 												*/
@@ -97,18 +97,19 @@ global $product;
 										</div>
 									</div>
 								<?php
-							} else if ($current_index % 5 == 0) {
-								for ( $i = 0; $i < count($posts); $i++ ) {
-									$post = $posts[$i]; // Get the current post
-									setup_postdata($post); // Set up post data for the current post
-									/**
-									 * Hook: woocommerce_shop_loop.
-									*/
-									do_action( 'woocommerce_shop_loop' );
-									wc_get_template_part( 'content', 'product' );
-
-								}
 							}
+							// } else if ($current_index % 5 == 0) {
+							// 	for ( $i = 0; $i < count($posts); $i++ ) {
+							// 		$post = $posts[$i]; // Get the current post
+							// 		setup_postdata($post); // Set up post data for the current post
+							// 		/**
+							// 		 * Hook: woocommerce_shop_loop.
+							// 		*/
+							// 		do_action( 'woocommerce_shop_loop' );
+							// 		wc_get_template_part( 'content', 'product' );
+
+							// 	}
+							// }
 							$current_index++;
 						}
 						wp_reset_postdata(); // Reset post data after the loop
