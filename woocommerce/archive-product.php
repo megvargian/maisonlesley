@@ -75,16 +75,14 @@ global $product;
 							the_post();
 							array_push($posts, get_post());
 							$current_count = count($posts);
-							echo '<pre>'; print_r($current_index); echo '</pre>';
-							if($current_index % 4 == 0){
-								$four_porduct_right_side = array_slice($posts, ($current_index - 4) , $current_index);
-								echo '<pre>'; print_r($four_porduct_right_side); echo '</pre>';
+							if($current_index % 5 == 0){
+								$four_porduct_right_side = array_slice($posts, ($current_index - 5) , $current_index);
 								?>
 									<div class="col-6">
 										<div class="row">
 										<?php
-											foreach($four_porduct_right_side as $post) {
-												setup_postdata($post); // Set up post data for the current post
+											for($i=0; $i < 4; $i++) {
+												setup_postdata($four_porduct_right_side[$i]); // Set up post data for the current post
 												/**
 												 * Hook: woocommerce_shop_loop.
 												*/
@@ -97,6 +95,12 @@ global $product;
 										</div>
 									</div>
 								<?php
+								setup_postdata($four_porduct_right_side[5]); // Set up post data for the current post
+								/**
+								 * Hook: woocommerce_shop_loop.
+								*/
+								do_action( 'woocommerce_shop_loop' );
+								wc_get_template_part( 'content', 'product' );
 							}
 							// } else if ($current_index % 5 == 0) {
 							// 	for ( $i = 0; $i < count($posts); $i++ ) {
