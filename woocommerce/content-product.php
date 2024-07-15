@@ -64,16 +64,15 @@ if ( empty( $product ) || ! $product->is_visible() ) {
          */
         // do_action( 'woocommerce_after_shop_loop_item' );
         ?>
-        <pre><?php print_r($product) ?></pre>
         <?php
         // Open the product link
-        echo '<a href="' . esc_url( get_permalink() ) . '">';
+        echo '<a href="' . esc_url( $product->get_permalink() ) . '">';
 
         // Display the product thumbnail
         echo woocommerce_get_product_thumbnail();
 
         // Display the product title
-        echo '<h2 class="woocommerce-loop-product__title">' . get_the_title() . '</h2>';
+        echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';
 
         // Display the product price
         echo '<span class="price">' . $product->get_price_html() . '</span>';
