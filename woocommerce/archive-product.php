@@ -82,8 +82,7 @@ global $counter_products;
 									<div class="col-6">
 										<div class="row">
 										<?php
-											for ( $i = 0; $i < count($four_porduct_right_side); $i++ ) {
-												$post = $posts[$i]; // Get the current post
+											foreach($four_porduct_right_side as $post) {
 												setup_postdata($post); // Set up post data for the current post
 												/**
 												 * Hook: woocommerce_shop_loop.
