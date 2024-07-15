@@ -74,11 +74,13 @@ global $counter_products;
 							the_post();
 							array_push($posts, get_post());
 							$current_count = count($posts);
+							echo '<pre>'; print_r($current_index); echo '</pre>';
 							if($current_index % 4 == 0){
 								$four_porduct_right_side = array_slice($posts, ($current_index - 4) , $current_index);
+								echo '<pre>'; print_r($four_porduct_right_side); echo '</pre>';
 								?>
-								<div class="col-6">
-									<div class="row">
+									<div class="col-6">
+										<div class="row">
 										<?php
 											for ( $i = 0; $i < count($four_porduct_right_side); $i++ ) {
 												$post = $posts[$i]; // Get the current post
