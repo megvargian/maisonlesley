@@ -64,6 +64,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
          */
         // do_action( 'woocommerce_after_shop_loop_item' );
         ?>
+        <pre><?php print_r($product) ?></pre>
         <?php
         // Open the product link
         echo '<a href="' . esc_url( get_permalink() ) . '">';
