@@ -67,21 +67,19 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         <?php
         // Open the product link
         echo '<a class="w-100 h-100 d-block cat-single-product" href="' . esc_url( $product->get_permalink() ) . '">';
-        $attachment_id = $product->get_image_id(); // Get the product image ID
-        $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail'): wp_get_attachment_image_src($attachment_id) ;
-
-        if ($image_url) {
-            echo '<img src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
-        }
-        // Display the product thumbnail
-        // echo ($counter_products % 5 == 0) ? woocommerce_get_product_thumbnail('custom-woocommerce-thumbnail') : woocommerce_get_product_thumbnail();
-
-        // Display the product title
-        echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';
-
-        // Display the product price
-        echo '<span class="price">' . $product->get_price_html() . '</span>';
-
+                $attachment_id = $product->get_image_id(); // Get the product image ID
+                $image_url_mobile = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
+                $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($attachment_id) ;
+                if ($image_url || $image_url_mobile) {
+                        echo '<img class="d-md-none d-block" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
+                        echo '<img class="d-md-block d-none" src="' . esc_url($image_url_mobile[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
+                }
+                // Display the product thumbnail
+                // echo ($counter_products % 5 == 0) ? woocommerce_get_product_thumbnail('custom-woocommerce-thumbnail') : woocommerce_get_product_thumbnail();
+                // Display the product title
+                echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';
+                // Display the product price
+                echo '<span class="price">' . $product->get_price_html() . '</span>';
         // Close the product link
         echo '</a>';
 
