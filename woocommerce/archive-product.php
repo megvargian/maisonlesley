@@ -115,6 +115,7 @@ global $product;
 							// 	}
 							// }
 							$current_index++;
+							$counter_products = $current_index;
 						}
 						wp_reset_postdata(); // Reset post data after the loop
 					}

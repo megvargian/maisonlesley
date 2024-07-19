@@ -69,7 +69,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         echo '<a href="' . esc_url( $product->get_permalink() ) . '">';
 
         // Display the product thumbnail
-        echo woocommerce_get_product_thumbnail();
+        echo ($counter_products %5 === 0) ? woocommerce_get_product_thumbnail('custom-woocommerce-thumbnail') : woocommerce_get_product_thumbnail();
 
         // Display the product title
         echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';

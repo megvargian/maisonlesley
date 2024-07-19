@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<section class="page_404 py-5">
+	<section class="page_404 py-5 mt-5">
 		<div class="container py-5">
 			<div class="text-center">
 				<div class="title_404">

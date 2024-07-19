@@ -520,3 +520,9 @@ function filter_products() {
 }
 add_action('wp_ajax_filter_products', 'filter_products');
 add_action('wp_ajax_nopriv_filter_products', 'filter_products');
+
+add_action('after_setup_theme', 'custom_woocommerce_image_size');
+
+function custom_woocommerce_image_size() {
+    add_image_size('custom-woocommerce-thumbnail', 500, 500, true); // 500px by 500px, hard crop
+}
