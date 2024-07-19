@@ -79,6 +79,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         // Close the product link
         echo '</a>';
         // Display the add to cart button
-        // echo $counter_products > 1 ? '' : woocommerce_template_single_add_to_cart();
+        echo $counter_products > 1 ? '' : woocommerce_template_single_add_to_cart();
         ?>
 </div>
