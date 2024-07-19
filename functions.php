@@ -560,3 +560,35 @@ function custom_output_related_products() {
         wp_reset_postdata();
     }
 }
+// remove add to cart
+function remove_default_add_to_cart_button() {
+    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+}
+add_action( 'init', 'remove_default_add_to_cart_button' );
+
+function add_custom_add_to_cart_button() {
+    global $product;
+    ?>
+        <button id="custom-add-to-cart-button" class="button custom-button" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+            <?php esc_html_e( 'Custom Add to Cart', 'woocommerce' ); ?>
+        </button>
+    <?php
+}
+add_action( 'woocommerce_single_product_summary', 'add_custom_add_to_cart_button', 30 );
+
+function custom_add_to_cart() {
+    $product_id = intval( $_POST['product_id'] );
+    $quantity = 1; // You can customize the quantity
+
+    $added = WC()->cart->add_to_cart( $product_id, $quantity );
+
+    if ( $added ) {
+        wp_send_json_success();
+    } else {
+        wp_send_json_error();
+    }
+
+    wp_die();
+}
+add_action( 'wp_ajax_custom_add_to_cart', 'custom_add_to_cart' );
+add_action( 'wp_ajax_nopriv_custom_add_to_cart', 'custom_add_to_cart' );

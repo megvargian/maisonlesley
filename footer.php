@@ -234,6 +234,27 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
         $('#custom-filter').change(function() {
             $('#custom-filter-form').submit();
         });
+        $('#custom-add-to-cart-button').on('click', function() {
+            var product_id = $(this).data('product-id');
+
+            $.ajax({
+                type: 'POST',
+                url: custom_add_to_cart_params.ajax_url,
+                data: {
+                    action: 'custom_add_to_cart',
+                    product_id: product_id,
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Optionally, you can redirect to the cart or update the cart contents
+                        window.location.href = '/cart/';
+                    } else {
+                        // Handle error (optional)
+                        alert('There was an error adding the product to the cart.');
+                    }
+                }
+            });
+        });
     });
 </script>
 <?php wp_footer(); ?>
