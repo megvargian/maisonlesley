@@ -55,19 +55,6 @@ global $product;
 					 */
 					$counter_products = 1;
 					if ( wc_get_loop_prop( 'total' ) ) {
-						// while ( have_posts() ) {
-						// 	the_post();
-							// /**
-							//  * Hook: woocommerce_shop_loop.
-							//  */
-							// do_action( 'woocommerce_shop_loop' );
-
-						// 		wc_get_template_part( 'content', 'product');
-
-						// 	$counter_products++;
-						// }
-
-
 						$posts = []; // Initialize an array to hold the posts
 						// Populate the array with posts
 						$current_index = 1;
@@ -81,39 +68,35 @@ global $product;
 									<div class="col-6">
 										<div class="row">
 										<?php
-											for($i=0; $i < 4; $i++) {
-												setup_postdata($four_porduct_right_side[$i]); // Set up post data for the current post
-												/**
-												 * Hook: woocommerce_shop_loop.
-												*/
-												do_action( 'woocommerce_shop_loop' );
-												wc_get_template_part( 'content', 'product' );
-
+											for($i=0; $i < 4; $i++) { ?>
+											<div class="col-md-6 col-12">
+												<?php
+													setup_postdata($four_porduct_right_side[$i]); // Set up post data for the current post
+													/**
+													 * Hook: woocommerce_shop_loop.
+													*/
+													do_action( 'woocommerce_shop_loop' );
+													wc_get_template_part( 'content', 'product' );
+												?>
+											</div>
+											<?php
 											}
 											wp_reset_postdata(); // Reset post data after the loop
 										?>
 										</div>
 									</div>
+									<div class="col-md-6 col-12">
+										<?php
+											setup_postdata($four_porduct_right_side[5]); // Set up post data for the current post
+											/**
+											 * Hook: woocommerce_shop_loop.
+											*/
+											do_action( 'woocommerce_shop_loop' );
+											wc_get_template_part( 'content', 'product' );
+										?>
+									</div>
 								<?php
-								setup_postdata($four_porduct_right_side[5]); // Set up post data for the current post
-								/**
-								 * Hook: woocommerce_shop_loop.
-								*/
-								do_action( 'woocommerce_shop_loop' );
-								wc_get_template_part( 'content', 'product' );
 							}
-							// } else if ($current_index % 5 == 0) {
-							// 	for ( $i = 0; $i < count($posts); $i++ ) {
-							// 		$post = $posts[$i]; // Get the current post
-							// 		setup_postdata($post); // Set up post data for the current post
-							// 		/**
-							// 		 * Hook: woocommerce_shop_loop.
-							// 		*/
-							// 		do_action( 'woocommerce_shop_loop' );
-							// 		wc_get_template_part( 'content', 'product' );
-
-							// 	}
-							// }
 							$current_index++;
 							$counter_products = $current_index;
 						}
@@ -144,15 +127,20 @@ global $product;
 					$counter_products = 1;
 					$current_index = 1;
 					if ( wc_get_loop_prop( 'total' ) ) {
-						while ( have_posts() ) {
-							the_post();
-							/**
-							 * Hook: woocommerce_shop_loop.
-							 */
-							do_action( 'woocommerce_shop_loop' );
-							wc_get_template_part( 'content', 'product');
-							$current_index++;
-							$counter_products = $current_index;
+						while ( have_posts() ) { ?>
+							<div class="col-12">
+								<?php
+									the_post();
+									/**
+									 * Hook: woocommerce_shop_loop.
+									 */
+									do_action( 'woocommerce_shop_loop' );
+									wc_get_template_part( 'content', 'product');
+									$current_index++;
+									$counter_products = $current_index;
+								?>
+							</div>
+						<?php
 						}
 						wp_reset_postdata(); // Reset post data after the loop
 					}

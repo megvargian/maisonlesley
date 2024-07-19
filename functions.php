@@ -534,9 +534,7 @@ add_action( 'woocommerce_after_single_product_summary', 'custom_output_related_p
 function custom_output_related_products() {
     // Custom query to get related products
     global $product;
-
     $related_products = wc_get_related_products( $product->get_id(), $limit = 4 ); // Change limit as needed
-
     if ( ! empty( $related_products ) ) {
         // Start custom structure
         ?>
@@ -550,9 +548,9 @@ function custom_output_related_products() {
                     <?php foreach ( $related_products as $related_product_id ) { ?>
                         <div class="col-md-3 col-12">
                             <?php
-                            $post_object = get_post( $related_product_id );
-                            setup_postdata( $GLOBALS['post'] =& $post_object );
-                            wc_get_template_part( 'content', 'product' ); // You can customize this template part
+                                $post_object = get_post( $related_product_id );
+                                setup_postdata( $GLOBALS['post'] =& $post_object );
+                                wc_get_template_part( 'content', 'product' );
                             ?>
                         </div>
                     <?php } ?>

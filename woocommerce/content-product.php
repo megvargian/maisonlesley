@@ -24,7 +24,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 
-<div class="col-md-6 col-12" <?php wc_product_class( '', $product ); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
         <?php
         /**
          * Hook: woocommerce_before_shop_loop_item.
@@ -74,16 +74,11 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                         echo '<img class="d-md-block d-none" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                         echo '<img class="d-md-none d-block" src="' . esc_url($image_url_mobile[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                 }
-                // Display the product thumbnail
-                // echo ($counter_products % 5 == 0) ? woocommerce_get_product_thumbnail('custom-woocommerce-thumbnail') : woocommerce_get_product_thumbnail();
-                // Display the product title
                 echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';
-                // Display the product price
                 echo '<span class="price">' . $product->get_price_html() . '</span>';
         // Close the product link
         echo '</a>';
-
         // Display the add to cart button
-        // echo woocommerce_template_loop_add_to_cart();
+        echo $counter_products > 1 ? '' : woocommerce_template_loop_add_to_cart();
         ?>
 </div>
