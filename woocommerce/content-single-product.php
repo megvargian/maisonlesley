@@ -19,13 +19,20 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 
-/**
- * Hook: woocommerce_before_single_product.
- *
- * @hooked woocommerce_output_all_notices - 10
- */
-do_action( 'woocommerce_before_single_product' );
-
+?>
+<div class="container">
+    <div class="row">
+        <?php
+        /**
+         * Hook: woocommerce_before_single_product.
+         *
+         * @hooked woocommerce_output_all_notices - 10
+         */
+        do_action( 'woocommerce_before_single_product' );
+        ?>
+    </div>
+</div>
+<?php
 if ( post_password_required() ) {
 	echo get_the_password_form(); // WPCS: XSS ok.
 	return;

@@ -521,8 +521,44 @@ function filter_products() {
 add_action('wp_ajax_filter_products', 'filter_products');
 add_action('wp_ajax_nopriv_filter_products', 'filter_products');
 
-add_action('after_setup_theme', 'custom_woocommerce_image_size');
 
+// add custom size for category products woocommerc
+add_action('after_setup_theme', 'custom_woocommerce_image_size');
 function custom_woocommerce_image_size() {
     add_image_size('custom-woocommerce-thumbnail', 500, 500, true); // 500px by 500px, hard crop
+}
+// add custom structure for related products in single product page woocommerce
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+add_action( 'woocommerce_after_single_product_summary', 'custom_output_related_products', 20 );
+
+function custom_output_related_products() {
+    // Custom query to get related products
+    global $product;
+
+    $related_products = wc_get_related_products( $product->get_id(), $limit = 4 ); // Change limit as needed
+
+    if ( ! empty( $related_products ) ) {
+        // Start custom structure
+        ?>
+            <div class="container">
+                <div class="row text-left">
+                    <?php echo '<h2>' . __( 'Related Products', 'woocommerce' ) . '</h2>'; ?>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <?php foreach ( $related_products as $related_product_id ) { ?>
+                        <div class="col-md-3 col-12">
+                            <?php
+                            $post_object = get_post( $related_product_id );
+                            setup_postdata( $GLOBALS['post'] =& $post_object );
+                            wc_get_template_part( 'content', 'product' ); // You can customize this template part
+                            ?>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        <?php
+        wp_reset_postdata();
+    }
 }
