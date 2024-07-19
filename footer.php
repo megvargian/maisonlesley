@@ -236,10 +236,9 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
         });
         $('#custom-add-to-cart-button').on('click', function() {
             var product_id = $(this).data('product-id');
-
             $.ajax({
                 type: 'POST',
-                url: custom_add_to_cart_params.ajax_url,
+                url: <?php echo admin_url('admin-ajax.php'); ?>,
                 data: {
                     action: 'custom_add_to_cart',
                     product_id: product_id,
