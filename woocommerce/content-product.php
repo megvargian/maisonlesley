@@ -71,8 +71,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                 $image_url_mobile = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
                 $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($attachment_id) ;
                 if ($image_url || $image_url_mobile) {
-                        echo '<img class="d-md-none d-block" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
-                        echo '<img class="d-md-block d-none" src="' . esc_url($image_url_mobile[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
+                        echo '<img class="d-md-block d-none" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
+                        echo '<img class="d-md-none d-block" src="' . esc_url($image_url_mobile[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                 }
                 // Display the product thumbnail
                 // echo ($counter_products % 5 == 0) ? woocommerce_get_product_thumbnail('custom-woocommerce-thumbnail') : woocommerce_get_product_thumbnail();
