@@ -41,13 +41,13 @@ global $product;
 			 * @hooked woocommerce_product_taxonomy_archive_header - 10
 			 */
 			do_action( 'woocommerce_shop_loop_header' );
-			custom_product_filter();
+			// custom_product_filter();
 		?>
 	</div>
 </div>
 <div id="product-list" class="pt-4">
 	<div class="container">
-		<div class="row pb-4">
+		<div class="row pb-4 d-md-flex d-none">
 			<?php
 				if ( woocommerce_product_loop() ) {
 					/**
@@ -114,6 +114,43 @@ global $product;
 
 							// 	}
 							// }
+							$current_index++;
+							$counter_products = $current_index;
+						}
+						wp_reset_postdata(); // Reset post data after the loop
+					}
+					/**
+					 * Hook: woocommerce_after_shop_loop.
+					 *
+					 * @hooked woocommerce_pagination - 10
+					 */
+					do_action( 'woocommerce_after_shop_loop' );
+				} else {
+					/**
+					 * Hook: woocommerce_no_products_found.
+					 *
+					 * @hooked wc_no_products_found - 10
+					 */
+					do_action( 'woocommerce_no_products_found' );
+				}
+			?>
+		</div>
+		<div class="row pb-4 d-md-none d-block">
+		<?php
+				if ( woocommerce_product_loop() ) {
+					/**
+					 * Hook: woocommerce_before_shop_loop.
+					 */
+					$counter_products = 1;
+					$current_index = 1;
+					if ( wc_get_loop_prop( 'total' ) ) {
+						while ( have_posts() ) {
+							the_post();
+							/**
+							 * Hook: woocommerce_shop_loop.
+							 */
+							do_action( 'woocommerce_shop_loop' );
+							wc_get_template_part( 'content', 'product');
 							$current_index++;
 							$counter_products = $current_index;
 						}

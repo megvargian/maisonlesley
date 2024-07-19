@@ -1199,3 +1199,7 @@ header.active {
   font-family: "Rutan-Light";
   font-weight: 500;
 }
+
+.cat-single-product img {
+  width: 100% !important;
+}

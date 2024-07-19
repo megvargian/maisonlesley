@@ -66,7 +66,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         ?>
         <?php
         // Open the product link
-        echo '<a href="' . esc_url( $product->get_permalink() ) . '">';
+        echo '<a class="w-100 h-100 d-block cat-single-product" href="' . esc_url( $product->get_permalink() ) . '">';
         $attachment_id = $product->get_image_id(); // Get the product image ID
         $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail'): wp_get_attachment_image_src($attachment_id) ;
 
