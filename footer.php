@@ -238,7 +238,7 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
             var product_id = $(this).data('product-id');
             $.ajax({
                 type: 'POST',
-                url: <?php echo admin_url('admin-ajax.php'); ?>,
+                url: '<?php echo admin_url('admin-ajax.php'); ?>',
                 data: {
                     action: 'custom_add_to_cart',
                     product_id: product_id,
@@ -249,7 +249,7 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                         window.location.href = '/cart/';
                     } else {
                         // Handle error (optional)
-                        alert('There was an error adding the product to the cart.');
+                        console.log('There was an error adding the product to the cart.');
                     }
                 }
             });
