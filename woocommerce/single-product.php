@@ -20,25 +20,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header( 'shop' ); ?>
-
-	<?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 */
-		do_action( 'woocommerce_before_main_content' );
-	?>
-
-		<div class="container">
-            <div class="row">
-                <?php while ( have_posts() ) : ?>
-                    <?php the_post(); ?>
-                    <?php wc_get_template_part( 'content', 'single-product' ); ?>
-                <?php endwhile; // end of the loop. ?>
-            </div>
-        </div>
+<div class="container">
+	<div class="row">
+        <?php
+            /**
+             * woocommerce_before_main_content hook.
+             *
+             * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+             * @hooked woocommerce_breadcrumb - 20
+             */
+            do_action( 'woocommerce_before_main_content' );
+        ?>
+    </div>
+    <div class="row">
+        <?php while ( have_posts() ) : ?>
+            <?php the_post(); ?>
+            <?php wc_get_template_part( 'content', 'single-product' ); ?>
+        <?php endwhile; // end of the loop. ?>
+    </div>
 	<?php
 		/**
 		 * woocommerce_after_main_content hook.
@@ -56,8 +55,9 @@ get_header( 'shop' ); ?>
 		 */
 		// do_action( 'woocommerce_sidebar' );
 	?>
-
+    <div class="row">
+        <?php get_footer( 'shop' ); ?>
+    </div>
+</div>
 <?php
-get_footer( 'shop' );
-
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
