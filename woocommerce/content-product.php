@@ -71,8 +71,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         if ($attachment_ids && !empty($attachment_ids)) {
                 $first_image_id = $attachment_ids[0]; // Get the first image ID
                 $first_image_url = wp_get_attachment_url($first_image_id); // Get the URL of the first image
-        }
-        echo '<a class="w-100 h-100 d-block'. $first_image_url ? 'cat-single-product' :''. '" href="' . esc_url( $product->get_permalink() ) . '">';
+        } ?>
+        <a class="w-100 h-100 d-block <?php echo $first_image_url ? 'cat-single-product' : '' ?>" href="<?php echo esc_url( $product->get_permalink() ) ?>">
+        <?php
                 $attachment_id = $product->get_image_id(); // Get the product image ID
                 $image_url_mobile = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
                 $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($attachment_id) ;
