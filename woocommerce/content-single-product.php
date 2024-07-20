@@ -54,7 +54,7 @@ if ( post_password_required() ) {
             </div>
 
             <div class="col-md-6 col-12">
-                <div class="summary entry-summary">
+                <div class="summary entry-summary w-100">
                     <?php
                     /**
                      * Hook: woocommerce_single_product_summary.

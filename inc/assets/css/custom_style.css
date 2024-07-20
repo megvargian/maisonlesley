@@ -1154,11 +1154,19 @@ header.active {
   z-index: 1 !important;
 }
 
+.woocommerce-tabs.wc-tabs-wrapper .tabs {
+  padding-top: 1rem;
+  padding-left: 0 !important;
+}
 .woocommerce-tabs.wc-tabs-wrapper .tabs::before {
   border-bottom: none !important;
 }
 .woocommerce-tabs.wc-tabs-wrapper ul li {
   border: none !important;
+}
+
+.woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product span.price {
+  color: #000 !important;
 }
 
 .filter_id {
