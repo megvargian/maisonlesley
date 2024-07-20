@@ -8,20 +8,33 @@
  */
 
 get_header();
-
+$search_term = get_search_query();
 $args = array(
 	'post_type'      => 'product', // WooCommerce products are stored as 'product'
 	'post_status'    => 'publish', // Only show published products
 	'posts_per_page' =>  12, // Number of products to return (-1 for all)
 	's'              => get_search_query(),
+	'meta_query'     => array(
+                'relation' => 'OR',
+		array(
+			'key'     => '_sku',
+			'value'   => $search_term,
+			'compare' => 'LIKE'
+		),
+		array(
+			'key'     => '_price',
+			'value'   => $search_term,
+			'compare' => 'LIKE'
+		)
+	),
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'product_cat',
 			'field'    => 'name',
-			'terms'    => get_search_query(),
+			'terms'    => $search_term,
 			'operator' => 'IN',
 		)
-	)
+	),
 );
 // Create a new query
 $query = new WC_Product_Query( $args );
@@ -29,6 +42,7 @@ $query = new WC_Product_Query( $args );
 // Get the products
 $products = $query->get_products();
 ?>
+<pre><?php print_r($query); ?></pre>
 <section class="single_search">
 	<div class="container">
 		<div class="row text-center pb-5">
