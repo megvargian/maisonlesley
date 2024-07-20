@@ -18,13 +18,14 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 global $counter_products;
+$product_id = $product->get_id();
 // Ensure visibility.
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
 
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
+<div id="product-<?php echo $product_id; ?>" <?php wc_product_class( '', $product ); ?>>
         <?php
         /**
          * Hook: woocommerce_before_shop_loop_item.
@@ -66,7 +67,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         ?>
         <?php
         // Open the product link
-        $product_id = $product->get_id();
         $attachment_ids = $product->get_gallery_image_ids();
         echo '<a class="w-100 h-100 d-block cat-single-product" href="' . esc_url( $product->get_permalink() ) . '">';
                 $attachment_id = $product->get_image_id(); // Get the product image ID
