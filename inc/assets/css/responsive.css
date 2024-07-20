@@ -330,10 +330,13 @@
     border-bottom: 1px solid #d8d8d8;
   }
   .cat-single-product:hover .main-thumbnail-img {
-    display: block !important;
+    display: none !important;
   }
   .cat-single-product:hover .first-gallery-image {
     display: none !important;
+  }
+  .cat-single-product:hover .main-thumbnail-img-mobile {
+    display: block !important;
   }
 }
 @media (max-width: 575px) {
