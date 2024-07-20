@@ -1103,6 +1103,19 @@ header.active{
 	z-index: 1 !important;
 	padding-bottom: 1rem;
 }
+#main{
+	.woocommerce-products-header{
+		z-index: 1 !important;
+	}
+}
+.woocommerce-tabs.wc-tabs-wrapper{
+	.tabs::before{
+		border-bottom: none !important;
+	}
+	ul li{
+		border: none !important
+	}
+}
 .filter_id{
 	padding: 10px 15px;
     position: relative;
