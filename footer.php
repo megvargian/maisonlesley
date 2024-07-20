@@ -260,10 +260,6 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                 'close'
             ]
         });
-        $('.main-img-product').hover(function(){
-            $(this).removeClass('d-md-block');
-            $('.first-gallery-image').removeClass('d-none');
-        });
     });
 </script>
 <?php wp_footer(); ?>
