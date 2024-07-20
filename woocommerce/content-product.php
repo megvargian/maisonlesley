@@ -25,7 +25,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 
-<div id="product-<?php echo $product_id; ?>" <?php wc_product_class( '', $product ); ?>>
+<div id="product-<?php echo $product_id; ?>" class="cat-single-product" <?php wc_product_class( '', $product ); ?>>
         <?php
         /**
          * Hook: woocommerce_before_shop_loop_item.
@@ -73,7 +73,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                 $image_url_mobile = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
                 $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($attachment_id) ;
                 if ($image_url || $image_url_mobile) {
-                        echo '<img class="d-md-block d-none main-img-product-'.$product_id.'" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
+                        echo '<img class="d-md-block d-none main-img-product-'.$product_id.' main-thumbnail-img" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                         echo '<img class="d-md-none d-block" src="' . esc_url($image_url_mobile[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                 }
                  // Check if there are gallery images
@@ -96,19 +96,3 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         ?>
 </div>
 <?php
-if($first_image_url){ ?>
-<script>
-   jQuery(document).ready(function($) {
-        $('.main-img-product-<?php echo $product_id?>').hover(
-        function(){
-            $(this).removeClass('d-md-block');
-            $('#product-<?php echo $product_id; ?>').find('.first-gallery-image').removeClass('d-none');
-        },
-        function(){
-            $(this).addClass('d-md-block');
-            $('#product-<?php echo $product_id; ?>').find('.first-gallery-image').addClass('d-none');
-        },
-        );
-   })
-</script>
-<?php }

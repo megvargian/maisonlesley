@@ -1175,3 +1175,12 @@ header.active{
 .cat-single-product img{
 	width: 100% !important;
 }
+
+.cat-single-product:hover{
+	.main-thumbnail-img{
+		display: none !important;
+	}
+	.first-gallery-image{
+		display: block !important;
+	}
+}
