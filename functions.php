@@ -570,9 +570,9 @@ function add_custom_add_to_cart_button() {
     global $product;
     ?>
         <button id="custom-add-to-cart-button" class="button custom-button" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
-            <?php esc_html_e( 'Custom Add to Cart', 'woocommerce' ); ?>
+            <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
         </button>
-        <span class="response d-block text-red"></span>
+        <span class="response d-block text-warning"></span>
     <?php
 }
 add_action( 'woocommerce_single_product_summary', 'add_custom_add_to_cart_button', 30 );
@@ -635,8 +635,13 @@ function display_product_images_with_fancybox() {
         foreach ($attachment_ids as $attachment_id) {
             $image_url = wp_get_attachment_url($attachment_id);
             echo '<a href="' . $image_url . '" class="fancybox" data-fancybox="gallery">';
-            echo wp_get_attachment_image($attachment_id, 'shop_single');
+            echo wp_get_attachment_image($attachment_id, 'custom-woocommerce-image-size');
             echo '</a>';
         }
     }
+}
+
+add_action('after_setup_theme', 'custom_woocommerce_image_size_for_single_product');
+function custom_woocommerce_image_size_for_single_product() {
+    add_image_size('custom-woocommerce-image-size', 200, 300, true); // 200px by 300px, hard crop
 }
