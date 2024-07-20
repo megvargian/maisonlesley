@@ -21,7 +21,6 @@ $query = new WC_Product_Query( $args );
 // Get the products
 $products = $query->get_products();
 ?>
-<pre><?php print_r($query); ?></pre>
 <section class="single_search">
 	<div class="container">
 		<div class="row text-center pb-5">
