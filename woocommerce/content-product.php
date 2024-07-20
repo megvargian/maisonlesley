@@ -64,16 +64,16 @@ if ( empty( $product ) || ! $product->is_visible() ) {
          */
         // do_action( 'woocommerce_after_shop_loop_item' );
         ?>
-        <pre><?php print_r($product); ?></pre>
         <?php
         // Open the product link
+        $product_id = $product->get_id();
         $attachment_ids = $product->get_gallery_image_ids();
         echo '<a class="w-100 h-100 d-block cat-single-product" href="' . esc_url( $product->get_permalink() ) . '">';
                 $attachment_id = $product->get_image_id(); // Get the product image ID
                 $image_url_mobile = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
                 $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($attachment_id) ;
                 if ($image_url || $image_url_mobile) {
-                        echo '<img class="d-md-block d-none main-img-product-" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
+                        echo '<img class="d-md-block d-none main-img-product-'.$product_id.'" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                         echo '<img class="d-md-none d-block" src="' . esc_url($image_url_mobile[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                 }
                  // Check if there are gallery images
@@ -99,9 +99,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 if($first_image_url){ ?>
 <script>
    jQuery(document).ready(function($) {
-        $('.main-img-product-').hover(function(){
+        $('.main-img-product-<?php echo $product_id?>').hover(function(){
             $(this).toggleClass('d-md-block');
-            $('#product-<?php the_ID();?>').find('.first-gallery-image').toggleClass('d-none');
+            $('#product-<?php echo $product_id; ?>').find('.first-gallery-image').toggleClass('d-none');
         });
    })
 </script>
