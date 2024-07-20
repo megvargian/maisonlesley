@@ -99,10 +99,16 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 if($first_image_url){ ?>
 <script>
    jQuery(document).ready(function($) {
-        $('.main-img-product-<?php echo $product_id?>').hover(function(){
-            $(this).toggleClass('d-md-block');
-            $('#product-<?php echo $product_id; ?>').find('.first-gallery-image').toggleClass('d-none');
-        });
+        $('.main-img-product-<?php echo $product_id?>').hover(
+        function(){
+            $(this).removeClass('d-md-block');
+            $('#product-<?php echo $product_id; ?>').find('.first-gallery-image').removeClass('d-none');
+        },
+        function(){
+            $(this).addClass('d-md-block');
+            $('#product-<?php echo $product_id; ?>').find('.first-gallery-image').addClass('d-none');
+        },
+        );
    })
 </script>
 <?php }
