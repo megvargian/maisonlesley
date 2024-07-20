@@ -13,9 +13,9 @@ $args = array(
 	'post_type'      => 'product', // WooCommerce products are stored as 'product'
 	'post_status'    => 'publish', // Only show published products
 	'posts_per_page' =>  12, // Number of products to return (-1 for all)
-	's'              => $get_search_query,
+	's'              => get_search_query(),
 );
-echo $get_search_query;
+echo get_search_query();
 // Create a new query
 $query = new WC_Product_Query( $args );
 
@@ -33,7 +33,7 @@ $products = $query->get_products();
 			<?php foreach ( $products as $product ) {
 				$product_obj = wc_get_product( $product->get_id() );
 			?>
-				<div class="col-3">
+				<div class="col-md-3 col-12">
 					<a href="<?php echo get_permalink($product_obj->get_id()); ?>">
 						<img class="w-100" src="<?php echo get_the_post_thumbnail_url( $product_obj->get_id()); ?>" alt="<?php echo $product_obj->get_name() ?>">
 						<h2><?php echo $product_obj->get_name() ?></h2>
