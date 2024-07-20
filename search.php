@@ -12,10 +12,10 @@ get_header();
 $args = array(
 	'post_type'      => 'product', // WooCommerce products are stored as 'product'
 	'post_status'    => 'publish', // Only show published products
-	'posts_per_page' => -1, // Number of products to return (-1 for all)
+	'posts_per_page' =>  12, // Number of products to return (-1 for all)
 	's'              => $get_search_query,
 );
-
+echo $get_search_query;
 // Create a new query
 $query = new WC_Product_Query( $args );
 
