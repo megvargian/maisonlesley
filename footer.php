@@ -252,6 +252,14 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                 }
             });
         });
+        // Apply FancyBox to product images
+        $('a.fancybox').fancybox({
+            // FancyBox options can be added here
+            buttons: [
+                'zoom',
+                'close'
+            ]
+        });
     });
 </script>
 <?php wp_footer(); ?>

@@ -572,7 +572,7 @@ function add_custom_add_to_cart_button() {
         <button id="custom-add-to-cart-button" class="button custom-button" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
             <?php esc_html_e( 'Custom Add to Cart', 'woocommerce' ); ?>
         </button>
-        <span class="response"></span>
+        <span class="response d-block text-red"></span>
     <?php
 }
 add_action( 'woocommerce_single_product_summary', 'add_custom_add_to_cart_button', 30 );
@@ -593,3 +593,50 @@ function custom_add_to_cart() {
 }
 add_action( 'wp_ajax_custom_add_to_cart', 'custom_add_to_cart' );
 add_action( 'wp_ajax_nopriv_custom_add_to_cart', 'custom_add_to_cart' );
+
+// removing category in single product page under summary class
+add_action('woocommerce_single_product_summary', 'remove_product_category', 20);
+
+function remove_product_category() {
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+}
+
+// add for images in single prodcut page
+function custom_enqueue_fancybox() {
+    // Enqueue FancyBox CSS
+    wp_enqueue_style('fancybox-css', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css');
+
+    // Enqueue FancyBox JS
+    wp_enqueue_script('fancybox-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'custom_enqueue_fancybox');
+
+// Remove default actions
+remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
+remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+
+// Add custom action for product images with FancyBox
+add_action('woocommerce_before_single_product_summary', 'display_product_images_with_fancybox', 20);
+
+function display_product_images_with_fancybox() {
+    global $product;
+    $attachment_ids = $product->get_gallery_image_ids();
+
+    // Display main image with FancyBox
+    if (has_post_thumbnail()) {
+        $main_image_url = wp_get_attachment_url(get_post_thumbnail_id($product->get_id()));
+        echo '<a href="' . $main_image_url . '" class="fancybox" data-fancybox="gallery">';
+        the_post_thumbnail('shop_single');
+        echo '</a>';
+    }
+
+    // Display gallery images with FancyBox
+    if ($attachment_ids) {
+        foreach ($attachment_ids as $attachment_id) {
+            $image_url = wp_get_attachment_url($attachment_id);
+            echo '<a href="' . $image_url . '" class="fancybox" data-fancybox="gallery">';
+            echo wp_get_attachment_image($attachment_id, 'shop_single');
+            echo '</a>';
+        }
+    }
+}
