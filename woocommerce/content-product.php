@@ -64,6 +64,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
          */
         // do_action( 'woocommerce_after_shop_loop_item' );
         ?>
+        <pre><?php print_r($product); ?></pre>
         <?php
         // Open the product link
         $attachment_ids = $product->get_gallery_image_ids();
@@ -72,7 +73,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                 $image_url_mobile = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
                 $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($attachment_id) ;
                 if ($image_url || $image_url_mobile) {
-                        echo '<img class="d-md-block d-none main-img-product-'. the_ID() .'" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
+                        echo '<img class="d-md-block d-none main-img-product-" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                         echo '<img class="d-md-none d-block" src="' . esc_url($image_url_mobile[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                 }
                  // Check if there are gallery images
@@ -98,7 +99,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 if($first_image_url){ ?>
 <script>
    jQuery(document).ready(function($) {
-        $('.main-img-product-<?php echo the_ID(); ?>').hover(function(){
+        $('.main-img-product-').hover(function(){
             $(this).toggleClass('d-md-block');
             $('#product-<?php the_ID();?>').find('.first-gallery-image').toggleClass('d-none');
         });
