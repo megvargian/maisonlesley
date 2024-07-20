@@ -572,6 +572,7 @@ function add_custom_add_to_cart_button() {
         <button id="custom-add-to-cart-button" class="button custom-button" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
             <?php esc_html_e( 'Custom Add to Cart', 'woocommerce' ); ?>
         </button>
+        <span class="response"></span>
     <?php
 }
 add_action( 'woocommerce_single_product_summary', 'add_custom_add_to_cart_button', 30 );

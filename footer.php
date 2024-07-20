@@ -245,11 +245,9 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                 },
                 success: function(response) {
                     if (response.success) {
-                        // Optionally, you can redirect to the cart or update the cart contents
                         window.location.href = '/cart/';
                     } else {
-                        // Handle error (optional)
-                        console.log('There was an error adding the product to the cart.');
+                        $('.response').text('There was an error adding the product to the cart.');
                     }
                 }
             });
