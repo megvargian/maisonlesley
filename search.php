@@ -14,6 +14,14 @@ $args = array(
 	'post_status'    => 'publish', // Only show published products
 	'posts_per_page' =>  12, // Number of products to return (-1 for all)
 	's'              => get_search_query(),
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'product_cat',
+			'field'    => 'name',
+			'terms'    => get_search_query(),
+			'operator' => 'IN',
+		)
+	)
 );
 // Create a new query
 $query = new WC_Product_Query( $args );
