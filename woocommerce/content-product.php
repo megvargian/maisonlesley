@@ -68,7 +68,11 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         <?php
         // Open the product link
         $attachment_ids = $product->get_gallery_image_ids();
-        echo '<a class="w-100 h-100 d-block cat-single-product" href="' . esc_url( $product->get_permalink() ) . '">';
+        if ($attachment_ids && !empty($attachment_ids)) {
+                $first_image_id = $attachment_ids[0]; // Get the first image ID
+                $first_image_url = wp_get_attachment_url($first_image_id); // Get the URL of the first image
+        }
+        echo '<a class="w-100 h-100 d-block'. $first_image_url ? 'cat-single-product' :''. '" href="' . esc_url( $product->get_permalink() ) . '">';
                 $attachment_id = $product->get_image_id(); // Get the product image ID
                 $image_url_mobile = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
                 $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($attachment_id) ;
@@ -77,15 +81,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                         echo '<img class="d-md-none d-block" src="' . esc_url($image_url_mobile[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                 }
                  // Check if there are gallery images
-                if ($attachment_ids && !empty($attachment_ids)) {
-                        $first_image_id = $attachment_ids[0]; // Get the first image ID
-                        $first_image_url = wp_get_attachment_url($first_image_id); // Get the URL of the first image
-                        // Display the first image
-                        if ($first_image_url) {
-                                echo '<div class="first-gallery-image d-none">';
-                                echo '<img src="' . esc_url($first_image_url) . '" alt="First Gallery Image">';
-                                echo '</div>';
-                        }
+                if ($first_image_url) {
+                        echo '<img class="first-gallery-image d-none" src="' . esc_url($first_image_url) . '" alt="First Gallery Image">';
                 }
                 echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';
                 echo '<span class="price">' . $product->get_price_html() . '</span>';
