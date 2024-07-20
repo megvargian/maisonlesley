@@ -329,6 +329,12 @@
   .border-bottom {
     border-bottom: 1px solid #d8d8d8;
   }
+  .cat-single-product:hover .main-thumbnail-img {
+    display: block !important;
+  }
+  .cat-single-product:hover .first-gallery-image {
+    display: none !important;
+  }
 }
 @media (max-width: 575px) {
   h2 {

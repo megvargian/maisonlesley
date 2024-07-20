@@ -25,7 +25,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 
-<div id="product-<?php echo $product_id; ?>" class="cat-single-product" <?php wc_product_class( '', $product ); ?>>
+<div id="product-<?php echo $product_id; ?>" class="cat-single-main-product" <?php wc_product_class( '', $product ); ?>>
         <?php
         /**
          * Hook: woocommerce_before_shop_loop_item.
