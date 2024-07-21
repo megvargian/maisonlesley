@@ -658,10 +658,16 @@ header.active {
   text-decoration: none;
   background-color: transparent;
   padding-right: 0;
+  color: black;
+  accent-color: black;
+  fill: black;
 }
 
 .search-icon::before {
   content: "\e031";
+  color: black;
+  accent-color: black;
+  fill: black;
 }
 
 .input-newsletter {
