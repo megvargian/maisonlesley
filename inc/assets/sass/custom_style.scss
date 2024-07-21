@@ -599,10 +599,15 @@ header.active{
 	text-decoration: none;
 	background-color: transparent;
 	padding-right: 0;
+	color: black;
+	accent-color: black;
+	fill: black;
 }
 .search-icon::before{
 	content: '\E031';
-
+	color: black;
+	accent-color: black;
+	fill: black;
 }
 //newsletter section
 .input-newsletter{
