@@ -621,21 +621,6 @@ add_action('woocommerce_before_single_product_summary', 'display_product_images_
 function display_product_images_with_fancybox() {
     global $product;
     $attachment_ids = $product->get_gallery_image_ids();
-
-    // Display main image with FancyBox
-    if (has_post_thumbnail()) {
-        $main_image_url = wp_get_attachment_url(get_post_thumbnail_id($product->get_id()));
-        ?>
-            <div class="<?php echo $attachment_ids ? 'col-8' : 'col-12'; ?>">
-                <?php
-                echo '<a href="' . $main_image_url . '" class="fancybox" data-fancybox="gallery">';
-                the_post_thumbnail('shop_single');
-                echo '</a>';
-                ?>
-            </div>
-        <?php
-    }
-
     // Display gallery images with FancyBox
     if ($attachment_ids) {
         foreach ($attachment_ids as $attachment_id) {
@@ -650,6 +635,19 @@ function display_product_images_with_fancybox() {
             </div>
             <?php
         }
+    }
+    // Display main image with FancyBox
+    if (has_post_thumbnail()) {
+        $main_image_url = wp_get_attachment_url(get_post_thumbnail_id($product->get_id()));
+        ?>
+            <div class="<?php echo $attachment_ids ? 'col-8' : 'col-12'; ?>">
+                <?php
+                echo '<a href="' . $main_image_url . '" class="fancybox" data-fancybox="gallery">';
+                the_post_thumbnail('shop_single');
+                echo '</a>';
+                ?>
+            </div>
+        <?php
     }
 }
 
