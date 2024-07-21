@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header( 'shop' ); ?>
 <div class="container">
-	<div class="row">
+	<div class="row justify-content-center">
         <?php
             /**
              * woocommerce_before_main_content hook.
@@ -32,7 +32,7 @@ get_header( 'shop' ); ?>
             do_action( 'woocommerce_before_main_content' );
         ?>
     </div>
-    <div class="row">
+    <div class="row px-0">
         <?php while ( have_posts() ) : ?>
             <?php the_post(); ?>
             <?php wc_get_template_part( 'content', 'single-product' ); ?>

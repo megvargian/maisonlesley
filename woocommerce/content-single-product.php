@@ -41,19 +41,21 @@ if ( post_password_required() ) {
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 	<div class="container">
         <div class="row">
-            <div class="col-md-6 col-12">
-                <?php
-                /**
-                 * Hook: woocommerce_before_single_product_summary.
-                 *
-                 * @hooked woocommerce_show_product_sale_flash - 10
-                 * @hooked woocommerce_show_product_images - 20
-                 */
-                do_action( 'woocommerce_before_single_product_summary' );
-                ?>
+            <div class="col-md-8 col-12">
+               <div class="row px-0">
+                    <?php
+                    /**
+                     * Hook: woocommerce_before_single_product_summary.
+                     *
+                     * @hooked woocommerce_show_product_sale_flash - 10
+                     * @hooked woocommerce_show_product_images - 20
+                     */
+                    do_action( 'woocommerce_before_single_product_summary' );
+                    ?>
+               </div>
             </div>
 
-            <div class="col-md-6 col-12">
+            <div class="col-md-4 col-12">
                 <div class="summary entry-summary w-100">
                     <?php
                     /**
