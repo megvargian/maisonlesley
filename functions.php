@@ -623,18 +623,20 @@ function display_product_images_with_fancybox() {
     $attachment_ids = $product->get_gallery_image_ids();
     // Display gallery images with FancyBox
     if ($attachment_ids) {
-        foreach ($attachment_ids as $attachment_id) {
-            $image_url = wp_get_attachment_url($attachment_id);
+        ?>
+        <div class="col-lg-3 col-4">
+            <?php
+                foreach ($attachment_ids as $attachment_id) {
+                    $image_url = wp_get_attachment_url($attachment_id);
             ?>
-            <div class="col-lg-3 col-4">
                 <?php
-                    echo '<a href="' . $image_url . '" class="fancybox" data-fancybox="gallery">';
+                    echo '<a href="' . $image_url . '" class="fancybox d-block" data-fancybox="gallery">';
                     echo wp_get_attachment_image($attachment_id, 'custom-woocommerce-image-size');
                     echo '</a>';
                 ?>
-            </div>
-            <?php
-        }
+            <?php } ?>
+        </div>
+    <?php
     }
     // Display main image with FancyBox
     if (has_post_thumbnail()) {
