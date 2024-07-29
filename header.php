@@ -103,7 +103,7 @@ $header_menu = $all_generalFields['header_menu'];
                 </section>
                 <section class="bg-white main-logo-section">
                     <div class="container">
-                        <div class="row justify-content-center pt-5">
+                        <div class="row justify-content-center" style="padding-top: 70px;">
                             <a class="d-flex justify-content-center" style="width:fit-content;" href="<?php echo $main_logo_link;?>">
                                 <img class="main-logo" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                             </a>
@@ -289,12 +289,14 @@ $header_menu = $all_generalFields['header_menu'];
                         $('.main-nav-section').addClass("active");
                         $('.main-logo-section').addClass("active");
                         $('.first-header').addClass("active");
+                        $('.second-header').addClass("active");
                     }
                     if (currentScreenPosition < 125){
                         $("header").removeClass("active");
                         $('.main-nav-section').removeClass("active");
                         $('.main-logo-section').removeClass("active");
                         $('.first-header').removeClass("active");
+                        $('.second-header').removeClass("active");
                     }
                 });
                 $('.main-menu-link.sub-menu').hover(function(){
