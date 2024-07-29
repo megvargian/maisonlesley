@@ -641,6 +641,7 @@ header.active {
   transform: translateY(0%);
   transition-duration: 0s;
   background-color: #F7F7F8;
+  height: 40px;
 }
 
 .first-header.active {
