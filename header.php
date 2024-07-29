@@ -47,7 +47,7 @@ $header_menu = $all_generalFields['header_menu'];
                 <section class="first-header bg-black">
                     <div class="container">
                         <div class="row justify-content-between">
-                            <div class="col">
+                            <div class="col px-0">
                                 <div class="d-flex float-left hover-js-drop-down custom-first-header-padding">
                                     <a href="<?php echo $left_side_top_header_fields['main_link']; ?>" class="default-button">
                                         <?php echo $left_side_top_header_fields['main_text']; ?>
@@ -71,7 +71,7 @@ $header_menu = $all_generalFields['header_menu'];
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col px-0">
                                 <div class="icon-pin d-flex float-right custom-first-header-padding">
                                     <a class="default-button" href="<?php echo $right_side_top_header_fields['main_link'] ?>">
                                         <?php echo $right_side_top_header_fields['mian_text'] ?>
@@ -82,18 +82,18 @@ $header_menu = $all_generalFields['header_menu'];
                     </div>
                 </section>
                 <section class="second-header">
-                    <div class="container">
+                    <div class="container px-0">
                         <div class="row">
                             <div class="col-md-4 col-12">
                                 <div class="row">
                                     <div class="col-6">
-                                        <a href="#">
-                                            Maison Lesley
+                                        <a href="<?php ?>">
+                                            <img class="w-100" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                                         </a>
                                     </div>
                                     <div class="col-6">
                                         <a href="#">
-                                            Mystique Rose
+                                            <img class="w-100" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                                         </a>
                                     </div>
                                 </div>
