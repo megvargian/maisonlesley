@@ -87,13 +87,13 @@ $header_menu = $all_generalFields['header_menu'];
                             <div class="col-md-4 col-12">
                                 <div class="row">
                                     <div class="col-4">
-                                        <a href="<?php echo get_home_url(); ?>">
-                                            <img class="second-header-main-pages <?= is_page($page['page']->post_name) ? 'active' : ''; ?>" style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
+                                        <a class="second-header-main-pages <?= is_page($page['page']->post_name) ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
+                                            <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                                         </a>
                                     </div>
                                     <div class="col-8">
-                                        <a href="<?php echo get_permalink(460); ?>">
-                                            <img class="second-header-main-pages <?= is_page($page['page']->post_name) ? 'active' : ''; ?>" style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
+                                        <a class="second-header-main-pages <?= is_page($page['page']->post_name) ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
+                                            <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                                         </a>
                                     </div>
                                 </div>
@@ -206,13 +206,13 @@ $header_menu = $all_generalFields['header_menu'];
                             <div class="col-md-4 col-12">
                                 <div class="row">
                                     <div class="col-md-4 col-6 d-flex justify-content-center" style="height: 40px;">
-                                        <a href="<?php echo get_home_url(); ?>">
-                                            <img class="second-header-main-pages <?= is_page($page['page']->post_name) ? 'active' : ''; ?>" style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
+                                        <a class="second-header-main-pages <?= is_page($page['page']->post_name) ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
+                                            <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                                         </a>
                                     </div>
                                     <div class="col-md-8 col-6 d-flex justify-content-center" style="height: 40px;">
-                                        <a href="<?php echo get_permalink(460); ?>">
-                                            <img class="second-header-main-pages <?= is_page($page['page']->post_name) ? 'active' : ''; ?>" style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
+                                        <a class="second-header-main-pages <?= is_page($page['page']->post_name) ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
+                                            <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                                         </a>
                                     </div>
                                 </div>
