@@ -207,7 +207,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                 </section>
                 <section class="second-header-tablet">
                     <div class="container px-0">
-                        <nav class="d-flex justify-content-between align-items-center">
+                        <nav class="d-flex justify-content-around align-items-center">
                             <a class="second-header-main-pages <?= get_home_url() == $current_url ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
                                 <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                             </a>
@@ -232,7 +232,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                         </div>
                                     </button>
                                 </li>
-                                <li>
+                                <li class="d-flex d-sm-none">
                                     <?php if(get_permalink(460) == $current_url . '/'){ ?>
                                         <a href="<?php echo get_permalink(460); ?>">
                                             <img class="main-logo-tablet ml-5" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
