@@ -3,6 +3,10 @@
     padding: 20px 8px;
     font-size: 0.8rem;
   }
+  .main-nav .main-menu-list .main-menu-link::after {
+    left: 10px;
+    right: 10px;
+  }
 }
 @media screen and (max-width: 991px) {
   header.active {
