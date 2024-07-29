@@ -142,6 +142,26 @@ $header_menu = $all_generalFields['header_menu'];
                     </div>
                 </section>
             </section>
+            <section style="background-color: #F7F7F8">
+                 <div class="contianer">
+                    <div class="row">
+                        <div class="col-md-4 col-12">
+                            <div class="row">
+                                <div class="col-6">
+                                    <a href="#">
+                                        Maison Lesley
+                                    </a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="#">
+                                        Mystique Rose
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </section>
             <section class="tablet-header d-block d-lg-none">
                 <section class="first-header-tablet bg-black d-sm-block d-none">
                     <div class="container">
