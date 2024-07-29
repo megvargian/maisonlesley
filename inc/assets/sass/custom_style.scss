@@ -576,6 +576,15 @@ header.active{
 	transform: translateY(0%);
 	transition-duration: 0s;
 }
+.second-header{
+	z-index: 1;
+    position: fixed;
+    top: 15%;
+    width: 100%;
+    transform: translateY(0%);
+    transition-duration: 0s;
+	background-color: #F7F7F8
+}
 .first-header.active{
 	transform: translateY(334%);
 	transition-duration: .4s;

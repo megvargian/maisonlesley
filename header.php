@@ -81,7 +81,7 @@ $header_menu = $all_generalFields['header_menu'];
                         </div>
                     </div>
                 </section>
-                <section style="background-color: #F7F7F8">
+                <section class="second-header">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 col-12">
@@ -103,7 +103,7 @@ $header_menu = $all_generalFields['header_menu'];
                 </section>
                 <section class="bg-white main-logo-section">
                     <div class="container">
-                        <div class="row justify-content-center pt-4">
+                        <div class="row justify-content-center pt-5">
                             <a class="d-flex justify-content-center" style="width:fit-content;" href="<?php echo $main_logo_link;?>">
                                 <img class="main-logo" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                             </a>
