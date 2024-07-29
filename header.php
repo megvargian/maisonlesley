@@ -207,22 +207,14 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                 </section>
                 <section class="second-header-tablet">
                     <div class="container px-0">
-                        <div class="row px-0">
-                            <div class="col-md-4 col-12 px-0">
-                                <div class="row">
-                                    <div class="col-md-4 col-6 pl-0 d-flex justify-content-center" style="height: 40px;">
-                                        <a class="second-header-main-pages <?= get_home_url() == $current_url ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
-                                            <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-8 col-6 pr-0 d-flex justify-content-center" style="height: 40px;">
-                                        <a class="second-header-main-pages <?= get_permalink(460) == $current_url . '/' ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
-                                            <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <nav class="d-flex justify-content-between align-items-center">
+                            <a class="second-header-main-pages <?= get_home_url() == $current_url ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
+                                <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
+                            </a>
+                            <a class="second-header-main-pages <?= get_permalink(460) == $current_url . '/' ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
+                                <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
+                            </a>
+                        </nav>
                     </div>
                 </section>
                 <section class="bg-white main-nav-section-tablet">
