@@ -106,7 +106,11 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                     <div class="container">
                         <div class="row justify-content-center" style="padding-top: 70px;">
                             <a class="d-flex justify-content-center" style="width:fit-content;" href="<?php echo $main_logo_link;?>">
-                                <img class="main-logo" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
+                                <?php if(get_permalink(460) == $current_url . '/'){ ?>
+                                    <img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
+                                <?php } else { ?>
+                                    <img class="main-logo" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
+                                <?php } ?>
                             </a>
                         </div>
                     </div>
@@ -237,9 +241,15 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                     </button>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $main_logo_link;?>">
-                                        <img class="main-logo-tablet ml-5" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
-                                    </a>
+                                    <?php if(get_permalink(460) == $current_url . '/'){ ?>
+                                        <a href="<?php echo get_permalink(460); ?>">
+                                            <img class="main-logo-tablet ml-5" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
+                                        </a>
+                                    <?php } else {?>
+                                        <a href="<?php echo $main_logo_link;?>">
+                                            <img class="main-logo-tablet ml-5" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
+                                        </a>
+                                    <?php } ?>
                                 </li>
                             </ul>
                             <div class="right-side">
