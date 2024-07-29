@@ -27,8 +27,6 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?php wp_head(); ?>
 </head>
-<pre><?php print_r($current_url) ?></pre>
-<pre><?php print_r(get_permalink(460)) ?></pre>
 <body <?php body_class(); ?>>
     <div id="page" class="site main_page_wrapper">
         <div class="modal fade" id="search" tabindex="-1" aria-labelledby="searchLabel" aria-hidden="true">
@@ -95,7 +93,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                         </a>
                                     </div>
                                     <div class="col-8">
-                                        <a class="second-header-main-pages <?= get_permalink(460) == $current_url ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
+                                        <a class="second-header-main-pages <?= get_permalink(460) == $current_url . '/' ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
                                             <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                                         </a>
                                     </div>
@@ -214,7 +212,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                         </a>
                                     </div>
                                     <div class="col-md-8 col-6 d-flex justify-content-center" style="height: 40px;">
-                                        <a class="second-header-main-pages <?= get_permalink(460) == $current_url ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
+                                        <a class="second-header-main-pages <?= get_permalink(460) == $current_url . '/' ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
                                             <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                                         </a>
                                     </div>
