@@ -232,7 +232,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                         </div>
                                     </button>
                                 </li>
-                                <li class="d-flex d-sm-none">
+                                <li class="d-none d-sm-flex">
                                     <?php if(get_permalink(460) == $current_url . '/'){ ?>
                                         <a href="<?php echo get_permalink(460); ?>">
                                             <img class="main-logo-tablet ml-5" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
