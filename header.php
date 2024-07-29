@@ -86,12 +86,12 @@ $header_menu = $all_generalFields['header_menu'];
                         <div class="row">
                             <div class="col-md-4 col-12">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-md-4 col-12">
                                         <a href="<?php ?>">
                                             <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                                         </a>
                                     </div>
-                                    <div class="col-8">
+                                    <div class="col-md-8 col-12">
                                         <a href="#">
                                             <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                                         </a>
