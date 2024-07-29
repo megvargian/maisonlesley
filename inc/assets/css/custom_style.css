@@ -645,12 +645,12 @@ header.active {
 }
 
 .second-header.active {
-  transform: translateY(354%);
+  transform: translateY(415%);
   transition-duration: 0.4s;
 }
 
 .first-header.active {
-  transform: translateY(334%);
+  transform: translateY(303%);
   transition-duration: 0.4s;
 }
 

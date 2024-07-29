@@ -200,6 +200,26 @@ $header_menu = $all_generalFields['header_menu'];
                         </div>
                     </div>
                 </section>
+                <section class="second-header-tablet">
+                    <div class="container px-0">
+                        <div class="row">
+                            <div class="col-md-4 col-12">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a href="<?php ?>">
+                                            <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
+                                        </a>
+                                    </div>
+                                    <div class="col-8">
+                                        <a href="#">
+                                            <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section class="bg-white main-nav-section-tablet">
                     <div class="container px-0">
                         <nav class="text-left main-nav d-flex justify-content-between">
