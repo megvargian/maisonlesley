@@ -27,6 +27,8 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?php wp_head(); ?>
 </head>
+<pre><?php print_r($current_url) ?></pre>
+<pre><?php print_r(get_permalink(460)) ?></pre>
 <body <?php body_class(); ?>>
     <div id="page" class="site main_page_wrapper">
         <div class="modal fade" id="search" tabindex="-1" aria-labelledby="searchLabel" aria-hidden="true">
