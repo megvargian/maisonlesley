@@ -17,17 +17,18 @@ $homepage_third_block_fields = get_fields();
                         <?php
                             foreach($homepage_third_block_fields['products'] as $single_product_ID){
                                 foreach ($single_product_ID as $single_ID) {
-                                echo $single_ID;
-                                $title = get_the_title($single_ID);
+                                    $title = get_the_title($single_ID);
                         ?>
-                        <pre><?php print_r($single_ID); ?></pre>
                             <div class="swiper-slide">
-                                <img class="w-100" src="<?php echo get_the_post_thumbnail_url( $single_ID, 'medium' ); ?>" alt="<?php echo $title; ?>" loading="lazy">
-                                <div class="swiper-lazy-preloader"></div>
-                                <h4><?php echo $title; ?></h4>
+                                <a href="<?php echo get_permalink($single_ID); ?>">
+                                    <img class="w-100" src="<?php echo get_the_post_thumbnail_url( $single_ID, 'medium' ); ?>" alt="<?php echo $title; ?>" loading="lazy">
+                                    <div class="swiper-lazy-preloader"></div>
+                                    <h4><?php echo $title; ?></h4>
+                                </a>
                             </div>
                         <?php
-                            }  }
+                                }
+                            }
                         ?>
                     </div>
                 </div>
