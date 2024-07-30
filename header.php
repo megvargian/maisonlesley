@@ -218,7 +218,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                     </div>
                 </section>
                 <section class="bg-white main-nav-section-tablet">
-                    <div class="container px-0 py-3">
+                    <div class="container px-0 py-sm-0 py-2">
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list align-items-center">
                                 <li>
