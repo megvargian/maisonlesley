@@ -16,17 +16,18 @@ $homepage_third_block_fields = get_fields();
                     <div class="swiper-wrapper">
                         <?php
                             foreach($homepage_third_block_fields['products'] as $single_product_ID){
-                                echo $single_product_ID;
-                                $title = get_the_title($single_product_ID);
+                                foreach ($single_product_ID as $single_ID) {
+                                echo $single_ID;
+                                $title = get_the_title($single_ID);
                         ?>
-                        <pre><?php print_r($single_product_ID); ?></pre>
+                        <pre><?php print_r($single_ID); ?></pre>
                             <div class="swiper-slide">
-                                <img class="w-100" src="<?php echo get_the_post_thumbnail_url( $single_product_ID, 'medium' ); ?>" alt="<?php echo $title; ?>" loading="lazy">
+                                <img class="w-100" src="<?php echo get_the_post_thumbnail_url( $single_ID, 'medium' ); ?>" alt="<?php echo $title; ?>" loading="lazy">
                                 <div class="swiper-lazy-preloader"></div>
                                 <h4><?php echo $title; ?></h4>
                             </div>
                         <?php
-                            }
+                            }  }
                         ?>
                     </div>
                 </div>
