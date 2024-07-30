@@ -53,32 +53,32 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                     <a href="<?php echo $left_side_top_header_fields['main_link']; ?>" class="default-button">
                                         <?php echo $left_side_top_header_fields['main_text']; ?>
                                     </a>
-                                    <div class="drop-down-customer-service">
+                                    <!-- <div class="drop-down-customer-service">
                                         <div class="headeing text-center">
-                                            <h6><?php echo $left_side_top_header_fields['sub_main_label']; ?></h6>
+                                            <h6><?php // echo $left_side_top_header_fields['sub_main_label']; ?></h6>
                                         </div>
                                         <ul class="d-flex justify-content-between align-items-center">
                                             <li>
-                                                <a href="<?php echo $left_side_top_header_fields['first_sub_text_link']; ?>" class="icon-mail">
-                                                    <span><?php echo $left_side_top_header_fields['first_sub_text']; ?></span>
+                                                <a href="<?php // echo $left_side_top_header_fields['first_sub_text_link']; ?>" class="icon-mail">
+                                                    <span><?php //echo $left_side_top_header_fields['first_sub_text']; ?></span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="<?php echo $left_side_top_header_fields['second_sub_text_link']; ?>">
-                                                    <span><?php echo $left_side_top_header_fields['second_sub_text']; ?></span>
+                                                <a href="<?php //echo $left_side_top_header_fields['second_sub_text_link']; ?>">
+                                                    <span><?php //echo $left_side_top_header_fields['second_sub_text']; ?></span>
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
-                            <div class="col px-0">
+                            <!-- <div class="col px-0">
                                 <div class="icon-pin d-flex float-right custom-first-header-padding">
-                                    <a class="default-button" href="<?php echo $right_side_top_header_fields['main_link'] ?>">
-                                        <?php echo $right_side_top_header_fields['mian_text'] ?>
+                                    <a class="default-button" href="<?php //echo $right_side_top_header_fields['main_link'] ?>">
+                                        <?php //echo $right_side_top_header_fields['mian_text'] ?>
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </section>
