@@ -529,15 +529,6 @@ header.active {
   background-color: white;
 }
 
-.hover-js-drop-down:hover .drop-down-customer-service {
-  opacity: 1;
-  visibility: visible;
-}
-.hover-js-drop-down:hover .default-button::after {
-  opacity: 1;
-  visibility: visible;
-}
-
 .drop-down-customer-service {
   display: -webkit-box;
   display: -ms-flexbox;
