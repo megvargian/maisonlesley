@@ -6,8 +6,8 @@
 $homepage_third_block_fields = get_fields();
 ?>
 <pre><?php print_r($homepage_third_block_fields['products'][0]); ?></pre>
-<pre><?php print_r($homepage_third_block_fields['products'][0][0] -> ID); ?></pre>
-<pre><?php print_r($homepage_third_block_fields['products'][0][0] -> post_title); ?></pre>
+<pre><?php print_r($homepage_third_block_fields['products'][0][0]->ID); ?></pre>
+<pre><?php print_r($homepage_third_block_fields['products'][0][0]->post_title); ?></pre>
 <section class="py-5 my-5 swiper-products-section">
     <div class="container">
         <div class="row text-center justify-content-center pb-3">
@@ -21,9 +21,9 @@ $homepage_third_block_fields = get_fields();
                             foreach($homepage_third_block_fields['products'] as $single_product){
                         ?>
                             <div class="swiper-slide">
-                                <img class="w-100" src="<?php echo get_the_post_thumbnail_url( $single_product['ID'], 'medium' ); ?>" alt="<?php echo $single_product['post_title']; ?>" loading="lazy">
+                                <img class="w-100" src="<?php echo get_the_post_thumbnail_url( $single_product->ID, 'medium' ); ?>" alt="<?php echo $single_product->post_title; ?>" loading="lazy">
                                 <div class="swiper-lazy-preloader"></div>
-                                <h4><?php echo $single_product['post_title']; ?></h4>
+                                <h4><?php echo $single_product->post_title; ?></h4>
                             </div>
                         <?php
                             }
