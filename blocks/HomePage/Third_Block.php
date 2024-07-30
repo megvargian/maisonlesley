@@ -5,6 +5,7 @@
  */
 $homepage_third_block_fields = get_fields();
 ?>
+<pre><?php print_r($homepage_third_block_fields['products']); ?></pre>
 <section class="py-5 my-5 swiper-products-section">
     <div class="container">
         <div class="row text-center justify-content-center pb-3">
