@@ -128,22 +128,22 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                             <div class="sub-full-menu">
                                                 <div class="container">
                                                     <div class="row">
-                                                        <div class="col-3">
+                                                        <!-- <div class="col-3">
                                                             <div class="sub-div">
                                                                 <div class="sub-label mb-3">
-                                                                    <h5><?php echo $single_menu['sub_menu_section']['left_side_menu_label'] ?></h5>
+                                                                    <h5><?php // echo $single_menu['sub_menu_section']['left_side_menu_label'] ?></h5>
                                                                 </div>
                                                                 <ul class="sub-menu-list">
-                                                                    <?php foreach($single_menu['sub_menu_section']['left_side_sub_menu_list'] as $single_sub_menu){ ?>
+                                                                    <?php //foreach($single_menu['sub_menu_section']['left_side_sub_menu_list'] as $single_sub_menu){ ?>
                                                                         <li class="sub-menu-link">
-                                                                            <a href="<?php echo $single_sub_menu['url'] ?>">
-                                                                                <?php echo $single_sub_menu['text']; ?>
+                                                                            <a href="<?php //echo $single_sub_menu['url'] ?>">
+                                                                                <?php //echo $single_sub_menu['text']; ?>
                                                                             </a>
                                                                         </li>
-                                                                    <?php } ?>
+                                                                    <?php //} ?>
                                                                 </ul>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <?php foreach($single_menu['sub_menu_section']['right_side_images'] as $single_image_section){ ?>
                                                             <div class="col-3">
                                                                 <a class="sub-menu-image-link" href="<?php echo $single_image_section['url']; ?>">
@@ -270,7 +270,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                                                 <div id="collapseOne-header-<?php echo $count; ?>" class="accordion-collapse collapse" aria-labelledby="headingOne-header-<?php echo $count;?>" data-bs-parent="#accordionExample-header">
                                                                     <div class="accordion-body">
                                                                         <ul class="sub-menus-header">
-                                                                            <?php foreach($single_menu['sub_menu_section']['left_side_sub_menu_list'] as $single_sub_menu){ ?>
+                                                                            <?php foreach($single_menu['sub_menu_section']['right_side_images'] as $single_sub_menu){ ?>
                                                                                 <li class="mb-3">
                                                                                     <a href="<?php echo $single_sub_menu['url'] ?>">
                                                                                         <?php echo $single_sub_menu['text']; ?>
