@@ -5,7 +5,11 @@
 get_header();
 ?>
 <section class="mystique-rose-page">
-
+    <?php
+        while ( have_posts() ) : the_post();
+            the_content();
+        endwhile;
+    ?>
     <section>
         <div class="container-fluid px-sm-0">
             <div class="row">
