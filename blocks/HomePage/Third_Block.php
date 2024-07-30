@@ -17,8 +17,8 @@ $homepage_third_block_fields = get_fields();
                         <?php
                             foreach($homepage_third_block_fields['products'] as $single_product){
                         ?>
-                        <pre><?php print_r($single_product); ?></pre>
-                        <pre><?php print_r($single_product->ID); ?></pre>
+                        <pre><?php print_r($single_product[0]); ?></pre>
+                        <pre><?php print_r($single_product[0]->ID); ?></pre>
 
                             <div class="swiper-slide">
                                 <img class="w-100" src="<?php echo get_the_post_thumbnail_url( $single_product->ID, 'medium' ); ?>" alt="<?php echo $single_product->post_title; ?>" loading="lazy">
