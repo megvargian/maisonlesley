@@ -7,7 +7,6 @@ $Mystique_rose_third_block_fields = get_fields();
 <section class="py-4">
     <div class="container">
         <div class="row text-center py-4">
-            <h3>Going fast</h3>
             <h3><?php echo $Mystique_rose_third_block_fields['title']; ?></h3>
         </div>
         <div class="row justify-content-center">
