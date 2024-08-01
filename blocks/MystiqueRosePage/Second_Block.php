@@ -26,14 +26,14 @@ $Mystique_rose_second_block_fields = get_fields();
                                     if($button['single_button']){
                                 ?>
                                     <div class="col-12 d-flex justify-content-center align-items-center text-center px-1">
-                                        <a class="bg-white w-100 py-2 px-4" href="<?php echo $button['url']; ?>">
-                                            <?php echo $button['text']; ?>
+                                        <a class="bg-white w-100 py-2 px-4" href="<?php echo $button['button_url']; ?>">
+                                            <?php echo $button['button_text']; ?>
                                         </a>
                                     </div>
                                 <?php } else { ?>
                                     <div class="col-6 px-1 mb-2 d-flex justify-content-center align-items-center text-center">
-                                        <a class="bg-white w-100 py-2 px-4" href="<?php echo $button['url']; ?>">
-                                            <?php echo $button['text']; ?>
+                                        <a class="bg-white w-100 py-2 px-4" href="<?php echo $button['button_url']; ?>">
+                                            <?php echo $button['button_text']; ?>
                                         </a>
                                     </div>
                                 <?php }
