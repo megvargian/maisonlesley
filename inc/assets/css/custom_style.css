@@ -1134,6 +1134,9 @@ header.active {
 .mystique-rose-page .background-img-section-second {
   height: 510px !important;
 }
+.mystique-rose-page .mystiquerose_third_block a {
+  display: block;
+}
 
 .content-area {
   padding: 0;

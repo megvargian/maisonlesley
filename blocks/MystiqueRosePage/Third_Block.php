@@ -4,7 +4,7 @@
  */
 $Mystique_rose_third_block_fields = get_fields();
 ?>
-<section class="py-4">
+<section class="py-4 mystiquerose_third_block">
     <div class="container">
         <div class="row text-center py-4">
             <h3><?php echo $Mystique_rose_third_block_fields['title']; ?></h3>
