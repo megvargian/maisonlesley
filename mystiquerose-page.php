@@ -10,50 +10,6 @@ get_header();
             the_content();
         endwhile;
     ?>
-    <section>
-        <div class="container-fluid px-sm-0">
-            <div class="row">
-                <div class="col-md-6 col-12 px-0">
-                    <img class="w-100 px-0" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-half-mystique-rose.jpg" alt="">
-                </div>
-                <div class="col-md-6 col-12 d-flex justify-content-center align-items-center" style="background-color: #D0212F;">
-                    <div class="row py-3 py-md-0 justify-content-center d-flex align-items-center">
-                        <div class="col-12 justify-content-center text-center pb-4">
-                            <h6>THIS WEEKEND ONLY</h6>
-                            <h2>10/$40</h2>
-                            <h5>Panties</h5>
-                            <p>Orig up to 1495 each. <a href="#">Details</a></p>
-                        </div>
-                        <div class="col-md-6 col-10">
-                            <div class="row justify-content-center d-flex align-items-center">
-                                <div class="col-6 px-1 mb-2 d-flex justify-content-center align-items-center text-center">
-                                    <a class="bg-white w-100 py-2 px-4" href="#">Shop all</a>
-                                </div>
-                                <div class="col-6 px-1 mb-2 d-flex justify-content-center align-items-center text-center">
-                                    <a class="bg-white w-100 py-2 px-4" href="#">X-Small</a>
-                                </div>
-                                <div class="col-6 px-1 mb-2 d-flex justify-content-center align-items-center text-center">
-                                    <a class="bg-white w-100 py-2 px-4" href="#">X-Small</a>
-                                </div>
-                                <div class="col-6 px-1 mb-2 d-flex justify-content-center align-items-center text-center">
-                                    <a class="bg-white w-100 py-2 px-4" href="#">X-Small</a>
-                                </div>
-                                <div class="col-6 px-1 mb-2 d-flex justify-content-center align-items-center text-center">
-                                    <a class="bg-white w-100 py-2 px-4" href="#">X-Small</a>
-                                </div>
-                                <div class="col-6 px-1 mb-2 d-flex justify-content-center align-items-center text-center">
-                                    <a class="bg-white w-100 py-2 px-4" href="#">X-Small</a>
-                                </div>
-                                <div class="col-12 d-flex justify-content-center align-items-center text-center px-1">
-                                    <a class="bg-white w-100 py-2 px-4" href="#">X-Small</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="py-4">
         <div class="container">
             <div class="row text-center py-4">

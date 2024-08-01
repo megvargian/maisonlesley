@@ -274,6 +274,17 @@ function my_acf_init_block_types()
                 'keywords'          => array('testimonial', 'quote'),
             )
         );
+        acf_register_block_type(
+            array(
+                'name'              => 'MystiqueRose Second Block',
+                'title'             => __('MystiqueRose Second Block'),
+                'description'       => __('This is the Second Block of MystiqueRose'),
+                'render_template'   => 'blocks/MystiqueRosePage/Second_Block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
     }
 }
 
