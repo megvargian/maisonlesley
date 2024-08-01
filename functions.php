@@ -307,6 +307,17 @@ function my_acf_init_block_types()
                 'keywords'          => array('testimonial', 'quote'),
             )
         );
+        acf_register_block_type(
+            array(
+                'name'              => 'MystiqueRose Fifth Block',
+                'title'             => __('MystiqueRose Fifth Block'),
+                'description'       => __('This is the Fifth Block of MystiqueRose'),
+                'render_template'   => 'blocks/MystiqueRosePage/Fifth_Block.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
     }
 }
 
