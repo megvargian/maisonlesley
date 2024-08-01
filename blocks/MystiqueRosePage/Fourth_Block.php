@@ -22,11 +22,11 @@ $Mystique_rose_fourth_block_fields = get_fields();
 <section class="d-md-none d-block">
     <div class="container-fluid px-sm-0">
         <div class="row">
-            <img class="w-100 px-0" src="<?php echo echo $Mystique_rose_fourth_block_fields['main_image']; ?>">
+            <img class="w-100 px-0" src="<?php echo $Mystique_rose_fourth_block_fields['main_image']; ?>">
         </div>
     </div>
 </section>
-<section class="py-4 d-md-none d-block" style="background-color: #F1DFC9;">
+<section class="py-4 d-md-none d-block" style="background-color: <?php echo $Mystique_rose_fourth_block_fields['background_color_on_mobile']; ?>;">
     <div class="container">
         <div class="row text-center">
             <!-- <h5>TODAY ONLY</h5>
