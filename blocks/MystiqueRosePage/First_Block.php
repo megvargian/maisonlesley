@@ -1,6 +1,6 @@
 <?php
 /**
- * MystiqueRosePage First Block Template
+ * MystiqueRose First Block Template
  */
 $homepage_first_block_fields = get_fields();
 ?>

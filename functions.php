@@ -254,22 +254,21 @@ function my_acf_init_block_types()
         );
         acf_register_block_type(
             array(
-                'name'              => 'Mystique Rose First Block',
-                'title'             => __('Mystique Rose First Block'),
-                'description'       => __('Mystique Rose First Block'),
-                'render_template'   => 'blocks/MystiqueRosePage/First_Block.php ',
+                'name'              => 'Block Info Content',
+                'title'             => __('Block Info Content'),
+                'description'       => __('this is the info Content Accordion'),
+                'render_template'   => 'blocks/info-content.php',
                 'category'          => 'formatting',
                 'icon'              => 'admin-comments',
                 'keywords'          => array('testimonial', 'quote'),
             )
         );
-        // this is an exmaple to create block
         acf_register_block_type(
             array(
-                'name'              => 'Block Info Content',
-                'title'             => __('Block Info Content'),
-                'description'       => __('this is the info Content Accordion'),
-                'render_template'   => 'blocks/info-content.php',
+                'name'              => 'MystiqueRose First Block',
+                'title'             => __('MystiqueRose First Block'),
+                'description'       => __('MystiqueRose First Block'),
+                'render_template'   => 'blocks/MystiqueRosePage/First_Block.php ',
                 'category'          => 'formatting',
                 'icon'              => 'admin-comments',
                 'keywords'          => array('testimonial', 'quote'),
