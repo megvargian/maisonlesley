@@ -722,7 +722,3 @@ add_action('after_setup_theme', 'custom_woocommerce_image_size_for_single_produc
 function custom_woocommerce_image_size_for_single_product() {
     add_image_size('custom-woocommerce-image-size', 200, 300, true); // 200px by 300px, hard crop
 }
-
-// Remove related products from woocommerce_after_single_product_summary hook
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-?>

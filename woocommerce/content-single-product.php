@@ -86,19 +86,31 @@ if ( post_password_required() ) {
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row related-products-container">
             <?php
-            // Capture related products output
-            ob_start();
-            woocommerce_output_related_products();
-            $related_products_content = ob_get_clean();
+            // Get related products
+            $related_products = wc_get_related_products(get_the_ID(), 4); // Change '4' to the number of related products to display
+
+            if ($related_products) {
+                foreach ($related_products as $related_product_id) {
+                    // Get the product object
+                    $related_product = wc_get_product($related_product_id);
+
+                    // Output HTML for each related product
+                    ?>
+                    <div class="col-md-3 col-12 related-product-item">
+                        <a href="<?php echo esc_url(get_permalink($related_product_id)); ?>">
+                            <?php echo $related_product->get_image('woocommerce_thumbnail'); ?>
+                            <h2><?php echo $related_product->get_name(); ?></h2>
+                            <span class="price"><?php echo $related_product->get_price_html(); ?></span>
+                        </a>
+                    </div>
+                    <?php
+                }
+            } else {
+                echo '<p>No related products found.</p>';
+            }
             ?>
-            <div class="col-md-3 col-12">
-                <?php
-                // Output related products content
-                echo $related_products_content;
-                ?>
-            </div>
         </div>
     </div>
 </div>
@@ -109,3 +121,5 @@ if ( post_password_required() ) {
     </div>
 </div>
 <?php
+// Remove related products from woocommerce_after_single_product_summary hook
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
