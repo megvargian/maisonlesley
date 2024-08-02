@@ -616,12 +616,12 @@ function add_custom_add_to_cart_button() {
         }
     }
     if(!$send_enquiry){?>
-        <button id="custom-add-to-cart-button" class="button custom-button submit-button" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+        <button id="custom-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
             <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
         </button>
         <span class="response d-block text-danger"></span>
     <?php } else {?>
-        <a class="submit-button" href="/product-request/?pid=<?php echo $product->get_id(); ?>">
+        <a class="submit-button text-white d-block w-100" href="/product-request/?pid=<?php echo $product->get_id(); ?>">
             SEND Enquiry
         </a>
     <?php }
