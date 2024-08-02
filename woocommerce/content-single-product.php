@@ -87,18 +87,6 @@ if ( post_password_required() ) {
                 </div>
             </div>
         </div>
-        <div class="row">
-            <?php
-           /**
-             * Hook: woocommerce_after_single_product.
-             *
-             * @hooked woocommerce_output_product_data_tabs - 10
-             * @hooked woocommerce_upsell_display - 15
-             * @hooked woocommerce_output_related_products - 20
-             */
-            do_action( 'woocommerce_after_single_product' );
-            ?>
-        </div>
     </div>
 </div>
 
@@ -107,3 +95,4 @@ if ( post_password_required() ) {
         <?php do_action( 'woocommerce_after_single_product' ); ?>
     </div>
 </div>
+<?php
