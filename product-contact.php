@@ -8,6 +8,7 @@ if(isset($_POST['pid'])){
 	$product_id = $_POST['pid'];
 	$product_title = get_the_title($product_id);
 }
+echo $product_title;
 ?>
 <section  class="contact_us_content py-5">
 	<div class="container">
@@ -25,9 +26,9 @@ if(isset($_POST['pid'])){
 <script>
 	jQuery(document).ready(function($) {
 		var cf7form = $('.wpcf7');
-		$('input[name="text-390"]').attr('readonly');
+		$('#product').prop('readonly', true);
 		<?php if($product_title){?>
-			$('input[name="text-390"]').attr('value', '<?php echo $product_title; ?>');
+			$('#product').attr('value', '<?php echo $product_title; ?>');
 		<?php } ?>
 		if (cf7form) {
 			$(cf7form).each(function(index, el) {
