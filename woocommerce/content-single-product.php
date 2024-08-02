@@ -88,13 +88,13 @@ if ( post_password_required() ) {
         </div>
         <div class="row">
         <?php
-        /**
-         * Hook: woocommerce_after_single_product_summary.
-         *
-         * @hooked woocommerce_output_related_products - 20
-         */
-        do_action( 'woocommerce_after_single_product_summary' );
-        ?>
+            // Capture related products output
+            ob_start();
+            woocommerce_output_related_products();
+            $related_products_content = ob_get_clean();
+            // Output related products content
+            echo $related_products_content;
+            ?>
         </div>
     </div>
 </div>
