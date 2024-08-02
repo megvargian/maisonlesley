@@ -105,8 +105,8 @@ if ( post_password_required() ) {
                         <a href="<?php echo esc_url(get_permalink($related_product_id)); ?>">
                             <?php
                             $attachment_id = $related_product->get_image_id(); // Get the product image ID
-                            $image_url = wp_get_attachment_image_src($attachment_id) ;
-                            echo '<img class="main-img-product-'.$product_id.' main-thumbnail-img" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($related_product->get_name()) . '" width="500" height="500" />';
+                            $image_url = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
+                            echo '<img class="main-img-product-'.$related_product_id.' main-thumbnail-img" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($related_product->get_name()) . '" width="500" height="500" />';
                             ?>
                             <h2><?php echo $related_product->get_name(); ?></h2>
                             <span class="price"><?php echo $related_product->get_price_html(); ?></span>
