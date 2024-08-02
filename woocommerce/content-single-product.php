@@ -87,36 +87,32 @@ if ( post_password_required() ) {
             </div>
         </div>
         <div class="row related-products-container pt-4">
-            <div class="row text-left">
-                <h2>Related Products</h2>
-            </div>
             <?php
-            // Get related products
-            $related_products = wc_get_related_products(get_the_ID(), 4); // Change '4' to the number of related products to display
-
-            if ($related_products) {
-                foreach ($related_products as $related_product_id) {
-                    // Get the product object
-                    $related_product = wc_get_product($related_product_id);
-
-                    // Output HTML for each related product
+                $related_products = wc_get_related_products( $product->get_id(), $limit = 4 ); // Change limit as needed
+                if ( ! empty( $related_products ) ) {
+                    // Start custom structure
                     ?>
-                    <div class="col-md-3 col-12 related-product-item">
-                        <a href="<?php echo esc_url(get_permalink($related_product_id)); ?>">
-                            <?php
-                            $attachment_id = $related_product->get_image_id(); // Get the product image ID
-                            $image_url = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
-                            echo '<img class="main-img-product-'.$related_product_id.' main-thumbnail-img" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($related_product->get_name()) . '" width="500" height="500" />';
-                            ?>
-                            <h2><?php echo $related_product->get_name(); ?></h2>
-                            <span class="price"><?php echo $related_product->get_price_html(); ?></span>
-                        </a>
-                    </div>
+                        <div class="container">
+                            <div class="row text-left">
+                                <?php echo '<h2>' . __( 'Related Products', 'woocommerce' ) . '</h2>'; ?>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <?php foreach ( $related_products as $related_product_id ) { ?>
+                                    <div class="col-md-3 col-12">
+                                        <?php
+                                            $post_object = get_post( $related_product_id );
+                                            setup_postdata( $GLOBALS['post'] =& $post_object );
+                                            wc_get_template_part( 'content', 'product' );
+                                        ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
                     <?php
+                    wp_reset_postdata();
                 }
-            } else {
-                echo '<p>No related products found.</p>';
-            }
             ?>
         </div>
     </div>

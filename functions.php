@@ -592,39 +592,6 @@ add_action('after_setup_theme', 'custom_woocommerce_image_size');
 function custom_woocommerce_image_size() {
     add_image_size('custom-woocommerce-thumbnail', 500, 500, true); // 500px by 500px, hard crop
 }
-// add custom structure for related products in single product page woocommerce
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-add_action( 'woocommerce_after_single_product_summary', 'custom_output_related_products', 20 );
-
-function custom_output_related_products() {
-    // Custom query to get related products
-    global $product;
-    $related_products = wc_get_related_products( $product->get_id(), $limit = 4 ); // Change limit as needed
-    if ( ! empty( $related_products ) ) {
-        // Start custom structure
-        ?>
-            <div class="container">
-                <div class="row text-left">
-                    <?php echo '<h2>' . __( 'Related Products', 'woocommerce' ) . '</h2>'; ?>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <?php foreach ( $related_products as $related_product_id ) { ?>
-                        <div class="col-md-3 col-12">
-                            <?php
-                                $post_object = get_post( $related_product_id );
-                                setup_postdata( $GLOBALS['post'] =& $post_object );
-                                wc_get_template_part( 'content', 'product' );
-                            ?>
-                        </div>
-                    <?php } ?>
-                </div>
-            </div>
-        <?php
-        wp_reset_postdata();
-    }
-}
 // remove add to cart
 function remove_default_add_to_cart_button() {
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
@@ -679,9 +646,8 @@ add_action('wp_enqueue_scripts', 'custom_enqueue_fancybox');
 // Remove default actions
 remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
 remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
-// Remove related products from woocommerce_after_single_product_summary hook
-remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-
+// add custom structure for related products in single product page woocommerce
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 // Add custom action for product images with FancyBox
 add_action('woocommerce_before_single_product_summary', 'display_product_images_with_fancybox', 20);
 
