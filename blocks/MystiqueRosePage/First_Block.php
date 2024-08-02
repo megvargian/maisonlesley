@@ -4,7 +4,7 @@
  */
 $Mystique_rose_first_block_fields = get_fields();
 ?>
-<section class="py-5" style="background-color: #f5f5f5;">
+<section class="py-5" style="background-color: <?php echo $Mystique_rose_first_block_fields['background_color']; ?>;">
     <div class="container">
         <div class="row text-center">
             <?php echo $Mystique_rose_first_block_fields['main_text']; ?>
