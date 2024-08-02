@@ -87,14 +87,18 @@ if ( post_password_required() ) {
             </div>
         </div>
         <div class="row">
-        <?php
+            <?php
             // Capture related products output
             ob_start();
             woocommerce_output_related_products();
             $related_products_content = ob_get_clean();
-            // Output related products content
-            echo $related_products_content;
             ?>
+            <div class="col-md-3 col-12">
+                <?php
+                // Output related products content
+                echo $related_products_content;
+                ?>
+            </div>
         </div>
     </div>
 </div>
