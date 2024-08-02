@@ -86,7 +86,10 @@ if ( post_password_required() ) {
                 </div>
             </div>
         </div>
-        <div class="row related-products-container">
+        <div class="row related-products-container pt-4">
+            <div class="row text-left">
+                <h2>Related Products</h2>
+            </div>
             <?php
             // Get related products
             $related_products = wc_get_related_products(get_the_ID(), 4); // Change '4' to the number of related products to display
@@ -100,7 +103,11 @@ if ( post_password_required() ) {
                     ?>
                     <div class="col-md-3 col-12 related-product-item">
                         <a href="<?php echo esc_url(get_permalink($related_product_id)); ?>">
-                            <?php echo $related_product->get_image('woocommerce_thumbnail'); ?>
+                            <?php
+                            $attachment_id = $related_product->get_image_id(); // Get the product image ID
+                            $image_url = wp_get_attachment_image_src($attachment_id) ;
+                            echo '<img class="main-img-product-'.$product_id.' main-thumbnail-img" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($related_product->get_name()) . '" width="500" height="500" />';
+                            ?>
                             <h2><?php echo $related_product->get_name(); ?></h2>
                             <span class="price"><?php echo $related_product->get_price_html(); ?></span>
                         </a>
@@ -121,5 +128,3 @@ if ( post_password_required() ) {
     </div>
 </div>
 <?php
-// Remove related products from woocommerce_after_single_product_summary hook
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
