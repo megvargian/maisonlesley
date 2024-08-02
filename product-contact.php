@@ -4,6 +4,10 @@
  */
 get_header();
 $all_feilds = get_fields();
+if(isset($_POST['pid'])){
+	$product_id = $_POST['pid'];
+	$product_title = get_the_title($product_id);
+}
 ?>
 <section  class="contact_us_content py-5">
 	<div class="container">
@@ -22,6 +26,9 @@ $all_feilds = get_fields();
 	jQuery(document).ready(function($) {
 		var cf7form = $('.wpcf7');
 		$('input[name="text-390"]').attr('readonly');
+		<?php if($product_title){?>
+			$('input[name="text-390"]').attr('value', '<?php echo $product_title; ?>');
+		<?php } ?>
 		if (cf7form) {
 			$(cf7form).each(function(index, el) {
 			if (el) {
