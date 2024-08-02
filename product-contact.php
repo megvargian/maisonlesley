@@ -8,6 +8,7 @@ if(isset($_POST['pid'])){
 	$product_id = $_POST['pid'];
 	$product_title = get_the_title($product_id);
 }
+echo 'test';
 echo $product_title;
 ?>
 <section  class="contact_us_content py-5">
