@@ -11,7 +11,7 @@ get_header();
         endwhile;
     ?>
 
-    <section class="py-4">
+    <!-- <section class="py-4">
         <div class="container">
             <div class="row text-center py-4">
                 <h3>Going fast</h3>
@@ -38,7 +38,7 @@ get_header();
             </div>
             </div>
         </div>
-    </section>
+    </section> -->
 </section>
 <script>
     jQuery(document).ready(function($) {
