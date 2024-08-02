@@ -8,7 +8,6 @@ if(isset($_GET['pid'])){
 	$product_id = $_GET['pid'];
 	$product_title = get_the_title($product_id);
 }
-echo $product_title;
 ?>
 <section  class="contact_us_content py-5">
 	<div class="container">
