@@ -21,6 +21,7 @@ $all_feilds = get_fields();
 <script>
 	jQuery(document).ready(function($) {
 		var cf7form = $('.wpcf7');
+		$('input[name="text-390"]').attr('readonly');
 		if (cf7form) {
 			$(cf7form).each(function(index, el) {
 			if (el) {
