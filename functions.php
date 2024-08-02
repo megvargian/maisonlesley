@@ -602,20 +602,29 @@ function add_custom_add_to_cart_button() {
     global $product;
     $product_id = $product->get_id(); // Get the product ID
     $terms = get_the_terms( $product_id, 'product_cat' ); // Get the terms (categories) assigned to the product
-
     if ( $terms && ! is_wp_error( $terms ) ) {
         $category_ids = array();
         foreach ( $terms as $term ) {
             $category_ids[] = $term->term_id; // Get each category ID
         }
     }
-    ?>
-    <pre><?php print_r($category_ids); ?></pre>
-    <button id="custom-add-to-cart-button" class="button custom-button" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
-        <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
-    </button>
-    <span class="response d-block text-danger"></span>
-    <?php
+    foreach($category_ids as $category_id){
+        if($category_id == 21 || $category_id == 22 || $category_id == 35 || $category_id == 24 || $category_id == 37 || $category_id == 34 || $category_id == 26){
+            $send_enquiry = true;
+        } else {
+            $send_enquiry = false;
+        }
+    }
+    if(!$send_enquiry){?>
+        <button id="custom-add-to-cart-button" class="button custom-button" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+            <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
+        </button>
+        <span class="response d-block text-danger"></span>
+    <?php } else {?>
+        <a href="/product-request/?pid=<?php echo $product->get_id(); ?>">
+            SEND Enquiry
+        </a>
+    <?php }
 }
 add_action( 'woocommerce_single_product_summary', 'add_custom_add_to_cart_button', 30 );
 
