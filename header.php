@@ -16,7 +16,7 @@ $left_side_top_header_fields = $top_header_fields['left_side_top_header'];
 $right_side_top_header_fields = $top_header_fields['right_side_top_header'];
 $main_logo_image = $all_generalFields['main_logo'];
 $main_logo_link = $all_generalFields['main_logo_link'];
-$header_menu = $all_generalFields['header_menu'];
+$header_menu = is_page(420) ? $all_generalFields['header_menu_mystique_rose'] : $all_generalFields['header_menu'];
 $current_url = home_url(add_query_arg(array(), $wp->request));
 ?>
 <!DOCTYPE html>
