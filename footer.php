@@ -253,7 +253,7 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
             });
         });
         $('.product-attributes li').on('click', function(){
-            $('..product-attributes li').removeClass('active');
+            $('.product-attributes li').removeClass('active');
             $(this).addClass('active');
         });
         // Apply FancyBox to product images
