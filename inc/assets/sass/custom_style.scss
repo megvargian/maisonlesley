@@ -1246,7 +1246,9 @@ header.active{
 	   }
 	}
 }
-.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained{
+.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained, .wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained{
 	background-color: #000;
 	color: #fff;
+	outline: none;
+	border: none;
 }
