@@ -92,7 +92,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                             <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                                         </a>
                                     </div>
-                                    <div class="col-1 px-0 d-flex justify-content-center h-100" style="background-color: #d5d1d1; width: 1px; margin: 5px 0;"></div>
+                                    <div class="col-1 px-0 d-flex justify-content-center" style="background-color: #d5d1d1; width: 1px; margin: 5px 0; height:30px"></div>
                                     <div class="col-7 h-100">
                                         <a class="second-header-main-pages <?= get_permalink(460) == $current_url . '/' ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
                                             <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
