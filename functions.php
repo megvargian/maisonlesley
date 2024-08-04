@@ -602,17 +602,14 @@ function add_custom_add_to_cart_button() {
     global $product;
     $product_id = $product->get_id(); // Get the product ID
     $terms = get_the_terms( $product_id, 'product_cat' ); // Get the terms (categories) assigned to the product
+    // check if the products has spesitific categories
     if ( $terms && ! is_wp_error( $terms ) ) {
-        $category_ids = array();
         foreach ( $terms as $term ) {
-            $category_ids[] = $term->term_id; // Get each category ID
-        }
-    }
-    foreach($category_ids as $category_id){
-        if($category_id == 21 || $category_id == 22 || $category_id == 35 || $category_id == 24 || $category_id == 37 || $category_id == 34 || $category_id == 26){
-            $send_enquiry = true;
-        } else {
-            $send_enquiry = false;
+            if($term->term_id == 21 || $term->term_id == 22 || $term->term_id == 35 || $term->term_id == 24 || $term->term_id == 37 || $term->term_id == 34 || $term->term_id == 26){
+                $send_enquiry = true;
+            } else {
+                $send_enquiry = false;
+            }
         }
     }
     if(!$send_enquiry){?>
