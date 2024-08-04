@@ -83,10 +83,10 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                     </div>
                 </section>
                 <section class="second-header">
-                    <div class="container px-0">
-                        <div class="row">
-                            <div class="col-md-4 col-12">
-                                <div class="row">
+                    <div class="container h-100 px-0">
+                        <div class="row h-100">
+                            <div class="col-md-4 col-12 h-100">
+                                <div class="row h-100">
                                     <div class="col-4">
                                         <a class="second-header-main-pages <?= get_home_url() == $current_url ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
                                             <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
