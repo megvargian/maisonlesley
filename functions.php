@@ -616,21 +616,20 @@ function add_custom_add_to_cart_button() {
         <?php
             // Check if the product exists and has attributes
             if ($product->has_attributes() ) {
-                echo '<ul class="product-attributes">';
 
                 // Loop through each attribute
                 foreach ( $product->get_attributes() as $attribute ) {
                     // Get attribute label (name)
                     $attribute_label = wc_attribute_label( $attribute->get_name(), $product );
-
                     // Get attribute value(s)
                     $attribute_values = implode( ', ', $attribute->get_options() );
-
                     // Output the attribute
-                    echo '<li><strong>' . esc_html( $attribute_label ) . ':</strong> ' . esc_html( $attribute_values ) . '</li>';
-                }
+                    echo '<h6>'.$attribute_label.'</h6>'
+                    echo '<ul class="product-attributes w-100">';
+                    echo '<li>' . esc_html( $attribute_values ) . '</li>';
+                    echo '</ul>';
 
-                echo '</ul>';
+                }
             } else {?>
                 <button id="custom-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
                     <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
