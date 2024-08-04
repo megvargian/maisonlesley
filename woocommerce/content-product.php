@@ -88,9 +88,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                 }
                 echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';
                 if ( ! empty( $short_description ) ) {
-                        echo '<p class="woocommerce-product-short-description">' . $short_description . '</p>';
+                        echo '<p class="woocommerce-product-short-description mt-0">' . $short_description . '</p>';
                 }
-                echo '<span class="price">' . $product->get_price_html() . '</span>';
+                echo '<span class="price mb-3">' . $product->get_price_html() . '</span>';
         // Close the product link
         echo '</a>';
         // Display the add to cart button
