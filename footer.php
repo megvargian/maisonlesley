@@ -263,8 +263,6 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
         $('#form-add-to-cart-button').on('click', function() {
             var product_id = $(this).data('product-id');
             var selected_attr = $('.product-attributes').find('button.active').text();
-            console.log(product_id);
-            console.log(selected_attr);
             $.ajax({
                 type: 'POST',
                 url: '<?php echo admin_url('admin-ajax.php'); ?>',
