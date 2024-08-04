@@ -666,7 +666,8 @@ add_action('wp_enqueue_scripts', 'custom_enqueue_fancybox');
 remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
 remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
 // add custom structure for related products in single product page woocommerce
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
 // Add custom action for product images with FancyBox
 add_action('woocommerce_before_single_product_summary', 'display_product_images_with_fancybox', 20);
 
