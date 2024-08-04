@@ -674,6 +674,29 @@ function custom_add_to_cart() {
 add_action( 'wp_ajax_custom_add_to_cart', 'custom_add_to_cart' );
 add_action( 'wp_ajax_nopriv_custom_add_to_cart', 'custom_add_to_cart' );
 
+function form_custom_add_to_cart() {
+    $product_id = intval( $_POST['product_id'] );
+    $selected_attr_size =  intval( $_POST['selected_attr_size'] );
+    $attributes = array(
+        'attribute_pa_size'  => $selected_attr_size // Replace with your selected attribute value
+    );
+    $quantity = 1; // You can customize the quantity
+    $cart_item_data = array(
+        'variation' => $attributes,
+    );
+    $added = WC()->cart->add_to_cart( $product_id, $quantity, 0, $attributes, $cart_item_data );
+
+    if ( $added ) {
+        wp_send_json_success();
+    } else {
+        wp_send_json_error();
+    }
+
+    wp_die();
+}
+add_action( 'wp_ajax_form_custom_add_to_cart', 'form_custom_add_to_cart' );
+add_action( 'wp_ajax_nopriv_form_custom_add_to_cart', 'form_custom_add_to_cart' );
+
 // removing category in single product page under summary class
 add_action('woocommerce_single_product_summary', 'remove_product_category', 20);
 
