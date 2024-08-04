@@ -16,9 +16,8 @@ $left_side_top_header_fields = $top_header_fields['left_side_top_header'];
 $right_side_top_header_fields = $top_header_fields['right_side_top_header'];
 $main_logo_image = $all_generalFields['main_logo'];
 $main_logo_link = $all_generalFields['main_logo_link'];
-$is_MystiqueRose = is_page(460) || is_product_category(17) || is_product_category(23) || is_product_category(18) || is_product_category(25);
-echo $is_MystiqueRose;
-$header_menu = is_page(460) ? $all_generalFields['header_menu_mystique_rose'] : $all_generalFields['header_menu'];
+$is_MystiqueRose = is_page(460) || is_product_category(17) || is_product_category(23) || is_product_category(18) || is_product_category(25) || is_product_category(20);
+$header_menu = $is_MystiqueRose ? $all_generalFields['header_menu_mystique_rose'] : $all_generalFields['header_menu'];
 $current_url = home_url(add_query_arg(array(), $wp->request));
 ?>
 <!DOCTYPE html>
@@ -90,13 +89,13 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                             <div class="col-md-4 col-12 h-100">
                                 <div class="row h-100">
                                     <div class="col-4 h-100">
-                                        <a class="second-header-main-pages <?= get_home_url() == $current_url ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
+                                        <a class="second-header-main-pages <?= empty($is_MystiqueRose) ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
                                             <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                                         </a>
                                     </div>
                                     <div class="col-1 px-0 d-flex justify-content-center" style="background-color: #d5d1d1; width: 1px; margin: 5px 0; height:30px"></div>
                                     <div class="col-7 h-100">
-                                        <a class="second-header-main-pages <?= get_permalink(460) == $current_url . '/' ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
+                                        <a class="second-header-main-pages <?= $is_MystiqueRose ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
                                             <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                                         </a>
                                     </div>
@@ -107,9 +106,9 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                 </section>
                 <section class="bg-white main-logo-section">
                     <div class="container">
-                        <div class="row justify-content-center" style="<?php echo get_permalink(460) == $current_url . '/' ? 'padding-top: 128px;' : 'padding-top: 70px;'; ?>">
+                        <div class="row justify-content-center" style="<?php echo $is_MystiqueRose ? 'padding-top: 128px;' : 'padding-top: 70px;'; ?>">
                             <a class="d-flex justify-content-center" style="width:fit-content;" href="<?php echo $main_logo_link;?>">
-                                <?php if(get_permalink(460) == $current_url . '/'){ ?>
+                                <?php if($is_MystiqueRose){ ?>
                                     <img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                                 <?php } else { ?>
                                     <img class="main-logo" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
@@ -211,10 +210,10 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                 <section class="second-header-tablet">
                     <div class="container px-0">
                         <nav class="d-flex justify-content-around align-items-center">
-                            <a class="second-header-main-pages <?= get_home_url() == $current_url ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
+                            <a class="second-header-main-pages <?= empty($is_MystiqueRose) ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
                                 <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                             </a>
-                            <a class="second-header-main-pages <?= get_permalink(460) == $current_url . '/' ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
+                            <a class="second-header-main-pages <?= $is_MystiqueRose ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
                                 <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                             </a>
                         </nav>
