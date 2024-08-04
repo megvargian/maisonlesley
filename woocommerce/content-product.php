@@ -86,7 +86,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                         echo '<img class="first-gallery-image d-none" src="' . esc_url($first_image_url[0]) . '" alt="First Gallery Image">';
                 }
                 echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';
-                echo '<pre>'. print_r($product) .'</pre>'
+                echo '<p>'. $product->get_short_description() .'</p>'
                 echo '<span class="price">' . $product->get_price_html() . '</span>';
         // Close the product link
         echo '</a>';
