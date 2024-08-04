@@ -87,12 +87,12 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                         <div class="row h-100">
                             <div class="col-md-4 col-12 h-100">
                                 <div class="row h-100">
-                                    <div class="col-4">
+                                    <div class="col-4 h-100" style="border-right: 1px solid #d5d1d1">
                                         <a class="second-header-main-pages <?= get_home_url() == $current_url ? 'active' : ''; ?>" href="<?php echo get_home_url(); ?>">
                                             <img style="height: 40px; width: 90px;" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
                                         </a>
                                     </div>
-                                    <div class="col-8">
+                                    <div class="col-8 h-100">
                                         <a class="second-header-main-pages <?= get_permalink(460) == $current_url . '/' ? 'active' : ''; ?>" href="<?php echo get_permalink(460); ?>">
                                             <img style="height: 40px; width: 170px;" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                                         </a>
