@@ -67,6 +67,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         ?>
         <?php
         // Open the product link
+        $short_description = $product->get_short_description();
         $attachment_ids = $product->get_gallery_image_ids();
         if ($attachment_ids && !empty($attachment_ids)) {
                 $first_image_id = $attachment_ids[0]; // Get the first image ID
@@ -86,7 +87,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                         echo '<img class="first-gallery-image d-none" src="' . esc_url($first_image_url[0]) . '" alt="First Gallery Image">';
                 }
                 echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';
-                echo '<p>'. $product->get_short_description() .'</p>'
+                if ( ! empty( $short_description ) ) {
+                        echo '<p class="woocommerce-product-short-description">' . $short_description . '</p>';
+                }
                 echo '<span class="price">' . $product->get_price_html() . '</span>';
         // Close the product link
         echo '</a>';
