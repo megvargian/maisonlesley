@@ -1258,7 +1258,8 @@ header.active {
 
 .product-attributes li {
   padding: 4px 8px;
+  margin: 0 5px;
 }
-.product-attributes li.active {
-  border: 1px solid black;
+.product-attributes li span.active {
+  border: 2px solid black;
 }

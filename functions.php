@@ -627,7 +627,7 @@ function add_custom_add_to_cart_button() {
                     echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
                     echo '<ul class="product-attributes w-100 d-flex justify-content-start">';
                     foreach ( $attribute_values as $value ) {
-                        echo '<li>' . esc_html( $value ) . '</li>';
+                        echo '<li class="cursor-pointer"><span>'. esc_html( $value ) .'</span></li>';
                     }
                     echo '</ul>';
 
