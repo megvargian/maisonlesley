@@ -25,7 +25,7 @@ if ( is_product() && ! empty( $product ) ) {
     $product_categories = wc_get_product_terms( $product->get_id(), 'product_cat', array( 'fields' => 'ids' ) );
 
     // Check if Category ID 10 (replace with your category ID) is in the product categories
-    if ( in_array( 10, $product_categories ) ) {
+    if ( in_array( 17, $product_categories ) || in_array( 23, $product_categories ) ||in_array( 18, $product_categories ) ||in_array( 25, $product_categories ) ||in_array( 20, $product_categories ) ) {
         echo '<p>This product belongs to Category ID 10.</p>';
     } else {
         echo '<p>This product does not belong to Category ID 10.</p>';
