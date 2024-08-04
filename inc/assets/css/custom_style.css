@@ -1256,10 +1256,28 @@ header.active {
   display: block !important;
 }
 
-.product-attributes li {
-  padding: 4px 8px;
-  margin: 0 5px;
+.product-attributes {
+  margin: 0 -5px;
+  list-style-type: none;
+  padding: 0;
 }
-.product-attributes li span.active {
-  border: 2px solid black;
+.product-attributes li {
+  cursor: pointer;
+  height: 30px;
+  width: 36px;
+  margin: 0 5px;
+  display: inline-block;
+}
+.product-attributes li button.active {
+  border: 2px solid #000;
+}
+.product-attributes li button {
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }

@@ -1218,11 +1218,27 @@ header.active{
 }
 // attributes style
 .product-attributes{
+	margin: 0 -5px;
+	list-style-type: none;
+	padding: 0;
 	li{
-	   padding: 4px 8px;
+	   cursor: pointer;
+	   height: 30px;
+	   width: 36px;
 	   margin: 0 5px;
-	}
-	li span.active{
-		border: 2px solid black;
+	   display: inline-block;
+	   button.active{
+		border: 2px solid #000;
+	   }
+	   button{
+		display: block;
+		text-align: center;
+		font-size: 1rem;
+		cursor: pointer;
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		width: 100%;
+	   }
 	}
 }
