@@ -255,6 +255,10 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
         $('.product-attributes li').on('click', function(){
             $('.product-attributes li button').removeClass('active');
             $(this).find('button').addClass('active');
+            const attributeValue = $(this).find('button').text();
+            console.log(attributeValue);
+            $('.input-size').val(attributeValue);
+            $('#form-add-to-cart-button').removeAttr('disabled');
         });
         // Apply FancyBox to product images
         $('a.fancybox').fancybox({

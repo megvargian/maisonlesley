@@ -615,23 +615,32 @@ function add_custom_add_to_cart_button() {
     if(!$send_enquiry){?>
         <?php
             // Check if the product exists and has attributes
-            if ($product->has_attributes() ) {
-
-                // Loop through each attribute
-                foreach ( $product->get_attributes() as $attribute ) {
-                    // Get attribute label (name)
-                    $attribute_label = wc_attribute_label( $attribute->get_name(), $product );
-                    // Get attribute value(s)
-                    $attribute_values = $attribute->get_options();
-                    // Output the attribute
-                    echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
-                    echo '<ul class="product-attributes w-100 d-flex justify-content-start">';
-                    foreach ( $attribute_values as $value ) {
-                        echo '<li><button>'. esc_html( $value ) .'</button></li>';
+            if ($product->has_attributes() ) { ?>
+                <form method="POST" action="/cart" >
+                    <?php
+                    // Loop through each attribute
+                    foreach ( $product->get_attributes() as $attribute ) {
+                        // Get attribute label (name)
+                        $attribute_label = wc_attribute_label( $attribute->get_name(), $product );
+                        // Get attribute value(s)
+                        $attribute_values = $attribute->get_options();
+                        // Output the attribute
+                        echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
+                        echo '<ul class="product-attributes w-100 d-flex justify-content-start">';
+                        foreach ( $attribute_values as $value ) {
+                            echo '<li><button>'. esc_html( $value ) .'</button></li>';
+                        }
+                        echo '</ul>';
+                        ?>
+                            <input class="input-<?php echo strtolower($attribute_label); ?>" type="text" hidden name="<?php echo strtolower($attribute_label); ?>" value="">
+                        <?php
                     }
-                    echo '</ul>';
-
-                }
+                    ?>
+                    <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+                        <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
+                    </button>
+                </form>
+            <?php
             } else {?>
                 <button id="custom-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
                     <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
