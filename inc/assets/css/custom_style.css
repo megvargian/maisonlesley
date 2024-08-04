@@ -1255,3 +1255,10 @@ header.active {
 .cat-single-product:hover .first-gallery-image {
   display: block !important;
 }
+
+.product-attributes li {
+  padding: 4px 8px;
+}
+.product-attributes li.active {
+  border: 1px solid black;
+}
