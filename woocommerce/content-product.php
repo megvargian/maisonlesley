@@ -73,7 +73,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                 $first_image_id = $attachment_ids[0]; // Get the first image ID
                 $first_image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($first_image_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($first_image_id); // Get the URL of the first image
         } ?>
-        <a class="w-100 h-100 d-block <?php echo $first_image_url ? 'cat-single-product' : '' ?>" href="<?php echo esc_url( $product->get_permalink() ) ?>">
+        <a class="w-100 h-100 d-block pb-3 <?php echo $first_image_url ? 'cat-single-product' : '' ?>" href="<?php echo esc_url( $product->get_permalink() ) ?>">
         <?php
                 $attachment_id = $product->get_image_id(); // Get the product image ID
                 $image_url_mobile = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
@@ -88,9 +88,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                 }
                 echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';
                 if ( ! empty( $short_description ) ) {
-                        echo '<p class="woocommerce-product-short-description mt-0">' . $short_description . '</p>';
+                        echo '<p class="woocommerce-product-short-description my-0">' . $short_description . '</p>';
                 }
-                echo '<span class="price mb-3">' . $product->get_price_html() . '</span>';
+                echo '<span class="price">' . $product->get_price_html() . '</span>';
         // Close the product link
         echo '</a>';
         // Display the add to cart button
