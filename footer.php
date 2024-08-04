@@ -264,7 +264,7 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
             var product_id = $(this).data('product-id');
             var selected_attr = $('.product-attributes').find('button.active').val();
             var selected_attr1 = $('.product-attributes').find('button.active').text();
-            conosle.log(product_id);
+            console.log(product_id);
             console.log(selected_attr);
             console.log(selected_attr1);
             // $.ajax({
