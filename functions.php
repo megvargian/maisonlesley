@@ -616,7 +616,7 @@ function add_custom_add_to_cart_button() {
         <?php
             // Check if the product exists and has attributes
             if ($product->has_attributes() ) { ?>
-                <form method="POST" action="/cart" >
+                <!-- <form method="POST" action="/cart" > -->
                     <?php
                     // Loop through each attribute
                     foreach ( $product->get_attributes() as $attribute ) {
@@ -639,7 +639,7 @@ function add_custom_add_to_cart_button() {
                     <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
                         <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
                     </button>
-                </form>
+                <!-- </form> -->
             <?php
             } else {?>
                 <button id="custom-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">

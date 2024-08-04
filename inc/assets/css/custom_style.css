@@ -1021,6 +1021,7 @@ header.active {
   font-family: "Rutan-Light";
   font-weight: 300;
   border: none;
+  margin-top: 20px;
 }
 
 .consent-checkbox {
@@ -1283,4 +1284,9 @@ header.active {
   outline: none;
   background: none;
   border: none;
+}
+
+.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained {
+  background-color: #000;
+  color: #fff;
 }
