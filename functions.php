@@ -624,7 +624,7 @@ function add_custom_add_to_cart_button() {
                     // Get attribute value(s)
                     $attribute_values = implode( ', ', $attribute->get_options() );
                     // Output the attribute
-                    echo '<h6>'.$attribute_label.'</h6>'
+                    echo '<h6>'.$attribute_label.'</h6>';
                     echo '<ul class="product-attributes w-100">';
                     echo '<li>' . esc_html( $attribute_values ) . '</li>';
                     echo '</ul>';
