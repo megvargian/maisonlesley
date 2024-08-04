@@ -16,7 +16,7 @@ $left_side_top_header_fields = $top_header_fields['left_side_top_header'];
 $right_side_top_header_fields = $top_header_fields['right_side_top_header'];
 $main_logo_image = $all_generalFields['main_logo'];
 $main_logo_link = $all_generalFields['main_logo_link'];
-$is_MystiqueRose = is_page(460) || is_product_category(21) || is_product_category(22) || is_product_category(35) || is_product_category(24) || is_product_category(37) || is_product_category(34) || is_product_category(26) || (is_product() && has_term(21, 'product_cat', $product->get_id()));
+$is_MystiqueRose = is_page(460) || is_product_category(17) || is_product_category(23) || is_product_category(18) || is_product_category(25);
 echo $is_MystiqueRose;
 $header_menu = is_page(460) ? $all_generalFields['header_menu_mystique_rose'] : $all_generalFields['header_menu'];
 $current_url = home_url(add_query_arg(array(), $wp->request));
