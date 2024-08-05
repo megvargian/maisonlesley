@@ -9,9 +9,9 @@
  *
  * @package WP_Bootstrap_Starter
  */
-global $isProductFromMystiqueRose;
-if(!empty($isProductFromMystiqueRose)){
-    echo $isProductFromMystiqueRose;
+
+if(isset($GLOBALS['isProductFromMystiqueRose'])){
+    echo $GLOBALS['isProductFromMystiqueRose'];
 }
 $all_generalFields = get_fields('options');
 $top_header_fields = $all_generalFields['top_header_fields'];
