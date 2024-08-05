@@ -763,18 +763,18 @@ function custom_woocommerce_image_size_for_single_product() {
     add_image_size('custom-woocommerce-image-size', 200, 300, true); // 200px by 300px, hard crop
 }
 // functions.php
-function set_product_from_mystiquerose() {
-    if (is_product()) {
-        global $product;
-        if (!empty($product)) {
-            $is_product_from_mystiquerose = has_term(17, 'product_cat', $product->get_id()) ||
-                                            has_term(23, 'product_cat', $product->get_id()) ||
-                                            has_term(18, 'product_cat', $product->get_id()) ||
-                                            has_term(25, 'product_cat', $product->get_id()) ||
-                                            has_term(20, 'product_cat', $product->get_id());
-            // Set the value in a global variable
-            set_query_var('is_product_from_mystiquerose', $is_product_from_mystiquerose);
-        }
-    }
-}
-add_action('wp', 'set_product_from_mystiquerose');
+// function set_product_from_mystiquerose() {
+//     if (is_product()) {
+//         global $product;
+//         if (!empty($product)) {
+//             $is_product_from_mystiquerose = has_term(17, 'product_cat', $product->get_id()) ||
+//                                             has_term(23, 'product_cat', $product->get_id()) ||
+//                                             has_term(18, 'product_cat', $product->get_id()) ||
+//                                             has_term(25, 'product_cat', $product->get_id()) ||
+//                                             has_term(20, 'product_cat', $product->get_id());
+//             // Set the value in a global variable
+//             set_query_var('is_product_from_mystiquerose', $is_product_from_mystiquerose);
+//         }
+//     }
+// }
+// add_action('wp', 'set_product_from_mystiquerose');
