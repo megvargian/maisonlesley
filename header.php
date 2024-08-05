@@ -10,9 +10,9 @@
  * @package WP_Bootstrap_Starter
  */
 global $is_product_from_mystiquerose;
-if(isset($is_product_from_mystiquerose)){
-    echo $is_product_from_mystiquerose;
-    echo 'test';
+if (isset($is_product_from_mystiquerose) && $is_product_from_mystiquerose) {
+    // Use $is_product_from_mystiquerose as needed
+    echo 'Product from Mystique Rose category detected!';
 }
 $all_generalFields = get_fields('options');
 $top_header_fields = $all_generalFields['top_header_fields'];
