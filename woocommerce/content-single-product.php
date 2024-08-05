@@ -18,12 +18,12 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product;
-global $isProductFromMystiqueRose;
+global $is_product_from_mystiquerose;
 if(is_product() && !empty($product)){
-    $isProductFromMystiqueRose = has_term(17, 'product_cat', $product->get_id()) || has_term(23, 'product_cat', $product->get_id()) || has_term(18, 'product_cat', $product->get_id()) || has_term(25, 'product_cat', $product->get_id()) || has_term(20, 'product_cat', $product->get_id());
+    $is_product_from_mystiquerose = has_term(17, 'product_cat', $product->get_id()) || has_term(23, 'product_cat', $product->get_id()) || has_term(18, 'product_cat', $product->get_id()) || has_term(25, 'product_cat', $product->get_id()) || has_term(20, 'product_cat', $product->get_id());
 }
-if(!empty($isProductFromMystiqueRose)){
-    $GLOBALS['isProductFromMystiqueRose'] = $isProductFromMystiqueRose;
+if(!empty($is_product_from_mystiquerose)){
+    echo $is_product_from_mystiquerose;
 }
 // Check if it's a single product page and $product is defined
 // if ( is_product() && ! empty( $product ) ) {
