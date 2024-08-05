@@ -22,6 +22,9 @@ global $isProductFromMystiqueRose;
 if(is_product() && !empty($product)){
     $isProductFromMystiqueRose = has_term(17, 'product_cat', $product->get_id()) || has_term(23, 'product_cat', $product->get_id()) || has_term(18, 'product_cat', $product->get_id()) || has_term(25, 'product_cat', $product->get_id()) || has_term(20, 'product_cat', $product->get_id());
 }
+if(!empty($isProductFromMystiqueRose)){
+    echo $isProductFromMystiqueRose;
+}
 // Check if it's a single product page and $product is defined
 // if ( is_product() && ! empty( $product ) ) {
 //     $product_categories = wc_get_product_terms( $product->get_id(), 'product_cat', array( 'fields' => 'ids' ) );
