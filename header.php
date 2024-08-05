@@ -10,17 +10,17 @@
  * @package WP_Bootstrap_Starter
  */
 // Start or resume the session
-if (!session_id()) {
-    session_start();
-}
-$is_product_from_mystiquerose = isset($_SESSION['is_product_from_mystiquerose']) ? $_SESSION['is_product_from_mystiquerose'] : '';
+// if (!session_id()) {
+//     session_start();
+// }
+// $is_product_from_mystiquerose = isset($_SESSION['is_product_from_mystiquerose']) ? $_SESSION['is_product_from_mystiquerose'] : '';
 $all_generalFields = get_fields('options');
 $top_header_fields = $all_generalFields['top_header_fields'];
 $left_side_top_header_fields = $top_header_fields['left_side_top_header'];
 $right_side_top_header_fields = $top_header_fields['right_side_top_header'];
 $main_logo_image = $all_generalFields['main_logo'];
 $main_logo_link = $all_generalFields['main_logo_link'];
-$is_MystiqueRose = is_page(460) || is_product_category(17) || is_product_category(23) || is_product_category(18) || is_product_category(25) || is_product_category(20) || !empty($is_product_from_mystiquerose);
+$is_MystiqueRose = is_page(460) || is_product_category(17) || is_product_category(23) || is_product_category(18) || is_product_category(25) || is_product_category(20);
 $header_menu = $is_MystiqueRose ? $all_generalFields['header_menu_mystique_rose'] : $all_generalFields['header_menu'];
 $current_url = home_url(add_query_arg(array(), $wp->request));
 ?>
