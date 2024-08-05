@@ -9,11 +9,11 @@
  *
  * @package WP_Bootstrap_Starter
  */
-$is_product_from_mystiquerose = get_query_var('is_product_from_mystiquerose', false);
-if ($is_product_from_mystiquerose) {
-    // Use $is_product_from_mystiquerose as needed
-    echo 'Product from Mystique Rose category detected!';
-}
+// $is_product_from_mystiquerose = get_query_var('is_product_from_mystiquerose', false);
+// if ($is_product_from_mystiquerose) {
+//     // Use $is_product_from_mystiquerose as needed
+//     echo 'Product from Mystique Rose category detected!';
+// }
 $all_generalFields = get_fields('options');
 $top_header_fields = $all_generalFields['top_header_fields'];
 $left_side_top_header_fields = $top_header_fields['left_side_top_header'];
