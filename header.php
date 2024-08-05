@@ -9,8 +9,8 @@
  *
  * @package WP_Bootstrap_Starter
  */
-global $is_product_from_mystiquerose;
-if (isset($is_product_from_mystiquerose) && $is_product_from_mystiquerose) {
+$is_product_from_mystiquerose = get_query_var('is_product_from_mystiquerose', false);
+if ($is_product_from_mystiquerose) {
     // Use $is_product_from_mystiquerose as needed
     echo 'Product from Mystique Rose category detected!';
 }
