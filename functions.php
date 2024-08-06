@@ -625,14 +625,23 @@ function add_custom_add_to_cart_button() {
                         // Get attribute value(s)
                         $attribute_values = $attribute->get_options();
                         // Output the attribute
-                        echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
-                        echo '<ul class="product-attributes w-100 d-flex justify-content-start pb-3">';
-                        foreach ( $attribute_values as $value ) {
-                            echo '<li><button>'. esc_html( $value ) .'</button></li>';
+                        if($attribute_label == 'Size'){
+                            echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
+                            echo '<ul class="product-attributes-size w-100 d-flex justify-content-start pb-3">';
+                            foreach ( $attribute_values as $value ) {
+                                echo '<li><button>'. esc_html( $value ) .'</button></li>';
+                            }
+                            echo '</ul>';
                         }
-                        echo '</ul>';
+                        if($attribute_label == 'Color'){
+                            echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
+                            echo '<ul class="product-attributes-color w-100 d-flex justify-content-start pb-3">';
+                            foreach ( $attribute_values as $value ) {
+                                echo '<li><button>'. esc_html( $value ) .'</button></li>';
+                            }
+                            echo '</ul>';
+                        }
                         ?>
-                            <!-- <input class="input-<?php echo strtolower($attribute_label); ?>" type="text" hidden name="<?php echo strtolower($attribute_label); ?>" value=""> -->
                         <?php
                     }
                     ?>

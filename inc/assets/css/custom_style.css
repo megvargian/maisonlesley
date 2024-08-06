@@ -1260,22 +1260,22 @@ header.active {
   display: block !important;
 }
 
-.product-attributes {
+.product-attributes-size {
   margin: 0 -5px;
   list-style-type: none;
   padding: 0;
 }
-.product-attributes li {
+.product-attributes-size li {
   cursor: pointer;
   height: 30px;
   width: 36px;
   margin: 0 5px;
   display: inline-block;
 }
-.product-attributes li button.active {
+.product-attributes-size li button.active {
   border: 2px solid #000;
 }
-.product-attributes li button {
+.product-attributes-size li button {
   display: block;
   text-align: center;
   font-size: 1rem;
