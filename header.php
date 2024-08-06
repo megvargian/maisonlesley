@@ -10,10 +10,11 @@
  * @package WP_Bootstrap_Starter
  */
 // Start or resume the session
-// if (!session_id()) {
-//     session_start();
-// }
-// $is_product_from_mystiquerose = isset($_SESSION['is_product_from_mystiquerose']) ? $_SESSION['is_product_from_mystiquerose'] : '';
+if (!session_id()) {
+    session_start();
+}
+$is_product_from_mystiquerose = isset($_SESSION['is_product_from_mystiquerose']) ? $_SESSION['is_product_from_mystiquerose'] : '';
+echo $is_product_from_mystiquerose;
 $all_generalFields = get_fields('options');
 $top_header_fields = $all_generalFields['top_header_fields'];
 $left_side_top_header_fields = $top_header_fields['left_side_top_header'];
