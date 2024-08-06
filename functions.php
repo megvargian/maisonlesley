@@ -633,9 +633,11 @@ function add_custom_add_to_cart_button() {
                             }
                             echo '</ul>';
                         }
-                        if($attribute_label == 'Color'){
-                            echo '<h6 class="mb-2 color-header">'.$attribute_label.' : <span></span></h6>';
+                        if($attribute_label == 'color'){
+                            echo '<h6 class="mb-2 color-header">'.ucfirst($attribute_label).' : <span></span></h6>';
                             echo '<ul class="product-attributes-color w-100 d-flex justify-content-start pb-3">';
+                            $colors = get_fields('pa_color');
+                            echo '<pre>'; print_r(); echo '</pre>';
                             foreach ( $attribute_values as $value ) {
                                 echo '<li><button>'. esc_html( $value ) .'</button></li>';
                             }
