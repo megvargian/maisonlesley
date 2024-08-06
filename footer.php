@@ -252,19 +252,38 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
         $('.product-attributes-size li').on('click', function(){
             $('.product-attributes-size li button').removeClass('active');
             $(this).find('button').addClass('active');
-            $('#form-add-to-cart-button').removeAttr('disabled');
+            if($('.product-attributes-color').length > 0){
+                if($('.product-attributes-color li').find('button.active').length > 0){
+                    $('#form-add-to-cart-button').removeAttr('disabled');
+                }
+            }else{
+                $('#form-add-to-cart-button').removeAttr('disabled');
+            }
+        });
+        $('.product-attributes-color li').on('click', function(){
+            $('.product-attributes-size li button').removeClass('active');
+            $(this).find('button').addClass('active');
+            if($('.product-attributes-size').length > 0){
+                if($('.product-attributes-size li').find('button.active').length > 0){
+                    $('#form-add-to-cart-button').removeAttr('disabled');
+                }
+            }else{
+                $('#form-add-to-cart-button').removeAttr('disabled');
+            }
         });
         // add to cart with selected attribute
         $('#form-add-to-cart-button').on('click', function() {
             var product_id = $(this).data('product-id');
-            var selected_attr = $('.product-attributes-size').find('button.active').text();
+            var selected_attr_size = $('.product-attributes-size').find('button.active').text();
+            var selected_attr_color = $('.product-attributes-color').find('button.active span').text();
             $.ajax({
                 type: 'POST',
                 url: '<?php echo admin_url('admin-ajax.php'); ?>',
                 data: {
                     action: 'form_custom_add_to_cart',
                     product_id: product_id,
-                    selected_attr_size: selected_attr,
+                    selected_attr_size: selected_attr_size,
+                    selected_attr_color: selected_attr_color,
                 },
                 success: function(response) {
                     if (response.success) {

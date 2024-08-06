@@ -648,16 +648,6 @@ function add_custom_add_to_cart_button() {
                                     </li>
                                 <?php
                             }
-                            // foreach ($terms as $term) {
-                            //     // Get the ACF field value for color
-                            //     $color = get_field('color', $term->taxonomy . '_' . $term->term_id);
-
-                            //     if ($color) {
-                            //         // Display color box and term name
-                            //         echo '<div style="background-color:' . esc_attr($color) . '; width: 20px; height: 20px; display: inline-block; margin-right: 5px;"></div>';
-                            //         echo '<span>' . esc_html($term->name) . '</span><br>';
-                            //     }
-                            // }
                             echo '</ul>';
                         }
                         ?>
@@ -712,9 +702,21 @@ add_action( 'wp_ajax_nopriv_custom_add_to_cart', 'custom_add_to_cart' );
 function form_custom_add_to_cart() {
     $product_id = intval( $_POST['product_id'] );
     $selected_attr_size =  intval( $_POST['selected_attr_size'] );
-    $attributes = array(
-        'attribute_pa_size'  => $selected_attr_size // Replace with your selected attribute value
-    );
+    $selected_attr_color = intval( $_POST['selected_attr_color'] );
+    if($selected_attr_size){
+        $attributes = array(
+            'attribute_pa_size'  => $selected_attr_size
+        );
+    } else if ($selected_attr_color){
+        $attributes = array(
+            'attribute_pa_color'  => $selected_attr_color
+        );
+    } else {
+        $attributes = array(
+            'attribute_pa_size'  => $selected_attr_size,
+            'attribute_pa_color'  => $selected_attr_color
+        );
+    }
     $quantity = 1; // You can customize the quantity
     $cart_item_data = array(
         'variation' => $attributes,
