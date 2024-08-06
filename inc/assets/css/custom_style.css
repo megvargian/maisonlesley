@@ -1108,6 +1108,9 @@ header.active {
   justify-content: center;
   width: fit-content;
 }
+.mystique-rose-page .swiperProduct a {
+  display: block !important;
+}
 .mystique-rose-page .background-img-section, .mystique-rose-page .background-img-section-second {
   background-position: center;
   background-size: cover;

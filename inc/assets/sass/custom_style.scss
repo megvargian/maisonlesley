@@ -1067,6 +1067,11 @@ header.active{
 		justify-content: center;
 		width: fit-content;
 	}
+	.swiperProduct {
+		a{
+			display: block !important;
+		}
+	}
 	.background-img-section, .background-img-section-second{
 		background-position: center;
 		background-size: cover;
