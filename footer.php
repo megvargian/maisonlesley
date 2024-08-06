@@ -261,7 +261,7 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
             }
         });
         $('.product-attributes-color li').on('click', function(){
-            $('.product-attributes-size li button').removeClass('active');
+            $('.product-attributes-color li button').removeClass('active');
             $(this).find('button').addClass('active');
             if($('.product-attributes-size').length > 0){
                 if($('.product-attributes-size li').find('button.active').length > 0){
