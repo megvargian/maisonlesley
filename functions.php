@@ -625,6 +625,7 @@ function add_custom_add_to_cart_button() {
                         // Get attribute value(s)
                         $attribute_values = $attribute->get_options();
                         // Output the attribute
+                        echo $attribute_name;
                         if($attribute_label == 'Size'){
                             echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
                             echo '<ul class="product-attributes-size w-100 d-flex justify-content-start pb-3">';
