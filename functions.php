@@ -615,13 +615,13 @@ function add_custom_add_to_cart_button() {
     if(!$send_enquiry){?>
         <?php
             // Check if the product exists and has attributes
-            if ($product->has_attributes() ) { ?>
-                <!-- <form method="POST" action="/cart" > -->
+            if ($product->has_attributes()) { ?>
                     <?php
                     // Loop through each attribute
                     foreach ( $product->get_attributes() as $attribute ) {
                         // Get attribute label (name)
                         $attribute_label = wc_attribute_label( $attribute->get_name(), $product );
+                        $attribute_name = $attribute->get_name();
                         // Get attribute value(s)
                         $attribute_values = $attribute->get_options();
                         // Output the attribute
@@ -643,6 +643,23 @@ function add_custom_add_to_cart_button() {
                             }
                             echo '</ul>';
                         }
+                        if ($attribute_name == 'pa_color') {
+                            // Get terms (attribute options) for the 'Color' attribute
+                            $terms = wc_get_product_terms($product_id, $attribute_name, array('fields' => 'all'));
+                            // Output attribute label
+                            echo '<h4>' . esc_html($attribute_label) . '</h4>';
+                            // Output each term (option) with its associated color
+                            foreach ($terms as $term) {
+                                // Get the ACF field value for color
+                                $color = get_field('color', $term->taxonomy . '_' . $term->term_id);
+
+                                if ($color) {
+                                    // Display color box and term name
+                                    echo '<div style="background-color:' . esc_attr($color) . '; width: 20px; height: 20px; display: inline-block; margin-right: 5px;"></div>';
+                                    echo '<span>' . esc_html($term->name) . '</span><br>';
+                                }
+                            }
+                        }
                         ?>
                         <script>
                             jQuery(document).ready(function($) {
@@ -660,7 +677,6 @@ function add_custom_add_to_cart_button() {
                         <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
                     </button>
                     <span class="response d-block text-danger"></span>
-                <!-- </form> -->
             <?php
             } else {?>
                 <button id="custom-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
