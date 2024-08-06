@@ -10,6 +10,10 @@
  * @package WP_Bootstrap_Starter
  */
 session_start();
+if(is_product()){
+    echo get_the_ID();
+}
+
 echo $_SESSION['is_product_from_mystiquerose'];
 $is_product_from_mystiquerose = (isset($_SESSION['is_product_from_mystiquerose']) && is_product()) ? $_SESSION['is_product_from_mystiquerose'] : 0;
 echo $is_product_from_mystiquerose;
