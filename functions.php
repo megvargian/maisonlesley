@@ -625,7 +625,6 @@ function add_custom_add_to_cart_button() {
                         // Get attribute value(s)
                         $attribute_values = $attribute->get_options();
                         // Output the attribute
-                        echo $attribute_name;
                         if($attribute_label == 'Size'){
                             echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
                             echo '<ul class="product-attributes-size w-100 d-flex justify-content-start pb-3">';
@@ -634,39 +633,32 @@ function add_custom_add_to_cart_button() {
                             }
                             echo '</ul>';
                         }
-                        // if($attribute_label == 'color'){
-                        //     echo '<h6 class="mb-2 color-header">'.ucfirst($attribute_label).' : <span></span></h6>';
-                        //     echo '<ul class="product-attributes-color w-100 d-flex justify-content-start pb-3">';
-                        //     $colors = get_fields('pa_color');
-                        //     echo '<pre>'; print_r(); echo '</pre>';
-                        //     foreach ( $attribute_values as $value ) {
-                        //         echo '<li><button>'. esc_html( $value ) .'</button></li>';
-                        //     }
-                        //     echo '</ul>';
-                        // }
-                        if ($attribute_name == 'pa_color' ||  $attribute_name == 'Color') {
-                            // Get terms (attribute options) for the 'Color' attribute
+                        if($attribute_name == 'pa_color'){
                             $terms = wc_get_product_terms($product_id, $attribute_name, array('fields' => 'all'));
-                            // Output attribute label
-                            echo '<h4>' . esc_html($attribute_label) . '</h4>';
-                            // Output each term (option) with its associated color
+                            echo '<h6 class="mb-2 color-header">'.ucfirst($attribute_label).' : <span></span></h6>';
+                            echo '<ul class="product-attributes-color w-100 d-flex justify-content-start pb-3">';
                             foreach ($terms as $term) {
                                 // Get the ACF field value for color
                                 $color = get_field('color', $term->taxonomy . '_' . $term->term_id);
-
-                                if ($color) {
-                                    // Display color box and term name
-                                    echo '<div style="background-color:' . esc_attr($color) . '; width: 20px; height: 20px; display: inline-block; margin-right: 5px;"></div>';
-                                    echo '<span>' . esc_html($term->name) . '</span><br>';
-                                }
+                                echo '<li><button style="background-color: >'. esc_attr($color) .' <span class="d-none">'. esc_html($term->name) .'</span></button></li>';
                             }
+                            // foreach ($terms as $term) {
+                            //     // Get the ACF field value for color
+                            //     $color = get_field('color', $term->taxonomy . '_' . $term->term_id);
+
+                            //     if ($color) {
+                            //         // Display color box and term name
+                            //         echo '<div style="background-color:' . esc_attr($color) . '; width: 20px; height: 20px; display: inline-block; margin-right: 5px;"></div>';
+                            //         echo '<span>' . esc_html($term->name) . '</span><br>';
+                            //     }
+                            // }
+                            echo '</ul>';
                         }
                         ?>
                         <script>
                             jQuery(document).ready(function($) {
                                 $('.product-attributes-color li button').on('click', function() {
-                                    const currentValueText = $(this).text();
-                                    console.log(currentValueText);
+                                    const currentValueText = $(this).find('span').text();
                                     $('.color-header span').text(currentValueText);
                                 });
                             });
