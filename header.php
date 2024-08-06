@@ -21,13 +21,13 @@ if ( class_exists( 'WooCommerce' ) ) {
     // Check if it's a single product page
     if ( is_product() ) {
         // Get the current product object
-        global $product;
+        // global $product;
 
-        // Get the product ID
-        $product_id = $product->get_id();
+        // // Get the product ID
+        // $product_id = $product->get_id();
 
         // Display the product ID
-        echo 'Product ID: ' . $product_id;
+        echo 'Product ID: ';
     }
 }
 $all_generalFields = get_fields('options');
