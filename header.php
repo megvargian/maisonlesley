@@ -10,6 +10,7 @@
  * @package WP_Bootstrap_Starter
  */
 session_start();
+echo $_SESSION['is_product_from_mystiquerose'];
 $is_product_from_mystiquerose = (isset($_SESSION['is_product_from_mystiquerose']) && is_product()) ? $_SESSION['is_product_from_mystiquerose'] : 0;
 echo $is_product_from_mystiquerose;
 $all_generalFields = get_fields('options');
