@@ -15,7 +15,7 @@ if (!session_id()) {
 }
 $is_product_from_mystiquerose = isset($_SESSION['is_product_from_mystiquerose']) ? $_SESSION['is_product_from_mystiquerose'] : 0;
 echo $is_product_from_mystiquerose;
-$is_product_from_mystiquerose = !is_product() && is_page() ? $is_product_from_mystiquerose : 0;
+$is_product_from_mystiquerose = is_product() && !is_page() ? $is_product_from_mystiquerose : 0;
 echo $is_product_from_mystiquerose;
 $all_generalFields = get_fields('options');
 $top_header_fields = $all_generalFields['top_header_fields'];
