@@ -701,27 +701,28 @@ add_action( 'wp_ajax_nopriv_custom_add_to_cart', 'custom_add_to_cart' );
 
 function form_custom_add_to_cart() {
     $product_id = intval( $_POST['product_id'] );
-    $selected_attr_size =  intval( $_POST['selected_attr_size'] );
-    $selected_attr_color = intval( $_POST['selected_attr_color'] );
-    if($selected_attr_size && $selected_attr_color){
+    $selected_attr_size = sanitize_text_field( $_POST['selected_attr_size'] );
+    $selected_attr_color = sanitize_text_field( $_POST['selected_attr_color'] );
+
+    if ( ! empty( $selected_attr_size ) && ! empty( $selected_attr_color ) ) {
         $attributes = array(
             'attribute_pa_size'  => $selected_attr_size,
-            'attribute_pa_color'  => $selected_attr_color
+            'attribute_pa_color' => $selected_attr_color
         );
-    } else if ($selected_attr_color && empty($selected_attr_size)){
+    } elseif ( ! empty( $selected_attr_color ) && empty( $selected_attr_size ) ) {
         $attributes = array(
-            'attribute_pa_color'  => $selected_attr_color
+            'attribute_pa_color' => $selected_attr_color
+        );
+    } elseif ( ! empty( $selected_attr_size ) && empty( $selected_attr_color ) ) {
+        $attributes = array(
+            'attribute_pa_size' => $selected_attr_size
         );
     } else {
-        $attributes = array(
-            'attribute_pa_size'  => $selected_attr_size
-        );
+        $attributes = array(); // Default case if no attributes are selected
     }
+
     $quantity = 1; // You can customize the quantity
-    $cart_item_data = array(
-        'variation' => $attributes,
-    );
-    $added = WC()->cart->add_to_cart( $product_id, $quantity, 0, $attributes, $cart_item_data );
+    $added = WC()->cart->add_to_cart( $product_id, $quantity, 0, $attributes );
 
     if ( $added ) {
         wp_send_json_success();
