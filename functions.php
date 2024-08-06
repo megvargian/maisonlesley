@@ -640,7 +640,13 @@ function add_custom_add_to_cart_button() {
                             foreach ($terms as $term) {
                                 // Get the ACF field value for color
                                 $color = get_field('color', $term->taxonomy . '_' . $term->term_id);
-                                echo '<li><button style="background-color: >'. esc_attr($color) .' <span class="d-none">'. esc_html($term->name) .'</span></button></li>';
+                                ?>
+                                    <li>
+                                        <button style="background-color: <?php echo esc_attr($color); ?>">
+                                            <span class="d-none"><?php echo esc_html($term->name); ?></span>
+                                        </button>
+                                    </li>
+                                <?php
                             }
                             // foreach ($terms as $term) {
                             //     // Get the ACF field value for color

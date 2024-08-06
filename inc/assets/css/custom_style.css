@@ -1260,22 +1260,22 @@ header.active {
   display: block !important;
 }
 
-.product-attributes-size {
+.product-attributes-size, .product-attributes-color {
   margin: 0 -5px;
   list-style-type: none;
   padding: 0;
 }
-.product-attributes-size li {
+.product-attributes-size li, .product-attributes-color li {
   cursor: pointer;
   height: 30px;
   width: 36px;
   margin: 0 5px;
   display: inline-block;
 }
-.product-attributes-size li button.active {
+.product-attributes-size li button.active, .product-attributes-color li button.active {
   border: 2px solid #000;
 }
-.product-attributes-size li button {
+.product-attributes-size li button, .product-attributes-color li button {
   display: block;
   text-align: center;
   font-size: 1rem;
