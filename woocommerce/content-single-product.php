@@ -25,9 +25,7 @@ if (is_product() && !empty($product)) {
                                     has_term(25, 'product_cat', $product->get_id()) ||
                                     has_term(20, 'product_cat', $product->get_id());
     echo $is_product_from_mystiquerose;
-    if (session_status() !== PHP_SESSION_ACTIVE ) {
-        session_start();
-    }
+    session_start();
     $_SESSION['is_product_from_mystiquerose'] = $is_product_from_mystiquerose // Save product title
 
 }
