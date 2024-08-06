@@ -18,17 +18,17 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product;
-if (is_product() && !empty($product)) {
-    $is_product_from_mystiquerose = has_term(17, 'product_cat', $product->get_id()) ||
-                                    has_term(23, 'product_cat', $product->get_id()) ||
-                                    has_term(18, 'product_cat', $product->get_id()) ||
-                                    has_term(25, 'product_cat', $product->get_id()) ||
-                                    has_term(20, 'product_cat', $product->get_id()) ? 1 : 0;
-    if (!session_id()) {
-        session_start();
-    }
-    $_SESSION['is_product_from_mystiquerose'] = $is_product_from_mystiquerose; // Save product title
-}
+// if (is_product() && !empty($product)) {
+//     $is_product_from_mystiquerose = has_term(17, 'product_cat', $product->get_id()) ||
+//                                     has_term(23, 'product_cat', $product->get_id()) ||
+//                                     has_term(18, 'product_cat', $product->get_id()) ||
+//                                     has_term(25, 'product_cat', $product->get_id()) ||
+//                                     has_term(20, 'product_cat', $product->get_id()) ? 1 : 0;
+//     if (!session_id()) {
+//         session_start();
+//     }
+//     $_SESSION['is_product_from_mystiquerose'] = $is_product_from_mystiquerose; // Save product title
+// }
 ?>
 <div class="container">
     <div class="row">
