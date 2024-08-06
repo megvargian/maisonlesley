@@ -275,7 +275,8 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
         $('#form-add-to-cart-button').on('click', function() {
             var product_id = $(this).data('product-id');
             var selected_attr_size = $('.product-attributes-size').find('button.active').text();
-            var selected_attr_color = $('.product-attributes-color').find('button.active span').text();
+            var selected_attr_color = $('.product-attributes-color').find('button.active').find('span').text();
+            console.log(selected_attr_color);
             $.ajax({
                 type: 'POST',
                 url: '<?php echo admin_url('admin-ajax.php'); ?>',
