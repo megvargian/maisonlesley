@@ -287,10 +287,10 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                 },
                 success: function(response) {
                     if (response.success) {
-                        $('#form-add-to-cart-button').addAttr('disabled');
+                        $('#form-add-to-cart-button').prop('disabled', true);
                         window.location.href = '/cart/';
                     } else {
-                        $('#form-add-to-cart-button').addAttr('disabled');
+                        $('#form-add-to-cart-button').prop('disabled', true);
                         $('.response').text('There was an error adding the product to the cart.');
                     }
                 }
