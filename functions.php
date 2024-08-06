@@ -626,7 +626,7 @@ function add_custom_add_to_cart_button() {
                         $attribute_values = $attribute->get_options();
                         // Output the attribute
                         echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
-                        echo '<ul class="product-attributes w-100 d-flex justify-content-start">';
+                        echo '<ul class="product-attributes w-100 d-flex justify-content-start pb-3">';
                         foreach ( $attribute_values as $value ) {
                             echo '<li><button>'. esc_html( $value ) .'</button></li>';
                         }

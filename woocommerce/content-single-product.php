@@ -82,11 +82,13 @@ if ( post_password_required() ) {
                      */
                     // do_action( 'woocommerce_after_single_product_summary' );
                     $long_description = $product->get_description();
+                    if($long_description){
                     ?>
-                    <div>
-                        <h2>Description</h2>
-                        <p><?php echo $long_description; ?></p>
-                    </div>
+                        <div>
+                            <h2>Description</h2>
+                            <p><?php echo $long_description; ?></p>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
