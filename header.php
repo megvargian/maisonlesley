@@ -11,11 +11,14 @@
  */
 session_start();
 if(is_product()){
-    echo get_the_ID();
+    $is_product_from_mystiquerose = has_term(17, 'product_cat', get_the_ID()) ||
+                                    has_term(23, 'product_cat', get_the_ID()) ||
+                                    has_term(18, 'product_cat', get_the_ID()) ||
+                                    has_term(25, 'product_cat', get_the_ID()) ||
+                                    has_term(20, 'product_cat', get_the_ID()) ? 1 : 0;
 }
-
-echo $_SESSION['is_product_from_mystiquerose'];
-$is_product_from_mystiquerose = (isset($_SESSION['is_product_from_mystiquerose']) && is_product()) ? $_SESSION['is_product_from_mystiquerose'] : 0;
+// echo $_SESSION['is_product_from_mystiquerose'];
+// $is_product_from_mystiquerose = (isset($_SESSION['is_product_from_mystiquerose']) && is_product()) ? $_SESSION['is_product_from_mystiquerose'] : 0;
 echo $is_product_from_mystiquerose;
 $all_generalFields = get_fields('options');
 $top_header_fields = $all_generalFields['top_header_fields'];
