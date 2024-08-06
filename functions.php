@@ -703,18 +703,18 @@ function form_custom_add_to_cart() {
     $product_id = intval( $_POST['product_id'] );
     $selected_attr_size =  intval( $_POST['selected_attr_size'] );
     $selected_attr_color = intval( $_POST['selected_attr_color'] );
-    if($selected_attr_size){
+    if($selected_attr_size && $selected_attr_color){
         $attributes = array(
-            'attribute_pa_size'  => $selected_attr_size
+            'attribute_pa_size'  => $selected_attr_size,
+            'attribute_pa_color'  => $selected_attr_color
         );
-    } else if ($selected_attr_color){
+    } else if ($selected_attr_color && empty($selected_attr_size)){
         $attributes = array(
             'attribute_pa_color'  => $selected_attr_color
         );
     } else {
         $attributes = array(
-            'attribute_pa_size'  => $selected_attr_size,
-            'attribute_pa_color'  => $selected_attr_color
+            'attribute_pa_size'  => $selected_attr_size
         );
     }
     $quantity = 1; // You can customize the quantity
