@@ -227,10 +227,6 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
 </div><!-- #page -->
 <script>
     jQuery(document).ready(function($) {
-    });
-</script>
-<script>
-    jQuery(document).ready(function($) {
         $('#custom-filter').change(function() {
             $('#custom-filter-form').submit();
         });
@@ -256,7 +252,6 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
         $('.product-attributes-size li').on('click', function(){
             $('.product-attributes-size li button').removeClass('active');
             $(this).find('button').addClass('active');
-            // const attributeValue = $(this).find('button').text();
             $('#form-add-to-cart-button').removeAttr('disabled');
         });
         // add to cart with selected attribute
@@ -273,8 +268,10 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                 },
                 success: function(response) {
                     if (response.success) {
+                        $('#form-add-to-cart-button').addAttr('disabled');
                         window.location.href = '/cart/';
                     } else {
+                        $('#form-add-to-cart-button').addAttr('disabled');
                         $('.response').text('There was an error adding the product to the cart.');
                     }
                 }

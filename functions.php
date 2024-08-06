@@ -634,7 +634,7 @@ function add_custom_add_to_cart_button() {
                             echo '</ul>';
                         }
                         if($attribute_label == 'Color'){
-                            echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
+                            echo '<h6 class="mb-2 color-header">'.$attribute_label.' : <span></span></h6>';
                             echo '<ul class="product-attributes-color w-100 d-flex justify-content-start pb-3">';
                             foreach ( $attribute_values as $value ) {
                                 echo '<li><button>'. esc_html( $value ) .'</button></li>';
@@ -642,6 +642,15 @@ function add_custom_add_to_cart_button() {
                             echo '</ul>';
                         }
                         ?>
+                        <script>
+                            jQuery(document).ready(function($) {
+                                $('.product-attributes-color li button').on('click', function() {
+                                    const currentValueText = $(this).text();
+                                    console.log(currentValueText);
+                                    $('.color-header span').text(currentValueText);
+                                });
+                            });
+                        </script>
                         <?php
                     }
                     ?>
