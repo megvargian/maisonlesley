@@ -1402,3 +1402,7 @@ header.active {
   background-color: transparent !important;
   color: #000 !important;
 }
+
+.subscribe .wpcf7-spinner {
+  display: none;
+}
