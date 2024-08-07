@@ -329,6 +329,17 @@ function my_acf_init_block_types()
                 'keywords'          => array('testimonial', 'quote'),
             )
         );
+        acf_register_block_type(
+            array(
+                'name'              => 'Block Size guide',
+                'title'             => __('Block Size guide'),
+                'description'       => __('this is the Size guide Accordion'),
+                'render_template'   => 'blocks/size-guide.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
     }
 }
 
