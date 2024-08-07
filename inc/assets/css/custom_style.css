@@ -696,7 +696,7 @@ header.active {
 }
 
 .whish-list::before {
-  content: "\e045";
+  content: "\e044";
   color: black;
   accent-color: black;
   fill: black;
