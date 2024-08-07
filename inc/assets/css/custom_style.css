@@ -1398,3 +1398,7 @@ header.active {
   background-color: #000 !important;
   color: #fff !important;
 }
+.tinv-wishlist.woocommerce.tinv-wishlist-clear .product-name a {
+  background-color: transparent !important;
+  color: #000 !important;
+}
