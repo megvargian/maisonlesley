@@ -609,7 +609,7 @@ header.active{
 	vertical-align: middle;
 	margin-left: auto;
 }
-.search-icon{
+.search-icon, .add-to-cart, .whish-list{
 	opacity: 1;
     visibility: visible;
 	-webkit-transition: all .25s linear;
@@ -621,6 +621,25 @@ header.active{
 	text-decoration: none;
 	background-color: transparent;
 	padding-right: 0;
+	color: black;
+	accent-color: black;
+	fill: black;
+}
+.add-to-cart, .whish-list{
+	height: 50px;
+	width: 50px;
+	padding: 15px;
+	font-size: 20px;
+	line-height: 20px;
+}
+.add-to-cart::before{
+    content: "\E00A";
+	color: black;
+	accent-color: black;
+	fill: black;
+}
+.whish-list::before{
+    content: "\E045";
 	color: black;
 	accent-color: black;
 	fill: black;
