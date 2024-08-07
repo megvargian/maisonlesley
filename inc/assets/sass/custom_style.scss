@@ -1350,3 +1350,9 @@ header.active{
 .tinvwl_add_to_wishlist-text{
 	display: none !important;
 }
+.tinv-wishlist.woocommerce.tinv-wishlist-clear{
+	a, button{
+		background-color: #000 !important;
+		color: #fff !important;
+	}
+}
