@@ -1306,3 +1306,10 @@ header.active {
   outline: none;
   background-color: transparent;
 }
+
+.close {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 30px;
+}
