@@ -86,7 +86,12 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                 if ($first_image_url) {
                         echo '<img class="first-gallery-image d-none" src="' . esc_url($first_image_url[0]) . '" alt="First Gallery Image">';
                 }
-                echo '<h2 class="woocommerce-loop-product__title">' . $product -> get_name() . '</h2>';
+                ?>
+                <div class="d-flex justify-content-between">
+                        <h2 class="woocommerce-loop-product__title"><?php echo $product -> get_name(); ?></h2>
+                        <?php echo do_shortcode('[ti_wishlists_addtowishlist]'); ?>
+                </div>
+                <?php
                 if ( ! empty( $short_description ) ) {
                         echo '<p class="woocommerce-product-short-description my-0">' . $short_description . '</p>';
                 }
