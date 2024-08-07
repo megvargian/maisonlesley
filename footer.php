@@ -10,6 +10,7 @@
  */
 $getGeneralFields = get_fields('options');
 $main_footer_fields = $getGeneralFields['footer_sub_menu'];
+$social_media_links = $getGeneralFields['social_links'];
 ?>
     </div><!-- #content -->
     <footer>
@@ -85,7 +86,49 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                     <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 third-col social-links">
                         <div class="row">
                             <ul>
-                                <li>
+                                <?php if($social_media_links['instagram']){?>
+                                    <li>
+                                        <a href="<?php echo $social_media_links['instagram']; ?>" target="_blank">
+                                            <i class="icon-social-instagram"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if($social_media_links['facebook']){?>
+                                    <li>
+                                        <a href="<?php echo $social_media_links['facebook']; ?>" target="_blank">
+                                            <i class="icon-social-instagram"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if($social_media_links['twitter_x']){?>
+                                    <li>
+                                        <a href="<?php echo $social_media_links['twitter_x']; ?>" target="_blank">
+                                            <i class="icon-social-instagram"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if($social_media_links['youtube']){?>
+                                    <li>
+                                        <a href="<?php echo $social_media_links['youtube']; ?>" target="_blank">
+                                            <i class="icon-social-instagram"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if($social_media_links['tiktok']){?>
+                                    <li>
+                                        <a href="<?php echo $social_media_links['tiktok']; ?>" target="_blank">
+                                            <i class="icon-social-instagram"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if($social_media_links['pinterest']){?>
+                                    <li>
+                                        <a href="<?php echo $social_media_links['pinterest']; ?>" target="_blank">
+                                            <i class="icon-social-instagram"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <!-- <li>
                                     <a href="#">
                                         <i class="icon-social-instagram"></i>
                                     </a>
@@ -99,42 +142,14 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                                     <a href="#">
                                         <i class="icon-social-instagram"></i>
                                     </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-social-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-social-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-social-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-social-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-social-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-social-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-social-instagram"></i>
-                                    </a>
-                                </li>
+                                </li> -->
+                                <?php if($social_media_links['linkedin']){?>
+                                    <li>
+                                        <a href="<?php echo $social_media_links['linkedin']; ?>" target="_blank">
+                                            <i class="icon-social-instagram"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
@@ -168,7 +183,49 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                 </div>
                 <div class="border-bottom third-col social-links py-3">
                     <ul class="d-flex justify-content-center align-items-center">
-                        <li>
+                        <?php if($social_media_links['instagram']){?>
+                            <li>
+                                <a href="<?php echo $social_media_links['instagram']; ?>" target="_blank">
+                                    <i class="icon-social-instagram"></i>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if($social_media_links['facebook']){?>
+                            <li>
+                                <a href="<?php echo $social_media_links['facebook']; ?>" target="_blank">
+                                    <i class="icon-social-instagram"></i>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if($social_media_links['twitter_x']){?>
+                            <li>
+                                <a href="<?php echo $social_media_links['twitter_x']; ?>" target="_blank">
+                                    <i class="icon-social-instagram"></i>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if($social_media_links['youtube']){?>
+                            <li>
+                                <a href="<?php echo $social_media_links['youtube']; ?>" target="_blank">
+                                    <i class="icon-social-instagram"></i>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if($social_media_links['tiktok']){?>
+                            <li>
+                                <a href="<?php echo $social_media_links['tiktok']; ?>" target="_blank">
+                                    <i class="icon-social-instagram"></i>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if($social_media_links['pinterest']){?>
+                            <li>
+                                <a href="<?php echo $social_media_links['pinterest']; ?>" target="_blank">
+                                    <i class="icon-social-instagram"></i>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <!-- <li>
                             <a href="#">
                                 <i class="icon-social-instagram"></i>
                             </a>
@@ -182,42 +239,14 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
                             <a href="#">
                                 <i class="icon-social-instagram"></i>
                             </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-social-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-social-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-social-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-social-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-social-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-social-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-social-instagram"></i>
-                            </a>
-                        </li>
+                        </li> -->
+                        <?php if($social_media_links['linkedin']){?>
+                            <li>
+                                <a href="<?php echo $social_media_links['linkedin']; ?>" target="_blank">
+                                    <i class="icon-social-instagram"></i>
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </section>
