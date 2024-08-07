@@ -1406,3 +1406,6 @@ header.active {
 .subscribe .wpcf7-spinner {
   display: none;
 }
+.subscribe p {
+  margin-bottom: 0 !important;
+}
