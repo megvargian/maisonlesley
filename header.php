@@ -113,7 +113,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                 <section class="bg-white main-logo-section">
                     <div class="container">
                         <div class="row justify-content-center" style="<?php echo $is_MystiqueRose ? 'padding-top: 128px;' : 'padding-top: 70px;'; ?>">
-                            <a class="d-flex justify-content-center" style="width:fit-content;" href="<?php echo $main_logo_link;?>">
+                            <a class="d-flex justify-content-center" style="width:fit-content;" href="<?php echo $is_MystiqueRose ? get_permalink(460) : $main_logo_link;?>">
                                 <?php if($is_MystiqueRose){ ?>
                                     <img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/mystiquerose-logo.png" alt="Mystique Rose">
                                 <?php } else { ?>
