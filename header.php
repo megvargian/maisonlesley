@@ -360,7 +360,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                 <?php } ?>
                             </ul>
                             <div class="right-side">
-                               <ul>
+                               <ul class="d-flex">
                                     <li>
                                         <a class="whish-list" href="/cart"></a>
                                     </li>
@@ -464,7 +464,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                 </li>
                             </ul>
                             <div class="right-side">
-                                <ul>
+                                <ul class="d-flex">
                                     <li>
                                         <a class="whish-list" href="/cart"></a>
                                     </li>
