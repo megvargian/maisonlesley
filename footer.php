@@ -47,17 +47,17 @@ $social_media_links = $getGeneralFields['social_links'];
                 </div>
             </div>
             <section class="border-1 d-md-none d-block">
-                <a href="#" class="w-100">
+                <!-- <a href="#" class="w-100">
                     <div class="py-3 px-3" style="border-top: 1px solid #d8d8d8;">
                         <div class="d-flex justify-content-start align-items-center location-mobile">
                             <span class="default-button text-black">Find your nearest store</span>
                         </div>
                     </div>
-                </a>
-                <a href="#" class="w-100">
+                </a> -->
+                <a href="/contact-us" class="w-100">
                     <div class="py-3 px-3" style="border-top: 1px solid #d8d8d8;">
                         <div class="d-flex justify-content-start align-items-center call-mobile">
-                            <span class="default-button text-black">Customer service 08001114431</span>
+                            <span class="default-button text-black">Customer service</span>
                         </div>
                     </div>
                 </a>
