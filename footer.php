@@ -334,6 +334,10 @@ $social_media_links = $getGeneralFields['social_links'];
                 'close'
             ]
         });
+        // form subscribe
+        $('.subscription-button').on('click', function() {
+            $('.subscription-button-demo').click();
+        });
     });
 </script>
 <?php wp_footer(); ?>
