@@ -887,7 +887,7 @@ header.active {
   content: "\e02b";
 }
 .social-links li:nth-child(7) i::before {
-  content: "\e03c";
+  content: "\e037";
 }
 .social-links li:nth-child(8) i::before {
   content: "\e035";
@@ -896,7 +896,7 @@ header.active {
   content: "\e03d";
 }
 .social-links li:nth-child(10) i::before {
-  content: "\e037";
+  content: "\e03c";
 }
 
 .side-menu li a {
