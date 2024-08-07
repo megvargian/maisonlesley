@@ -1260,7 +1260,10 @@ header.active{
 .size-guide-class{
 	color: #000;
 	text-decoration: underline;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	font-family: $Rutan-Light;
 	font-weight: bold;
+	border: none;
+	outline: none;
+	background-color: transparent;
 }
