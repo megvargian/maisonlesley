@@ -1313,3 +1313,57 @@ header.active {
   outline: none;
   font-size: 30px;
 }
+
+.sizeguide-table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  white-space: nowrap;
+}
+.sizeguide-table .size-table-title-container {
+  min-width: 115px;
+}
+.sizeguide-table .size-table-title-element {
+  font-family: "Rutan-Light";
+  font-weight: 500;
+  font-size: 0.8rem;
+  border-top: 0;
+  padding: 8px;
+}
+.sizeguide-table .size-table-title-element:nth-of-type(odd) {
+  background-color: #f0f0f0;
+}
+.sizeguide-table .size-table-size-row-container {
+  overflow: auto;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.sizeguide-table .size-table-size-row {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+.sizeguide-table .size-table-size-row .size-table-size-element {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.8rem;
+  text-align: center;
+  min-width: 48px;
+  border-top: 0;
+  padding: 8px;
+}
+.sizeguide-table .size-table-size-row:nth-of-type(odd) .size-table-size-element {
+  background-color: #f0f0f0;
+}
+.sizeguide-table .size-table-size-row:nth-of-type(odd) {
+  background-color: #f0f0f0;
+}
