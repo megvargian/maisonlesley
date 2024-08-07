@@ -464,9 +464,19 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                 </li>
                             </ul>
                             <div class="right-side">
-                                <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search"
-                                    name="search-button">
-                                </button>
+                                <ul>
+                                    <li>
+                                        <a class="whish-list" href="/cart"></a>
+                                    </li>
+                                    <li>
+                                        <a class="add-to-cart" href="/cart"></a>
+                                    </li>
+                                    <li>
+                                        <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search"
+                                            name="search-button">
+                                        </button>
+                                    </li>
+                                </ul>
                             </div>
                             <div id="menu_mobile" class="menu_on_mobile">
                                 <div class="menu_on_mobile_wrapper">
