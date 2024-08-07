@@ -1295,3 +1295,11 @@ header.active {
   outline: none;
   border: none;
 }
+
+.size-guide-class {
+  color: #000;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  font-family: "Rutan-Light";
+  font-weight: bold;
+}

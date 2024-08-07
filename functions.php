@@ -626,7 +626,14 @@ function add_custom_add_to_cart_button() {
                         $attribute_values = $attribute->get_options();
                         // Output the attribute
                         if($attribute_label == 'Size'){
-                            echo '<h6 class="mb-2">'.$attribute_label.'</h6>';
+                            ?>
+                            <div class="d-flex justify-content-between">
+                                <h6 class="mb-2"><?php echo $attribute_label; ?></h6>
+                                <a type="button" class="size-guide-class" data-toggle="modal" data-target="#sizeGuide">
+                                    Size guide
+                                </a>
+                            </div>
+                            <?php
                             echo '<ul class="product-attributes-size w-100 d-flex justify-content-start pb-3">';
                             foreach ( $attribute_values as $value ) {
                                 echo '<li><button>'. esc_html( $value ) .'</button></li>';
