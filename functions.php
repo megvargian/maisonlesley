@@ -629,9 +629,9 @@ function add_custom_add_to_cart_button() {
                             ?>
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-2"><?php echo $attribute_label; ?></h6>
-                                <a type="button" class="size-guide-class" data-toggle="modal" data-target="#sizeGuide">
+                                <button type="button" class="size-guide-class" data-toggle="modal" data-target="#size-guide">
                                     Size guide
-                                </a>
+                                </button>
                             </div>
                             <?php
                             echo '<ul class="product-attributes-size w-100 d-flex justify-content-start pb-3">';

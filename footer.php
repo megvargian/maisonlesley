@@ -225,7 +225,7 @@ $main_footer_fields = $getGeneralFields['footer_sub_menu'];
     <?php  get_template_part('template-parts/footer', 'after'); ?>
 </footer>
 <!-- Modal -->
-<div class="modal fade" id="sizeGuide" tabindex="-1" role="dialog" aria-labelledby="sizeGuideTitle" aria-hidden="true">
+<div class="modal fade" id="size-guide" tabindex="-1" role="dialog" aria-labelledby="size-guideTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
