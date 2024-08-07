@@ -57,9 +57,10 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
         </div>
         <div class="modal fade" id="sizeGuide" tabindex="-1" role="dialog" aria-labelledby="sizeGuideLabel"
             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-lg size-guide-modal" role="document">
                 <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-end border-0">
+                    <div class="modal-header d-flex justify-content-between border-0">
+                        <h2>Size Guide</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -68,12 +69,12 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         Accordion Item #1
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                <div id="collapseOne" class="accordion-collapse collapse"
                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <div class="sizeguide-table">

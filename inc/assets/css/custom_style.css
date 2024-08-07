@@ -1038,23 +1038,23 @@ header.active {
   text-decoration: underline;
 }
 
-.info_content .accordion-button:focus {
+.info_content .accordion-button:focus, .size-guide-modal .accordion-button:focus {
   outline: none !important;
   background-color: transparent !important;
   box-shadow: none !important;
 }
-.info_content .accordion-button {
+.info_content .accordion-button, .size-guide-modal .accordion-button {
   border-radius: 0 !important;
   font-family: "Rutan-Light";
   font-weight: 600;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-.info_content .accordion-body {
+.info_content .accordion-body, .size-guide-modal .accordion-body {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-.info_content .accordion-item {
+.info_content .accordion-item, .size-guide-modal .accordion-item {
   border-top: none;
   border-left: none;
   border-right: none;
