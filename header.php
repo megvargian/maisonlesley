@@ -61,7 +61,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between border-0">
                         <h2>Size Guide</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
