@@ -1389,3 +1389,7 @@ header.active {
 .sizeguide-table .size-table-size-row:nth-of-type(odd) {
   background-color: #f0f0f0;
 }
+
+.tinvwl_add_to_wishlist-text {
+  display: none !important;
+}
