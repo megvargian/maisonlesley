@@ -26,7 +26,7 @@ $social_media_links = $getGeneralFields['social_links'];
                                 </div>
                             </div>
                             <div class="col-md-5 col-12 pb-md-0 pb-3">
-                                <form class="w-100" action="/" method="post">
+                                <!-- <form class="w-100" action="/" method="post">
                                     <div class="position-relative">
                                         <input class="input-newsletter w-100" placeholder="Email" type="email" requierd>
                                         <button class="subscription-button">
@@ -39,7 +39,8 @@ $social_media_links = $getGeneralFields['social_links'];
                                             I have read the <a href="#">Privacy Policy</a>
                                         </label>
                                     </div>
-                                </form>
+                                </form> -->
+                                <?php echo do_shortcode('[contact-form-7 id="df6722b" title="Subscribe"]'); ?>
                             </div>
                         </div>
                     </div>
