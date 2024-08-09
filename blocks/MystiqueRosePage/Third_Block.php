@@ -31,8 +31,8 @@ $Mystique_rose_third_block_fields = get_fields();
                         ?>
                     </div>
                 </div>
-                <div class="swiper-button-prev" style="background-color: rgb(244, 235, 221) !important;"></div>
-                <div class="swiper-button-next" style="background-color: rgb(244, 235, 221) !important;"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
         </div>
         </div>
     </div>
