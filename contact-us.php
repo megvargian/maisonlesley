@@ -26,7 +26,7 @@ $all_feilds = get_fields();
 								<?php echo $all_feilds['contact_us']['sub_title']; ?>
 							</p>
 						</div>
-						<div class="col-1">
+						<div class="col-3">
 							<p>
 								<a href="tel:<?php echo $all_feilds['contact_us']['tel_number']; ?>">
 									<?php echo $all_feilds['contact_us']['tel_number']; ?>
@@ -47,7 +47,7 @@ $all_feilds = get_fields();
 								<?php echo $all_feilds['chat']['sub_title']; ?>
 							</p>
 						</div>
-						<div class="col-2 justify-content-end d-flex px-0">
+						<div class="col-3 justify-content-end d-flex px-0">
 							<p>
 								<a href="<?php echo $all_feilds['chat']['chat_link']; ?>">
 									<?php echo $all_feilds['chat']['chat_text']; ?>
