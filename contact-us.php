@@ -14,26 +14,26 @@ $all_feilds = get_fields();
 			<div class="col-xl-7 col-lg-9 col-12 px-0 px-lg-5 pt-lg-0 pt-3">
 				<h1 class="mb-4"><?php the_title(); ?></h1>
 				<p class="mb-3"><?php echo $all_feilds['sub_title']; ?></p>
-				<div class="contact-box p-4 mb-3">
-					<div class="row w-100 justify-content-between">
-						<div class="col-3 d-flex justify-content-start align-items-center">
+				<div class="contact-box d-flex justify-content-between p-4 mb-3">
+					<!-- <div class="row w-100 justify-content-between">
+						<div class="col-3 d-flex justify-content-start align-items-center"> -->
 							<div class="icon-contact">
 								<h4 class="mb-0"><?php echo $all_feilds['contact_us']['title']; ?></h4>
 							</div>
-						</div>
-						<div class="col">
+						<!-- </div>
+						<div class="col"> -->
 							<p>
 								<?php echo $all_feilds['contact_us']['sub_title']; ?>
 							</p>
-						</div>
-						<div class="col-3">
+						<!-- </div>
+						<div class="col-3"> -->
 							<p>
 								<a href="tel:<?php echo $all_feilds['contact_us']['tel_number']; ?>">
 									<?php echo $all_feilds['contact_us']['tel_number']; ?>
 								</a>
 							</p>
-						</div>
-					</div>
+						<!-- </div>
+					</div> -->
 				</div>
 				<div class="chat-box p-4">
 					<div class="row w-100 justify-content-between">
