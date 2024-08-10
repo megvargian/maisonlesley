@@ -35,26 +35,26 @@ $all_feilds = get_fields();
 						<!-- </div>
 					</div> -->
 				</div>
-				<div class="chat-box p-4">
-					<div class="row w-100 justify-content-between">
-						<div class="col-3 d-flex justify-content-start align-items-center">
+				<div class="chat-box d-flex justify-content-between p-4">
+					<!-- <div class="row w-100 justify-content-between">
+						<div class="col-3 d-flex justify-content-start align-items-center"> -->
 							<div class="icon-chat">
 								<h4 class="mb-0"><?php echo $all_feilds['chat']['title']; ?></h4>
 							</div>
-						</div>
-						<div class="col">
+						<!-- </div>
+						<div class="col"> -->
 							<p>
 								<?php echo $all_feilds['chat']['sub_title']; ?>
 							</p>
-						</div>
-						<div class="col-3 justify-content-end d-flex px-0">
+						<!-- </div>
+						<div class="col-3 justify-content-end d-flex px-0"> -->
 							<p>
 								<a href="<?php echo $all_feilds['chat']['chat_link']; ?>">
 									<?php echo $all_feilds['chat']['chat_text']; ?>
 								</a>
 							</p>
-						</div>
-					</div>
+						<!-- </div>
+					</div> -->
 				</div>
 				<div class="contact-form-box p-4 mt-3">
 					<div class="row w-100 justify-content-between email-box pb-3 mx-0">

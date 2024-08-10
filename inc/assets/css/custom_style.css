@@ -943,6 +943,9 @@ header.active {
 .contact-box a, .chat-box a {
   text-decoration: underline;
 }
+.contact-box p, .chat-box p {
+  font-size: 0.7rem;
+}
 
 .icon-contact, .icon-chat, .icon-email {
   display: -webkit-box;
