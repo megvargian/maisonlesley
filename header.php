@@ -80,61 +80,28 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                         <div class="sizeguide-table">
                                             <div class="size-table-title-container">
                                                 <div class="size-table-title-element">
-                                                    INTERNATIONAL
+                                                    MEASURES
                                                 </div>
                                                 <div class="size-table-title-element">
-                                                    IT
+                                                    CHEST ALL AROUND
                                                 </div>
                                                 <div class="size-table-title-element">
-                                                    UK
+                                                    WAIST ALL AROUND
                                                 </div>
                                                 <div class="size-table-title-element">
-                                                    FR/BE
+                                                    2ND HIP ALL AROUND (20CM)
                                                 </div>
                                                 <div class="size-table-title-element">
-                                                    DE/AT/NL/CH/ES
+                                                    SLEEVE LENGTH (LONG SLEEVES)
                                                 </div>
-                                                <div class="size-table-title-element">
+                                                <!-- <div class="size-table-title-element">
                                                     US/CA
                                                 </div>
                                                 <div class="size-table-title-element">
                                                     MX
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="size-table-size-row-container">
-                                                <div class="size-table-size-row">
-                                                    <div class="size-table-size-element">XS</div>
-                                                    <div class="size-table-size-element">S</div>
-                                                    <div class="size-table-size-element">S-M</div>
-                                                    <div class="size-table-size-element">M</div>
-                                                    <div class="size-table-size-element">M-L</div>
-                                                    <div class="size-table-size-element">L</div>
-                                                    <div class="size-table-size-element">L-XL</div>
-                                                    <div class="size-table-size-element">XL</div>
-                                                    <div class="size-table-size-element">XXL</div>
-                                                </div>
-                                                <div class="size-table-size-row">
-                                                    <div class="size-table-size-element">36</div>
-                                                    <div class="size-table-size-element">38</div>
-                                                    <div class="size-table-size-element">40</div>
-                                                    <div class="size-table-size-element">42</div>
-                                                    <div class="size-table-size-element">44</div>
-                                                    <div class="size-table-size-element">46</div>
-                                                    <div class="size-table-size-element">48</div>
-                                                    <div class="size-table-size-element">50</div>
-                                                    <div class="size-table-size-element">52</div>
-                                                </div>
-                                                <div class="size-table-size-row">
-                                                    <div class="size-table-size-element">4</div>
-                                                    <div class="size-table-size-element">6</div>
-                                                    <div class="size-table-size-element">8</div>
-                                                    <div class="size-table-size-element">10</div>
-                                                    <div class="size-table-size-element">12</div>
-                                                    <div class="size-table-size-element">14</div>
-                                                    <div class="size-table-size-element">16</div>
-                                                    <div class="size-table-size-element">18</div>
-                                                    <div class="size-table-size-element">20</div>
-                                                </div>
                                                 <div class="size-table-size-row">
                                                     <div class="size-table-size-element">34</div>
                                                     <div class="size-table-size-element">36</div>
@@ -147,6 +114,39 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                                     <div class="size-table-size-element">50</div>
                                                 </div>
                                                 <div class="size-table-size-row">
+                                                    <div class="size-table-size-element">80</div>
+                                                    <div class="size-table-size-element">84</div>
+                                                    <div class="size-table-size-element">88</div>
+                                                    <div class="size-table-size-element">92</div>
+                                                    <div class="size-table-size-element">96</div>
+                                                    <div class="size-table-size-element">100</div>
+                                                    <div class="size-table-size-element">104</div>
+                                                    <div class="size-table-size-element">108</div>
+                                                    <div class="size-table-size-element">112</div>
+                                                </div>
+                                                <div class="size-table-size-row">
+                                                    <div class="size-table-size-element">62</div>
+                                                    <div class="size-table-size-element">66</div>
+                                                    <div class="size-table-size-element">70</div>
+                                                    <div class="size-table-size-element">74</div>
+                                                    <div class="size-table-size-element">78</div>
+                                                    <div class="size-table-size-element">82</div>
+                                                    <div class="size-table-size-element">86</div>
+                                                    <div class="size-table-size-element">90</div>
+                                                    <div class="size-table-size-element">94</div>
+                                                </div>
+                                                <div class="size-table-size-row">
+                                                    <div class="size-table-size-element">90</div>
+                                                    <div class="size-table-size-element">94</div>
+                                                    <div class="size-table-size-element">98</div>
+                                                    <div class="size-table-size-element">102</div>
+                                                    <div class="size-table-size-element">106</div>
+                                                    <div class="size-table-size-element">110</div>
+                                                    <div class="size-table-size-element">114</div>
+                                                    <div class="size-table-size-element">118</div>
+                                                    <div class="size-table-size-element">122</div>
+                                                </div>
+                                                <!-- <div class="size-table-size-row">
                                                     <div class="size-table-size-element">32</div>
                                                     <div class="size-table-size-element">34</div>
                                                     <div class="size-table-size-element">36</div>
@@ -156,19 +156,19 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                                     <div class="size-table-size-element">44</div>
                                                     <div class="size-table-size-element">46</div>
                                                     <div class="size-table-size-element">48</div>
-                                                </div>
+                                                </div> -->
                                                 <div class="size-table-size-row">
-                                                    <div class="size-table-size-element">2</div>
-                                                    <div class="size-table-size-element">4</div>
-                                                    <div class="size-table-size-element">6</div>
-                                                    <div class="size-table-size-element">8</div>
-                                                    <div class="size-table-size-element">10</div>
-                                                    <div class="size-table-size-element">12</div>
-                                                    <div class="size-table-size-element">14</div>
-                                                    <div class="size-table-size-element">16</div>
-                                                    <div class="size-table-size-element">18</div>
+                                                    <div class="size-table-size-element">62</div>
+                                                    <div class="size-table-size-element">62</div>
+                                                    <div class="size-table-size-element">62</div>
+                                                    <div class="size-table-size-element">62.5</div>
+                                                    <div class="size-table-size-element">62.5</div>
+                                                    <div class="size-table-size-element">63</div>
+                                                    <div class="size-table-size-element">63</div>
+                                                    <div class="size-table-size-element">63.5</div>
+                                                    <div class="size-table-size-element">64</div>
                                                 </div>
-                                                <div class="size-table-size-row">
+                                                <!-- <div class="size-table-size-row">
                                                     <div class="size-table-size-element">24</div>
                                                     <div class="size-table-size-element">26</div>
                                                     <div class="size-table-size-element">28</div>
@@ -178,7 +178,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
                                                     <div class="size-table-size-element">36</div>
                                                     <div class="size-table-size-element">38</div>
                                                     <div class="size-table-size-element">40</div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
