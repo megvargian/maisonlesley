@@ -651,7 +651,7 @@ header.active {
 }
 
 .first-header.active {
-  transform: translateY(415%);
+  transform: translateY(434%);
   transition-duration: 0.4s;
 }
 
