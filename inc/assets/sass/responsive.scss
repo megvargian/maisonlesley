@@ -2,7 +2,9 @@
 @charset "utf-8";
 
 @media (max-width: 1240px){
-
+	.first-header.active{
+		transform: translateY(433%);
+	}
 }
 @media (max-width: 1199px){
 	.main-nav{
