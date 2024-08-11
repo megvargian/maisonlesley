@@ -6,11 +6,11 @@ $Mystique_rose_fifth_block_fields = get_fields();
 ?>
 <section class="background-img-section-second d-none d-md-flex" style="background-image: url('<?php echo $Mystique_rose_fifth_block_fields['main_image']; ?>');">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-6 justify-content-center py-5 text-center">
                 <?php echo $Mystique_rose_fifth_block_fields['main_text']; ?>
             </div>
-            <div class="col-6"></div>
+            <!-- <div class="col-6"></div> -->
         </div>
     </div>
 </section>
