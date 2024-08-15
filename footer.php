@@ -97,35 +97,35 @@ $social_media_links = $getGeneralFields['social_links'];
                                 <?php if($social_media_links['facebook']){?>
                                     <li>
                                         <a href="<?php echo $social_media_links['facebook']; ?>" target="_blank">
-                                            <i class="icon-social-instagram"></i>
+                                            <i class="icon-social-facebook"></i>
                                         </a>
                                     </li>
                                 <?php } ?>
                                 <?php if($social_media_links['twitter_x']){?>
                                     <li>
                                         <a href="<?php echo $social_media_links['twitter_x']; ?>" target="_blank">
-                                            <i class="icon-social-instagram"></i>
+                                            <i class="icon-social-twitter_x"></i>
                                         </a>
                                     </li>
                                 <?php } ?>
                                 <?php if($social_media_links['youtube']){?>
                                     <li>
                                         <a href="<?php echo $social_media_links['youtube']; ?>" target="_blank">
-                                            <i class="icon-social-instagram"></i>
+                                            <i class="icon-social-youtube"></i>
                                         </a>
                                     </li>
                                 <?php } ?>
                                 <?php if($social_media_links['tiktok']){?>
                                     <li>
                                         <a href="<?php echo $social_media_links['tiktok']; ?>" target="_blank">
-                                            <i class="icon-social-instagram"></i>
+                                            <i class="icon-social-tiktok"></i>
                                         </a>
                                     </li>
                                 <?php } ?>
                                 <?php if($social_media_links['pinterest']){?>
                                     <li>
                                         <a href="<?php echo $social_media_links['pinterest']; ?>" target="_blank">
-                                            <i class="icon-social-instagram"></i>
+                                            <i class="icon-social-pinterest"></i>
                                         </a>
                                     </li>
                                 <?php } ?>
@@ -147,7 +147,7 @@ $social_media_links = $getGeneralFields['social_links'];
                                 <?php if($social_media_links['linkedin']){?>
                                     <li>
                                         <a href="<?php echo $social_media_links['linkedin']; ?>" target="_blank">
-                                            <i class="icon-social-instagram"></i>
+                                            <i class="icon-social-linkedin"></i>
                                         </a>
                                     </li>
                                 <?php } ?>

@@ -818,3 +818,28 @@ add_action('after_setup_theme', 'custom_woocommerce_image_size_for_single_produc
 function custom_woocommerce_image_size_for_single_product() {
     add_image_size('custom-woocommerce-image-size', 200, 300, true); // 200px by 300px, hard crop
 }
+
+add_action('init', 'set_custom_cookie');
+
+function set_custom_cookie() {
+    if (!isset($_COOKIE['maison_lesley'])) {
+        $cookie_name = 'maison_lesley';
+        $cookie_value = '1';
+        $expires = time() + (86400 * 30); // 30 days from now
+        $path = '/';
+        $domain = $_SERVER['HTTP_HOST'];
+        $secure = isset($_SERVER['HTTPS']); // Use true if site is using HTTPS
+        $httponly = true; // The cookie is only accessible via HTTP(S)
+        $samesite = 'Lax'; // Prevent CSRF attacks, change to 'Strict' if needed
+
+        // Setting the cookie
+        setcookie($cookie_name, $cookie_value, [
+            'expires' => $expires,
+            'path' => $path,
+            'domain' => $domain,
+            'secure' => $secure,
+            'httponly' => $httponly,
+            'samesite' => $samesite,
+        ]);
+    }
+}

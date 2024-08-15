@@ -868,35 +868,26 @@ header.active {
   text-transform: none;
   -webkit-font-smoothing: antialiased;
 }
-.social-links li:nth-child(1) i::before {
+.social-links .icon-social-instagram::before {
   content: "\e034";
 }
-.social-links li:nth-child(2) i::before {
+.social-links .icon-social-facebook::before {
   content: "\e033";
 }
-.social-links li:nth-child(3) i::before {
+.social-links .icon-social-twitter_x::before {
   content: "\e03a";
 }
-.social-links li:nth-child(4) i::before {
+.social-links .icon-social-youtube::before {
   content: "\e03e";
 }
-.social-links li:nth-child(5) i::before {
+.social-links .icon-social-tiktok::before {
   content: "\e039";
 }
-.social-links li:nth-child(6) i::before {
+.social-links .icon-social-pinterest::before {
   content: "\e02b";
 }
-.social-links li:nth-child(7) i::before {
+.social-links .icon-social-linkedin::before {
   content: "\e037";
-}
-.social-links li:nth-child(8) i::before {
-  content: "\e035";
-}
-.social-links li:nth-child(9) i::before {
-  content: "\e03d";
-}
-.social-links li:nth-child(10) i::before {
-  content: "\e03c";
 }
 
 .side-menu li a {
