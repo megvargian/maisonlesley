@@ -11,6 +11,7 @@
 $getGeneralFields = get_fields('options');
 $main_footer_fields = $getGeneralFields['footer_sub_menu'];
 $social_media_links = $getGeneralFields['social_links'];
+$last_part_footer_feild = $getGeneralFields['last_part_footer_feild'];
 ?>
     </div><!-- #content -->
     <footer>
@@ -252,7 +253,17 @@ $social_media_links = $getGeneralFields['social_links'];
                 </div>
             </section>
         </section>
-        <?php  get_template_part('template-parts/footer', 'after'); ?>
+        <section class="bg-black footer-after">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-8 col-12 text-center">
+                        <p>
+                            <?php echo $last_part_footer_feild; ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </footer>
 </div><!-- #page -->
 <script>
