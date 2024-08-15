@@ -897,7 +897,7 @@ header.active {
   content: "\e037";
 }
 
-.side-menu li a {
+.side-menu li a, .woocommerce-MyAccount-navigation li a {
   border: 1px solid #d8d8d8;
   border-bottom: 0;
   display: block;
@@ -907,7 +907,7 @@ header.active {
   position: relative;
   word-break: break-word;
 }
-.side-menu li a.active::before {
+.side-menu li a.active::before, .woocommerce-MyAccount-navigation li a.active::before {
   content: "";
   height: 100%;
   width: 4px;
@@ -917,7 +917,7 @@ header.active {
   right: 0;
   top: 0;
 }
-.side-menu li:last-child a {
+.side-menu li:last-child a, .woocommerce-MyAccount-navigation li:last-child a {
   border-bottom: 1px solid #d8d8d8 !important;
 }
 
