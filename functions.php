@@ -189,6 +189,17 @@ if (function_exists('acf_add_options_page')) {
     );
 }
 
+if (function_exists('acf_add_options_page')) {
+    acf_add_options_page(
+        array(
+            'page_title' => 'Size Guide Table',
+            'menu_title' => 'Size Guide Table',
+            'menu_slug' => 'size-guide-table',
+            'capabality' => 'edit_posts'
+        )
+    );
+}
+
 add_image_size('main_homepage_img', 1903, 690, true);
 add_image_size('main_img_company_services', 1903, 300, true);
 add_image_size('services_img', 656, 580, true);
