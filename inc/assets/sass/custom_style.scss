@@ -609,7 +609,7 @@ header.active{
 	vertical-align: middle;
 	margin-left: auto;
 }
-.search-icon, .add-to-cart, .whish-list{
+.search-icon, .add-to-cart, .whish-list, .my-account{
 	opacity: 1;
     visibility: visible;
 	-webkit-transition: all .25s linear;
@@ -646,6 +646,12 @@ header.active{
 }
 .search-icon::before{
 	content: '\E031';
+	color: black;
+	accent-color: black;
+	fill: black;
+}
+.my-account::before{
+	content: '\E02D';
 	color: black;
 	accent-color: black;
 	fill: black;

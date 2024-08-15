@@ -663,7 +663,7 @@ header.active {
   margin-left: auto;
 }
 
-.search-icon, .add-to-cart, .whish-list {
+.search-icon, .add-to-cart, .whish-list, .my-account {
   opacity: 1;
   visibility: visible;
   -webkit-transition: all 0.25s linear;
@@ -704,6 +704,13 @@ header.active {
 
 .search-icon::before {
   content: "\e031";
+  color: black;
+  accent-color: black;
+  fill: black;
+}
+
+.my-account::before {
+  content: "\e02d";
   color: black;
   accent-color: black;
   fill: black;
