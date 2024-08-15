@@ -110,7 +110,7 @@ $get_size_guide_fields = $all_generalFields;
                                             </div>
                                             <div class="size-table-size-row-container">
                                                 <div class="size-table-size-row">
-                                                    <?php foreach ($get_size_guide_fields['first_row'] as $main_text) { ?>
+                                                    <?php foreach ($get_size_guide_fields['size_guide_table']['first_row'] as $main_text) { ?>
                                                         <div class="size-table-size-element"><?php echo $main_text['main_text']; ?></div>
                                                     <?php } ?>
                                                     <!-- <div class="size-table-size-element">34</div>
@@ -124,7 +124,7 @@ $get_size_guide_fields = $all_generalFields;
                                                     <div class="size-table-size-element">50</div> -->
                                                 </div>
                                                 <div class="size-table-size-row">
-                                                    <?php foreach ($get_size_guide_fields['second_row'] as $main_text) { ?>
+                                                    <?php foreach ($get_size_guide_fields['size_guide_table']['second_row'] as $main_text) { ?>
                                                         <div class="size-table-size-element"><?php echo $main_text['label']; ?></div>
                                                     <?php } ?>
                                                     <!-- <div class="size-table-size-element">80</div>
@@ -138,7 +138,7 @@ $get_size_guide_fields = $all_generalFields;
                                                     <div class="size-table-size-element">112</div> -->
                                                 </div>
                                                 <div class="size-table-size-row">
-                                                    <?php foreach ($get_size_guide_fields['third_row'] as $main_text) { ?>
+                                                    <?php foreach ($get_size_guide_fields['size_guide_table']['third_row'] as $main_text) { ?>
                                                         <div class="size-table-size-element"><?php echo $main_text['label']; ?></div>
                                                     <?php } ?>
                                                     <!-- <div class="size-table-size-element">62</div>
@@ -152,7 +152,7 @@ $get_size_guide_fields = $all_generalFields;
                                                     <div class="size-table-size-element">94</div> -->
                                                 </div>
                                                 <div class="size-table-size-row">
-                                                    <?php foreach ($get_size_guide_fields['fourth_row'] as $main_text) { ?>
+                                                    <?php foreach ($get_size_guide_fields['size_guide_table']['fourth_row'] as $main_text) { ?>
                                                         <div class="size-table-size-element"><?php echo $main_text['label']; ?></div>
                                                     <?php } ?>
                                                     <!-- <div class="size-table-size-element">90</div>
@@ -177,7 +177,7 @@ $get_size_guide_fields = $all_generalFields;
                                                     <div class="size-table-size-element">48</div>
                                                 </div> -->
                                                 <div class="size-table-size-row">
-                                                    <?php foreach ($get_size_guide_fields['fifth_row'] as $main_text) { ?>
+                                                    <?php foreach ($get_size_guide_fields['size_guide_table']['fifth_row'] as $main_text) { ?>
                                                         <div class="size-table-size-element"><?php echo $main_text['label']; ?></div>
                                                     <?php } ?>
                                                     <!-- <div class="size-table-size-element">62</div>
