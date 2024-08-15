@@ -881,7 +881,7 @@ header.active{
 		}
 	}
 }
-// ocntact us
+// contact us
 .contact-box, .chat-box{
 	display: -webkit-box;
     display: -ms-flexbox;
@@ -1364,5 +1364,61 @@ header.active{
 	}
 	p{
 		margin-bottom: 0 !important;
+	}
+}
+
+.woocommerce-button.button.view{
+	background-color: #000 !important;
+	color: #fff !important;
+}
+.woocommerce-MyAccount-content{
+	label{
+		position: relative;
+		text-transform: uppercase;
+		margin-right: auto;
+		display: block;
+		text-align: left;
+		font-size: 0.8rem;
+	}
+	input{
+		color: #595959;
+		padding: 10px 15px;
+		font-size: 1rem;
+		font-family: $Rutan-Light;
+		line-height: 30px;
+		-webkit-border-radius: 0 !important;
+		border-radius: 0 !important;
+		-webkit-appearance: none !important;
+		border: 1px solid #7f7f7f !important;
+		width: 100%;
+	}
+	select{
+		width: 100%;
+		border: 1px solid #7f7f7f !important;
+		font-size: 1rem;
+		padding: 13px 15px;
+		option{
+			padding: 10px 15px;
+			cursor: pointer;
+			font-size: 1rem;
+			border-radius: 0 !important;
+		}
+		option:hover{
+			background-color: black !important;
+			color: #fff !important;
+		}
+	}
+	button{
+		width: 100%;
+		padding: 10px 20px;
+		background-color: #000;
+		color: #fff;
+		text-transform: uppercase;
+		font-size: .8rem;
+		text-align: center;
+		font-family: $Rutan-Light;
+		font-weight: 300;
+		border: none;
+		margin-top: 20px;
 	}
 }

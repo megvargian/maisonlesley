@@ -338,10 +338,6 @@ $social_media_links = $getGeneralFields['social_links'];
         $('.subscription-button').on('click', function() {
             $('.subscription-button-demo').click();
         });
-        $('.woocommerce-MyAccount-navigation li a').click(function() {
-            $('.side-menu li a').removeClass('active');
-            $(this).addClass('active');
-        })
     });
 </script>
 <?php wp_footer(); ?>
