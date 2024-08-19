@@ -38,7 +38,15 @@ $get_size_guide_fields = $all_generalFields;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?php wp_head(); ?>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VZYBKLLT4J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-VZYBKLLT4J');
+</script>
 <body <?php body_class(); ?>>
     <div id="page" class="site main_page_wrapper">
         <div class="modal fade" id="search" tabindex="-1" aria-labelledby="searchLabel" aria-hidden="true">
