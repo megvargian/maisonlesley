@@ -349,6 +349,33 @@ $last_part_footer_feild = $getGeneralFields['last_part_footer_feild'];
         $('.subscription-button').on('click', function() {
             $('.subscription-button-demo').click();
         });
+        var cf7form = $('.wpcf7');
+        if (cf7form) {
+            $(cf7form).each(function(index, el) {
+                if (el) {
+                $(el).find('form').submit(function(event) {
+                    $(el).find('form').find('.wpcf7-submit').addClass('disabled');
+                    $(el).parents('.form_validation_parent').find('.contact_success_message').hide();
+                    $(el).parents('.form_validation_parent').find('.contact_fail_message').hide();
+                });
+                el.addEventListener( 'wpcf7mailsent', function( event ) {
+                    $(el).parents('.form_validation_parent').find('.contact_success_message').slideDown(300);
+                }, false );
+                el.addEventListener( 'wpcf7mailfailed', function( event ) {
+                    $(el).find('form').find('.wpcf7-submit').removeClass('disabled');
+                    $(el).parents('.form_validation_parent').find('.contact_fail_message').slideDown(300);
+                }, false );
+                el.addEventListener( 'wpcf7spam', function( event ) {
+                    $(el).find('form').find('.wpcf7-submit').removeClass('disabled');
+                    $(el).parents('.form_validation_parent').find('.contact_fail_message').slideDown(300);
+                }, false );
+                el.addEventListener( 'wpcf7invalid', function( event ) {
+                    $(el).find('form').find('.wpcf7-submit').removeClass('disabled');
+                    $(el).parents('.form_validation_parent').find('.contact_fail_message').slideDown(300);
+                }, false );
+                }
+            });
+        }
     });
 </script>
 <?php wp_footer(); ?>

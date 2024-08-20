@@ -79,9 +79,9 @@ $all_feilds = get_fields();
 
 <script>
 	jQuery(document).ready(function($) {
-		var cf7form = $('.wpcf7');
-		if (cf7form) {
-			$(cf7form).each(function(index, el) {
+	var cf7form = $('.wpcf7');
+	if (cf7form) {
+		$(cf7form).each(function(index, el) {
 			if (el) {
 			$(el).find('form').submit(function(event) {
 				$(el).find('form').find('.wpcf7-submit').addClass('disabled');
@@ -104,7 +104,7 @@ $all_feilds = get_fields();
 				$(el).parents('.form_validation_parent').find('.contact_fail_message').slideDown(300);
 			}, false );
 			}
-	});
+		});
 	}
 });
 </script>
