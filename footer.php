@@ -349,7 +349,7 @@ $last_part_footer_feild = $getGeneralFields['last_part_footer_feild'];
         $('.subscription-button').on('click', function() {
             $('.subscription-button-demo').click();
         });
-        var cf7form = $('.wpcf7');
+        var cf7form = $('#wpcf7-f1449-o2');
         if (cf7form) {
             $(cf7form).each(function(index, el) {
                 if (el) {
