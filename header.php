@@ -352,6 +352,9 @@ $get_size_guide_fields = $all_generalFields;
                             <div class="right-side">
                                 <ul class="d-flex">
                                     <li>
+                                        <a class="my-account" href="/my-account"></a>
+                                    </li>
+                                    <li>
                                         <a class="whish-list" href="/wishlist"></a>
                                     </li>
                                     <li>
