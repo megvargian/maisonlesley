@@ -97,11 +97,11 @@ $get_size_guide_fields = $all_generalFields;
                                             </div>
                                             <div class="size-table-size-row-container">
                                                 <?php foreach ($get_size_guide_fields['size_guide_table']['rows'] as $rows) {?>
-                                                        <div class="size-table-size-row">
-                                                            <?php foreach ($rows['row'] as $main_text) { ?>
-                                                                <div class="size-table-size-element"><?php echo $main_text['main_text']; ?></div>
-                                                            <?php } ?>
-                                                        </div>
+                                                    <div class="size-table-size-row">
+                                                        <?php foreach ($rows['row'] as $main_text) { ?>
+                                                            <div class="size-table-size-element"><?php echo $main_text['main_text']; ?></div>
+                                                        <?php } ?>
+                                                    </div>
                                                 <?php } ?>
                                             </div>
                                         </div>
