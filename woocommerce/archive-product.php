@@ -127,14 +127,15 @@ global $product;
 					$counter_products = 1;
 					$current_index = 1;
 					if ( wc_get_loop_prop( 'total' ) ) {
-						while ( have_posts() ) { ?>
+						while ( have_posts() ) {
+							the_post();
+							/**
+							 * Hook: woocommerce_shop_loop.
+							 */
+							do_action( 'woocommerce_shop_loop' );
+							?>
 							<div class="col-12">
 								<?php
-									the_post();
-									/**
-									 * Hook: woocommerce_shop_loop.
-									 */
-									do_action( 'woocommerce_shop_loop' );
 									wc_get_template_part( 'content', 'product');
 									$current_index++;
 									$counter_products = $current_index;
