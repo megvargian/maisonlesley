@@ -28,7 +28,10 @@ $is_MystiqueRose = is_page(460) || is_product_category(17) || is_product_categor
 $header_menu = $is_MystiqueRose ? $all_generalFields['header_menu_mystique_rose'] : $all_generalFields['header_menu'];
 $current_url = home_url(add_query_arg(array(), $wp->request));
 $get_size_guide_fields = $all_generalFields;
-echo $_SERVER['REQUEST_URI'];
+if($_SERVER['REQUEST_URI'] == '/shop/'){
+    header("Location: https://maisonlesley.com/");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
