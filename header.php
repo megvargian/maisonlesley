@@ -94,55 +94,15 @@ $get_size_guide_fields = $all_generalFields;
                                                         <?php echo $label['label']; ?>
                                                     </div>
                                                 <?php } ?>
-                                                <!-- <div class="size-table-title-element">
-                                                    MEASURES
-                                                </div>
-                                                <div class="size-table-title-element">
-                                                    CHEST ALL AROUND
-                                                </div>
-                                                <div class="size-table-title-element">
-                                                    WAIST ALL AROUND
-                                                </div>
-                                                <div class="size-table-title-element">
-                                                    2ND HIP ALL AROUND (20CM)
-                                                </div>
-                                                <div class="size-table-title-element">
-                                                    SLEEVE LENGTH (LONG SLEEVES)
-                                                </div> -->
-                                                <!-- <div class="size-table-title-element">
-                                                    US/CA
-                                                </div>
-                                                <div class="size-table-title-element">
-                                                    MX
-                                                </div> -->
                                             </div>
                                             <div class="size-table-size-row-container">
-                                                <div class="size-table-size-row">
-                                                    <?php foreach ($get_size_guide_fields['size_guide_table']['first_row'] as $main_text) { ?>
-                                                        <div class="size-table-size-element"><?php echo $main_text['main_text']; ?></div>
-                                                    <?php } ?>
-                                                </div>
-                                                <div class="size-table-size-row">
-                                                    <?php foreach ($get_size_guide_fields['size_guide_table']['second_row'] as $main_text) { ?>
-                                                        <div class="size-table-size-element"><?php echo $main_text['label']; ?></div>
-                                                    <?php } ?>
-                                                </div>
-                                                <div class="size-table-size-row">
-                                                    <?php foreach ($get_size_guide_fields['size_guide_table']['third_row'] as $main_text) { ?>
-                                                        <div class="size-table-size-element"><?php echo $main_text['label']; ?></div>
-                                                    <?php } ?>
-
-                                                </div>
-                                                <div class="size-table-size-row">
-                                                    <?php foreach ($get_size_guide_fields['size_guide_table']['fourth_row'] as $main_text) { ?>
-                                                        <div class="size-table-size-element"><?php echo $main_text['label']; ?></div>
-                                                    <?php } ?>
-                                                </div>
-                                                <div class="size-table-size-row">
-                                                    <?php foreach ($get_size_guide_fields['size_guide_table']['fifth_row'] as $main_text) { ?>
-                                                        <div class="size-table-size-element"><?php echo $main_text['label']; ?></div>
-                                                    <?php } ?>
-                                                </div>
+                                                <?php foreach ($get_size_guide_fields['size_guide_table']['rows'] as $rows) {?>
+                                                        <div class="size-table-size-row">
+                                                            <?php foreach ($rows['row'] as $main_text) { ?>
+                                                                <div class="size-table-size-element"><?php echo $main_text['main_text']; ?></div>
+                                                            <?php } ?>
+                                                        </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
