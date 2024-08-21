@@ -376,6 +376,7 @@ $last_part_footer_feild = $getGeneralFields['last_part_footer_feild'];
                 }
             });
         }
+        $('.return-to-shop a').attr('href', 'https://maisonlesley.com/');
     });
 </script>
 <?php wp_footer(); ?>
