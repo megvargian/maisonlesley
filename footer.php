@@ -377,7 +377,7 @@ $last_part_footer_feild = $getGeneralFields['last_part_footer_feild'];
             });
         }
         $('.return-to-shop a').attr('href', 'https://maisonlesley.com/');
-        $('.wc-block-components-radio-control-accordion-option').append('<img src="https://www.netcommercepay.com/logo/NCseal_M.gif" border="0" alt="NetCommerce Security Seal">');
+        $('#mpgs_pay').append('<img src="https://www.netcommercepay.com/logo/NCseal_M.gif" border="0" alt="NetCommerce Security Seal">');
     });
 </script>
 <?php wp_footer(); ?>
