@@ -465,7 +465,6 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                 $('.menu_on_mobile').toggleClass('active');
                 $('.display_background_of_the_page').toggleClass('mobile_active');
             });
-            $('label[for="radio-control-wc-payment-method-options-mpgs_gateway"]').after('<img class="p-5" src="https://www.netcommercepay.com/logo/NCseal_M.gif" border="0" alt="NetCommerce Security Seal">');
         });
         </script>
         <div id="content" class="site-content">
