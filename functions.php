@@ -627,6 +627,7 @@ function add_custom_add_to_cart_button() {
     // check if the products has spesitific categories
     if ( $terms && ! is_wp_error( $terms ) ) {
         foreach ( $terms as $term ) {
+            print_r($product->get_price());
             if($product && $product->get_price()){
                 $send_enquiry = false;
             }
