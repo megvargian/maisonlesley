@@ -627,11 +627,9 @@ function add_custom_add_to_cart_button() {
     // check if the products has spesitific categories
     if ( $terms && ! is_wp_error( $terms ) ) {
         foreach ( $terms as $term ) {
-            print_r($product->get_price());
             if($product && $product->get_price()){
                 $send_enquiry = false;
-            }
-            if($term->term_id == 21 || $term->term_id == 22 || $term->term_id == 35 || $term->term_id == 24 || $term->term_id == 37 || $term->term_id == 34 || $term->term_id == 26){
+            } else if($term->term_id == 21 || $term->term_id == 22 || $term->term_id == 35 || $term->term_id == 24 || $term->term_id == 37 || $term->term_id == 34 || $term->term_id == 26){
                 $send_enquiry = true;
             } else {
                 $send_enquiry = false;
