@@ -1061,23 +1061,23 @@ header.active {
   text-decoration: underline;
 }
 
-.info_content .accordion-button:focus, .size-guide-modal .accordion-button:focus {
+.info_content .accordion-button:focus, .size-guide-modal .accordion-button:focus, .single-description-section .accordion-button:focus {
   outline: none !important;
   background-color: transparent !important;
   box-shadow: none !important;
 }
-.info_content .accordion-button, .size-guide-modal .accordion-button {
+.info_content .accordion-button, .size-guide-modal .accordion-button, .single-description-section .accordion-button {
   border-radius: 0 !important;
   font-family: "Rutan-Light";
   font-weight: 600;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-.info_content .accordion-body, .size-guide-modal .accordion-body {
+.info_content .accordion-body, .size-guide-modal .accordion-body, .single-description-section .accordion-body {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-.info_content .accordion-item, .size-guide-modal .accordion-item {
+.info_content .accordion-item, .size-guide-modal .accordion-item, .single-description-section .accordion-item {
   border-top: none;
   border-left: none;
   border-right: none;
