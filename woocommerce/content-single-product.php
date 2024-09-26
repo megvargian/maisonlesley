@@ -84,11 +84,23 @@ if ( post_password_required() ) {
                     $long_description = $product->get_description();
                     if($long_description){
                     ?>
-                        <div>
-                            <h2>Description</h2>
-                            <p><?php echo $long_description; ?></p>
+                    <div>
+                        <div class="accordion w-100" id="accordionExample-description">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header mt-0" id="heading-description">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-description" aria-expanded="true" aria-controls="collapse-description">
+                                            Description
+                                        </button>
+                                    </h2>
+                                    <div id="collapse-description" class="accordion-collapse collapse" aria-labelledby="heading-description" data-bs-parent="#accordionExample-description">
+                                        <div class="accordion-body">
+                                            <p><?php echo $long_description; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </div>
-                    <?php } ?>
+                    </div>
                 </div>
             </div>
         </div>
