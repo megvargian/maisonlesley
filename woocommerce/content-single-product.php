@@ -86,7 +86,7 @@ if ( post_password_required() ) {
                     ?>
                     <div class="single-description-section">
                         <div class="accordion w-100" id="accordionExample-description">
-                            <div class="accordion-item">
+                            <div class="accordion-item" style="border-top: none !important; border-left: none !important; border-right: none !important;">
                                 <h2 class="accordion-header mt-0" id="heading-description">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-description" aria-expanded="true" aria-controls="collapse-description">
                                         Description
