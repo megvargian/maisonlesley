@@ -1469,24 +1469,24 @@ header.active {
   outline: none;
 }
 
-.single-description-section .accordion-item {
+.product-type-simple .accordion-item {
   border-top: none !important;
   border-left: none !important;
   border-right: none !important;
 }
-.single-description-section .accordion-button:focus {
+.product-type-simple .accordion-button:focus {
   outline: none !important;
   background-color: transparent !important;
   box-shadow: none !important;
 }
-.single-description-section .accordion-button {
+.product-type-simple .accordion-button {
   border-radius: 0 !important;
   font-family: "Rutan-Light" !important;
   font-weight: 600;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-.single-description-section .accordion-body {
+.product-type-simple .accordion-body {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
