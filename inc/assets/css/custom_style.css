@@ -1469,24 +1469,27 @@ header.active {
   outline: none;
 }
 
-.product-type-simple .accordion-item {
+.accordion-item {
   border-top: none !important;
   border-left: none !important;
   border-right: none !important;
 }
-.product-type-simple .accordion-button:focus {
+
+.accordion-button:focus {
   outline: none !important;
   background-color: transparent !important;
   box-shadow: none !important;
 }
-.product-type-simple .accordion-button {
+
+.accordion-button {
   border-radius: 0 !important;
   font-family: "Rutan-Light" !important;
   font-weight: 600;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-.product-type-simple .accordion-body {
+
+.accordion-body {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }

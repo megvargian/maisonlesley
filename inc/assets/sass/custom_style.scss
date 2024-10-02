@@ -1433,26 +1433,24 @@ header.active{
 }
 
 //woocommerce accordion thing
-.product-type-simple{
-	.accordion-item{
-		border-top: none !important;
-		border-left: none !important;
-		border-right: none !important;
-	}
-	.accordion-button:focus{
-		outline: none !important;
-		background-color: transparent !important;
-		box-shadow: none !important;
-	}
-	.accordion-button{
-		border-radius: 0 !important;
-		font-family: $Rutan-Light !important;
-		font-weight: 600;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-	}
-	.accordion-body{
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-	}
+.accordion-item{
+	border-top: none !important;
+	border-left: none !important;
+	border-right: none !important;
+}
+.accordion-button:focus{
+	outline: none !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
+}
+.accordion-button{
+	border-radius: 0 !important;
+	font-family: $Rutan-Light !important;
+	font-weight: 600;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.accordion-body{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
