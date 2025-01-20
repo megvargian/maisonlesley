@@ -56,6 +56,7 @@ global $wp_query;
 					 */
 					$counter_products = 1;
 					$total_posts = $wp_query->found_posts;
+					echo $total_posts;
 					if ( wc_get_loop_prop( 'total' ) ) {
 						$posts = []; // Initialize an array to hold the posts
 						// Populate the array with posts
