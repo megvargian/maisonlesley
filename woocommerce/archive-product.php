@@ -97,7 +97,7 @@ global $wp_query;
 										?>
 									</div>
 								<?php
-							} else if ($current_index % 5 != 0 && $current_index < $total_posts){?>
+							} else if ($current_index % 5 != 0 && ($total_posts - $current_index) < 5){?>
 								<div class="col-6">
 									<div class="row">
 										<div class="col-md-6 col-12">
