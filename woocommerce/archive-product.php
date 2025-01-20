@@ -59,7 +59,7 @@ global $product;
 						// Populate the array with posts
 						$current_index = 1;
 						$total_posts = $wp_query->found_posts;
-						echo $total_pages;
+						echo $total_posts;
 						while ( have_posts() ) {
 							the_post();
 							array_push($posts, get_post());
