@@ -96,6 +96,26 @@ global $product;
 										?>
 									</div>
 								<?php
+							} else if ($current_index % 5 != 0 && $current_index < $current_count){?>
+								<div class="col-6">
+									<div class="row">
+										<div class="col-md-6 col-12">
+											<?php
+												setup_postdata($posts[$current_index]); // Set up post data for the current post
+												/**
+												 * Hook: woocommerce_shop_loop.
+												*/
+												do_action( 'woocommerce_shop_loop' );
+												wc_get_template_part( 'content', 'product' );
+											?>
+										</div>
+										<?php
+										}
+										wp_reset_postdata(); // Reset post data after the loop
+									?>
+									</div>
+								</div>
+							<?php
 							}
 							$current_index++;
 							$counter_products = $current_index;
