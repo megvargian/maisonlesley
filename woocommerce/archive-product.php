@@ -96,12 +96,12 @@ global $product;
 										?>
 									</div>
 								<?php
-							} else if ($current_index % 5 != 0 && $counter_products - 1 < $current_count){?>
+							} else if ($current_index % 5 != 0 && $counter_products < $current_count){?>
 								<div class="col-6">
 									<div class="row">
 										<div class="col-md-6 col-12">
 											<?php
-												setup_postdata($posts[$counter_products - 1]); // Set up post data for the current post
+												setup_postdata($posts[$counter_products]); // Set up post data for the current post
 												/**
 												 * Hook: woocommerce_shop_loop.
 												*/
