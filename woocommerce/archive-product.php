@@ -20,6 +20,7 @@ defined( 'ABSPATH' ) || exit;
 get_header( 'shop' );
 global $counter_products;
 global $product;
+global $wp_query;
 ?>
 <div class="container">
 	<div class="row">
