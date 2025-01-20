@@ -97,12 +97,12 @@ global $wp_query;
 										?>
 									</div>
 								<?php
-							} else if ($current_index % 5 != 0 && ($total_posts - $current_index) < 5){?>
+							} else if (($total_posts - $current_index) < 5){?>
 								<div class="col-6">
 									<div class="row">
 										<div class="col-md-6 col-12">
 											<?php
-												setup_postdata($posts[$current_index]); // Set up post data for the current post
+												setup_postdata($posts[$current_index + 1]); // Set up post data for the current post
 												/**
 												 * Hook: woocommerce_shop_loop.
 												*/
