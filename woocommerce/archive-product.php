@@ -58,12 +58,11 @@ global $product;
 						$posts = []; // Initialize an array to hold the posts
 						// Populate the array with posts
 						$current_index = 1;
-						$current_count = 1;
+						$total_posts = $wp_query->found_posts;
+						echo $total_pages;
 						while ( have_posts() ) {
 							the_post();
 							array_push($posts, get_post());
-							$current_count = count($posts);
-							echo $current_count;
 							if($current_index % 5 == 0){
 								$four_porduct_right_side = array_slice($posts, ($current_index - 5) , $current_index);
 								?>
@@ -98,12 +97,12 @@ global $product;
 										?>
 									</div>
 								<?php
-							} else if ($current_index % 5 != 0 && $counter_products < $current_count){?>
+							} else if ($current_index % 5 != 0 && $current_index < $total_posts){?>
 								<div class="col-6">
 									<div class="row">
 										<div class="col-md-6 col-12">
 											<?php
-												setup_postdata($posts[$counter_products]); // Set up post data for the current post
+												setup_postdata($posts[$current_index]); // Set up post data for the current post
 												/**
 												 * Hook: woocommerce_shop_loop.
 												*/
