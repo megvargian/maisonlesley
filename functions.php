@@ -612,7 +612,7 @@ add_action('wp_ajax_nopriv_filter_products', 'filter_products');
 // add custom size for category products woocommerc
 add_action('after_setup_theme', 'custom_woocommerce_image_size');
 function custom_woocommerce_image_size() {
-    add_image_size('custom-woocommerce-thumbnail', 1000, 1000, true); // 500px by 500px, hard crop
+    add_image_size('custom-woocommerce-thumbnail', 1000, 1000); // 500px by 500px, hard crop
 }
 // remove add to cart
 function remove_default_add_to_cart_button() {
