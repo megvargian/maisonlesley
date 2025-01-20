@@ -62,6 +62,7 @@ global $product;
 							the_post();
 							array_push($posts, get_post());
 							$current_count = count($posts);
+							echo $current_count;
 							if($current_index % 5 == 0){
 								$four_porduct_right_side = array_slice($posts, ($current_index - 5) , $current_index);
 								?>
