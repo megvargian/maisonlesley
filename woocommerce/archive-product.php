@@ -97,26 +97,26 @@ global $wp_query;
 										?>
 									</div>
 								<?php
-							} else if ($rest < 5){?>
-								<div class="col-6">
+							} // else if ($rest < 5){?>
+								<!-- <div class="col-6">
 									<div class="row">
 										<div class="col-md-6 col-12">
 											<?php
-												setup_postdata($posts[$current_index + 1]); // Set up post data for the current post
+												//setup_postdata($posts[$current_index + 1]); // Set up post data for the current post
 												/**
 												 * Hook: woocommerce_shop_loop.
 												*/
-												do_action( 'woocommerce_shop_loop' );
-												wc_get_template_part( 'content', 'product' );
+												//do_action( 'woocommerce_shop_loop' );
+												//wc_get_template_part( 'content', 'product' );
 											?>
 										</div>
 										<?php
-										wp_reset_postdata(); // Reset post data after the loop
+										//wp_reset_postdata(); // Reset post data after the loop
 									?>
 									</div>
-								</div>
+								</div> -->
 							<?php
-							}
+							//}
 							$current_index++;
 							$counter_products = $current_index;
 							$rest = $total_posts - $counter_products;
