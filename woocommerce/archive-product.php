@@ -110,7 +110,6 @@ global $product;
 											?>
 										</div>
 										<?php
-										}
 										wp_reset_postdata(); // Reset post data after the loop
 									?>
 									</div>
