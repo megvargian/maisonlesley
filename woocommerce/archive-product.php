@@ -120,6 +120,7 @@ global $wp_query;
 							$current_index++;
 							$counter_products = $current_index;
 							$rest = $total_posts - $counter_products;
+							echo $rest;
 						}
 						wp_reset_postdata(); // Reset post data after the loop
 					}
