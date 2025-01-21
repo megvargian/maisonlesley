@@ -624,12 +624,21 @@ function add_custom_add_to_cart_button() {
     global $product;
     $product_id = $product->get_id(); // Get the product ID
     $terms = get_the_terms( $product_id, 'product_cat' ); // Get the terms (categories) assigned to the product
+    // Define the parent category IDs Bridal and couture
+    $parent_category_ids = [21, 24];
+    // Get all child categories for the specified parent categories
+    $all_category_ids = [];
+    foreach ($parent_category_ids as $parent_id) {
+        $all_category_ids = array_merge($all_category_ids, get_term_children($parent_id, 'product_cat'));
+    }
+    // Add the parent categories themselves to the list
+    $all_category_ids = array_merge($all_category_ids, $parent_category_ids);
     // check if the products has spesitific categories
     if ( $terms && ! is_wp_error( $terms ) ) {
         foreach ( $terms as $term ) {
             if($product && $product->get_price()){
                 $send_enquiry = false;
-            } else if($term->term_id == 21 || $term->term_id == 22 || $term->term_id == 35 || $term->term_id == 24 || $term->term_id == 37 || $term->term_id == 34 || $term->term_id == 26){
+            } else if(in_array($term->term_id, $all_category_ids)){
                 $send_enquiry = true;
             } else {
                 $send_enquiry = false;
