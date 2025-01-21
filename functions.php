@@ -856,3 +856,74 @@ function set_custom_cookie() {
         ]);
     }
 }
+// facebook pixels events
+// Track Product Views (ViewContent)
+function track_product_view_pixel() {
+    if (is_product()) {
+        global $product;
+        ?>
+        <script>
+            fbq('track', 'ViewContent', {
+                content_name: '<?php echo esc_js($product->get_name()); ?>',
+                content_ids: ['<?php echo esc_js($product->get_id()); ?>'],
+                content_type: 'product',
+                value: '<?php echo esc_js($product->get_price()); ?>',
+                currency: '<?php echo get_woocommerce_currency(); ?>'
+            });
+        </script>
+        <?php
+    }
+}
+add_action('wp_footer', 'track_product_view_pixel');
+
+// Track Add to Cart
+function track_add_to_cart_pixel($cart_item_key, $product_id, $quantity) {
+    $product = wc_get_product($product_id);
+    ?>
+    <script>
+        fbq('track', 'AddToCart', {
+            content_name: '<?php echo esc_js($product->get_name()); ?>',
+            content_ids: ['<?php echo esc_js($product_id); ?>'],
+            content_type: 'product',
+            value: '<?php echo esc_js($product->get_price() * $quantity); ?>',
+            currency: '<?php echo get_woocommerce_currency(); ?>'
+        });
+    </script>
+    <?php
+}
+add_action('woocommerce_add_to_cart', 'track_add_to_cart_pixel', 10, 3);
+
+// Track Initiate Checkout
+function track_initiate_checkout_pixel() {
+    ?>
+    <script>
+        fbq('track', 'InitiateCheckout');
+    </script>
+    <?php
+}
+add_action('woocommerce_before_checkout_form', 'track_initiate_checkout_pixel');
+
+// Track Purchase
+function track_purchase_pixel($order_id) {
+    $order = wc_get_order($order_id);
+    $items = [];
+    foreach ($order->get_items() as $item) {
+        $product = $item->get_product();
+        $items[] = [
+            'id' => $product->get_id(),
+            'quantity' => $item->get_quantity(),
+        ];
+    }
+    $total = $order->get_total();
+    ?>
+    <script>
+        fbq('track', 'Purchase', {
+            value: '<?php echo esc_js($total); ?>',
+            currency: '<?php echo get_woocommerce_currency(); ?>',
+            contents: <?php echo wp_json_encode($items); ?>,
+            num_items: <?php echo esc_js(count($items)); ?>
+        });
+    </script>
+    <?php
+}
+add_action('woocommerce_thankyou', 'track_purchase_pixel');
