@@ -63,6 +63,8 @@ global $wp_query;
 						$current_index = 0;
 						while ( have_posts() ) {
 							the_post();
+							$current_index++;
+							$counter_products++;
 							array_push($posts, get_post());
 							if($current_index % 5 == 0 && $current_index >= 5){
 								$four_porduct_right_side = array_slice($posts, ($current_index - 5) , $current_index);
@@ -116,9 +118,6 @@ global $wp_query;
 								</div>
 							<?php
 							}
-							$current_index++;
-							$counter_products++;
-							// $rest = $total_posts - $counter_products;
 							echo'<pre>'; print_r('couter_products: ' . $counter_products); echo '</pre>';
 							echo'<pre>'; print_r('total_post: ' . $total_posts); echo '</pre>';
 							echo'<pre>'; print_r('rest: ' . $rest); echo '</pre>';
