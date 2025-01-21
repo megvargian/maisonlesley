@@ -76,7 +76,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         <a class="w-100 h-100 d-block pb-3 <?php echo $first_image_url ? 'cat-single-product' : '' ?>" href="<?php echo esc_url( $product->get_permalink() ) ?>">
         <?php
                 $attachment_id = $product->get_image_id(); // Get the product image ID
-                $image_url_mobile = wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail');
+                $image_url_mobile = isMob() ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($attachment_id, 'full');
                 $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'full') : wp_get_attachment_image_src($attachment_id);
                 if ($image_url || $image_url_mobile) {
                         echo '<img class="d-md-block d-none main-img-product-'.$product_id.' main-thumbnail-img" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';

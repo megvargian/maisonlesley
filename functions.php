@@ -936,3 +936,7 @@ function track_purchase_pixel($order_id) {
     <?php
 }
 add_action('woocommerce_thankyou', 'track_purchase_pixel');
+
+function isMob(){
+    return is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
+}
