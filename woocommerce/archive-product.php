@@ -99,7 +99,7 @@ global $wp_query;
 										?>
 									</div>
 								<?php
-							} else if ($rest < 5 && $current_index % 5 != 0){?>
+							} else if ($rest < 5 && $rest != 0 && $current_index % 5 != 0){?>
 								<div class="col-6">
 									<div class="row">
 										<div class="col-md-6 col-12">
