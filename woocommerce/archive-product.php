@@ -63,10 +63,10 @@ global $wp_query;
 						$current_index = 0;
 						while ( have_posts() ) {
 							the_post();
-							$rest = $total_posts - $counter_products;
 							array_push($posts, get_post());
 							if($current_index % 5 == 0 && $current_index >= 5){
 								$four_porduct_right_side = array_slice($posts, ($current_index - 5) , $current_index);
+								$rest = $total_posts - $counter_products;
 								?>
 									<div class="col-6">
 										<div class="row">
