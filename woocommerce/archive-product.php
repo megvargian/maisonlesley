@@ -84,7 +84,6 @@ global $wp_query;
 											</div>
 											<?php
 											}
-											wp_reset_postdata(); // Reset post data after the loop
 										?>
 										</div>
 									</div>
@@ -113,9 +112,6 @@ global $wp_query;
 												wc_get_template_part( 'content', 'product' );
 											?>
 										</div>
-										<?php
-										wp_reset_postdata(); // Reset post data after the loop
-									?>
 									</div>
 								</div>
 							<?php
