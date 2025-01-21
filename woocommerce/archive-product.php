@@ -119,9 +119,9 @@ global $wp_query;
 							//}
 							$current_index++;
 							$counter_products = $current_index;
-							echo'<pre>'; print_r($counter_products); echo '</pre>';
-							echo'<pre>'; print_r($total_posts); echo '</pre>';
-							echo'<pre>'; print_r('rest:' $rest); echo '</pre>';
+							echo'<pre>'; print_r('couter_products: ' . $counter_products); echo '</pre>';
+							echo'<pre>'; print_r('total_post: ' . $total_posts); echo '</pre>';
+							echo'<pre>'; print_r('rest: ' . $rest); echo '</pre>';
 							$rest = $total_posts - $counter_products;
 						}
 						wp_reset_postdata(); // Reset post data after the loop
