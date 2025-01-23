@@ -54,6 +54,7 @@ global $wp_query;
 					/**
 					 * Hook: woocommerce_before_shop_loop.
 					 */
+
 					$counter_products = 0;
 					$rest = 0;
 					$total_posts = $wp_query->found_posts;
