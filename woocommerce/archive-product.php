@@ -65,7 +65,7 @@ global $wp_query;
 						while ( have_posts() ) {
 							the_post();
 							array_push($posts, get_post());
-							if($current_index % 5 == 0 && $current_index >= 5){
+							if($current_index % 5 == 0){
 								echo'<pre>'; print_r('current_index: ' . $current_index); echo '</pre>';
 								$four_porduct_right_side = array_slice($posts, ($current_index - 5) , $current_index);
 								$rest = $total_posts - $counter_products;
