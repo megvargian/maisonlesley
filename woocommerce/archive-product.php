@@ -102,12 +102,17 @@ global $wp_query;
 										?>
 									</div>
 								<?php
-							} else if ($rest < 5 && $rest != 0){?>
+							} else if (($rest < 5 && $rest != 0) || $total_posts > 5){
+								$four_porduct_right_side = array_slice($posts, ($current_index - $rest) , $current_index);
+								$rest = $total_posts - $counter_products;
+							?>
 								<div class="col-6">
 									<div class="row">
+									<?php
+										for($i=0; $i < $rest; $i++) { ?>
 										<div class="col-md-6 col-12">
 											<?php
-												setup_postdata($posts[$counter_products]); // Set up post data for the current post
+												setup_postdata($four_porduct_right_side[$i]); // Set up post data for the current post
 												/**
 												 * Hook: woocommerce_shop_loop.
 												*/
@@ -115,6 +120,9 @@ global $wp_query;
 												wc_get_template_part( 'content', 'product' );
 											?>
 										</div>
+										<?php
+										}
+									?>
 									</div>
 								</div>
 							<?php
