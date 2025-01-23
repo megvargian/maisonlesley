@@ -71,13 +71,13 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         $attachment_ids = $product->get_gallery_image_ids();
         if ($attachment_ids && !empty($attachment_ids)) {
                 $first_image_id = $attachment_ids[0]; // Get the first image ID
-                $first_image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($first_image_id, 'full') : wp_get_attachment_image_src($first_image_id, 'full'); // Get the URL of the first image
+                $first_image_url = wp_get_attachment_image_src($first_image_id, 'full'); // Get the URL of the first image
         } ?>
         <a class="w-100 h-100 d-block pb-3 <?php echo $first_image_url ? 'cat-single-product' : '' ?>" href="<?php echo esc_url( $product->get_permalink() ) ?>">
         <?php
                 $attachment_id = $product->get_image_id(); // Get the product image ID
                 $image_url_mobile = isMob() ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($attachment_id, 'full');
-                $image_url = ($counter_products % 5 == 0) ? wp_get_attachment_image_src($attachment_id, 'full') : wp_get_attachment_image_src($attachment_id, 'full');
+                $image_url = wp_get_attachment_image_src($attachment_id, 'full');
                 if ($image_url || $image_url_mobile) {
                         echo '<img class="d-md-block d-none main-img-product-'.$product_id.' main-thumbnail-img" src="' . esc_url($image_url[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
                         echo '<img class="d-md-none d-block main-thumbnail-img-mobile" src="' . esc_url($image_url_mobile[0]) . '" alt="' . esc_attr($product->get_name()) . '" width="500" height="500" />';
