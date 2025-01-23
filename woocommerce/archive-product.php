@@ -66,8 +66,8 @@ global $wp_query;
 						while ( have_posts() ) {
 							the_post();
 							array_push($posts, get_post());
-							if($current_index % 5 == 0 && $current_index >= 5){
-								$four_porduct_right_side = array_slice($posts, ($current_index - 5) , $current_index);
+							if($counter_products % 5 == 0 && $counter_products >= 5){
+								$four_porduct_right_side = array_slice($posts, ($counter_products - 5) , $counter_products);
 								$rest = $total_posts - $counter_products;
 								?>
 									<div class="col-6">
@@ -101,7 +101,7 @@ global $wp_query;
 									</div>
 								<?php
 							} else if (($rest < 5 && $rest != 0) || $total_posts < 5){
-								$four_porduct_right_side = array_slice($posts, ($current_index - $rest) , $current_index);
+								$four_porduct_right_side = array_slice($posts, ($counter_products - $rest) , $counter_products);
 								$rest = $total_posts - $counter_products;
 							?>
 								<div class="col-6">
