@@ -54,8 +54,9 @@ global $wp_query;
 					/**
 					 * Hook: woocommerce_before_shop_loop.
 					 */
-
-					$counter_products = 0;
+					$current_page = get_query_var('paged');
+					echo'<pre>'; print_r('current_page: ' . $current_page); echo '</pre>';
+					$counter_products = $current_page == 1 ? 0 : $counter_products + (($current_page - 1) * 15);
 					$rest = 0;
 					$total_posts = $wp_query->found_posts;
 					if ( wc_get_loop_prop( 'total' ) ) {
