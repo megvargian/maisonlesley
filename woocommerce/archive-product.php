@@ -102,7 +102,7 @@ global $wp_query;
 										?>
 									</div>
 								<?php
-							} else if (($rest < 5 && $rest != 0) || $total_posts > 5){
+							} else if (($rest < 5 && $rest != 0) || $total_posts < 5){
 								$four_porduct_right_side = array_slice($posts, ($current_index - $rest) , $current_index);
 								$rest = $total_posts - $counter_products;
 							?>
