@@ -56,18 +56,18 @@ global $wp_query;
 					 */
 					$current_page = get_query_var('paged');
 					echo'<pre>'; print_r('current_page: ' . $current_page); echo '</pre>';
-					$counter_products = $current_page > 1 ? $counter_products + (($current_page - 1) * 15) : 0;
-					$rest = $current_page > 1 ? $total_posts - $counter_products : 0;
+					$counter_products = $current_page > 1 ? $counter_products + (($current_page) * 15) : 0;
+					$rest = 0;
 					$total_posts = $wp_query->found_posts;
 					if ( wc_get_loop_prop( 'total' ) ) {
-						$posts = []; // Initialize an array to hold the posts
-						// Populate the array with posts
+						$posts = [];
 						$current_index = 0;
 						while ( have_posts() ) {
 							the_post();
 							array_push($posts, get_post());
-							if($counter_products % 5 == 0 && $counter_products >= 5){
-								$four_porduct_right_side = array_slice($posts, ($counter_products - 5) , $counter_products);
+
+							if($current_index % 5 == 0 && $current_index >= 5){
+								$four_porduct_right_side = array_slice($posts, ($current_index - 5) , $current_index);
 								$rest = $total_posts - $counter_products;
 								?>
 									<div class="col-6">
@@ -101,7 +101,7 @@ global $wp_query;
 									</div>
 								<?php
 							} else if (($rest < 5 && $rest != 0) || $total_posts < 5){
-								$four_porduct_right_side = array_slice($posts, ($counter_products - $rest) , $counter_products);
+								$four_porduct_right_side = array_slice($posts, ($current_index - $rest) , $current_index);
 								$rest = $total_posts - $counter_products;
 							?>
 								<div class="col-6">
@@ -127,6 +127,7 @@ global $wp_query;
 							}
 							$current_index++;
 							$counter_products++;
+							echo'<pre>'; print_r('current_index: ' . $current_index); echo '</pre>';
 							echo'<pre>'; print_r('couter_products: ' . $counter_products); echo '</pre>';
 							echo'<pre>'; print_r('total_post: ' . $total_posts); echo '</pre>';
 							echo'<pre>'; print_r('rest: ' . $rest); echo '</pre>';
