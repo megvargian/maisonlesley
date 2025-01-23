@@ -55,7 +55,7 @@ global $wp_query;
 					 * Hook: woocommerce_before_shop_loop.
 					 */
 					$current_page = get_query_var('paged');
-					echo'<pre>'; print_r('current_page: ' . $current_page); echo '</pre>';
+					// echo'<pre>'; print_r('current_page: ' . $current_page); echo '</pre>';
 					$counter_products = $current_page > 1 ? $counter_products + (($current_page - 1) * 15) : 0;
 					$total_posts = $wp_query->found_posts;
 					$rest = $current_page > 1 ? ($total_posts - $counter_products) : 0;
@@ -115,9 +115,9 @@ global $wp_query;
 							}
 							$current_index++;
 							$counter_products++;
-							echo'<pre>'; print_r('couter_products: ' . $counter_products); echo '</pre>';
-							echo'<pre>'; print_r('total_post: ' . $total_posts); echo '</pre>';
-							echo'<pre>'; print_r('rest: ' . $rest); echo '</pre>';
+							// echo'<pre>'; print_r('couter_products: ' . $counter_products); echo '</pre>';
+							// echo'<pre>'; print_r('total_post: ' . $total_posts); echo '</pre>';
+							// echo'<pre>'; print_r('rest: ' . $rest); echo '</pre>';
 						}
 						wp_reset_postdata(); // Reset post data after the loop
 					}
