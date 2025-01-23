@@ -940,3 +940,10 @@ add_action('woocommerce_thankyou', 'track_purchase_pixel');
 function isMob(){
     return is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
 }
+// set number of products to 15 and not 16
+function set_products_per_page($query) {
+    if($query -> is_main_query() && is_post_type_archive('product')){
+        $query -> set('posts_per_page', 15);
+    }
+}
+add_action('per_get_posts', 'set_products_per_page');
