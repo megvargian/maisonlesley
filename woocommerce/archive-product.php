@@ -57,7 +57,7 @@ global $wp_query;
 					$current_page = get_query_var('paged');
 					echo'<pre>'; print_r('current_page: ' . $current_page); echo '</pre>';
 					$counter_products = $current_page > 1 ? $counter_products + (($current_page - 1) * 15) : 0;
-					$rest = 0;
+					$rest = $current_page > 1 ? $total_posts - $counter_products : 0;
 					$total_posts = $wp_query->found_posts;
 					if ( wc_get_loop_prop( 'total' ) ) {
 						$posts = []; // Initialize an array to hold the posts
