@@ -223,7 +223,7 @@ $last_part_footer_feild = $getGeneralFields['last_part_footer_feild'];
                         <?php if($social_media_links['pinterest']){?>
                             <li>
                                 <a href="<?php echo $social_media_links['pinterest']; ?>" target="_blank">
-                                    <i class="icon-social-linkedin"></i>
+                                    <i class="icon-social-pinterest"></i>
                                 </a>
                             </li>
                         <?php } ?>
@@ -245,7 +245,7 @@ $last_part_footer_feild = $getGeneralFields['last_part_footer_feild'];
                         <?php if($social_media_links['linkedin']){?>
                             <li>
                                 <a href="<?php echo $social_media_links['linkedin']; ?>" target="_blank">
-                                    <i class="icon-social-instagram"></i>
+                                    <i class="icon-social-linkedin"></i>
                                 </a>
                             </li>
                         <?php } ?>
