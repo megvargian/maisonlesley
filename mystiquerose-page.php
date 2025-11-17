@@ -366,10 +366,10 @@
     </div>
 
     <!-- Glowing lines -->
-    <div class="glow-lines">
+    <!-- <div class="glow-lines">
         <div class="glow-line"></div>
         <div class="glow-line"></div>
-    </div>
+    </div> -->
 
     <!-- Main content -->
     <div class="construction-content">
