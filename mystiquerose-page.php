@@ -2,7 +2,7 @@
 /**
  * Template Name: Mytique Rose page
  */
-get_header();
+// get_header();
 ?>
 
 <!-- ORIGINAL CODE - COMMENTED OUT FOR UNDER CONSTRUCTION PAGE
@@ -433,4 +433,4 @@ get_header();
 <!-- END UNDER CONSTRUCTION PAGE -->
 
 <?php
-get_footer();
+// get_footer();
