@@ -373,7 +373,6 @@
 
     <!-- Main content -->
     <div class="construction-content">
-        <div class="rose-icon">🌹</div>
         <h1 class="mystique-logo">Mystique Rose</h1>
         <h2 class="construction-title">Coming Soon</h2>
         <p class="construction-subtitle">
@@ -386,47 +385,6 @@
                 <div class="progress-bar-fill"></div>
             </div>
         </div>
-
-        <p class="construction-message">
-            Our team is working tirelessly to bring you an extraordinary collection.<br>
-            Stay tuned for the grand reveal.
-        </p>
-
-        <!-- Email notification form -->
-        <form class="notify-form" action="#" method="post">
-            <input type="email" class="notify-input" placeholder="Enter your email" required>
-            <button type="submit" class="notify-button">Notify Me</button>
-        </form>
-
-        <!-- Social media links -->
-        <?php
-        $all_generalFields = get_fields('options');
-        $social_media_links = $all_generalFields['social_links'];
-        if($social_media_links):
-        ?>
-        <div class="social-links-construction">
-            <?php if($social_media_links['instagram']): ?>
-                <a href="<?php echo $social_media_links['instagram']; ?>" target="_blank" class="social-icon">
-                    <i class="icon-social-instagram"></i>
-                </a>
-            <?php endif; ?>
-            <?php if($social_media_links['facebook']): ?>
-                <a href="<?php echo $social_media_links['facebook']; ?>" target="_blank" class="social-icon">
-                    <i class="icon-social-facebook"></i>
-                </a>
-            <?php endif; ?>
-            <?php if($social_media_links['twitter_x']): ?>
-                <a href="<?php echo $social_media_links['twitter_x']; ?>" target="_blank" class="social-icon">
-                    <i class="icon-social-twitter_x"></i>
-                </a>
-            <?php endif; ?>
-            <?php if($social_media_links['pinterest']): ?>
-                <a href="<?php echo $social_media_links['pinterest']; ?>" target="_blank" class="social-icon">
-                    <i class="icon-social-pinterest"></i>
-                </a>
-            <?php endif; ?>
-        </div>
-        <?php endif; ?>
     </div>
 </section>
 
