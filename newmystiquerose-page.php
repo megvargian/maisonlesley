@@ -1,0 +1,431 @@
+<?php
+/**
+ * Template Name: New Mystique Rose Page
+ */
+// get_header();
+?>
+
+<style>
+    /* Reset and Base Styles */
+    .mystique-new-page {
+        font-family: "Rutan-Light", sans-serif;
+        color: #000;
+        background-color: #fff;
+    }
+
+    /* Hero Section */
+    .mystique-hero {
+        position: relative;
+        height: 70vh;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8f8f8;
+        overflow: hidden;
+    }
+
+    .mystique-hero-content {
+        text-align: center;
+        z-index: 2;
+        padding: 40px 20px;
+    }
+
+    .mystique-hero h1 {
+        font-size: 4rem;
+        font-family: "Rutan-Light", sans-serif;
+        font-weight: 300;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        color: #000;
+    }
+
+    .mystique-hero p {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        color: #666;
+        margin-bottom: 40px;
+    }
+
+    /* Collection Navigation */
+    .collection-nav {
+        background-color: #fff;
+        border-top: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .collection-nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+    }
+
+    .collection-nav a {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #000;
+        text-decoration: none;
+        padding: 10px 0;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .collection-nav a:hover {
+        color: #666;
+    }
+
+    .collection-nav a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: #000;
+        transition: width 0.3s ease;
+    }
+
+    .collection-nav a:hover::after {
+        width: 100%;
+    }
+
+    /* Products Grid */
+    .products-section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-family: "Rutan-Light", sans-serif;
+        font-weight: 300;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 50px;
+        color: #000;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    .product-card {
+        text-align: center;
+        text-decoration: none;
+        color: #000;
+        transition: all 0.3s ease;
+    }
+
+    .product-image-wrapper {
+        position: relative;
+        overflow: hidden;
+        background-color: #f8f8f8;
+        margin-bottom: 20px;
+        aspect-ratio: 3/4;
+    }
+
+    .product-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-image-wrapper img {
+        transform: scale(1.05);
+    }
+
+    .product-title {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        font-family: "Rutan-Regular", sans-serif;
+    }
+
+    .product-price {
+        font-size: 0.9rem;
+        color: #666;
+        font-family: "Rutan-Light", sans-serif;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background-color: #f8f8f8;
+        padding: 100px 20px;
+        text-align: center;
+    }
+
+    .cta-section h2 {
+        font-size: 3rem;
+        font-family: "Rutan-Light", sans-serif;
+        font-weight: 300;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        color: #000;
+    }
+
+    .cta-section p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 40px;
+        letter-spacing: 1px;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 15px 50px;
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        border: 2px solid #000;
+    }
+
+    .cta-button:hover {
+        background-color: #fff;
+        color: #000;
+    }
+
+    /* Newsletter Section */
+    .newsletter-section {
+        padding: 80px 20px;
+        background-color: #fff;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .newsletter-container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .newsletter-section h3 {
+        font-size: 1.5rem;
+        font-family: "Rutan-Light", sans-serif;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        color: #000;
+    }
+
+    .newsletter-section p {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 10px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .newsletter-input {
+        flex: 1;
+        padding: 15px 20px;
+        border: 1px solid #e0e0e0;
+        font-size: 0.9rem;
+        font-family: "Rutan-Light", sans-serif;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    .newsletter-input:focus {
+        border-color: #000;
+    }
+
+    .newsletter-button {
+        padding: 15px 40px;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease;
+        font-family: "Rutan-Regular", sans-serif;
+    }
+
+    .newsletter-button:hover {
+        background-color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .mystique-hero h1 {
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+        }
+
+        .mystique-hero p {
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        .products-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .collection-nav ul {
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .collection-nav a {
+            font-size: 0.75rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .newsletter-form {
+            flex-direction: column;
+        }
+
+        .newsletter-button {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .mystique-hero h1 {
+            font-size: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .products-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+    }
+</style>
+
+<div class="mystique-new-page">
+    <!-- Hero Section -->
+    <section class="mystique-hero">
+        <div class="mystique-hero-content">
+            <h1>Mystique Rose</h1>
+            <p>Exclusive Collection FW26</p>
+        </div>
+    </section>
+
+    <!-- Collection Navigation -->
+    <nav class="collection-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#">Ready To Wear</a></li>
+                <li><a href="#">Couture</a></li>
+                <li><a href="#">Bridal</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Shop In Store</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Featured Collection</h2>
+
+            <div class="products-grid">
+                <?php
+                // Get WooCommerce products from Mystique Rose category
+                $args = array(
+                    'post_type' => 'product',
+                    'posts_per_page' => 8,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'product_cat',
+                            'field' => 'term_id',
+                            'terms' => array(17, 23, 18, 25, 20), // Mystique Rose categories
+                            'operator' => 'IN'
+                        )
+                    )
+                );
+
+                $products = new WP_Query($args);
+
+                if ($products->have_posts()) :
+                    while ($products->have_posts()) : $products->the_post();
+                        global $product;
+                        ?>
+                        <a href="<?php echo get_permalink(); ?>" class="product-card">
+                            <div class="product-image-wrapper">
+                                <?php echo woocommerce_get_product_thumbnail(); ?>
+                            </div>
+                            <h3 class="product-title"><?php the_title(); ?></h3>
+                            <div class="product-price"><?php echo $product->get_price_html(); ?></div>
+                        </a>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else :
+                    // Placeholder products if no products exist
+                    for ($i = 1; $i <= 8; $i++) :
+                    ?>
+                    <a href="#" class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-mystique-rose.avif"
+                                 alt="Product <?php echo $i; ?>">
+                        </div>
+                        <h3 class="product-title">Product Title <?php echo $i; ?></h3>
+                        <div class="product-price">$0.00</div>
+                    </a>
+                    <?php
+                    endfor;
+                endif;
+                ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Discover The Collection</h2>
+            <p>Explore our exclusive pieces crafted with passion and elegance</p>
+            <a href="/shop" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h3>Subscribe To The Newsletter</h3>
+            <p>By entering your email address below, you consent to receiving our newsletter with access to our latest collections, events and initiatives.</p>
+            <?php echo do_shortcode('[contact-form-7 id="df6722b" title="Subscribe"]'); ?>
+        </div>
+    </section>
+</div>
+
+<?php
+// get_footer();
