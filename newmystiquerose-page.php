@@ -433,6 +433,136 @@ get_header();
         background-color: #333;
     }
 
+    /* Best Sellers Section */
+    .best-sellers-section {
+        padding: 80px 0;
+        background-color: #fff;
+    }
+
+    .best-sellers-header {
+        padding: 0 40px 40px;
+    }
+
+    .best-sellers-title {
+        font-size: 1.8rem;
+        font-family: "Rutan-Light", sans-serif;
+        font-weight: 300;
+        letter-spacing: 2px;
+        text-transform: capitalize;
+        margin: 0;
+        color: #000;
+    }
+
+    .best-sellers-swiper {
+        padding: 0 40px;
+        overflow: visible;
+    }
+
+    .best-seller-card {
+        display: block;
+        text-decoration: none;
+        color: #000;
+        position: relative;
+    }
+
+    .best-seller-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #000;
+        color: #fff;
+        padding: 5px 15px;
+        font-size: 0.65rem;
+        font-family: "Rutan-Regular", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        z-index: 10;
+    }
+
+    .best-seller-image-wrapper {
+        position: relative;
+        overflow: hidden;
+        background-color: #f5f5f5;
+        margin-bottom: 20px;
+        aspect-ratio: 3/4;
+    }
+
+    .best-seller-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .best-seller-card:hover .best-seller-image-wrapper img {
+        transform: scale(1.05);
+    }
+
+    .best-seller-sizes {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        justify-content: flex-start;
+    }
+
+    .size-option {
+        width: 32px;
+        height: 32px;
+        border: 1px solid #d0d0d0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-family: "Rutan-Regular", sans-serif;
+        color: #666;
+        transition: all 0.3s ease;
+    }
+
+    .size-option:hover {
+        border-color: #000;
+        color: #000;
+    }
+
+    .best-seller-info h3 {
+        font-size: 0.9rem;
+        font-family: "Rutan-Regular", sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0 0 8px 0;
+        line-height: 1.4;
+    }
+
+    .best-seller-price {
+        font-size: 0.85rem;
+        font-family: "Rutan-Light", sans-serif;
+        color: #666;
+    }
+
+    .best-seller-color {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #000;
+        margin-left: 5px;
+        vertical-align: middle;
+    }
+
+    /* Swiper Navigation */
+    .best-sellers-section .swiper-button-prev,
+    .best-sellers-section .swiper-button-next {
+        color: #000;
+        width: 40px;
+        height: 40px;
+    }
+
+    .best-sellers-section .swiper-button-prev::after,
+    .best-sellers-section .swiper-button-next::after {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
         .mystique-hero h1 {
@@ -491,7 +621,7 @@ get_header();
         }
 
         .products-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .full-width-grid {
@@ -682,7 +812,158 @@ get_header();
             </div>
         </div>
     </section>
+
+    <!-- Best Sellers Section -->
+    <section class="best-sellers-section">
+        <div class="container-fluid">
+            <div class="best-sellers-header">
+                <h2 class="best-sellers-title">Best Sellers</h2>
+            </div>
+
+            <div class="swiper best-sellers-swiper">
+                <div class="swiper-wrapper">
+                    <?php
+                    // Get best selling products
+                    $bestseller_args = array(
+                        'post_type' => 'product',
+                        'posts_per_page' => 8,
+                        'meta_key' => 'total_sales',
+                        'orderby' => 'meta_value_num',
+                        'order' => 'DESC',
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'product_cat',
+                                'field' => 'term_id',
+                                'terms' => array(17, 23, 18, 25, 20),
+                                'operator' => 'IN'
+                            )
+                        )
+                    );
+
+                    $bestseller_products = new WP_Query($bestseller_args);
+
+                    if ($bestseller_products->have_posts()) :
+                        while ($bestseller_products->have_posts()) : $bestseller_products->the_post();
+                            global $product;
+
+                            // Get product attributes
+                            $attributes = $product->get_attributes();
+                            $available_sizes = array();
+
+                            if (isset($attributes['pa_size']) || isset($attributes['size'])) {
+                                $size_attr = isset($attributes['pa_size']) ? $attributes['pa_size'] : $attributes['size'];
+                                if ($size_attr) {
+                                    $available_sizes = $size_attr->get_options();
+                                }
+                            }
+
+                            // Default sizes if none found
+                            if (empty($available_sizes)) {
+                                $available_sizes = array('XS', 'S', 'M', 'L', 'XL');
+                            }
+                            ?>
+                            <div class="swiper-slide">
+                                <a href="<?php echo get_permalink(); ?>" class="best-seller-card">
+                                    <span class="best-seller-badge">Collab Alert!</span>
+                                    <div class="best-seller-image-wrapper">
+                                        <?php echo woocommerce_get_product_thumbnail('full'); ?>
+                                    </div>
+                                    <div class="best-seller-sizes">
+                                        <?php
+                                        $size_count = 0;
+                                        foreach ($available_sizes as $size) :
+                                            if ($size_count >= 5) break;
+                                            $size_name = is_numeric($size) ? get_term($size)->name : $size;
+                                            ?>
+                                            <span class="size-option"><?php echo esc_html($size_name); ?></span>
+                                            <?php
+                                            $size_count++;
+                                        endforeach;
+                                        ?>
+                                    </div>
+                                    <div class="best-seller-info">
+                                        <h3><?php the_title(); ?></h3>
+                                        <div class="best-seller-price">
+                                            <?php echo $product->get_price_html(); ?>
+                                            <span class="best-seller-color"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    else :
+                        // Placeholder products
+                        for ($i = 1; $i <= 6; $i++) :
+                        ?>
+                        <div class="swiper-slide">
+                            <a href="#" class="best-seller-card">
+                                <span class="best-seller-badge">Collab Alert!</span>
+                                <div class="best-seller-image-wrapper">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-mystique-rose.avif"
+                                         alt="Best Seller <?php echo $i; ?>">
+                                </div>
+                                <div class="best-seller-sizes">
+                                    <span class="size-option">XS</span>
+                                    <span class="size-option">S</span>
+                                    <span class="size-option">M</span>
+                                    <span class="size-option">L</span>
+                                    <span class="size-option">XL</span>
+                                </div>
+                                <div class="best-seller-info">
+                                    <h3>A+O x Grateful Dead Product <?php echo $i; ?></h3>
+                                    <div class="best-seller-price">
+                                        LBP 0
+                                        <span class="best-seller-color"></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <?php
+                        endfor;
+                    endif;
+                    ?>
+                </div>
+
+                <!-- Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const bestSellersSwiper = new Swiper('.best-sellers-swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.best-sellers-section .swiper-button-next',
+            prevEl: '.best-sellers-section .swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2.2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2.5,
+                spaceBetween: 25,
+            },
+            1024: {
+                slidesPerView: 3.2,
+                spaceBetween: 30,
+            },
+            1280: {
+                slidesPerView: 3.5,
+                spaceBetween: 30,
+            },
+        },
+    });
+});
+</script>
 
 <?php
 get_footer();
