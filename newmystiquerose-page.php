@@ -547,7 +547,7 @@ get_header();
         height: 35px;
         padding: 0 8px;
         background-color: #fff;
-        border: 1px solid #e0e0e0;
+        border: none;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -559,9 +559,8 @@ get_header();
     }
 
     .size-option:hover {
-        background-color: #000;
-        color: #fff;
-        border-color: #000;
+        background-color: #e8e8e8;
+        color: #000;
     }
 
     .best-seller-info h3 {
