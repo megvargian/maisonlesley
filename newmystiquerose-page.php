@@ -136,6 +136,7 @@
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
+        margin: .25rem;
     }
 
     .product-image-wrapper {
@@ -196,23 +197,17 @@
 
     .full-width-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 0;
     }
 
     .grid-item {
         position: relative;
         overflow: hidden;
-        aspect-ratio: 3/4;
-        background-color: #e8e8e8;
-    }
-
-    .grid-item:nth-child(odd) {
-        background-color: #f5f5f5;
-    }
-
-    .grid-item:nth-child(even) {
-        background-color: #e0e0e0;
+        aspect-ratio: 16/9;
+        background-color: #808080;
+        display: block;
+        text-decoration: none;
     }
 
     .grid-item img {
@@ -229,26 +224,36 @@
 
     .grid-item-overlay {
         position: absolute;
-        bottom: 0;
+        top: 0;
         left: 0;
         right: 0;
-        padding: 30px 20px;
-        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
-        opacity: 0;
-        transition: opacity 0.4s ease;
+        bottom: 0;
+        background: rgba(128, 128, 128, 0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.4s ease;
     }
 
     .grid-item:hover .grid-item-overlay {
-        opacity: 1;
+        background: rgba(128, 128, 128, 0.6);
     }
 
     .grid-item-title {
-        font-size: 1rem;
+        font-size: 2rem;
         font-family: "Rutan-Light", sans-serif;
-        letter-spacing: 2px;
+        letter-spacing: 4px;
         color: #fff;
         text-transform: uppercase;
         margin: 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+    }
+
+    .grid-item:hover .grid-item-title {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     /* CTA Section */
@@ -377,9 +382,12 @@
             letter-spacing: 2px;
         }
 
-        .products-grid,
-        .full-width-grid {
+        .products-grid {
             grid-template-columns: repeat(2, 1fr);
+        }
+
+        .full-width-grid {
+            grid-template-columns: 1fr;
         }
 
         .products-grid-standard {
@@ -414,7 +422,10 @@
             letter-spacing: 3px;
         }
 
-        .products-grid,
+        .products-grid {
+            grid-template-columns: 1fr;
+        }
+
         .full-width-grid {
             grid-template-columns: 1fr;
         }
@@ -458,7 +469,102 @@
                 // Get WooCommerce products from Mystique Rose category
                 $args = array(
                     'post_type' => 'product',
-                    'posts_per_page' => 8,
+                    'posts_per_page' => 4,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'product_cat',
+                            'field' => 'term_id',
+                            'terms' => array(17, 23, 18, 25, 20), // Mystique Rose categories
+                            'operator' => 'IN'
+                        )
+                    )
+                );
+
+                $products = new WP_Query($args);
+
+                if ($products->have_posts()) :
+                    while ($products->have_posts()) : $products->the_post();
+                        global $product;
+                        ?>
+                        <a href="<?php echo get_permalink(); ?>" class="product-card">
+                            <div class="product-image-wrapper">
+                                <?php echo woocommerce_get_product_thumbnail(); ?>
+                                <div class="product-info">
+                                    <h3 class="product-title"><?php the_title(); ?></h3>
+                                    <div class="product-price"><?php echo $product->get_price_html(); ?></div>
+                                </div>
+                            </div>
+                        </a>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else :
+                    // Placeholder products if no products exist
+                    for ($i = 1; $i <= 8; $i++) :
+                    ?>
+                    <a href="#" class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-mystique-rose.avif"
+                                 alt="Product <?php echo $i; ?>">
+                            <div class="product-info">
+                                <h3 class="product-title">Product Title <?php echo $i; ?></h3>
+                                <div class="product-price">$0.00</div>
+                            </div>
+                        </div>
+                    </a>
+                    <?php
+                    endfor;
+                endif;
+                ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Width Grid Section -->
+    <section class="full-width-grid-section">
+        <div class="full-width-grid">
+            <?php
+            // Get two category images - you can customize these category IDs
+            $categories = array(
+                array(
+                    'id' => 17, // Replace with your category ID
+                    'name' => 'Ready To Wear',
+                    'image' => get_template_directory_uri() . '/inc/assets/images/RTW-SS26_1.webp'
+                ),
+                array(
+                    'id' => 23, // Replace with your category ID
+                    'name' => 'Couture',
+                    'image' => get_template_directory_uri() . '/inc/assets/images/bridal_2026.webp'
+                )
+            );
+
+            foreach ($categories as $category) :
+                // Get category link
+                $category_link = get_term_link($category['id'], 'product_cat');
+                if (is_wp_error($category_link)) {
+                    $category_link = '#';
+                }
+            ?>
+            <a href="<?php echo esc_url($category_link); ?>" class="grid-item">
+                <img src="<?php echo esc_url($category['image']); ?>" alt="<?php echo esc_attr($category['name']); ?>">
+                <div class="grid-item-overlay">
+                    <h3 class="grid-item-title"><?php echo esc_html($category['name']); ?></h3>
+                </div>
+            </a>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Featured Collection</h2>
+
+            <div class="products-grid">
+                <?php
+                // Get WooCommerce products from Mystique Rose category
+                $args = array(
+                    'post_type' => 'product',
+                    'posts_per_page' => 4,
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'product_cat',
