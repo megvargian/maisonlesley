@@ -206,9 +206,9 @@ get_header();
         overflow: hidden;
         min-height: 700px;
         height: 80vh;
-        background-color: #808080;
         display: block;
         text-decoration: none;
+        margin: 0 0.25rem;
     }
 
     .grid-item img {
@@ -444,7 +444,7 @@ get_header();
 
     <!-- Products Section -->
     <section class="products-section">
-        <div class="container-fluid">
+        <div class="container-fluid px-1">
             <div class="products-grid">
                 <?php
                 // Get WooCommerce products from Mystique Rose category
@@ -526,7 +526,7 @@ get_header();
                     $category_link = '#';
                 }
             ?>
-            <a href="<?php echo esc_url($category_link); ?>" class="grid-item px-1">
+            <a href="<?php echo esc_url($category_link); ?>" class="grid-item">
                 <img src="<?php echo esc_url($category['image']); ?>" alt="<?php echo esc_attr($category['name']); ?>">
                 <div class="grid-item-overlay">
                     <h3 class="grid-item-title"><?php echo esc_html($category['name']); ?></h3>
@@ -537,7 +537,7 @@ get_header();
     </section>
 
     <section class="products-section">
-        <div class="container-fluid">
+        <div class="container-fluid px-1">
             <div class="products-grid">
                 <?php
                 // Get WooCommerce products from Mystique Rose category
