@@ -602,7 +602,7 @@ get_header();
     </section>
 
     <!-- Single Full Width Image Section -->
-    <section class="single-image-section">
+    <section class="single-image-section p-1">
         <?php
         // Single category image - customize as needed
         $single_category = array(
