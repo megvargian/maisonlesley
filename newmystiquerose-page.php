@@ -525,17 +525,17 @@ get_header();
 
     .best-seller-sizes {
         position: absolute;
-        bottom: 20px;
+        bottom: 0;
         left: 0;
         right: 0;
         display: flex;
         gap: 8px;
-        padding: 12px 15px;
+        padding: 25px 15px;
         justify-content: center;
         opacity: 0;
         transform: translateY(10px);
         transition: all 0.3s ease;
-        background-color: rgba(232, 232, 232, 0.95);
+        background-color: rgba(241, 241, 241, 0.75);
     }
 
     .best-seller-card:hover .best-seller-sizes {
@@ -906,42 +906,32 @@ get_header();
                         while ($bestseller_products->have_posts()) : $bestseller_products->the_post();
                             global $product;
 
-                            // Get product variation sizes
+                            // Get product sizes from attributes
                             $available_sizes = array();
-                            
-                            if ($product->is_type('variable')) {
-                                $variations = $product->get_available_variations();
-                                foreach ($variations as $variation) {
-                                    if (isset($variation['attributes']['attribute_pa_size'])) {
-                                        $size_slug = $variation['attributes']['attribute_pa_size'];
-                                        $size_term = get_term_by('slug', $size_slug, 'pa_size');
-                                        if ($size_term) {
-                                            $available_sizes[] = $size_term->name;
-                                        }
-                                    } elseif (isset($variation['attributes']['attribute_size'])) {
-                                        $available_sizes[] = $variation['attributes']['attribute_size'];
-                                    }
-                                }
-                                // Remove duplicates
-                                $available_sizes = array_unique($available_sizes);
-                            }
-                            
-                            // If no variation sizes found, check attributes
-                            if (empty($available_sizes)) {
-                                $attributes = $product->get_attributes();
-                                if (isset($attributes['pa_size'])) {
-                                    $size_terms = $attributes['pa_size']->get_terms();
-                                    foreach ($size_terms as $term) {
-                                        $available_sizes[] = $term->name;
-                                    }
-                                } elseif (isset($attributes['size'])) {
-                                    $available_sizes = $attributes['size']->get_options();
-                                }
-                            }
 
-                            // Default sizes if still none found
-                            if (empty($available_sizes)) {
-                                $available_sizes = array('XS', 'S', 'M', 'L', 'XL');
+                            if ($product->has_attributes()) {
+                                foreach ($product->get_attributes() as $attribute) {
+                                    $attribute_label = wc_attribute_label($attribute->get_name(), $product);
+
+                                    // Check if this is the Size attribute
+                                    if ($attribute_label == 'Size' || $attribute->get_name() == 'pa_size') {
+                                        $attribute_values = $attribute->get_options();
+
+                                        // For taxonomy attributes (pa_size), get term names
+                                        if ($attribute->is_taxonomy()) {
+                                            foreach ($attribute_values as $term_id) {
+                                                $term = get_term($term_id);
+                                                if ($term && !is_wp_error($term)) {
+                                                    $available_sizes[] = $term->name;
+                                                }
+                                            }
+                                        } else {
+                                            // For custom attributes, values are already strings
+                                            $available_sizes = $attribute_values;
+                                        }
+                                        break; // Found size attribute, no need to continue
+                                    }
+                                }
                             }
                             ?>
                             <div class="swiper-slide">
@@ -956,15 +946,16 @@ get_header();
                                         </div>
                                         <div class="best-seller-sizes">
                                             <?php
-                                            $size_count = 0;
-                                            foreach ($available_sizes as $size) :
-                                                if ($size_count >= 8) break;
-                                                $size_name = is_numeric($size) ? get_term($size)->name : $size;
-                                                ?>
-                                                <span class="size-option"><?php echo esc_html($size_name); ?></span>
-                                                <?php
-                                                $size_count++;
-                                            endforeach;
+                                            if (!empty($available_sizes)) :
+                                                $size_count = 0;
+                                                foreach ($available_sizes as $size) :
+                                                    if ($size_count >= 8) break;
+                                                    ?>
+                                                    <span class="size-option"><?php echo esc_html($size); ?></span>
+                                                    <?php
+                                                    $size_count++;
+                                                endforeach;
+                                            endif;
                                             ?>
                                         </div>
                                     </div>
