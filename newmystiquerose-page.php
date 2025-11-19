@@ -2,7 +2,7 @@
 /**
  * Template Name: New Mystique Rose Page
  */
-// get_header();
+get_header();
 ?>
 
 <style>
@@ -101,7 +101,7 @@
 
     /* Products Grid */
     .products-section {
-        padding: 60px 0;
+        padding: .25rem 0;
     }
 
     .section-title {
@@ -440,32 +440,10 @@
 </style>
 
 <div class="mystique-new-page">
-    <!-- Hero Section -->
-    <section class="mystique-hero">
-        <div class="mystique-hero-content">
-            <h1>Mystique Rose</h1>
-            <p>Exclusive Collection FW26</p>
-        </div>
-    </section>
-
-    <!-- Collection Navigation -->
-    <nav class="collection-nav">
-        <div class="container">
-            <ul>
-                <li><a href="#">Ready To Wear</a></li>
-                <li><a href="#">Couture</a></li>
-                <li><a href="#">Bridal</a></li>
-                <li><a href="#">Accessories</a></li>
-                <li><a href="#">Shop In Store</a></li>
-            </ul>
-        </div>
-    </nav>
 
     <!-- Products Section -->
     <section class="products-section">
         <div class="container">
-            <h2 class="section-title">Featured Collection</h2>
-
             <div class="products-grid">
                 <?php
                 // Get WooCommerce products from Mystique Rose category
@@ -559,8 +537,6 @@
 
     <section class="products-section">
         <div class="container">
-            <h2 class="section-title">Featured Collection</h2>
-
             <div class="products-grid">
                 <?php
                 // Get WooCommerce products from Mystique Rose category
@@ -616,16 +592,7 @@
             </div>
         </div>
     </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Discover The Collection</h2>
-            <p>Explore our exclusive pieces crafted with passion and elegance</p>
-            <a href="/shop" class="cta-button">Shop Now</a>
-        </div>
-    </section>
 </div>
 
 <?php
-// get_footer();
+get_footer();
