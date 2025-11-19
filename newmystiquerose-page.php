@@ -228,32 +228,34 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(128, 128, 128, 0);
+        background: rgba(0, 0, 0, 0);
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 40px;
         transition: background 0.4s ease;
     }
 
     .grid-item:hover .grid-item-overlay {
-        background: rgba(128, 128, 128, 0.6);
+        background: rgba(0, 0, 0, 0.3);
     }
 
     .grid-item-title {
         font-size: 2rem;
         font-family: "Rutan-Light", sans-serif;
-        letter-spacing: 4px;
+        font-weight: 400;
+        letter-spacing: 2px;
         color: #fff;
-        text-transform: uppercase;
+        text-transform: capitalize;
         margin: 0;
-        opacity: 0;
-        transform: translateY(20px);
+        opacity: 1;
+        transform: translateY(0);
         transition: all 0.4s ease;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .grid-item:hover .grid-item-title {
-        opacity: 1;
-        transform: translateY(0);
+        transform: translateY(-5px);
     }
 
     /* CTA Section */
