@@ -530,11 +530,12 @@ get_header();
         right: 0;
         display: flex;
         gap: 8px;
-        padding: 0 15px;
+        padding: 12px 15px;
         justify-content: center;
         opacity: 0;
         transform: translateY(10px);
         transition: all 0.3s ease;
+        background-color: rgba(232, 232, 232, 0.95);
     }
 
     .best-seller-card:hover .best-seller-sizes {
@@ -546,7 +547,7 @@ get_header();
         min-width: 35px;
         height: 35px;
         padding: 0 8px;
-        background-color: #fff;
+        background-color: transparent;
         border: none;
         display: flex;
         align-items: center;
@@ -559,7 +560,7 @@ get_header();
     }
 
     .size-option:hover {
-        background-color: #e8e8e8;
+        background-color: rgba(200, 200, 200, 0.5);
         color: #000;
     }
 
@@ -905,18 +906,40 @@ get_header();
                         while ($bestseller_products->have_posts()) : $bestseller_products->the_post();
                             global $product;
 
-                            // Get product attributes
-                            $attributes = $product->get_attributes();
+                            // Get product variation sizes
                             $available_sizes = array();
-
-                            if (isset($attributes['pa_size']) || isset($attributes['size'])) {
-                                $size_attr = isset($attributes['pa_size']) ? $attributes['pa_size'] : $attributes['size'];
-                                if ($size_attr) {
-                                    $available_sizes = $size_attr->get_options();
+                            
+                            if ($product->is_type('variable')) {
+                                $variations = $product->get_available_variations();
+                                foreach ($variations as $variation) {
+                                    if (isset($variation['attributes']['attribute_pa_size'])) {
+                                        $size_slug = $variation['attributes']['attribute_pa_size'];
+                                        $size_term = get_term_by('slug', $size_slug, 'pa_size');
+                                        if ($size_term) {
+                                            $available_sizes[] = $size_term->name;
+                                        }
+                                    } elseif (isset($variation['attributes']['attribute_size'])) {
+                                        $available_sizes[] = $variation['attributes']['attribute_size'];
+                                    }
+                                }
+                                // Remove duplicates
+                                $available_sizes = array_unique($available_sizes);
+                            }
+                            
+                            // If no variation sizes found, check attributes
+                            if (empty($available_sizes)) {
+                                $attributes = $product->get_attributes();
+                                if (isset($attributes['pa_size'])) {
+                                    $size_terms = $attributes['pa_size']->get_terms();
+                                    foreach ($size_terms as $term) {
+                                        $available_sizes[] = $term->name;
+                                    }
+                                } elseif (isset($attributes['size'])) {
+                                    $available_sizes = $attributes['size']->get_options();
                                 }
                             }
 
-                            // Default sizes if none found
+                            // Default sizes if still none found
                             if (empty($available_sizes)) {
                                 $available_sizes = array('XS', 'S', 'M', 'L', 'XL');
                             }
