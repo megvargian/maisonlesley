@@ -259,6 +259,71 @@ get_header();
         transform: translateY(-5px);
     }
 
+    /* Single Full Width Image Section */
+    .single-image-section {
+        padding: 0;
+        margin: 0;
+    }
+
+    .single-image-item {
+        position: relative;
+        overflow: hidden;
+        min-height: 700px;
+        height: 80vh;
+        background-color: #000;
+        display: block;
+        text-decoration: none;
+        width: 100%;
+    }
+
+    .single-image-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s ease;
+    }
+
+    .single-image-item:hover img {
+        transform: scale(1.08);
+    }
+
+    .single-image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0);
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 40px;
+        transition: background 0.4s ease;
+    }
+
+    .single-image-item:hover .single-image-overlay {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .single-image-title {
+        font-size: 2rem;
+        font-family: "Rutan-Light", sans-serif;
+        font-weight: 400;
+        letter-spacing: 2px;
+        color: #fff;
+        text-transform: capitalize;
+        margin: 0;
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.4s ease;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .single-image-item:hover .single-image-title {
+        transform: translateY(-5px);
+    }
+
     /* CTA Section */
     .cta-section {
         background-color: #f8f8f8;
@@ -534,6 +599,30 @@ get_header();
             </a>
             <?php endforeach; ?>
         </div>
+    </section>
+
+    <!-- Single Full Width Image Section -->
+    <section class="single-image-section">
+        <?php
+        // Single category image - customize as needed
+        $single_category = array(
+            'id' => 18, // Replace with your category ID
+            'name' => 'Couture',
+            'image' => get_template_directory_uri() . '/inc/assets/images/saiid-kobeisy-banner-couture.webp'
+        );
+
+        // Get category link
+        $single_category_link = get_term_link($single_category['id'], 'product_cat');
+        if (is_wp_error($single_category_link)) {
+            $single_category_link = '#';
+        }
+        ?>
+        <a href="<?php echo esc_url($single_category_link); ?>" class="single-image-item">
+            <img src="<?php echo esc_url($single_category['image']); ?>" alt="<?php echo esc_attr($single_category['name']); ?>">
+            <div class="single-image-overlay">
+                <h3 class="single-image-title"><?php echo esc_html($single_category['name']); ?></h3>
+            </div>
+        </a>
     </section>
 
     <section class="products-section">
