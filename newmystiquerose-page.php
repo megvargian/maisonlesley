@@ -443,7 +443,7 @@ get_header();
 
     <!-- Products Section -->
     <section class="products-section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="products-grid">
                 <?php
                 // Get WooCommerce products from Mystique Rose category
@@ -466,7 +466,7 @@ get_header();
                     while ($products->have_posts()) : $products->the_post();
                         global $product;
                         ?>
-                        <a href="<?php echo get_permalink(); ?>" class="product-card">
+                        <a href="<?php echo get_permalink(); ?>" class="product-card px-2">
                             <div class="product-image-wrapper">
                                 <?php echo woocommerce_get_product_thumbnail(); ?>
                                 <div class="product-info">
@@ -536,7 +536,7 @@ get_header();
     </section>
 
     <section class="products-section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="products-grid">
                 <?php
                 // Get WooCommerce products from Mystique Rose category
