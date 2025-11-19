@@ -204,7 +204,8 @@ get_header();
     .grid-item {
         position: relative;
         overflow: hidden;
-        aspect-ratio: 16/9;
+        min-height: 700px;
+        height: 80vh;
         background-color: #808080;
         display: block;
         text-decoration: none;
@@ -466,7 +467,7 @@ get_header();
                     while ($products->have_posts()) : $products->the_post();
                         global $product;
                         ?>
-                        <a href="<?php echo get_permalink(); ?>" class="product-card px-2">
+                        <a href="<?php echo get_permalink(); ?>" class="product-card">
                             <div class="product-image-wrapper">
                                 <?php echo woocommerce_get_product_thumbnail(); ?>
                                 <div class="product-info">
@@ -525,7 +526,7 @@ get_header();
                     $category_link = '#';
                 }
             ?>
-            <a href="<?php echo esc_url($category_link); ?>" class="grid-item">
+            <a href="<?php echo esc_url($category_link); ?>" class="grid-item px-1">
                 <img src="<?php echo esc_url($category['image']); ?>" alt="<?php echo esc_attr($category['name']); ?>">
                 <div class="grid-item-overlay">
                     <h3 class="grid-item-title"><?php echo esc_html($category['name']); ?></h3>
