@@ -117,6 +117,13 @@
 
     .products-grid {
         display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        padding: 0;
+    }
+
+    .products-grid-standard {
+        display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 40px;
         padding: 0 20px;
@@ -127,14 +134,17 @@
         text-decoration: none;
         color: #000;
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
     }
 
     .product-image-wrapper {
         position: relative;
         overflow: hidden;
-        background-color: #f8f8f8;
-        margin-bottom: 20px;
+        background-color: #f5f5f5;
+        margin-bottom: 0;
         aspect-ratio: 3/4;
+        width: 100%;
     }
 
     .product-image-wrapper img {
@@ -148,18 +158,97 @@
         transform: scale(1.05);
     }
 
+    .product-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .product-card:hover .product-info {
+        opacity: 1;
+    }
+
     .product-title {
-        font-size: 1rem;
+        font-size: 0.9rem;
         letter-spacing: 1px;
         text-transform: uppercase;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         font-family: "Rutan-Regular", sans-serif;
+        color: #fff;
     }
 
     .product-price {
-        font-size: 0.9rem;
-        color: #666;
+        font-size: 0.85rem;
+        color: #fff;
         font-family: "Rutan-Light", sans-serif;
+    }
+
+    /* Full Width Grid Section */
+    .full-width-grid-section {
+        padding: 0;
+        margin: 0;
+    }
+
+    .full-width-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+    }
+
+    .grid-item {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+        background-color: #e8e8e8;
+    }
+
+    .grid-item:nth-child(odd) {
+        background-color: #f5f5f5;
+    }
+
+    .grid-item:nth-child(even) {
+        background-color: #e0e0e0;
+    }
+
+    .grid-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s ease;
+    }
+
+    .grid-item:hover img {
+        transform: scale(1.08);
+    }
+
+    .grid-item-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 30px 20px;
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .grid-item:hover .grid-item-overlay {
+        opacity: 1;
+    }
+
+    .grid-item-title {
+        font-size: 1rem;
+        font-family: "Rutan-Light", sans-serif;
+        letter-spacing: 2px;
+        color: #fff;
+        text-transform: uppercase;
+        margin: 0;
     }
 
     /* CTA Section */
@@ -288,7 +377,12 @@
             letter-spacing: 2px;
         }
 
-        .products-grid {
+        .products-grid,
+        .full-width-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .products-grid-standard {
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
         }
@@ -296,9 +390,7 @@
         .collection-nav ul {
             gap: 20px;
             padding: 0 20px;
-        }
-
-        .collection-nav a {
+        }        .collection-nav a {
             font-size: 0.75rem;
         }
 
@@ -322,7 +414,12 @@
             letter-spacing: 3px;
         }
 
-        .products-grid {
+        .products-grid,
+        .full-width-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .products-grid-standard {
             grid-template-columns: 1fr;
             gap: 40px;
         }
@@ -381,9 +478,11 @@
                         <a href="<?php echo get_permalink(); ?>" class="product-card">
                             <div class="product-image-wrapper">
                                 <?php echo woocommerce_get_product_thumbnail(); ?>
+                                <div class="product-info">
+                                    <h3 class="product-title"><?php the_title(); ?></h3>
+                                    <div class="product-price"><?php echo $product->get_price_html(); ?></div>
+                                </div>
                             </div>
-                            <h3 class="product-title"><?php the_title(); ?></h3>
-                            <div class="product-price"><?php echo $product->get_price_html(); ?></div>
                         </a>
                         <?php
                     endwhile;
@@ -396,9 +495,11 @@
                         <div class="product-image-wrapper">
                             <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-mystique-rose.avif"
                                  alt="Product <?php echo $i; ?>">
+                            <div class="product-info">
+                                <h3 class="product-title">Product Title <?php echo $i; ?></h3>
+                                <div class="product-price">$0.00</div>
+                            </div>
                         </div>
-                        <h3 class="product-title">Product Title <?php echo $i; ?></h3>
-                        <div class="product-price">$0.00</div>
                     </a>
                     <?php
                     endfor;
@@ -414,15 +515,6 @@
             <h2>Discover The Collection</h2>
             <p>Explore our exclusive pieces crafted with passion and elegance</p>
             <a href="/shop" class="cta-button">Shop Now</a>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <div class="newsletter-container">
-            <h3>Subscribe To The Newsletter</h3>
-            <p>By entering your email address below, you consent to receiving our newsletter with access to our latest collections, events and initiatives.</p>
-            <?php echo do_shortcode('[contact-form-7 id="df6722b" title="Subscribe"]'); ?>
         </div>
     </section>
 </div>
