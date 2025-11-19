@@ -491,36 +491,77 @@ get_header();
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s ease;
+        transition: none;
     }
 
-    .best-seller-card:hover .best-seller-image-wrapper img {
-        transform: scale(1.05);
+    .best-seller-wishlist {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+        background-color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    .best-seller-wishlist svg {
+        width: 18px;
+        height: 18px;
+        stroke: #000;
+        fill: none;
+        stroke-width: 2;
+    }
+
+    .best-seller-card:hover .best-seller-wishlist {
+        opacity: 1;
     }
 
     .best-seller-sizes {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
         display: flex;
-        gap: 10px;
-        margin-bottom: 15px;
-        justify-content: flex-start;
+        gap: 8px;
+        padding: 0 15px;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+    }
+
+    .best-seller-card:hover .best-seller-sizes {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .size-option {
-        width: 32px;
-        height: 32px;
-        border: 1px solid #d0d0d0;
+        min-width: 35px;
+        height: 35px;
+        padding: 0 8px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 0.75rem;
         font-family: "Rutan-Regular", sans-serif;
-        color: #666;
+        color: #000;
         transition: all 0.3s ease;
+        cursor: pointer;
     }
 
     .size-option:hover {
+        background-color: #000;
+        color: #fff;
         border-color: #000;
-        color: #000;
     }
 
     .best-seller-info h3 {
@@ -561,6 +602,25 @@ get_header();
     .best-sellers-section .swiper-button-next::after {
         font-size: 20px;
         font-weight: bold;
+    }
+
+    /* Swiper Scrollbar */
+    .best-sellers-section .swiper-scrollbar {
+        position: relative;
+        height: 2px;
+        background: #e0e0e0;
+        margin-top: 40px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .best-sellers-section .swiper-scrollbar-drag {
+        background: #000;
+        cursor: grab;
+    }
+
+    .best-sellers-section .swiper-scrollbar-drag:active {
+        cursor: grabbing;
     }
 
     /* Responsive */
@@ -867,19 +927,24 @@ get_header();
                                     <span class="best-seller-badge">Collab Alert!</span>
                                     <div class="best-seller-image-wrapper">
                                         <?php echo woocommerce_get_product_thumbnail('full'); ?>
-                                    </div>
-                                    <div class="best-seller-sizes">
-                                        <?php
-                                        $size_count = 0;
-                                        foreach ($available_sizes as $size) :
-                                            if ($size_count >= 5) break;
-                                            $size_name = is_numeric($size) ? get_term($size)->name : $size;
-                                            ?>
-                                            <span class="size-option"><?php echo esc_html($size_name); ?></span>
+                                        <div class="best-seller-wishlist">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="best-seller-sizes">
                                             <?php
-                                            $size_count++;
-                                        endforeach;
-                                        ?>
+                                            $size_count = 0;
+                                            foreach ($available_sizes as $size) :
+                                                if ($size_count >= 8) break;
+                                                $size_name = is_numeric($size) ? get_term($size)->name : $size;
+                                                ?>
+                                                <span class="size-option"><?php echo esc_html($size_name); ?></span>
+                                                <?php
+                                                $size_count++;
+                                            endforeach;
+                                            ?>
+                                        </div>
                                     </div>
                                     <div class="best-seller-info">
                                         <h3><?php the_title(); ?></h3>
@@ -903,13 +968,21 @@ get_header();
                                 <div class="best-seller-image-wrapper">
                                     <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-mystique-rose.avif"
                                          alt="Best Seller <?php echo $i; ?>">
-                                </div>
-                                <div class="best-seller-sizes">
-                                    <span class="size-option">XS</span>
-                                    <span class="size-option">S</span>
-                                    <span class="size-option">M</span>
-                                    <span class="size-option">L</span>
-                                    <span class="size-option">XL</span>
+                                    <div class="best-seller-wishlist">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="best-seller-sizes">
+                                        <span class="size-option">24</span>
+                                        <span class="size-option">25</span>
+                                        <span class="size-option">26</span>
+                                        <span class="size-option">27</span>
+                                        <span class="size-option">28</span>
+                                        <span class="size-option">29</span>
+                                        <span class="size-option">30</span>
+                                        <span class="size-option">31</span>
+                                    </div>
                                 </div>
                                 <div class="best-seller-info">
                                     <h3>A+O x Grateful Dead Product <?php echo $i; ?></h3>
@@ -929,6 +1002,9 @@ get_header();
                 <!-- Navigation -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
+
+                <!-- Scrollbar -->
+                <div class="swiper-scrollbar"></div>
             </div>
         </div>
     </section>
@@ -942,6 +1018,11 @@ document.addEventListener('DOMContentLoaded', function() {
         navigation: {
             nextEl: '.best-sellers-section .swiper-button-next',
             prevEl: '.best-sellers-section .swiper-button-prev',
+        },
+        scrollbar: {
+            el: '.best-sellers-section .swiper-scrollbar',
+            draggable: true,
+            dragSize: 100,
         },
         breakpoints: {
             640: {
