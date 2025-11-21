@@ -47,7 +47,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
     }
 
     .mystique-logo-overlay img {
-        width: 400px;
+        width: 500px;
         height: auto;
         display: block;
         transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -55,29 +55,18 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 
     /* When scrolled - logo moves to header position */
     body.scrolled .mystique-logo-overlay {
-        top: 180px;
+        top: 145px;
         transform: translate(-50%, 0);
     }
 
     body.scrolled .mystique-logo-overlay img {
-        width: 280px;
+        width: 340px;
     }
 
     /* Hide original header logo initially on Mystique Rose page */
     body.mystique-rose-page .main-logo-section {
         opacity: 0;
         transition: opacity 0.3s ease;
-    }
-
-    /* Show header logo when scrolled */
-    body.mystique-rose-page.scrolled .main-logo-section {
-        opacity: 1;
-    }
-
-    /* Hide animated logo when scrolled far enough */
-    body.scrolled-far .mystique-logo-overlay {
-        opacity: 0;
-        pointer-events: none;
     }
 
     /* Collection Navigation */
@@ -708,15 +697,15 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 
     @media (max-width: 768px) {
         .mystique-logo-overlay img {
-            width: 250px;
+            width: 300px;
         }
 
         body.scrolled .mystique-logo-overlay img {
-            width: 170px;
+            width: 220px;
         }
 
         body.scrolled .mystique-logo-overlay {
-            top: 100px;
+            top: 90px;
         }
     }
 
@@ -726,15 +715,15 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         }
 
         .mystique-logo-overlay img {
-            width: 200px;
+            width: 240px;
         }
 
         body.scrolled .mystique-logo-overlay img {
-            width: 140px;
+            width: 170px;
         }
 
         body.scrolled .mystique-logo-overlay {
-            top: 80px;
+            top: 70px;
         }
 
         .products-grid {
@@ -765,13 +754,6 @@ jQuery(document).ready(function($) {
             $('body').addClass('scrolled');
         } else {
             $('body').removeClass('scrolled');
-        }
-
-        // Add 'scrolled-far' class after 400px scroll to fade out animated logo
-        if (scrollPosition > 400) {
-            $('body').addClass('scrolled-far');
-        } else {
-            $('body').removeClass('scrolled-far');
         }
     });
 });
