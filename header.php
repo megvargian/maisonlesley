@@ -450,23 +450,25 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
         <!-- <div class="header-active-background-gray"></div> -->
         <script>
         jQuery(document).ready(function($) {
-            $(window).scroll(function() {
-                var currentScreenPosition = $(document).scrollTop();
-                if (currentScreenPosition > 250) {
-                    $("header").addClass("active");
-                    $('.main-nav-section').addClass("active");
-                    $('.main-logo-section').addClass("active");
-                    $('.first-header').addClass("active");
-                    $('.second-header').addClass("active");
-                }
-                if (currentScreenPosition < 125) {
-                    $("header").removeClass("active");
-                    $('.main-nav-section').removeClass("active");
-                    $('.main-logo-section').removeClass("active");
-                    $('.first-header').removeClass("active");
-                    $('.second-header').removeClass("active");
-                }
-            });
+            <?php if(is_page(2409)){ ?>
+                $(window).scroll(function() {
+                    var currentScreenPosition = $(document).scrollTop();
+                    if (currentScreenPosition > 250) {
+                        $("header").addClass("active");
+                        $('.main-nav-section').addClass("active");
+                        $('.main-logo-section').addClass("active");
+                        $('.first-header').addClass("active");
+                        $('.second-header').addClass("active");
+                    }
+                    if (currentScreenPosition < 125) {
+                        $("header").removeClass("active");
+                        $('.main-nav-section').removeClass("active");
+                        $('.main-logo-section').removeClass("active");
+                        $('.first-header').removeClass("active");
+                        $('.second-header').removeClass("active");
+                    }
+                });
+            <?php } ?>
             $('.main-menu-link.sub-menu').hover(function() {
                 $('.header-active-background-gray').toggleClass("active");
             })
