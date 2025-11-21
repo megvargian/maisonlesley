@@ -450,7 +450,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
         <!-- <div class="header-active-background-gray"></div> -->
         <script>
         jQuery(document).ready(function($) {
-            <?php if(is_page(2409)){ ?>
+            <?php if(!is_page(2409)){ ?>
                 $(window).scroll(function() {
                     var currentScreenPosition = $(document).scrollTop();
                     if (currentScreenPosition > 250) {
