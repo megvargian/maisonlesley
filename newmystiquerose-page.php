@@ -64,7 +64,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
     }
 
     /* Hide original header logo initially on Mystique Rose page */
-    body.mystique-rose-page .main-logo-section {
+    body.new-mystiquerose-page .main-logo-section {
         opacity: 0;
         transition: opacity 0.3s ease;
     }
@@ -749,7 +749,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 <script>
 jQuery(document).ready(function($) {
     // Add body class for Mystique Rose page
-    $('body').addClass('mystique-rose-page');
+    $('body').addClass('new-mystiquerose-page');
 
     $(window).scroll(function() {
         var scrollPosition = $(window).scrollTop();
