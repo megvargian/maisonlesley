@@ -168,7 +168,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                         </div>
                     </div>
                 </section>
-                <section class="second-header">
+                <section class="second-header" style="<?php echo $is_MystiqueRose ? 'top: 25%;' : ''; ?>">
                     <div class="container h-100 px-0">
                         <div class="row h-100">
                             <div class="col-md-4 col-12 h-100">
@@ -209,7 +209,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                         </div>
                     </div>
                 </section>
-                <section class="bg-white main-nav-section">
+                <section class="bg-white main-nav-section" style="<?php echo $is_MystiqueRose ? 'transform: translateY(20%);' : ''; ?>">
                     <div class="container px-0">
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list">
