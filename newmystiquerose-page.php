@@ -611,20 +611,6 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         vertical-align: middle;
     }
 
-    /* Swiper Navigation */
-    .best-sellers-section .swiper-button-prev,
-    .best-sellers-section .swiper-button-next {
-        color: #000;
-        width: 40px;
-        height: 40px;
-    }
-
-    .best-sellers-section .swiper-button-prev::after,
-    .best-sellers-section .swiper-button-next::after {
-        font-size: 20px;
-        font-weight: bold;
-    }
-
     /* Swiper Scrollbar */
     .best-sellers-section .swiper-scrollbar {
         position: relative;
@@ -1091,10 +1077,6 @@ jQuery(document).ready(function($) {
                     ?>
                 </div>
 
-                <!-- Navigation -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-
                 <!-- Scrollbar -->
                 <div class="swiper-scrollbar"></div>
             </div>
@@ -1107,10 +1089,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const bestSellersSwiper = new Swiper('.best-sellers-swiper', {
         slidesPerView: 1.2,
         spaceBetween: 20,
-        navigation: {
-            nextEl: '.best-sellers-section .swiper-button-next',
-            prevEl: '.best-sellers-section .swiper-button-prev',
-        },
         scrollbar: {
             el: '.best-sellers-section .swiper-scrollbar',
             draggable: true,
