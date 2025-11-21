@@ -476,7 +476,6 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 
     .best-sellers-swiper {
         padding: 0 40px;
-        overflow: visible;
     }
 
     .best-seller-card {
