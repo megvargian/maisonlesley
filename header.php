@@ -352,10 +352,10 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                                 </li>
                                 <li class="d-none d-sm-flex">
                                     <?php if($is_MystiqueRose){ ?>
-                                    <a href="<?php echo $main_logo_link_mystiquerose; ?>">
-                                        <img class="main-logo-tablet ml-5" src="<?php echo $main_logo_mystiquerose; ?>"
+                                    <!-- <a href="<?php //echo $main_logo_link_mystiquerose; ?>">
+                                        <img class="main-logo-tablet ml-5" src="<?php //echo $main_logo_mystiquerose; ?>"
                                             alt="Mystique Rose">
-                                    </a>
+                                    </a> -->
                                     <?php } else {?>
                                     <a href="<?php echo $main_logo_link;?>">
                                         <img class="main-logo-tablet ml-5" src="<?php echo $main_logo_image; ?>"
@@ -375,7 +375,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                                     <li>
                                         <a class="add-to-cart" href="/cart"></a>
                                     </li>
-                                    <li>
+                                    <li class="d-flex align-items-center">
                                         <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search"
                                             name="search-button">
                                         </button>

@@ -55,7 +55,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 
     /* When scrolled - logo moves to header position */
     body.scrolled .mystique-logo-overlay {
-        top: 145px;
+        top: 55px;
         transform: translate(-50%, 0);
     }
 
@@ -705,7 +705,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         }
 
         body.scrolled .mystique-logo-overlay {
-            top: 90px;
+            top: 72px;
         }
     }
 
@@ -723,7 +723,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         }
 
         body.scrolled .mystique-logo-overlay {
-            top: 70px;
+            top: 50px;
         }
 
         .products-grid {
