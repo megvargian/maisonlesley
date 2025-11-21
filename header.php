@@ -334,7 +334,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                         </nav>
                     </div>
                 </section>
-                <section class="bg-white main-nav-section-tablet <?php echo is_page(2409) ? 'py-4' : ''; ?>">
+                <section class="bg-white main-nav-section-tablet <?php echo is_page(2409) ? 'py-3' : ''; ?>">
                     <div class="container px-0 py-sm-0 py-2">
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list align-items-center">
