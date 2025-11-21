@@ -334,7 +334,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                         </nav>
                     </div>
                 </section>
-                <section class="bg-white main-nav-section-tablet">
+                <section class="bg-white main-nav-section-tablet <?php echo is_page(2409) ? 'py-4' : ''; ?>">
                     <div class="container px-0 py-sm-0 py-2">
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list align-items-center">
@@ -366,15 +366,17 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                             </ul>
                             <div class="right-side">
                                 <ul class="d-flex">
-                                    <li>
-                                        <a class="my-account" href="/my-account"></a>
-                                    </li>
-                                    <li>
-                                        <a class="whish-list" href="/wishlist"></a>
-                                    </li>
-                                    <li>
-                                        <a class="add-to-cart" href="/cart"></a>
-                                    </li>
+                                    <?php if(!is_page(2409)){ ?>
+                                        <li>
+                                            <a class="my-account" href="/my-account"></a>
+                                        </li>
+                                        <li>
+                                            <a class="whish-list" href="/wishlist"></a>
+                                        </li>
+                                        <li>
+                                            <a class="add-to-cart" href="/cart"></a>
+                                        </li>
+                                    <?php } ?>
                                     <li class="d-flex align-items-center">
                                         <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search"
                                             name="search-button">
