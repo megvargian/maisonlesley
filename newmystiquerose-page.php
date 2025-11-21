@@ -695,7 +695,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
     }
     @media (max-width: 576px) {
         body.scrolled .mystique-logo-overlay {
-            top: 50px;
+            top: 58px;
         }
     }
 
@@ -713,7 +713,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         }
 
         body.scrolled .mystique-logo-overlay {
-            top: 55px;
+            top: 64px;
         }
 
         .products-grid {
