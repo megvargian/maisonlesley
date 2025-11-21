@@ -3,6 +3,10 @@
  * Template Name: New Mystique Rose Page
  */
 get_header();
+
+// Get Mystique Rose logo from ACF options
+$all_generalFields = get_fields('options');
+$main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 ?>
 
 <style>
@@ -31,42 +35,49 @@ get_header();
         display: block;
     }
 
-    .mystique-hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    /* Animated Logo Overlay */
+    .mystique-logo-overlay {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         pointer-events: none;
     }
 
-    .mystique-hero-content {
-        text-align: center;
-        z-index: 2;
-        padding: 40px 20px;
-        color: #fff;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    .mystique-logo-overlay img {
+        width: 400px;
+        height: auto;
+        display: block;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .mystique-hero h1 {
-        font-size: 4rem;
-        font-family: "Rutan-Light", sans-serif;
-        font-weight: 300;
-        letter-spacing: 8px;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-        color: #fff;
+    /* When scrolled - logo moves to header position */
+    body.scrolled .mystique-logo-overlay {
+        top: 180px;
+        transform: translate(-50%, 0);
     }
 
-    .mystique-hero p {
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-        color: #fff;
-        margin-bottom: 40px;
+    body.scrolled .mystique-logo-overlay img {
+        width: 280px;
+    }
+
+    /* Hide original header logo initially on Mystique Rose page */
+    body.mystique-rose-page .main-logo-section {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Show header logo when scrolled */
+    body.mystique-rose-page.scrolled .main-logo-section {
+        opacity: 1;
+    }
+
+    /* Hide animated logo when scrolled far enough */
+    body.scrolled-far .mystique-logo-overlay {
+        opacity: 0;
+        pointer-events: none;
     }
 
     /* Collection Navigation */
@@ -695,14 +706,35 @@ get_header();
         }
     }
 
+    @media (max-width: 768px) {
+        .mystique-logo-overlay img {
+            width: 250px;
+        }
+
+        body.scrolled .mystique-logo-overlay img {
+            width: 170px;
+        }
+
+        body.scrolled .mystique-logo-overlay {
+            top: 100px;
+        }
+    }
+
     @media (max-width: 480px) {
         .mystique-hero {
             height: 100vh;
         }
 
-        .mystique-hero h1 {
-            font-size: 2rem;
-            letter-spacing: 3px;
+        .mystique-logo-overlay img {
+            width: 200px;
+        }
+
+        body.scrolled .mystique-logo-overlay img {
+            width: 140px;
+        }
+
+        body.scrolled .mystique-logo-overlay {
+            top: 80px;
         }
 
         .products-grid {
@@ -720,7 +752,37 @@ get_header();
     }
 </style>
 
+<script>
+jQuery(document).ready(function($) {
+    // Add body class for Mystique Rose page
+    $('body').addClass('mystique-rose-page');
+
+    $(window).scroll(function() {
+        var scrollPosition = $(window).scrollTop();
+
+        // Add 'scrolled' class after 100px scroll
+        if (scrollPosition > 100) {
+            $('body').addClass('scrolled');
+        } else {
+            $('body').removeClass('scrolled');
+        }
+
+        // Add 'scrolled-far' class after 400px scroll to fade out animated logo
+        if (scrollPosition > 400) {
+            $('body').addClass('scrolled-far');
+        } else {
+            $('body').removeClass('scrolled-far');
+        }
+    });
+});
+</script>
+
 <div class="mystique-new-page">
+    <!-- Animated Logo Overlay -->
+    <div class="mystique-logo-overlay">
+        <img src="<?php echo $main_logo_mystiquerose; ?>" alt="Mystique Rose">
+    </div>
+
     <!-- Hero Section -->
     <section class="mystique-hero">
         <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img.webp"
