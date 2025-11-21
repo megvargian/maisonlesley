@@ -16,19 +16,40 @@ get_header();
     /* Hero Section */
     .mystique-hero {
         position: relative;
-        height: 70vh;
-        min-height: 500px;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mystique-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+    .mystique-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.1);
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #f8f8f8;
-        overflow: hidden;
+        pointer-events: none;
     }
 
     .mystique-hero-content {
         text-align: center;
         z-index: 2;
         padding: 40px 20px;
+        color: #fff;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .mystique-hero h1 {
@@ -38,13 +59,13 @@ get_header();
         letter-spacing: 8px;
         text-transform: uppercase;
         margin-bottom: 20px;
-        color: #000;
+        color: #fff;
     }
 
     .mystique-hero p {
         font-size: 1.2rem;
         letter-spacing: 2px;
-        color: #666;
+        color: #fff;
         margin-bottom: 40px;
     }
 
@@ -675,6 +696,10 @@ get_header();
     }
 
     @media (max-width: 480px) {
+        .mystique-hero {
+            height: 100vh;
+        }
+
         .mystique-hero h1 {
             font-size: 2rem;
             letter-spacing: 3px;
@@ -696,6 +721,11 @@ get_header();
 </style>
 
 <div class="mystique-new-page">
+    <!-- Hero Section -->
+    <section class="mystique-hero">
+        <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img.webp"
+             alt="Mystique Rose Collection">
+    </section>
 
     <!-- Products Section -->
     <section class="products-section">
