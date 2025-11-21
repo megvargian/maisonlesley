@@ -197,7 +197,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                 <section class="bg-white main-logo-section">
                     <div class="container">
                         <div class="row justify-content-center"
-                            style="<?php echo $is_MystiqueRose ? 'padding-top: 128px;' : 'padding-top: 70px;'; ?>">
+                            style="<?php echo $is_MystiqueRose ? 'padding-top: 0px;' : 'padding-top: 70px;'; ?>">
                             <a class="d-flex justify-content-center" style="width:fit-content;"
                                 href="<?php echo $is_MystiqueRose ? $main_logo_link_mystiquerose : $main_logo_link;?>">
                                 <?php if($is_MystiqueRose){ ?>
@@ -268,7 +268,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                                     <li>
                                         <a class="add-to-cart" href="/cart"></a>
                                     </li>
-                                    <li>
+                                    <li class="d-flex align-items-center">
                                         <button class="search-icon" data-bs-toggle="modal" data-bs-target="#search"
                                             name="search-button">
                                         </button>
