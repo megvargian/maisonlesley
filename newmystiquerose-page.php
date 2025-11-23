@@ -770,6 +770,41 @@ jQuery(document).ready(function($) {
              alt="Mystique Rose Collection">
     </section>
 
+    <!-- Full Width Grid Section -->
+    <section class="full-width-grid-section">
+        <div class="full-width-grid">
+            <?php
+            // Get two category images - you can customize these category IDs
+            $categories = array(
+                array(
+                    'id' => 17, // Replace with your category ID
+                    'name' => 'Ready To Wear',
+                    'image' => get_template_directory_uri() . '/inc/assets/images/RTW-SS26_1.webp'
+                ),
+                array(
+                    'id' => 23, // Replace with your category ID
+                    'name' => 'Couture',
+                    'image' => get_template_directory_uri() . '/inc/assets/images/bridal_2026.webp'
+                )
+            );
+
+            foreach ($categories as $category) :
+                // Get category link
+                $category_link = get_term_link($category['id'], 'product_cat');
+                if (is_wp_error($category_link)) {
+                    $category_link = '#';
+                }
+            ?>
+            <a href="<?php echo esc_url($category_link); ?>" class="grid-item">
+                <img src="<?php echo esc_url($category['image']); ?>" alt="<?php echo esc_attr($category['name']); ?>">
+                <div class="grid-item-overlay">
+                    <h3 class="grid-item-title"><?php echo esc_html($category['name']); ?></h3>
+                </div>
+            </a>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
     <!-- Products Section -->
     <section class="products-section">
         <div class="container-fluid px-1">
@@ -809,7 +844,7 @@ jQuery(document).ready(function($) {
                     wp_reset_postdata();
                 else :
                     // Placeholder products if no products exist
-                    for ($i = 1; $i <= 8; $i++) :
+                    for ($i = 1; $i <= 4; $i++) :
                     ?>
                     <a href="#" class="product-card">
                         <div class="product-image-wrapper">
@@ -826,41 +861,6 @@ jQuery(document).ready(function($) {
                 endif;
                 ?>
             </div>
-        </div>
-    </section>
-
-    <!-- Full Width Grid Section -->
-    <section class="full-width-grid-section">
-        <div class="full-width-grid">
-            <?php
-            // Get two category images - you can customize these category IDs
-            $categories = array(
-                array(
-                    'id' => 17, // Replace with your category ID
-                    'name' => 'Ready To Wear',
-                    'image' => get_template_directory_uri() . '/inc/assets/images/RTW-SS26_1.webp'
-                ),
-                array(
-                    'id' => 23, // Replace with your category ID
-                    'name' => 'Couture',
-                    'image' => get_template_directory_uri() . '/inc/assets/images/bridal_2026.webp'
-                )
-            );
-
-            foreach ($categories as $category) :
-                // Get category link
-                $category_link = get_term_link($category['id'], 'product_cat');
-                if (is_wp_error($category_link)) {
-                    $category_link = '#';
-                }
-            ?>
-            <a href="<?php echo esc_url($category_link); ?>" class="grid-item">
-                <img src="<?php echo esc_url($category['image']); ?>" alt="<?php echo esc_attr($category['name']); ?>">
-                <div class="grid-item-overlay">
-                    <h3 class="grid-item-title"><?php echo esc_html($category['name']); ?></h3>
-                </div>
-            </a>
-            <?php endforeach; ?>
         </div>
     </section>
 
@@ -926,7 +926,7 @@ jQuery(document).ready(function($) {
                     wp_reset_postdata();
                 else :
                     // Placeholder products if no products exist
-                    for ($i = 1; $i <= 8; $i++) :
+                    for ($i = 1; $i <= 4; $i++) :
                     ?>
                     <a href="#" class="product-card">
                         <div class="product-image-wrapper">
