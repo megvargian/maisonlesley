@@ -40,8 +40,8 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate3d(-50%, -50%, 0);
-        -webkit-transform: translate3d(-50%, -50%, 0);
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
         z-index: 1000;
         transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         -webkit-transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,8 +64,8 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
     /* When scrolled - logo moves to header position */
     body.scrolled .mystique-logo-overlay {
         top: 55px;
-        transform: translate3d(-50%, 0, 0);
-        -webkit-transform: translate3d(-50%, 0, 0);
+        transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
     }
 
     body.scrolled .mystique-logo-overlay img {
