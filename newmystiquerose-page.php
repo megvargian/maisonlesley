@@ -63,7 +63,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 
     /* When scrolled - logo moves to header position */
     body.scrolled .mystique-logo-overlay {
-        top: 55px;
+        top: 100px;
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
     }
@@ -699,12 +699,12 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         }
 
         body.scrolled .mystique-logo-overlay {
-            top: 72px;
+            top: 105px;
         }
     }
     @media (max-width: 576px) {
         body.scrolled .mystique-logo-overlay {
-            top: 58px;
+            top: 84px;
         }
     }
 
@@ -722,7 +722,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         }
 
         body.scrolled .mystique-logo-overlay {
-            top: 64px;
+            top: 84px;
         }
 
         .products-grid {
