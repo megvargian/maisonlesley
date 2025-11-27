@@ -1493,3 +1493,8 @@ header.active {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+.mystique-class-btn:hover {
+  background-color: #000 !important;
+  color: #fff !important;
+}

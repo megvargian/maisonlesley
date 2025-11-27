@@ -708,7 +708,7 @@ function add_custom_add_to_cart_button() {
                     <span class="response d-block text-danger"></span>
             <?php
             } else {?>
-                <button id="custom-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+                <button id="custom-add-to-cart-button" class="submit-button text-white d-block w-100 <?php echo $send_enquiry ? '' : 'mystique-class-btn'; ?>" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
                     <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
                 </button>
                 <span class="response d-block text-danger"></span>
