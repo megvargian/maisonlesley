@@ -947,3 +947,24 @@ function set_products_per_page($query) {
     }
 }
 add_action('per_get_posts', 'set_products_per_page');
+
+
+function isMystiqueRoseProduct() {
+    global $product;
+    if (!$product || !is_a($product, 'WC_Product')) {
+        $product = wc_get_product(get_the_ID());
+    }
+    $mystique_cat_ids = array(17, 23, 18, 25, 20);
+    $product_id = $product->get_id();
+    $terms = get_the_terms($product_id, 'product_cat');
+    $is_mystique = false;
+    if ($terms && !is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            if (in_array($term->term_id, $mystique_cat_ids)) {
+                $is_mystique = true;
+                break;
+            }
+        }
+    }
+    return $is_mystique;
+}

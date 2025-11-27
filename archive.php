@@ -7,9 +7,10 @@
  * @package WP_Bootstrap_Starter
  */
 
-get_header(); ?>
-
-	<section id="primary" class="content-area col-sm-12 col-lg-8">
+get_header();
+$is_mystique = isMystiqueRoseProduct();
+?>
+	<section id="primary" class="content-area col-sm-12 col-lg-8 <?php echo $is_mystique ? 'pt-5' : ''; ?>">
 		<main id="main" class="site-main" role="main">
 
 		<?php
