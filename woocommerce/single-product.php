@@ -19,6 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 global $product;
+if (!$product || !is_a($product, 'WC_Product')) {
+    $product = wc_get_product(get_the_ID());
+}
 $mystique_cat_ids = array(17, 23, 18, 25, 20);
 $product_id = $product->get_id();
 echo $product_id;
