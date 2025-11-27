@@ -36,12 +36,12 @@ if ($is_mystique) {
     ?>
     <div class="dissh-mystique-product container-fluid py-5">
         <div class="row">
-            <div class="col-lg-7 col-12 mb-4 mb-lg-0">
-                <div class="dissh-gallery">
+            <div class="col-md-6 col-12 mb-4 mb-lg-0">
+                <div class="dissh-gallery row gx-2">
                     <?php do_action('woocommerce_before_single_product_summary'); ?>
                 </div>
             </div>
-            <div class="col-lg-5 col-12">
+            <div class="col-md-6 col-12">
                 <div class="dissh-summary">
                     <?php do_action('woocommerce_single_product_summary'); ?>
                     <div class="dissh-shipping-info mt-3">

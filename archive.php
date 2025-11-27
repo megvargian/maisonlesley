@@ -8,9 +8,8 @@
  */
 
 get_header();
-$is_mystique = isMystiqueRoseProduct();
 ?>
-	<section id="primary" class="content-area col-sm-12 col-lg-8 <?php echo $is_mystique ? 'pt-5' : ''; ?>">
+	<section id="primary" class="content-area col-sm-12 col-lg-8">
 		<main id="main" class="site-main" role="main">
 
 		<?php

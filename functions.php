@@ -807,7 +807,7 @@ function display_product_images_with_fancybox() {
     // Display gallery images with FancyBox
     if ($attachment_ids) {
         ?>
-        <div class="col-lg-3 col-4">
+        <div class="col-lg-6">
             <?php
                 foreach ($attachment_ids as $attachment_id) {
                     $image_url = wp_get_attachment_url($attachment_id);
