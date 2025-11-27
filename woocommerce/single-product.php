@@ -18,19 +18,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-global $product;
-$mystique_cat_ids = array(17, 23, 18, 25, 20);
-$product_id = $product->get_id();
-$terms = get_the_terms($product_id, 'product_cat');
+// global $product;
+// $mystique_cat_ids = array(17, 23, 18, 25, 20);
+// $product_id = $product->get_id();
+// $terms = get_the_terms($product_id, 'product_cat');
 $is_mystique = false;
-if ($terms && !is_wp_error($terms)) {
-    foreach ($terms as $term) {
-        if (in_array($term->term_id, $mystique_cat_ids)) {
-            $is_mystique = true;
-            break;
-        }
-    }
-}
+// if ($terms && !is_wp_error($terms)) {
+//     foreach ($terms as $term) {
+//         if (in_array($term->term_id, $mystique_cat_ids)) {
+//             $is_mystique = true;
+//             break;
+//         }
+//     }
+// }
 get_header( 'shop' ); ?>
 <div class="<?php echo $is_mystique ? 'container-fluid' : 'container'; ?>">
 	<div class="row justify-content-center">
