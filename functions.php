@@ -802,37 +802,74 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 add_action('woocommerce_before_single_product_summary', 'display_product_images_with_fancybox', 20);
 
 function display_product_images_with_fancybox() {
-    global $product;
-    $attachment_ids = $product->get_gallery_image_ids();
-    // Display gallery images with FancyBox
-    if ($attachment_ids) {
-        ?>
-        <div class="col-lg-6">
-            <?php
-                foreach ($attachment_ids as $attachment_id) {
-                    $image_url = wp_get_attachment_url($attachment_id);
+    $is_mystique = isMystiqueRoseProduct();
+    if($is_mystique){
+        global $product;
+        $attachment_ids = $product->get_gallery_image_ids();
+        // Display gallery images with FancyBox
+        if (has_post_thumbnail()) {
+            $main_image_url = wp_get_attachment_url(get_post_thumbnail_id($product->get_id()));
             ?>
-                <?php
-                    echo '<a href="' . $image_url . '" class="fancybox d-block" data-fancybox="gallery">';
-                    echo wp_get_attachment_image($attachment_id, 'custom-woocommerce-image-size');
+                <div class="col-md-6 col-12">
+                    <?php
+                    echo '<a href="' . $main_image_url . '" class="fancybox" data-fancybox="gallery">';
+                    the_post_thumbnail('shop_single');
                     echo '</a>';
-                ?>
-            <?php } ?>
-        </div>
-    <?php
-    }
-    // Display main image with FancyBox
-    if (has_post_thumbnail()) {
-        $main_image_url = wp_get_attachment_url(get_post_thumbnail_id($product->get_id()));
-        ?>
-            <div class="<?php echo $attachment_ids ? 'col-lg-9 col-8' : 'col-12'; ?>">
+                    ?>
+                </div>
+            <?php
+        }
+        if ($attachment_ids) {
+            ?>
+            <div class="col-md-6 col-12">
                 <?php
-                echo '<a href="' . $main_image_url . '" class="fancybox" data-fancybox="gallery">';
-                the_post_thumbnail('shop_single');
-                echo '</a>';
+                    foreach ($attachment_ids as $attachment_id) {
+                        $image_url = wp_get_attachment_url($attachment_id);
                 ?>
+                    <?php
+                        echo '<a href="' . $image_url . '" class="fancybox d-block" data-fancybox="gallery">';
+                        echo wp_get_attachment_image($attachment_id, 'custom-woocommerce-image-size');
+                        echo '</a>';
+                    ?>
+                <?php } ?>
             </div>
         <?php
+        }
+        // Display main image with FancyBox
+
+    } else {
+        global $product;
+        $attachment_ids = $product->get_gallery_image_ids();
+        // Display gallery images with FancyBox
+        if ($attachment_ids) {
+            ?>
+            <div class="col-lg-6">
+                <?php
+                    foreach ($attachment_ids as $attachment_id) {
+                        $image_url = wp_get_attachment_url($attachment_id);
+                ?>
+                    <?php
+                        echo '<a href="' . $image_url . '" class="fancybox d-block" data-fancybox="gallery">';
+                        echo wp_get_attachment_image($attachment_id, 'custom-woocommerce-image-size');
+                        echo '</a>';
+                    ?>
+                <?php } ?>
+            </div>
+        <?php
+        }
+        // Display main image with FancyBox
+        if (has_post_thumbnail()) {
+            $main_image_url = wp_get_attachment_url(get_post_thumbnail_id($product->get_id()));
+            ?>
+                <div class="<?php echo $attachment_ids ? 'col-lg-9 col-8' : 'col-12'; ?>">
+                    <?php
+                    echo '<a href="' . $main_image_url . '" class="fancybox" data-fancybox="gallery">';
+                    the_post_thumbnail('shop_single');
+                    echo '</a>';
+                    ?>
+                </div>
+            <?php
+        }
     }
 }
 
