@@ -1494,7 +1494,12 @@ header.active {
   padding-right: 0 !important;
 }
 
+.mystique-class-btn {
+  border: 1px solid #000 !important;
+}
+
 .mystique-class-btn:hover {
-  background-color: #000 !important;
-  color: #fff !important;
+  background-color: #fff !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
 }
