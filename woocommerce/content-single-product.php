@@ -34,7 +34,7 @@ if ($terms && !is_wp_error($terms)) {
 if ($is_mystique) {
     // Custom Dissh-style layout for Mystique Rose products
     ?>
-    <div class="dissh-mystique-product container py-5">
+    <div class="dissh-mystique-product container-fluid py-5">
         <div class="row">
             <div class="col-lg-7 col-12 mb-4 mb-lg-0">
                 <div class="dissh-gallery">
@@ -141,13 +141,13 @@ if ($is_mystique) {
         </div>
     </div>
     <style>
-    .dissh-mystique-product { background: #fff; }
-    .dissh-gallery img { width: 100%; border-radius: 8px; }
-    .dissh-summary { font-size: 1.1rem; }
-    .dissh-shipping-info ul { padding-left: 0; }
-    .dissh-shipping-info li { margin-bottom: 4px; }
-    .dissh-accordion .accordion-button { background: #f8f8f8; font-weight: bold; }
-    .dissh-accordion .accordion-body { background: #fff; }
+        .dissh-mystique-product { background: #fff; }
+        .dissh-gallery img { width: 100%; border-radius: 8px; }
+        .dissh-summary { font-size: 1.1rem; }
+        .dissh-shipping-info ul { padding-left: 0; }
+        .dissh-shipping-info li { margin-bottom: 4px; }
+        .dissh-accordion .accordion-button { background: #f8f8f8; font-weight: bold; }
+        .dissh-accordion .accordion-body { background: #fff; }
     </style>
     <?php
 } else {  ?>
