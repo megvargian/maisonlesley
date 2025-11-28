@@ -104,7 +104,7 @@ if ($is_mystique) {
                     ?>
                 </div>
                 <!-- Mobile swiper -->
-                <div class="d-block d-md-none position-relative">
+                <div class="d-block d-md-none position-relative you-may-also-like-main">
                     <div class="swiper-container you-may-also-like-swiper" style="overflow: hidden;">
                         <div class="swiper-wrapper">
                             <?php
@@ -164,11 +164,11 @@ if ($is_mystique) {
             border: none;
             transition: background 0.2s;
         }
-        .you-may-also-like-swiper .swiper-pagination-bullet-active {
+        .you-may-also-like-main .swiper-pagination-bullet-active {
             background: #000 !important;
         }
         .custom-swiper-position{
-            bottom: 10px;
+            top: 100% !important;
         }
     </style>
     <script>
