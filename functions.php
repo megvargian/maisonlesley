@@ -662,7 +662,7 @@ function add_custom_add_to_cart_button() {
                             ?>
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-2"><?php echo $attribute_label; ?></h6>
-                                <button type="button" class="size-guide-class" data-bs-toggle="modal" data-bs-target="#sizeGuide" name="sizeGuide-button">
+                                <button type="button" class="size-guide-class" data-bs-toggle="offcanvas" data-bs-target="#sizeGuideSidebar" name="sizeGuide-button">
                                     Size guide
                                 </button>
                             </div>

@@ -79,47 +79,40 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="sizeGuide" tabindex="-1" role="dialog" aria-labelledby="sizeGuideLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg size-guide-modal" role="document">
-                <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-between border-0">
-                        <h2><?php echo $get_size_guide_fields['title'];?></h2>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p><?php echo $get_size_guide_fields['sub_title']; ?></p>
-                        <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <?php echo $get_size_guide_fields['size_guide_label'];?>
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <div class="sizeguide-table">
-                                            <div class="size-table-title-container">
-                                                <?php foreach ($get_size_guide_fields['size_guide_table']['labels'] as $label) {?>
-                                                    <div class="size-table-title-element">
-                                                        <?php echo $label['label']; ?>
-                                                    </div>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="sizeGuideSidebar" aria-labelledby="sizeGuideLabel" aria-hidden="true">
+            <div class="offcanvas-header">
+                <h2 id="sizeGuideLabel"><?php echo $get_size_guide_fields['title'];?></h2>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <p><?php echo $get_size_guide_fields['sub_title']; ?></p>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <?php echo $get_size_guide_fields['size_guide_label'];?>
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="sizeguide-table">
+                                    <div class="size-table-title-container">
+                                        <?php foreach ($get_size_guide_fields['size_guide_table']['labels'] as $label) {?>
+                                            <div class="size-table-title-element">
+                                                <?php echo $label['label']; ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="size-table-size-row-container">
+                                        <?php foreach ($get_size_guide_fields['size_guide_table']['rows'] as $rows) {?>
+                                            <div class="size-table-size-row">
+                                                <?php foreach ($rows['row'] as $main_text) { ?>
+                                                    <div class="size-table-size-element"><?php echo $main_text['main_text']; ?></div>
                                                 <?php } ?>
                                             </div>
-                                            <div class="size-table-size-row-container">
-                                                <?php foreach ($get_size_guide_fields['size_guide_table']['rows'] as $rows) {?>
-                                                    <div class="size-table-size-row">
-                                                        <?php foreach ($rows['row'] as $main_text) { ?>
-                                                            <div class="size-table-size-element"><?php echo $main_text['main_text']; ?></div>
-                                                        <?php } ?>
-                                                    </div>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
