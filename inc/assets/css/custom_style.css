@@ -1310,6 +1310,7 @@ header.active {
   outline: none;
   background: none;
   border: none;
+  border: 1px solid transparent;
 }
 .product-attributes-size li button:hover, .product-attributes-color li button:hover {
   border-bottom: 1px solid #000;
