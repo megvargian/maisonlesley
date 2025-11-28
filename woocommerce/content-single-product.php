@@ -104,8 +104,8 @@ if ($is_mystique) {
                     ?>
                 </div>
                 <!-- Mobile swiper -->
-                <div class="d-block d-md-none">
-                    <div class="swiper-container you-may-also-like-swiper">
+                <div class="d-block d-md-none pt-4">
+                    <div class="swiper-container you-may-also-like-swiper" style="overflow: hidden;">
                         <div class="swiper-wrapper">
                             <?php
                             $related_products = wc_get_related_products($product->get_id(), 4);
@@ -153,6 +153,21 @@ if ($is_mystique) {
         .custom-accordion-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 1.5em; pointer-events: none; }
         .custom-accordion-icon .minus { color: #333; }
         .custom-accordion-icon .plus { color: #333; }
+        /* Swiper bullets for you-may-also-like-swiper */
+        .you-may-also-like-swiper .swiper-pagination-bullet {
+            background: #000 !important;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            opacity: 1;
+            margin: 0 4px !important;
+            border: 2px solid #000;
+        }
+        .you-may-also-like-swiper .swiper-pagination-bullet-active {
+            background: #000 !important;
+            border: 2px solid #000;
+            box-shadow: 0 0 0 2px #fff;
+        }
     </style>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
