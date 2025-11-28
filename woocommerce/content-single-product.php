@@ -41,7 +41,7 @@ if ($is_mystique) {
                     <?php do_action('woocommerce_before_single_product_summary'); ?>
                 </div>
             </div>
-            <div class="col-md-2 col-12">
+            <div class="col-md-3 col-12">
                 <div class="dissh-summary">
                     <?php do_action('woocommerce_single_product_summary'); ?>
                     <div class="dissh-shipping-info mt-3">
@@ -58,6 +58,7 @@ if ($is_mystique) {
                             <h2 class="accordion-header" id="headingDesignNotes">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDesignNotes" aria-expanded="false" aria-controls="collapseDesignNotes">
                                     Design Notes
+                                    <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
                                 </button>
                             </h2>
                             <div id="collapseDesignNotes" class="accordion-collapse collapse" aria-labelledby="headingDesignNotes" data-bs-parent="#accordionDissh">
@@ -70,6 +71,7 @@ if ($is_mystique) {
                             <h2 class="accordion-header" id="headingSizeGuide">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSizeGuide" aria-expanded="false" aria-controls="collapseSizeGuide">
                                     Size Guide
+                                    <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
                                 </button>
                             </h2>
                             <div id="collapseSizeGuide" class="accordion-collapse collapse" aria-labelledby="headingSizeGuide" data-bs-parent="#accordionDissh">
@@ -107,6 +109,7 @@ if ($is_mystique) {
                             <h2 class="accordion-header" id="headingReturns">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturns" aria-expanded="false" aria-controls="collapseReturns">
                                     Delivery & Returns
+                                    <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
                                 </button>
                             </h2>
                             <div id="collapseReturns" class="accordion-collapse collapse" aria-labelledby="headingReturns" data-bs-parent="#accordionDissh">
@@ -142,13 +145,36 @@ if ($is_mystique) {
     </div>
     <style>
         .dissh-mystique-product { background: #fff; }
-        .dissh-gallery img { width: 100%; border-radius: 8px; }
+        .dissh-gallery img { width: 100%; border-radius: 0px; }
         .dissh-summary { font-size: 1.1rem; }
         .dissh-shipping-info ul { padding-left: 0; }
         .dissh-shipping-info li { margin-bottom: 4px; }
-        .dissh-accordion .accordion-button { background: #f8f8f8; font-weight: bold; }
+        .dissh-accordion .accordion-button { background: #f8f8f8; font-weight: bold; position: relative; }
         .dissh-accordion .accordion-body { background: #fff; }
+        .dissh-accordion .accordion-button::after { display: none !important; }
+        .custom-accordion-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 1.5em; pointer-events: none; }
+        .custom-accordion-icon .minus { color: #333; }
+        .custom-accordion-icon .plus { color: #333; }
     </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var buttons = document.querySelectorAll('.dissh-accordion .accordion-button');
+        buttons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                setTimeout(function() {
+                    var icon = btn.querySelector('.custom-accordion-icon');
+                    if (btn.classList.contains('collapsed')) {
+                        icon.querySelector('.plus').style.display = '';
+                        icon.querySelector('.minus').style.display = 'none';
+                    } else {
+                        icon.querySelector('.plus').style.display = 'none';
+                        icon.querySelector('.minus').style.display = '';
+                    }
+                }, 200);
+            });
+        });
+    });
+    </script>
     <?php
 } else {  ?>
     <div class="container">
