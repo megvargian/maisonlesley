@@ -86,7 +86,7 @@ if ($is_mystique) {
         </div>
         <div class="row mt-5">
             <div class="col-12">
-                <h3>You May Also Like</h3>
+                <h3 class="pb-5">You May Also Like</h3>
                 <!-- Desktop grid -->
                 <div class="row d-none d-md-flex">
                     <?php
@@ -104,7 +104,7 @@ if ($is_mystique) {
                     ?>
                 </div>
                 <!-- Mobile swiper -->
-                <div class="d-block d-md-none pt-4">
+                <div class="d-block d-md-none">
                     <div class="swiper-container you-may-also-like-swiper" style="overflow: hidden;">
                         <div class="swiper-wrapper">
                             <?php
