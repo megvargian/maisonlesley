@@ -1245,11 +1245,11 @@ header.active{
 	li{
 	   cursor: pointer;
 	   height: 30px;
-	   width: 36px;
-	   margin: 0 5px;
+	   width: 22px;
+	   margin: 0 10px;
 	   display: inline-block;
 	   button.active{
-		border: 2px solid #000;
+		border-bottom: 1px solid #000;
 	   }
 	   button{
 		display: block;
@@ -1264,6 +1264,12 @@ header.active{
 		background: none;
 		border: none;
 	   }
+	   button:hover{
+		border-bottom: 1px solid #000;
+	   }
+	}
+	li:first-child{
+		margin-left: 0;
 	}
 }
 .wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained, .wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained{
