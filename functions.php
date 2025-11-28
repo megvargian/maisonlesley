@@ -702,10 +702,19 @@ function add_custom_add_to_cart_button() {
                         <?php
                     }
                     ?>
-                    <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100 position-relative" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
-                        <span class="button-text"><?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?></span>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);"></span>
+                    <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+                        <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
                     </button>
+                    <span class="response d-block text-danger"></span>
+                    <style>
+                    .add-to-cart-blur {
+                        background: #e0e0e0 !important;
+                        color: #aaa !important;
+                        filter: blur(1px);
+                        pointer-events: none;
+                        transition: background 0.2s, color 0.2s, filter 0.2s;
+                    }
+                    </style>
                     <span class="response d-block text-danger"></span>
                     <script>
                     jQuery(document).ready(function($) {
@@ -713,8 +722,6 @@ function add_custom_add_to_cart_button() {
                         $('#form-add-to-cart-button').on('click', function(e) {
                             e.preventDefault();
                             var btn = $(this);
-                            var spinner = btn.find('.spinner-border');
-                            var text = btn.find('.button-text');
                             var productId = btn.data('product-id');
                             var size = '';
                             var color = '';
@@ -724,8 +731,7 @@ function add_custom_add_to_cart_button() {
                             var colorBtn = $('.product-attributes-color button.active');
                             if(colorBtn.length) color = colorBtn.find('span').text();
                             btn.prop('disabled', true);
-                            spinner.show();
-                            text.hide();
+                            btn.addClass('add-to-cart-blur');
                             $('.response').text('');
                             $.ajax({
                                 url: ajaxurl,
@@ -741,15 +747,13 @@ function add_custom_add_to_cart_button() {
                                         window.location.href = '/cart';
                                     } else {
                                         btn.prop('disabled', false);
-                                        spinner.hide();
-                                        text.show();
+                                        btn.removeClass('add-to-cart-blur');
                                         $('.response').text('Could not add to cart. Please try again.');
                                     }
                                 },
                                 error: function() {
                                     btn.prop('disabled', false);
-                                    spinner.hide();
-                                    text.show();
+                                    btn.removeClass('add-to-cart-blur');
                                     $('.response').text('Error occurred. Please try again.');
                                 }
                             });
