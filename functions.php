@@ -702,10 +702,60 @@ function add_custom_add_to_cart_button() {
                         <?php
                     }
                     ?>
-                    <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
-                        <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
+                    <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100 position-relative" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+                        <span class="button-text"><?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?></span>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);"></span>
                     </button>
                     <span class="response d-block text-danger"></span>
+                    <script>
+                    jQuery(document).ready(function($) {
+                        $('#form-add-to-cart-button').prop('disabled', false);
+                        $('#form-add-to-cart-button').on('click', function(e) {
+                            e.preventDefault();
+                            var btn = $(this);
+                            var spinner = btn.find('.spinner-border');
+                            var text = btn.find('.button-text');
+                            var productId = btn.data('product-id');
+                            var size = '';
+                            var color = '';
+                            // Get selected size and color if present
+                            var sizeBtn = $('.product-attributes-size button.active');
+                            if(sizeBtn.length) size = sizeBtn.text();
+                            var colorBtn = $('.product-attributes-color button.active');
+                            if(colorBtn.length) color = colorBtn.find('span').text();
+                            btn.prop('disabled', true);
+                            spinner.show();
+                            text.hide();
+                            $('.response').text('');
+                            $.ajax({
+                                url: ajaxurl,
+                                type: 'POST',
+                                data: {
+                                    action: 'form_custom_add_to_cart',
+                                    product_id: productId,
+                                    selected_attr_size: size,
+                                    selected_attr_color: color
+                                },
+                                success: function(res) {
+                                    if(res.success) {
+                                        window.location.href = '/cart';
+                                    } else {
+                                        btn.prop('disabled', false);
+                                        spinner.hide();
+                                        text.show();
+                                        $('.response').text('Could not add to cart. Please try again.');
+                                    }
+                                },
+                                error: function() {
+                                    btn.prop('disabled', false);
+                                    spinner.hide();
+                                    text.show();
+                                    $('.response').text('Error occurred. Please try again.');
+                                }
+                            });
+                        });
+                    });
+                    </script>
             <?php
             } else {?>
                 <button id="custom-add-to-cart-button" class="submit-button text-white d-block w-100 <?php echo $send_enquiry ? '' : 'mystique-class-btn'; ?>" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
@@ -924,6 +974,7 @@ add_action('wp_footer', 'track_product_view_pixel');
 
 // Track Add to Cart
 function track_add_to_cart_pixel($cart_item_key, $product_id, $quantity) {
+    if (defined('DOING_AJAX') && DOING_AJAX) return;
     $product = wc_get_product($product_id);
     ?>
     <script>
