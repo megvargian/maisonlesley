@@ -87,7 +87,8 @@ if ($is_mystique) {
         <div class="row mt-5">
             <div class="col-12">
                 <h3>You May Also Like</h3>
-                <div class="row">
+                <!-- Desktop grid -->
+                <div class="row d-none d-md-flex">
                     <?php
                     $related_products = wc_get_related_products($product->get_id(), 4);
                     if (!empty($related_products)) {
@@ -102,6 +103,41 @@ if ($is_mystique) {
                     }
                     ?>
                 </div>
+                <!-- Mobile swiper -->
+                <div class="d-block d-md-none">
+                    <div class="swiper-container you-may-also-like-swiper">
+                        <div class="swiper-wrapper">
+                            <?php
+                            $related_products = wc_get_related_products($product->get_id(), 4);
+                            if (!empty($related_products)) {
+                                foreach ($related_products as $related_product_id) {
+                                    $post_object = get_post($related_product_id);
+                                    setup_postdata($GLOBALS['post'] =& $post_object);
+                                    echo '<div class="swiper-slide">';
+                                    wc_get_template_part('content', 'product');
+                                    echo '</div>';
+                                }
+                                wp_reset_postdata();
+                            }
+                            ?>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    if (window.Swiper) {
+                        new Swiper('.you-may-also-like-swiper', {
+                            slidesPerView: 1,
+                            spaceBetween: 16,
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            },
+                        });
+                    }
+                });
+                </script>
             </div>
         </div>
     </div>
