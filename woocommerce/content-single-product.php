@@ -42,7 +42,7 @@ if ($is_mystique) {
                     <?php do_action('woocommerce_before_single_product_summary'); ?>
                 </div>
                 <!-- Mobile Swiper gallery -->
-                <div class="d-block d-md-none position-relative product-gallery-main pb-5">
+                <div class="d-block d-md-none position-relative product-gallery-main pb-4">
                     <div class="swiper-container product-gallery-swiper" style="overflow: hidden;">
                         <div class="swiper-wrapper">
                             <?php
