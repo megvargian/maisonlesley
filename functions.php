@@ -744,6 +744,11 @@ function form_custom_add_to_cart() {
     $selected_attr_size = sanitize_text_field( $_POST['selected_attr_size'] );
     $selected_attr_color = sanitize_text_field( $_POST['selected_attr_color'] );
 
+    $debug = array();
+    $debug['product_id'] = $product_id;
+    $debug['selected_attr_size'] = $selected_attr_size;
+    $debug['selected_attr_color'] = $selected_attr_color;
+
     if ( ! empty( $selected_attr_size ) && ! empty( $selected_attr_color ) ) {
         $attributes = array(
             'attribute_pa_size'  => $selected_attr_size,
@@ -760,14 +765,22 @@ function form_custom_add_to_cart() {
     } else {
         $attributes = array(); // Default case if no attributes are selected
     }
+    $debug['attributes'] = $attributes;
+
+    $product = wc_get_product($product_id);
+    $debug['product_exists'] = ($product && $product->get_id()) ? true : false;
+    $debug['product_type'] = $product ? $product->get_type() : null;
+    $debug['is_purchasable'] = $product ? $product->is_purchasable() : null;
+    $debug['is_in_stock'] = $product ? $product->is_in_stock() : null;
 
     $quantity = 1; // You can customize the quantity
     $added = WC()->cart->add_to_cart( $product_id, $quantity, 0, $attributes );
+    $debug['add_to_cart_result'] = $added;
 
     if ( $added ) {
-        wp_send_json_success();
+        wp_send_json_success($debug);
     } else {
-        wp_send_json_error();
+        wp_send_json_error($debug);
     }
 
     wp_die();
