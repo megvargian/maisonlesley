@@ -35,13 +35,13 @@ if ($is_mystique) {
     // Custom Dissh-style layout for Mystique Rose products
     ?>
     <div class="dissh-mystique-product container-fluid py-5">
-        <div class="row">
+        <div class="row gx-4 justify-content-start">
             <div class="col-md-7 col-12 mb-4 mb-lg-0">
                 <div class="dissh-gallery row gx-2">
                     <?php do_action('woocommerce_before_single_product_summary'); ?>
                 </div>
             </div>
-            <div class="col-md-3 col-12">
+            <div class="col-md-2 col-12">
                 <div class="dissh-summary">
                     <?php do_action('woocommerce_single_product_summary'); ?>
                     <div class="dissh-shipping-info mt-3">
@@ -118,7 +118,6 @@ if ($is_mystique) {
                     </div>
                 </div>
             </div>
-            <div class="col"></div>
         </div>
         <div class="row mt-5">
             <div class="col-12">
