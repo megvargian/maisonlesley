@@ -37,8 +37,33 @@ if ($is_mystique) {
     <div class="dissh-mystique-product container-fluid py-5">
         <div class="row gx-4 justify-content-start">
             <div class="col-md-7 col-12 mb-4 mb-lg-0">
-                <div class="dissh-gallery row gx-2">
+                <!-- Desktop gallery -->
+                <div class="dissh-gallery row gx-2 d-none d-md-flex">
                     <?php do_action('woocommerce_before_single_product_summary'); ?>
+                </div>
+                <!-- Mobile Swiper gallery -->
+                <div class="d-block d-md-none position-relative product-gallery-main pb-5">
+                    <div class="swiper-container product-gallery-swiper" style="overflow: hidden;">
+                        <div class="swiper-wrapper">
+                            <?php
+                            // Main product image
+                            $main_image_id = $product->get_image_id();
+                            if ($main_image_id) {
+                                $main_image_url = wp_get_attachment_image_url($main_image_id, 'large');
+                                echo '<div class="swiper-slide"><img src="' . esc_url($main_image_url) . '" class="img-fluid w-100" alt="Product image"></div>';
+                            }
+                            // Gallery images
+                            $attachment_ids = $product->get_gallery_image_ids();
+                            if (!empty($attachment_ids)) {
+                                foreach ($attachment_ids as $attach_id) {
+                                    $img_url = wp_get_attachment_image_url($attach_id, 'large');
+                                    echo '<div class="swiper-slide"><img src="' . esc_url($img_url) . '" class="img-fluid w-100" alt="Product gallery image"></div>';
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination product-gallery-pagination"></div>
                 </div>
             </div>
             <div class="col-md-3 col-12">
@@ -135,6 +160,14 @@ if ($is_mystique) {
                                 clickable: true,
                             },
                         });
+                        new Swiper('.product-gallery-swiper', {
+                            slidesPerView: 1,
+                            spaceBetween: 16,
+                            pagination: {
+                                el: '.product-gallery-pagination',
+                                clickable: true,
+                            },
+                        });
                     }
                 });
                 </script>
@@ -153,8 +186,9 @@ if ($is_mystique) {
         .custom-accordion-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 1.5em; pointer-events: none; }
         .custom-accordion-icon .minus { color: #333; }
         .custom-accordion-icon .plus { color: #333; }
-        /* Swiper bullets for you-may-also-like-swiper */
-        .you-may-also-like-swiper .swiper-pagination-bullet {
+        /* Swiper bullets for you-may-also-like-swiper and product-gallery-swiper */
+        .you-may-also-like-swiper .swiper-pagination-bullet,
+        .product-gallery-swiper .swiper-pagination-bullet {
             background: #e0e0e0 !important;
             border-radius: 50%;
             width: 10px;
@@ -164,10 +198,11 @@ if ($is_mystique) {
             border: none;
             transition: background 0.2s;
         }
-        .you-may-also-like-main .swiper-pagination-bullet-active {
+        .you-may-also-like-main .swiper-pagination-bullet-active,
+        .product-gallery-main .swiper-pagination-bullet-active {
             background: #000 !important;
         }
-        .custom-swiper-position{
+        .custom-swiper-position, .product-gallery-pagination{
             top: 100% !important;
         }
     </style>
