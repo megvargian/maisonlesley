@@ -68,13 +68,6 @@ if ($is_mystique) {
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingSizeGuide">
-                                <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSizeGuide" aria-controls="offcanvasSizeGuide">
-                                    Size Guide
-                                </button>
-                            </h2>
-                        </div>
-                        <div class="accordion-item">
                             <h2 class="accordion-header" id="headingReturns">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturns" aria-expanded="false" aria-controls="collapseReturns">
                                     Delivery & Returns
@@ -85,40 +78,6 @@ if ($is_mystique) {
                                 <div class="accordion-body">
                                     <p>See our <a href="/shipping">Shipping</a> and <a href="/returns">Returns</a> pages for more info.</p>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Bootstrap Offcanvas Sidebar for Size Guide -->
-                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasSizeGuide" aria-labelledby="offcanvasSizeGuideLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasSizeGuideLabel">Size Guide</h5>
-                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Bust (cm)</th>
-                                        <th>Waist (cm)</th>
-                                        <th>Hips (cm)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>79</td><td>63</td><td>90</td></tr>
-                                    <tr><td>84</td><td>68</td><td>95</td></tr>
-                                    <tr><td>89</td><td>73</td><td>100</td></tr>
-                                    <tr><td>94</td><td>78</td><td>105</td></tr>
-                                    <tr><td>99</td><td>83</td><td>110</td></tr>
-                                    <tr><td>104</td><td>88</td><td>115</td></tr>
-                                </tbody>
-                            </table>
-                            <div class="mt-2">
-                                <strong>Measuring Guide:</strong>
-                                <ul>
-                                    <li>Bust: Measure around your chest at the fullest part of your bra cup.</li>
-                                    <li>Waist: Measure around the smallest part of your waistline.</li>
-                                    <li>Hips: Measure around the fullest part of your hips and buttocks.</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
