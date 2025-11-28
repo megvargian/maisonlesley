@@ -147,7 +147,7 @@ if ($is_mystique) {
                             ?>
                         </div>
                     </div>
-                    <div class="swiper-pagination custom-swiper-position"></div>
+                    <div class="swiper-pagination you-may-also-like-swiper-position"></div>
                 </div>
                 <script>
                 document.addEventListener('DOMContentLoaded', function() {
@@ -156,7 +156,7 @@ if ($is_mystique) {
                             slidesPerView: 1,
                             spaceBetween: 16,
                             pagination: {
-                                el: '.swiper-pagination',
+                                el: '.you-may-also-like-swiper-position',
                                 clickable: true,
                             },
                         });
@@ -202,7 +202,7 @@ if ($is_mystique) {
         .product-gallery-main .swiper-pagination-bullet-active {
             background: #000 !important;
         }
-        .custom-swiper-position, .product-gallery-pagination{
+        .you-may-also-like-swiper-position, .product-gallery-pagination{
             top: 100% !important;
         }
     </style>
