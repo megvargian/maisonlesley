@@ -66,7 +66,7 @@ if ($is_mystique) {
                     <div class="swiper-pagination product-gallery-pagination"></div>
                 </div>
             </div>
-            <div class="col-md-3 col-12">
+            <div class="col-lg-3 col-md-5 col-12">
                 <div class="dissh-summary">
                     <?php do_action('woocommerce_single_product_summary'); ?>
                     <div class="dissh-shipping-info mt-3">
