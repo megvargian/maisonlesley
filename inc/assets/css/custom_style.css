@@ -1510,3 +1510,17 @@ header.active {
   color: #000 !important;
   border: 1px solid #000 !important;
 }
+
+#primary {
+  padding: 3rem 0.5rem !important;
+}
+
+#form-add-to-cart-button:hover {
+  border: 1px solid #000 !important;
+  color: #000 !important;
+}
+
+#form-add-to-cart-button {
+  color: #fff !important;
+  border: 1px solid transparent !important;
+}
