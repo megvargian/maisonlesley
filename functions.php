@@ -702,26 +702,10 @@ function add_custom_add_to_cart_button() {
                         <?php
                     }
                     ?>
-                    <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100 position-relative" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
-                        <span class="button-text"><?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?></span>
-                        <span class="modern-spinner" style="display:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:24px; height:24px;"></span>
+                    <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+                        <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
                     </button>
                     <span class="response d-block text-danger"></span>
-                    <style>
-                    .modern-spinner {
-                        display: inline-block;
-                        width: 24px;
-                        height: 24px;
-                        border: 3px solid #e0e0e0;
-                        border-top: 3px solid #000;
-                        border-radius: 50%;
-                        animation: modern-spin 0.8s linear infinite;
-                    }
-                    @keyframes modern-spin {
-                        0% { transform: rotate(0deg); }
-                        100% { transform: rotate(360deg); }
-                    }
-                    </style>
                     <style>
                     .add-to-cart-blur {
                         background: #e0e0e0 !important;
@@ -784,58 +768,50 @@ function add_custom_add_to_cart_button() {
                 <span class="response d-block text-danger"></span>
             <?php }
         ?>
-                    <script>
-                    jQuery(document).ready(function($) {
-                        $('#form-add-to-cart-button').prop('disabled', false);
-                        $('#form-add-to-cart-button').on('click', function(e) {
-                            e.preventDefault();
-                            var btn = $(this);
-                            var spinner = btn.find('.modern-spinner');
-                            var text = btn.find('.button-text');
-                            var productId = btn.data('product-id');
-                            var size = '';
-                            var color = '';
-                            // Get selected size and color if present
-                            var sizeBtn = $('.product-attributes-size button.active');
-                            if(sizeBtn.length) size = sizeBtn.text();
-                            var colorBtn = $('.product-attributes-color button.active');
-                            if(colorBtn.length) color = colorBtn.find('span').text();
-                            btn.prop('disabled', true);
-                            btn.addClass('add-to-cart-blur');
-                            spinner.show();
-                            text.hide();
-                            $('.response').text('');
-                            $.ajax({
-                                url: ajaxurl,
-                                type: 'POST',
-                                data: {
-                                    action: 'form_custom_add_to_cart',
-                                    product_id: productId,
-                                    selected_attr_size: size,
-                                    selected_attr_color: color
-                                },
-                                success: function(res) {
-                                    if(res.success) {
-                                        window.location.href = '/cart';
-                                    } else {
-                                        btn.prop('disabled', false);
-                                        btn.removeClass('add-to-cart-blur');
-                                        spinner.hide();
-                                        text.show();
-                                        $('.response').text('Could not add to cart. Please try again.');
-                                    }
-                                },
-                                error: function() {
-                                    btn.prop('disabled', false);
-                                    btn.removeClass('add-to-cart-blur');
-                                    spinner.hide();
-                                    text.show();
-                                    $('.response').text('Error occurred. Please try again.');
-                                }
-                            });
-                        });
-                    });
-                    </script>
+    <?php } else {?>
+        <a class="submit-button text-white d-block w-100" href="/product-request/?pid=<?php echo $product->get_id(); ?>">
+            SEND Enquiry
+        </a>
+    <?php }
+}
+add_action( 'woocommerce_single_product_summary', 'add_custom_add_to_cart_button', 30 );
+
+function custom_add_to_cart() {
+    $product_id = intval( $_POST['product_id'] );
+    $quantity = 1; // You can customize the quantity
+
+    $added = WC()->cart->add_to_cart( $product_id, $quantity );
+
+    if ( $added ) {
+        wp_send_json_success();
+    } else {
+        wp_send_json_error();
+    }
+
+    wp_die();
+}
+add_action( 'wp_ajax_custom_add_to_cart', 'custom_add_to_cart' );
+add_action( 'wp_ajax_nopriv_custom_add_to_cart', 'custom_add_to_cart' );
+
+function form_custom_add_to_cart() {
+    $product_id = intval( $_POST['product_id'] );
+    $selected_attr_size = sanitize_text_field( $_POST['selected_attr_size'] );
+    $selected_attr_color = sanitize_text_field( $_POST['selected_attr_color'] );
+
+    if ( ! empty( $selected_attr_size ) && ! empty( $selected_attr_color ) ) {
+        $attributes = array(
+            'attribute_pa_size'  => $selected_attr_size,
+            'attribute_pa_color' => $selected_attr_color
+        );
+    } elseif ( ! empty( $selected_attr_color ) && empty( $selected_attr_size ) ) {
+        $attributes = array(
+            'attribute_pa_color' => $selected_attr_color
+        );
+    } elseif ( ! empty( $selected_attr_size ) && empty( $selected_attr_color ) ) {
+        $attributes = array(
+            'attribute_pa_size' => $selected_attr_size
+        );
+    } else {
         $attributes = array(); // Default case if no attributes are selected
     }
 
