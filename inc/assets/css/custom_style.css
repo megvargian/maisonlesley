@@ -1516,6 +1516,7 @@ header.active {
 }
 
 #form-add-to-cart-button:hover {
+  background-color: #fff !important;
   border: 1px solid #000 !important;
   color: #000 !important;
 }
