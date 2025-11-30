@@ -76,7 +76,6 @@
 endif;
 add_action('after_setup_theme', 'wp_bootstrap_starter_setup');
 
-
 /**
  * Add Welcome message to dashboard
  */
