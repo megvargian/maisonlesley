@@ -165,7 +165,7 @@ body.hide_scroll {
 }
 
 ::selection {
-  color: #000;
+  color: #fff;
   background: #000;
 }
 
