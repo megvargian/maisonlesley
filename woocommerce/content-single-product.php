@@ -270,7 +270,7 @@ if ($is_mystique) {
         .dissh-mystique-product { background: #fff; font-weight: 300 !important;}
         .dissh-gallery img { width: 100%; border-radius: 0px; }
         .dissh-summary { font-size: 1.1rem; }
-        .dissh-shipping-info ul { padding-left: 0; }
+        .dissh-shipping-info ul { padding-left: 0; font-size: 0.8rem; font-weight: 300; }
         .dissh-shipping-info li { margin-bottom: 4px;  }
         .dissh-accordion .accordion-button { font-weight: bold; position: relative; }
         .dissh-accordion .accordion-body { background: #fff; }
