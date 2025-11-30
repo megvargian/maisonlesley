@@ -1513,6 +1513,7 @@ header.active {
 
 #primary {
   padding: 3rem 0.5rem !important;
+  padding-bottom: 0 !important;
 }
 
 #form-add-to-cart-button:hover {
