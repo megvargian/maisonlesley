@@ -733,7 +733,7 @@ function add_custom_add_to_cart_button() {
                             btn.addClass('add-to-cart-blur');
                             $('.response').text('');
                             $.ajax({
-                                url: <?php echo admin_url('admin-ajax.php'); ?>,
+                                url: '<?php echo admin_url('admin-ajax.php'); ?>',
                                 type: 'POST',
                                 data: {
                                     action: 'form_custom_add_to_cart',
