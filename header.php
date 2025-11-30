@@ -202,7 +202,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                         </div>
                     </div>
                 </section>
-                <section class="bg-white main-nav-section" style="<?php echo is_page(2409); ? 'transform: translateY(20%);' : ''; ?>">
+                <section class="bg-white main-nav-section" style="<?php echo is_page(2409) ? 'transform: translateY(20%);' : ''; ?>">
                     <div class="container px-0">
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list">
