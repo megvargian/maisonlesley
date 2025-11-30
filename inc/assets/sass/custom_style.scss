@@ -1239,13 +1239,10 @@ header.active{
 }
 // attributes style
 .product-attributes-size, .product-attributes-color{
-	margin: 0 -5px;
 	list-style-type: none;
 	padding: 0;
 	li{
 	   cursor: pointer;
-	   height: 30px;
-	   width: 22px;
 	   margin: 0 10px;
 	   display: inline-block;
 	   button.active{

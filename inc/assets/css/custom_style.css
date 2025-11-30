@@ -1284,14 +1284,11 @@ header.active {
 }
 
 .product-attributes-size, .product-attributes-color {
-  margin: 0 -5px;
   list-style-type: none;
   padding: 0;
 }
 .product-attributes-size li, .product-attributes-color li {
   cursor: pointer;
-  height: 30px;
-  width: 22px;
   margin: 0 10px;
   display: inline-block;
 }
