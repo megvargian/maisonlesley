@@ -175,17 +175,17 @@ if ($is_mystique) {
         </div>
     </div>
     <style>
-        .dissh-mystique-product { background: #fff; }
+        .dissh-mystique-product { background: #fff; font-weight: 300 !important;}
         .dissh-gallery img { width: 100%; border-radius: 0px; }
         .dissh-summary { font-size: 1.1rem; }
         .dissh-shipping-info ul { padding-left: 0; }
-        .dissh-shipping-info li { margin-bottom: 4px; }
+        .dissh-shipping-info li { margin-bottom: 4px;  }
         .dissh-accordion .accordion-button { font-weight: bold; position: relative; }
         .dissh-accordion .accordion-body { background: #fff; }
         .dissh-accordion .accordion-button::after { display: none !important; }
         .custom-accordion-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 1.5em; pointer-events: none; }
-        .custom-accordion-icon .minus { color: #333; }
-        .custom-accordion-icon .plus { color: #333; }
+        .custom-accordion-icon .minus { color: #333; font-weight: 300; }
+        .custom-accordion-icon .plus { color: #333; font-weight: 300; }
         /* Swiper bullets for you-may-also-like-swiper and product-gallery-swiper */
         .you-may-also-like-swiper .swiper-pagination-bullet,
         .product-gallery-swiper .swiper-pagination-bullet {
