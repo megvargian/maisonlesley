@@ -190,7 +190,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                 <section class="bg-white main-logo-section">
                     <div class="container">
                         <div class="row justify-content-center"
-                            style="<?php echo $is_MystiqueRose ? 'padding-top: 0px;' : 'padding-top: 70px;'; ?>">
+                            style="<?php echo is_page(2409) ? 'padding-top: 0px;' : 'padding-top: 70px;'; ?>">
                             <a class="d-flex justify-content-center" style="width:fit-content;"
                                 href="<?php echo $is_MystiqueRose ? $main_logo_link_mystiquerose : $main_logo_link;?>">
                                 <?php if($is_MystiqueRose){ ?>
