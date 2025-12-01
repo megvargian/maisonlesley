@@ -1155,12 +1155,10 @@ if (function_exists('acf_add_local_field_group')) {
 
 // Fallback: Add custom term meta field for color hex
 add_action('product_cat_add_form_fields', 'add_mystique_color_hex_field_woo', 10);
-add_action('product_cat_edit_form_fields', 'edit_mystique_color_hex_field_woo', 10, 2);
 add_action('product_cat_pre_add_form_fields', 'maybe_add_color_fields_for_attribute', 10);
 
 // More specific hook for pa_color taxonomy
 add_action('pa_color_add_form_fields', 'add_mystique_color_hex_field_woo', 10);
-add_action('pa_color_edit_form_fields', 'edit_mystique_color_hex_field_woo', 10, 2);
 
 // Save hooks
 add_action('create_pa_color', 'save_mystique_color_hex_field', 10, 2);
@@ -1176,19 +1174,6 @@ function add_mystique_color_hex_field_woo() {
     <?php
 }
 
-function edit_mystique_color_hex_field_woo($term, $taxonomy = '') {
-    $hex = get_term_meta($term->term_id, 'mystique_color_hex', true);
-    if (!$hex) $hex = '#d3d3d3';
-    ?>
-    <tr class="form-field">
-        <th scope="row"><label for="mystique_color_hex">Color Hex Code</label></th>
-        <td>
-            <input type="color" id="mystique_color_hex" name="mystique_color_hex" value="<?php echo esc_attr($hex); ?>" style="width: 100px; height: 40px; border: none; cursor: pointer;" />
-            <p class="description">Select the hex color for this color attribute.</p>
-        </td>
-    </tr>
-    <?php
-}
 
 function save_mystique_color_hex_field($term_id, $term = null) {
     if (isset($_POST['mystique_color_hex'])) {
