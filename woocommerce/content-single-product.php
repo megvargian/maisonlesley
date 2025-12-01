@@ -82,7 +82,12 @@ if ($is_mystique) {
                         <div class="mystique-color-label mb-3">Colour: <span class="color-name"><?php echo esc_html(get_term_by('slug', $selected_color, 'pa_color')->name); ?></span></div>
                         <div class="mystique-color-swatches d-flex gap-2" style="flex-wrap: wrap;">
                             <?php foreach ($color_terms as $term) {
-                                $hex = get_field('mystique_color_hex', 'term_' . $term->term_id);
+                                // Get hex color from ACF field
+                                $hex = function_exists('get_field') ? get_field('mystique_color_hex', 'term_' . $term->term_id) : '';
+                                // Fallback to term meta if ACF not available
+                                if (!$hex) {
+                                    $hex = get_term_meta($term->term_id, 'mystique_color_hex', true);
+                                }
                                 if (!$hex) $hex = '#d3d3d3';
                                 $is_selected = ($term->slug === $selected_color) ? 'selected' : '';
                             ?>
@@ -132,7 +137,7 @@ if ($is_mystique) {
                     <div class="accordion" id="accordionDissh">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingDesignNotes">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDesignNotes" aria-expanded="false" aria-controls="collapseDesignNotes">
+                                <button class="accordion-button collapsed" type="button" style="background-color:transparent !important" data-bs-toggle="collapse" data-bs-target="#collapseDesignNotes" aria-expanded="false" aria-controls="collapseDesignNotes">
                                     Design Notes
                                     <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
                                 </button>
@@ -145,7 +150,7 @@ if ($is_mystique) {
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingReturns">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturns" aria-expanded="false" aria-controls="collapseReturns">
+                                <button class="accordion-button collapsed" style="background-color:transparent !important" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturns" aria-expanded="false" aria-controls="collapseReturns">
                                     Delivery & Returns
                                     <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
                                 </button>

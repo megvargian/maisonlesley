@@ -1093,3 +1093,39 @@ if (function_exists('acf_add_local_field_group')) {
         'hide_on_screen' => '',
     ));
 }
+
+// Fallback: Add custom term meta field for color hex
+add_action('pa_color_add_form_fields', 'add_mystique_color_hex_field');
+add_action('pa_color_edit_form_fields', 'edit_mystique_color_hex_field');
+add_action('edited_pa_color', 'save_mystique_color_hex_field');
+add_action('create_pa_color', 'save_mystique_color_hex_field');
+
+function add_mystique_color_hex_field() {
+    ?>
+    <div class="form-group">
+        <label for="mystique_color_hex">Color Hex Code</label>
+        <input type="color" id="mystique_color_hex" name="mystique_color_hex" value="#d3d3d3" style="width: 100px; height: 40px; border: none; cursor: pointer;" />
+        <p class="description">Select the hex color for this color attribute.</p>
+    </div>
+    <?php
+}
+
+function edit_mystique_color_hex_field($term) {
+    $hex = get_term_meta($term->term_id, 'mystique_color_hex', true);
+    if (!$hex) $hex = '#d3d3d3';
+    ?>
+    <tr class="form-field">
+        <th scope="row"><label for="mystique_color_hex">Color Hex Code</label></th>
+        <td>
+            <input type="color" id="mystique_color_hex" name="mystique_color_hex" value="<?php echo esc_attr($hex); ?>" style="width: 100px; height: 40px; border: none; cursor: pointer;" />
+            <p class="description">Select the hex color for this color attribute.</p>
+        </td>
+    </tr>
+    <?php
+}
+
+function save_mystique_color_hex_field($term_id) {
+    if (isset($_POST['mystique_color_hex'])) {
+        update_term_meta($term_id, 'mystique_color_hex', sanitize_hex_color($_POST['mystique_color_hex']));
+    }
+}
