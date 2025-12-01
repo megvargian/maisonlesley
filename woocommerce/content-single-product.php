@@ -70,8 +70,27 @@ if ($is_mystique) {
                 <div class="dissh-summary">
                     <?php
                     // Color attribute display above size section
-                    $attributes = $product->get_attributes();
-                    $color_terms = wc_get_product_terms($product->get_id(), 'pa_color', array('fields' => 'all'));
+                    $color_terms = array();
+
+                    // If it's a variable product, get color attribute from it
+                    if ($product->is_type('variable')) {
+                        $attributes = $product->get_attributes();
+                        if (isset($attributes['pa_color'])) {
+                            $color_attribute = $attributes['pa_color'];
+                            if ($color_attribute->is_taxonomy()) {
+                                $color_terms = wc_get_product_terms($product->get_id(), 'pa_color', array('fields' => 'all'));
+                                // DEBUG
+                                error_log('COLOR TERMS FOUND: ' . count($color_terms));
+                                foreach ($color_terms as $t) {
+                                    error_log('Term: ' . $t->name . ' (' . $t->slug . ')');
+                                }
+                            }
+                        }
+                    } else {
+                        // For simple products, try to get from product terms anyway
+                        $color_terms = wc_get_product_terms($product->get_id(), 'pa_color', array('fields' => 'all'));
+                    }
+
                     if (!empty($color_terms)) {
                         $selected_color = isset($_GET['pa_color']) ? sanitize_text_field($_GET['pa_color']) : $color_terms[0]->slug;
                     ?>
