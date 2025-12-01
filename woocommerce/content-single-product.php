@@ -71,14 +71,9 @@ if ($is_mystique) {
                     <?php
                     // Color attribute display above size section
                     $attributes = $product->get_attributes();
-                    echo '<pre>'; print_r($attributes['pa_color']); echo '</pre>';
-                    if (isset($attributes['pa_color'])) {
-                        $color_attribute = $attributes['pa_color'];
-                        echo '<pre>'; print_r($color_attribute); echo '</pre>';
-                        if ($color_attribute->is_taxonomy()) {
-                            $color_terms = wc_get_product_terms($product->get_id(), 'pa_color', array('fields' => 'all'));
-                            if (!empty($color_terms)) {
-                                $selected_color = isset($_GET['pa_color']) ? sanitize_text_field($_GET['pa_color']) : $color_terms[0]->slug;
+                    $color_terms = wc_get_product_terms($product->get_id(), 'pa_color', array('fields' => 'all'));
+                    if (!empty($color_terms)) {
+                        $selected_color = isset($_GET['pa_color']) ? sanitize_text_field($_GET['pa_color']) : $color_terms[0]->slug;
                     ?>
                     <div class="mystique-color-section mb-4">
                         <div class="mystique-color-label mb-3">Colour: <span class="color-name"><?php echo esc_html(get_term_by('slug', $selected_color, 'pa_color')->name); ?></span></div>
@@ -122,8 +117,6 @@ if ($is_mystique) {
                     });
                     </script>
                     <?php }
-                        }
-                    }
                     // Size and other summary content
                     do_action('woocommerce_single_product_summary');
                     ?>
