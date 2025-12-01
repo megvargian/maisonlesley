@@ -1059,3 +1059,37 @@ function isMystiqueRoseProduct() {
     }
     return $is_mystique;
 }
+
+// Register ACF field for Mystique Rose color hex value
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
+        'key' => 'group_mystique_color_hex',
+        'title' => 'Mystique Rose Color',
+        'fields' => array(
+            array(
+                'key' => 'field_mystique_color_hex',
+                'label' => 'Color Hex Code',
+                'name' => 'mystique_color_hex',
+                'type' => 'color_picker',
+                'instructions' => 'Select the hex color for this color attribute.',
+                'default_value' => '#d3d3d3',
+                'return_format' => 'string',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'taxonomy',
+                    'operator' => '==',
+                    'value' => 'pa_color',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+    ));
+}

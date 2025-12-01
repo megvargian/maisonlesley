@@ -32,51 +32,6 @@ if ($terms && !is_wp_error($terms)) {
 }
 
 if ($is_mystique) {
-        // Get color attribute terms for the product
-        $color_terms = wc_get_product_terms($product->get_id(), 'pa_color', array('fields' => 'all'));
-        if (!empty($color_terms)) {
-        ?>
-        <div class="mb-4">
-            <div class="mb-2" style="font-size:1.1em;font-weight:500;">Colour:
-                <span id="selected-color-label">
-                    <?php echo esc_html($color_terms[0]->name); ?>
-                </span>
-            </div>
-            <ul class="mystique-color-list d-flex gap-3" style="list-style:none;padding-left:0;">
-                <?php foreach ($color_terms as $term) {
-                    // Get hex color from ACF or term meta
-                    $hex = get_field('color', $term->taxonomy . '_' . $term->term_id);
-                    if (!$hex) $hex = '#e0e0e0';
-                ?>
-                <li>
-                    <button type="button" class="mystique-color-circle" data-color-label="<?php echo esc_attr($term->name); ?>" style="background:<?php echo esc_attr($hex); ?>;width:40px;height:40px;border-radius:50%;border:2px solid #eee;outline:none;cursor:pointer;display:inline-block;"></button>
-                </li>
-                <?php } ?>
-            </ul>
-        </div>
-        <style>
-            .mystique-color-circle.selected {
-                border: 3px solid #bfc7d5 !important;
-                box-shadow: 0 0 0 2px #fff;
-            }
-        </style>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var colorCircles = document.querySelectorAll('.mystique-color-circle');
-                var label = document.getElementById('selected-color-label');
-                if(colorCircles.length) {
-                    colorCircles[0].classList.add('selected');
-                    colorCircles.forEach(function(btn) {
-                        btn.addEventListener('click', function() {
-                            colorCircles.forEach(function(b){b.classList.remove('selected');});
-                            btn.classList.add('selected');
-                            label.textContent = btn.getAttribute('data-color-label');
-                        });
-                    });
-                }
-            });
-        </script>
-        <?php }
     // Custom Dissh-style layout for Mystique Rose products
     ?>
     <div class="dissh-mystique-product container-fluid py-5">
@@ -114,50 +69,54 @@ if ($is_mystique) {
             <div class="col-xxl-3 col-xxl-4 col-lg-4 col-md-5 col-12">
                 <div class="dissh-summary">
                     <?php
-                    // Color circles above size section
-                    $color_terms = wc_get_product_terms($product->get_id(), 'pa_color', array('fields' => 'all'));
-                    if (!empty($color_terms)) {
+                    // Color attribute display above size section
+                    $attributes = $product->get_attributes();
+                    if (isset($attributes['pa_color'])) {
+                        $color_attribute = $attributes['pa_color'];
+                        if ($color_attribute->is_taxonomy()) {
+                            $color_terms = wc_get_product_terms($product->get_id(), 'pa_color', array('fields' => 'all'));
+                            if (!empty($color_terms)) {
+                                $selected_color = isset($_GET['pa_color']) ? sanitize_text_field($_GET['pa_color']) : $color_terms[0]->slug;
                     ?>
-                    <div class="mb-4">
-                        <div class="mb-2" style="font-size:1.1em;font-weight:500;">Colour:
-                            <span id="selected-color-label">
-                                <?php echo esc_html($color_terms[0]->name); ?>
-                            </span>
-                        </div>
-                        <ul class="mystique-color-list d-flex gap-3" style="list-style:none;padding-left:0;">
+                    <div class="mystique-color-section mb-4">
+                        <div class="mystique-color-label mb-3">Colour: <span class="color-name"><?php echo esc_html(get_term_by('slug', $selected_color, 'pa_color')->name); ?></span></div>
+                        <div class="mystique-color-swatches d-flex gap-2" style="flex-wrap: wrap;">
                             <?php foreach ($color_terms as $term) {
-                                $hex = get_field('color', $term->taxonomy . '_' . $term->term_id);
-                                if (!$hex) $hex = '#e0e0e0';
+                                $hex = get_field('mystique_color_hex', 'term_' . $term->term_id);
+                                if (!$hex) $hex = '#d3d3d3';
+                                $is_selected = ($term->slug === $selected_color) ? 'selected' : '';
                             ?>
-                            <li>
-                                <button type="button" class="mystique-color-circle" data-color-label="<?php echo esc_attr($term->name); ?>" style="background:<?php echo esc_attr($hex); ?>;width:40px;height:40px;border-radius:50%;border:2px solid #eee;outline:none;cursor:pointer;display:inline-block;"></button>
-                            </li>
+                            <button type="button" class="mystique-color-swatch <?php echo $is_selected; ?>" data-color-slug="<?php echo esc_attr($term->slug); ?>" data-color-name="<?php echo esc_attr($term->name); ?>" style="background-color:<?php echo esc_attr($hex); ?>;width:48px;height:48px;border-radius:2px;border:2px solid #ddd;cursor:pointer;transition:all 0.2s;" title="<?php echo esc_attr($term->name); ?>"></button>
                             <?php } ?>
-                        </ul>
+                        </div>
                     </div>
                     <style>
-                        .mystique-color-circle.selected {
-                            border: 3px solid #bfc7d5 !important;
-                            box-shadow: 0 0 0 2px #fff;
-                        }
+                        .mystique-color-label { font-size: 0.95rem; font-weight: 500; color: #333; }
+                        .mystique-color-label .color-name { font-weight: 400; color: #666; }
+                        .mystique-color-swatch { box-shadow: none; transition: all 0.2s ease; }
+                        .mystique-color-swatch:hover { transform: scale(1.05); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+                        .mystique-color-swatch.selected { border: 3px solid #333 !important; }
                     </style>
                     <script>
                     document.addEventListener('DOMContentLoaded', function() {
-                        var colorCircles = document.querySelectorAll('.mystique-color-circle');
-                        var label = document.getElementById('selected-color-label');
-                        if(colorCircles.length) {
-                            colorCircles[0].classList.add('selected');
-                            colorCircles.forEach(function(btn) {
-                                btn.addEventListener('click', function() {
-                                    colorCircles.forEach(function(b){b.classList.remove('selected');});
-                                    btn.classList.add('selected');
-                                    label.textContent = btn.getAttribute('data-color-label');
-                                });
+                        document.querySelectorAll('.mystique-color-swatch').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                document.querySelectorAll('.mystique-color-swatch').forEach(function(b) { b.classList.remove('selected'); });
+                                btn.classList.add('selected');
+                                document.querySelector('.mystique-color-label .color-name').textContent = btn.getAttribute('data-color-name');
+                                // Update the pa_color variation select if it exists
+                                var colorSelect = document.querySelector('select[name="pa_color"]');
+                                if (colorSelect) {
+                                    colorSelect.value = btn.getAttribute('data-color-slug');
+                                    colorSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                                }
                             });
-                        }
+                        });
                     });
                     </script>
                     <?php }
+                        }
+                    }
                     // Size and other summary content
                     do_action('woocommerce_single_product_summary');
                     ?>
