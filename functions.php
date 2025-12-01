@@ -675,28 +675,48 @@ function add_custom_add_to_cart_button() {
                         if($attribute_label == 'color'){
                             // Skip color display for Mystique Rose products (they have custom color display)
                             $terms = wc_get_product_terms($product_id, $attribute_name, array('fields' => 'all'));
-                            echo '<h6 class="mb-2 color-header">'.ucfirst($attribute_label).' : <span></span></h6>';
-                            echo '<ul class="product-attributes-color w-100 d-flex justify-content-start pb-3">';
-                            foreach ($terms as $term) {
-                                // Get the hex color from term meta (mystique_color_hex)
-                                $color = get_term_meta($term->term_id, 'mystique_color_hex', true);
-                                // Fallback to ACF if available
-                                if (!$color && function_exists('get_field')) {
-                                    $color = get_field('mystique_color_hex', 'term_' . $term->term_id);
+                            // Get first color name for display
+                            $first_color_name = !empty($terms) ? $terms[0]->name : '';
+                            ?>
+                            <div class="color-attribute-section mb-3">
+                                <h6 class="mb-2 color-header" style="font-size: 0.95rem; font-weight: 500;">
+                                    Colour: <span style="font-weight: 400;"><?php echo esc_html($first_color_name); ?></span>
+                                </h6>
+                                <ul class="product-attributes-color d-flex gap-2" style="list-style: none; padding: 0; margin: 0;">
+                                    <?php
+                                    foreach ($terms as $term) {
+                                        // Get the hex color from term meta (mystique_color_hex)
+                                        $color = get_term_meta($term->term_id, 'mystique_color_hex', true);
+                                        // Fallback to ACF if available
+                                        if (!$color && function_exists('get_field')) {
+                                            $color = get_field('mystique_color_hex', 'term_' . $term->term_id);
+                                        }
+                                        // Default color if neither exists
+                                        if (!$color) {
+                                            $color = '#d3d3d3';
+                                        }
+                                        ?>
+                                        <li>
+                                            <button type="button" class="color-swatch-btn" data-color-name="<?php echo esc_attr($term->name); ?>" style="background-color: <?php echo esc_attr($color); ?>; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ddd; cursor: pointer; padding: 0; transition: all 0.2s;">
+                                                <span class="d-none"><?php echo esc_html($term->name); ?></span>
+                                            </button>
+                                        </li>
+                                        <?php
+                                    }
+                                    ?>
+                                </ul>
+                            </div>
+                            <style>
+                                .color-swatch-btn:hover {
+                                    transform: scale(1.05);
+                                    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
                                 }
-                                // Default color if neither exists
-                                if (!$color) {
-                                    $color = '#d3d3d3';
+                                .color-swatch-btn.active {
+                                    border: 3px solid #333 !important;
+                                    transform: scale(1.05);
                                 }
-                                ?>
-                                    <li>
-                                        <button style="background-color: <?php echo esc_attr($color); ?>">
-                                            <span class="d-none"><?php echo esc_html($term->name); ?></span>
-                                        </button>
-                                    </li>
-                                <?php
-                            }
-                            echo '</ul>';
+                            </style>
+                            <?php
                         }
                         ?>
                         <script>
@@ -707,12 +727,14 @@ function add_custom_add_to_cart_button() {
                                     $(this).addClass('active');
                                 });
                                 // Handle color button clicks
-                                $('.product-attributes-color li button').on('click', function() {
-                                    $('.product-attributes-color li button').removeClass('active');
+                                $('.color-swatch-btn').on('click', function() {
+                                    $('.color-swatch-btn').removeClass('active');
                                     $(this).addClass('active');
-                                    const currentValueText = $(this).find('span').text();
-                                    $('.color-header span').text(currentValueText);
+                                    const colorName = $(this).data('color-name');
+                                    $('.color-header span').text(colorName);
                                 });
+                                // Set first color as active by default
+                                $('.color-swatch-btn').first().addClass('active');
                             });
                         </script>
                         <?php
