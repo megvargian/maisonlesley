@@ -673,26 +673,45 @@ function add_custom_add_to_cart_button() {
                             echo '</ul>';
                         }
                         if($attribute_label == 'Color'){
-                            $terms = wc_get_product_terms($product_id, $attribute_name, array('fields' => 'all'));
-                            echo '<h6 class="mb-2 color-header">'.ucfirst($attribute_label).' : <span></span></h6>';
-                            echo '<ul class="product-attributes-color w-100 d-flex justify-content-start pb-3">';
-                            foreach ($terms as $term) {
-                                // Get the ACF field value for color
-                                $color = get_field('color', $term->taxonomy . '_' . $term->term_id);
-                                ?>
-                                    <li>
-                                        <button style="background-color: <?php echo esc_attr($color); ?>">
-                                            <span class="d-none"><?php echo esc_html($term->name); ?></span>
-                                        </button>
-                                    </li>
-                                <?php
+                            // Skip color display for Mystique Rose products (they have custom color display)
+                            if (!isMystiqueRoseProduct()) {
+                                $terms = wc_get_product_terms($product_id, $attribute_name, array('fields' => 'all'));
+                                echo '<h6 class="mb-2 color-header">'.ucfirst($attribute_label).' : <span></span></h6>';
+                                echo '<ul class="product-attributes-color w-100 d-flex justify-content-start pb-3">';
+                                foreach ($terms as $term) {
+                                    // Get the hex color from term meta (mystique_color_hex)
+                                    $color = get_term_meta($term->term_id, 'mystique_color_hex', true);
+                                    // Fallback to ACF if available
+                                    if (!$color && function_exists('get_field')) {
+                                        $color = get_field('mystique_color_hex', 'term_' . $term->term_id);
+                                    }
+                                    // Default color if neither exists
+                                    if (!$color) {
+                                        $color = '#d3d3d3';
+                                    }
+                                    ?>
+                                        <li>
+                                            <button style="background-color: <?php echo esc_attr($color); ?>">
+                                                <span class="d-none"><?php echo esc_html($term->name); ?></span>
+                                            </button>
+                                        </li>
+                                    <?php
+                                }
+                                echo '</ul>';
                             }
-                            echo '</ul>';
                         }
                         ?>
                         <script>
                             jQuery(document).ready(function($) {
+                                // Handle size button clicks
+                                $('.product-attributes-size li button').on('click', function() {
+                                    $('.product-attributes-size li button').removeClass('active');
+                                    $(this).addClass('active');
+                                });
+                                // Handle color button clicks
                                 $('.product-attributes-color li button').on('click', function() {
+                                    $('.product-attributes-color li button').removeClass('active');
+                                    $(this).addClass('active');
                                     const currentValueText = $(this).find('span').text();
                                     $('.color-header span').text(currentValueText);
                                 });
