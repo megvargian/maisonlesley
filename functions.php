@@ -672,7 +672,7 @@ function add_custom_add_to_cart_button() {
                             }
                             echo '</ul>';
                         }
-                        if($attribute_name == 'pa_color'){
+                        if($attribute_label == 'Color'){
                             $terms = wc_get_product_terms($product_id, $attribute_name, array('fields' => 'all'));
                             echo '<h6 class="mb-2 color-header">'.ucfirst($attribute_label).' : <span></span></h6>';
                             echo '<ul class="product-attributes-color w-100 d-flex justify-content-start pb-3">';
