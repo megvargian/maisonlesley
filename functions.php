@@ -697,7 +697,7 @@ function add_custom_add_to_cart_button() {
                                         }
                                         ?>
                                         <li>
-                                            <button type="button" class="color-swatch-btn" data-color-name="<?php echo esc_attr($term->name); ?>" style="background-color: <?php echo esc_attr($color); ?>; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ddd; cursor: pointer; padding: 0; transition: all 0.2s;">
+                                            <button type="button" class="color-swatch-btn" data-color-name="<?php echo esc_attr($term->name); ?>" style="background-color: <?php echo esc_attr($color); ?>; width: 32px; height: 32px; border-radius: 50%; border: none; cursor: pointer; padding: 0; transition: all 0.2s;">
                                                 <span class="d-none"><?php echo esc_html($term->name); ?></span>
                                             </button>
                                         </li>
@@ -709,11 +709,9 @@ function add_custom_add_to_cart_button() {
                             <style>
                                 .color-swatch-btn:hover {
                                     transform: scale(1.05);
-                                    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
                                 }
                                 .color-swatch-btn.active {
-                                    border: 3px solid #333 !important;
-                                    transform: scale(1.05);
+                                    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #cdcdcd;
                                 }
                             </style>
                             <?php
@@ -763,14 +761,37 @@ function add_custom_add_to_cart_button() {
                             var productId = btn.data('product-id');
                             var size = '';
                             var color = '';
-                            // Get selected size and color if present
-                            var sizeBtn = $('.product-attributes-size button.active');
-                            if(sizeBtn.length) size = sizeBtn.text();
-                            var colorBtn = $('.product-attributes-color button.active');
-                            if(colorBtn.length) color = colorBtn.find('span').text();
+                            $('.response').text('').removeClass('text-danger').removeClass('text-success');
+
+                            // Check if size attribute exists
+                            var hasSizeAttr = $('.product-attributes-size').length > 0;
+                            var hasColorAttr = $('.product-attributes-color').length > 0;
+
+                            // Get selected size if attribute exists
+                            if(hasSizeAttr) {
+                                var sizeBtn = $('.product-attributes-size button.active');
+                                if(sizeBtn.length) {
+                                    size = sizeBtn.text();
+                                } else {
+                                    $('.response').addClass('text-danger').text('Please select a size');
+                                    return false;
+                                }
+                            }
+
+                            // Get selected color if attribute exists
+                            if(hasColorAttr) {
+                                var colorBtn = $('.color-swatch-btn.active');
+                                if(colorBtn.length) {
+                                    color = colorBtn.find('span').text();
+                                } else {
+                                    $('.response').addClass('text-danger').text('Please select a color');
+                                    return false;
+                                }
+                            }
+
                             btn.prop('disabled', true);
                             btn.addClass('add-to-cart-blur');
-                            $('.response').text('');
+
                             $.ajax({
                                 url: '<?php echo admin_url('admin-ajax.php'); ?>',
                                 type: 'POST',
@@ -786,13 +807,13 @@ function add_custom_add_to_cart_button() {
                                     } else {
                                         btn.prop('disabled', false);
                                         btn.removeClass('add-to-cart-blur');
-                                        $('.response').text('Could not add to cart. Please try again.');
+                                        $('.response').addClass('text-danger').text('Could not add to cart. Please try again.');
                                     }
                                 },
                                 error: function() {
                                     btn.prop('disabled', false);
                                     btn.removeClass('add-to-cart-blur');
-                                    $('.response').text('Error occurred. Please try again.');
+                                    $('.response').addClass('text-danger').text('Error occurred. Please try again.');
                                 }
                             });
                         });
