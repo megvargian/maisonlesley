@@ -71,6 +71,7 @@ if ($is_mystique) {
                     <?php
                     // Color attribute display above size section
                     $attributes = $product->get_attributes();
+                    echo '<pre>'; print_r($attributes['pa_color']); echo '</pre>';
                     if (isset($attributes['pa_color'])) {
                         $color_attribute = $attributes['pa_color'];
                         echo '<pre>'; print_r($color_attribute); echo '</pre>';
