@@ -79,11 +79,6 @@ if ($is_mystique) {
                             $color_attribute = $attributes['pa_color'];
                             if ($color_attribute->is_taxonomy()) {
                                 $color_terms = wc_get_product_terms($product->get_id(), 'pa_color', array('fields' => 'all'));
-                                // DEBUG
-                                error_log('COLOR TERMS FOUND: ' . count($color_terms));
-                                foreach ($color_terms as $t) {
-                                    error_log('Term: ' . $t->name . ' (' . $t->slug . ')');
-                                }
                             }
                         }
                     } else {

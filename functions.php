@@ -1095,12 +1095,19 @@ if (function_exists('acf_add_local_field_group')) {
 }
 
 // Fallback: Add custom term meta field for color hex
-add_action('pa_color_add_form_fields', 'add_mystique_color_hex_field');
-add_action('pa_color_edit_form_fields', 'edit_mystique_color_hex_field');
-add_action('edited_pa_color', 'save_mystique_color_hex_field');
-add_action('create_pa_color', 'save_mystique_color_hex_field');
+add_action('product_cat_add_form_fields', 'add_mystique_color_hex_field_woo', 10);
+add_action('product_cat_edit_form_fields', 'edit_mystique_color_hex_field_woo', 10, 2);
+add_action('product_cat_pre_add_form_fields', 'maybe_add_color_fields_for_attribute', 10);
 
-function add_mystique_color_hex_field() {
+// More specific hook for pa_color taxonomy
+add_action('pa_color_add_form_fields', 'add_mystique_color_hex_field_woo', 10);
+add_action('pa_color_edit_form_fields', 'edit_mystique_color_hex_field_woo', 10, 2);
+
+// Save hooks
+add_action('create_pa_color', 'save_mystique_color_hex_field', 10, 2);
+add_action('edit_pa_color', 'save_mystique_color_hex_field', 10, 2);
+
+function add_mystique_color_hex_field_woo() {
     ?>
     <div class="form-group">
         <label for="mystique_color_hex">Color Hex Code</label>
@@ -1110,7 +1117,7 @@ function add_mystique_color_hex_field() {
     <?php
 }
 
-function edit_mystique_color_hex_field($term) {
+function edit_mystique_color_hex_field_woo($term, $taxonomy = '') {
     $hex = get_term_meta($term->term_id, 'mystique_color_hex', true);
     if (!$hex) $hex = '#d3d3d3';
     ?>
@@ -1124,8 +1131,14 @@ function edit_mystique_color_hex_field($term) {
     <?php
 }
 
-function save_mystique_color_hex_field($term_id) {
+function save_mystique_color_hex_field($term_id, $term = null) {
     if (isset($_POST['mystique_color_hex'])) {
-        update_term_meta($term_id, 'mystique_color_hex', sanitize_hex_color($_POST['mystique_color_hex']));
+        $hex = sanitize_text_field($_POST['mystique_color_hex']);
+        update_term_meta($term_id, 'mystique_color_hex', $hex);
     }
+}
+
+function maybe_add_color_fields_for_attribute() {
+    // This runs when the form is about to be displayed
+    // Nothing to do here, just for hook ordering
 }
