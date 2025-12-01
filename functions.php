@@ -741,7 +741,7 @@ function add_custom_add_to_cart_button() {
                     <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
                         <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
                     </button>
-                    <span class="response d-block text-danger"></span>
+                    <span class="response d-block"></span>
                     <style>
                     .add-to-cart-blur {
                         background: #e0e0e0 !important;
@@ -751,7 +751,6 @@ function add_custom_add_to_cart_button() {
                         transition: background 0.2s, color 0.2s, filter 0.2s;
                     }
                     </style>
-                    <span class="response d-block text-danger"></span>
                     <script>
                     jQuery(document).ready(function($) {
                         $('#form-add-to-cart-button').prop('disabled', false);
