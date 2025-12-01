@@ -697,7 +697,7 @@ function add_custom_add_to_cart_button() {
                                         }
                                         ?>
                                         <li>
-                                            <button type="button" class="color-swatch-btn" data-color-name="<?php echo esc_attr($term->name); ?>" style="background-color: <?php echo esc_attr($color); ?>; width: 32px; height: 32px; border-radius: 50%; border: none; cursor: pointer; padding: 0; transition: all 0.2s;">
+                                            <button type="button" class="color-swatch-btn" data-color-name="<?php echo esc_attr($term->name); ?>" style="background-color: <?php echo esc_attr($color); ?>; width: 24px; height: 24px; border-radius: 50%; border: none; cursor: pointer; padding: 0; transition: all 0.2s;">
                                                 <span class="d-none"><?php echo esc_html($term->name); ?></span>
                                             </button>
                                         </li>
