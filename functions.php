@@ -672,7 +672,7 @@ function add_custom_add_to_cart_button() {
                             }
                             echo '</ul>';
                         }
-                        if($attribute_label == 'Color'){
+                        if($attribute_label == 'color'){
                             // Skip color display for Mystique Rose products (they have custom color display)
                             if (!isMystiqueRoseProduct()) {
                                 $terms = wc_get_product_terms($product_id, $attribute_name, array('fields' => 'all'));
