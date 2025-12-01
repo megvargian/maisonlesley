@@ -680,7 +680,7 @@ function add_custom_add_to_cart_button() {
                             ?>
                             <div class="color-attribute-section mb-3">
                                 <h6 class="mb-2 color-header" style="font-size: 0.95rem; font-weight: 500;">
-                                    Colour: <span style="font-weight: 400;"><?php echo esc_html($first_color_name); ?></span>
+                                    Color: <span style="font-weight: 400;"><?php echo esc_html($first_color_name); ?></span>
                                 </h6>
                                 <ul class="product-attributes-color d-flex gap-2" style="list-style: none; padding: 0; margin: 0;">
                                     <?php
