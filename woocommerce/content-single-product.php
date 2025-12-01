@@ -73,6 +73,7 @@ if ($is_mystique) {
                     $attributes = $product->get_attributes();
                     if (isset($attributes['pa_color'])) {
                         $color_attribute = $attributes['pa_color'];
+                        echo '<pre>'; print_r($color_attribute); echo '</pre>';
                         if ($color_attribute->is_taxonomy()) {
                             $color_terms = wc_get_product_terms($product->get_id(), 'pa_color', array('fields' => 'all'));
                             if (!empty($color_terms)) {
