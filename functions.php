@@ -872,6 +872,12 @@ function form_custom_add_to_cart() {
         // Get all available variations
         $available_variations = $product->get_available_variations();
 
+        // Debug: collect all variations for error message
+        $debug_variations = array();
+        foreach ( $available_variations as $var ) {
+            $debug_variations[] = $var['attributes'];
+        }
+
         // Try to find matching variation
         foreach ( $available_variations as $variation_data ) {
             $variation_attributes = $variation_data['attributes'];
@@ -880,10 +886,16 @@ function form_custom_add_to_cart() {
             // Check if size matches
             if ( ! empty( $selected_attr_size ) ) {
                 $size_key = 'attribute_pa_size';
-                if ( ! isset( $variation_attributes[$size_key] ) ||
-                     ( $variation_attributes[$size_key] !== '' &&
-                       sanitize_title($variation_attributes[$size_key]) !== sanitize_title($selected_attr_size) &&
-                       $variation_attributes[$size_key] !== sanitize_title($selected_attr_size) ) ) {
+                $size_slug = sanitize_title($selected_attr_size);
+
+                if ( isset( $variation_attributes[$size_key] ) ) {
+                    // Empty string means "any" - always matches
+                    if ( $variation_attributes[$size_key] === '' ) {
+                        // Match - this variation accepts any size
+                    } else if ( $variation_attributes[$size_key] !== $size_slug ) {
+                        $match = false;
+                    }
+                } else {
                     $match = false;
                 }
             }
@@ -891,10 +903,16 @@ function form_custom_add_to_cart() {
             // Check if color matches
             if ( $match && ! empty( $selected_attr_color ) ) {
                 $color_key = 'attribute_pa_color';
-                if ( ! isset( $variation_attributes[$color_key] ) ||
-                     ( $variation_attributes[$color_key] !== '' &&
-                       sanitize_title($variation_attributes[$color_key]) !== sanitize_title($selected_attr_color) &&
-                       $variation_attributes[$color_key] !== sanitize_title($selected_attr_color) ) ) {
+                $color_slug = sanitize_title($selected_attr_color);
+
+                if ( isset( $variation_attributes[$color_key] ) ) {
+                    // Empty string means "any" - always matches
+                    if ( $variation_attributes[$color_key] === '' ) {
+                        // Match - this variation accepts any color
+                    } else if ( $variation_attributes[$color_key] !== $color_slug ) {
+                        $match = false;
+                    }
+                } else {
                     $match = false;
                 }
             }
@@ -906,7 +924,16 @@ function form_custom_add_to_cart() {
         }
 
         if ( ! $variation_id ) {
-            wp_send_json_error(array('message' => 'Variation not found for selected options'));
+            wp_send_json_error(array(
+                'message' => 'Variation not found for selected options',
+                'debug' => array(
+                    'selected_size' => $selected_attr_size,
+                    'selected_color' => $selected_attr_color,
+                    'size_slug' => sanitize_title($selected_attr_size),
+                    'color_slug' => sanitize_title($selected_attr_color),
+                    'available_variations' => $debug_variations
+                )
+            ));
             wp_die();
         }
 
