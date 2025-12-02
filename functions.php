@@ -856,30 +856,47 @@ function form_custom_add_to_cart() {
     $selected_attr_size = sanitize_text_field( $_POST['selected_attr_size'] );
     $selected_attr_color = sanitize_text_field( $_POST['selected_attr_color'] );
 
-    if ( ! empty( $selected_attr_size ) && ! empty( $selected_attr_color ) ) {
-        $attributes = array(
-            'attribute_pa_size'  => $selected_attr_size,
-            'attribute_pa_color' => $selected_attr_color
-        );
-    } elseif ( ! empty( $selected_attr_color ) && empty( $selected_attr_size ) ) {
-        $attributes = array(
-            'attribute_pa_color' => $selected_attr_color
-        );
-    } elseif ( ! empty( $selected_attr_size ) && empty( $selected_attr_color ) ) {
-        $attributes = array(
-            'attribute_pa_size' => $selected_attr_size
-        );
-    } else {
-        $attributes = array(); // Default case if no attributes are selected
+    // Build attributes array with lowercase slugs
+    $attributes = array();
+    if ( ! empty( $selected_attr_size ) ) {
+        $attributes['attribute_pa_size'] = strtolower($selected_attr_size);
+    }
+    if ( ! empty( $selected_attr_color ) ) {
+        $attributes['attribute_pa_color'] = strtolower($selected_attr_color);
     }
 
-    $quantity = 1; // You can customize the quantity
-    $added = WC()->cart->add_to_cart( $product_id, $quantity, 0, $attributes );
+    // Get the product
+    $product = wc_get_product( $product_id );
+
+    if ( ! $product ) {
+        wp_send_json_error(array('message' => 'Product not found'));
+        wp_die();
+    }
+
+    $variation_id = 0;
+    $quantity = 1;
+
+    // If it's a variable product, find the matching variation
+    if ( $product->is_type('variable') ) {
+        $data_store = WC_Data_Store::load('product');
+        $variation_id = $data_store->find_matching_product_variation($product, $attributes);
+
+        if ( ! $variation_id ) {
+            wp_send_json_error(array('message' => 'Variation not found for selected options'));
+            wp_die();
+        }
+
+        // Add variation to cart
+        $added = WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $attributes );
+    } else {
+        // Simple product
+        $added = WC()->cart->add_to_cart( $product_id, $quantity, 0, $attributes );
+    }
 
     if ( $added ) {
-        wp_send_json_success();
+        wp_send_json_success(array('message' => 'Product added to cart'));
     } else {
-        wp_send_json_error();
+        wp_send_json_error(array('message' => 'Could not add product to cart'));
     }
 
     wp_die();

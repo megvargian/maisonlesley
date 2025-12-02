@@ -319,7 +319,7 @@ $last_part_footer_feild = $getGeneralFields['last_part_footer_feild'];
         //     var selected_attr_color = $('.product-attributes-color').find('button.active').find('span').text();
         //     $.ajax({
         //         type: 'POST',
-        //         url: '<?php echo admin_url('admin-ajax.php'); ?>',
+        //         url: '<?php // echo admin_url('admin-ajax.php'); ?>',
         //         data: {
         //             action: 'form_custom_add_to_cart',
         //             product_id: product_id,
