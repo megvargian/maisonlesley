@@ -883,9 +883,10 @@ function form_custom_add_to_cart() {
             $variation_attributes = $variation_data['attributes'];
             $match = true;
 
-            // Check if size matches
+            // Check if size matches (note: size is a custom attribute, not global)
             if ( ! empty( $selected_attr_size ) ) {
-                $size_key = 'attribute_pa_size';
+                // Try both attribute_size (custom) and attribute_pa_size (global)
+                $size_key = isset($variation_attributes['attribute_size']) ? 'attribute_size' : 'attribute_pa_size';
                 $size_slug = sanitize_title($selected_attr_size);
 
                 if ( isset( $variation_attributes[$size_key] ) ) {
@@ -925,22 +926,18 @@ function form_custom_add_to_cart() {
 
         if ( ! $variation_id ) {
             wp_send_json_error(array(
-                'message' => 'Variation not found for selected options',
-                'debug' => array(
-                    'selected_size' => $selected_attr_size,
-                    'selected_color' => $selected_attr_color,
-                    'size_slug' => sanitize_title($selected_attr_size),
-                    'color_slug' => sanitize_title($selected_attr_color),
-                    'available_variations' => $debug_variations
-                )
+                'message' => 'Variation not found for selected options'
             ));
             wp_die();
         }
 
         // Build attributes array for cart
+        // Determine which size attribute key to use
+        $size_attr_key = 'attribute_size'; // Custom attribute (not global)
+
         $attributes = array();
         if ( ! empty( $selected_attr_size ) ) {
-            $attributes['attribute_pa_size'] = sanitize_title($selected_attr_size);
+            $attributes[$size_attr_key] = sanitize_title($selected_attr_size);
         }
         if ( ! empty( $selected_attr_color ) ) {
             $attributes['attribute_pa_color'] = sanitize_title($selected_attr_color);
