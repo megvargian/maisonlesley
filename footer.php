@@ -313,30 +313,30 @@ $last_part_footer_feild = $getGeneralFields['last_part_footer_feild'];
             }
         });
         // add to cart with selected attribute
-        $('#form-add-to-cart-button').on('click', function() {
-            var product_id = $(this).data('product-id');
-            var selected_attr_size = $('.product-attributes-size').find('button.active').text();
-            var selected_attr_color = $('.product-attributes-color').find('button.active').find('span').text();
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo admin_url('admin-ajax.php'); ?>',
-                data: {
-                    action: 'form_custom_add_to_cart',
-                    product_id: product_id,
-                    selected_attr_size: selected_attr_size,
-                    selected_attr_color: selected_attr_color,
-                },
-                success: function(response) {
-                    if (response.success) {
-                        $('#form-add-to-cart-button').prop('disabled', true);
-                        window.location.href = '/cart/';
-                    } else {
-                        $('#form-add-to-cart-button').prop('disabled', true);
-                        $('.response').text('There was an error adding the product to the cart.');
-                    }
-                }
-            });
-        });
+        // $('#form-add-to-cart-button').on('click', function() {
+        //     var product_id = $(this).data('product-id');
+        //     var selected_attr_size = $('.product-attributes-size').find('button.active').text();
+        //     var selected_attr_color = $('.product-attributes-color').find('button.active').find('span').text();
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '<?php echo admin_url('admin-ajax.php'); ?>',
+        //         data: {
+        //             action: 'form_custom_add_to_cart',
+        //             product_id: product_id,
+        //             selected_attr_size: selected_attr_size,
+        //             selected_attr_color: selected_attr_color,
+        //         },
+        //         success: function(response) {
+        //             if (response.success) {
+        //                 $('#form-add-to-cart-button').prop('disabled', true);
+        //                 window.location.href = '/cart/';
+        //             } else {
+        //                 $('#form-add-to-cart-button').prop('disabled', true);
+        //                 $('.response').text('There was an error adding the product to the cart.');
+        //             }
+        //         }
+        //     });
+        // });
         // Apply FancyBox to product images
         $('a.fancybox').fancybox({
             // FancyBox options can be added here
