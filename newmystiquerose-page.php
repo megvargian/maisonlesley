@@ -8,7 +8,6 @@ get_header();
 $all_generalFields = get_fields('options');
 $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 ?>
-
 <style>
     /* Reset and Base Styles */
     .mystique-new-page {
@@ -739,23 +738,22 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         }
     }
 </style>
-
 <script>
-jQuery(document).ready(function($) {
-    // Add body class for Mystique Rose page
-    $('body').addClass('new-mystiquerose-page');
+    jQuery(document).ready(function($) {
+        // Add body class for Mystique Rose page
+        $('body').addClass('new-mystiquerose-page');
 
-    $(window).scroll(function() {
-        var scrollPosition = $(window).scrollTop();
+        $(window).scroll(function() {
+            var scrollPosition = $(window).scrollTop();
 
-        // Add 'scrolled' class after 100px scroll
-        if (scrollPosition > 100) {
-            $('body').addClass('scrolled');
-        } else {
-            $('body').removeClass('scrolled');
-        }
+            // Add 'scrolled' class after 100px scroll
+            if (scrollPosition > 100) {
+                $('body').addClass('scrolled');
+            } else {
+                $('body').removeClass('scrolled');
+            }
+        });
     });
-});
 </script>
 
 <div class="mystique-new-page">
