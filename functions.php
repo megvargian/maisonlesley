@@ -394,6 +394,17 @@ function my_acf_init_block_types()
                 'keywords'          => array('testimonial', 'quote'),
             )
         );
+        acf_register_block_type(
+            array(
+                'name'              => 'MystiqueRose best seller Section',
+                'title'             => __('MystiqueRose best seller Section'),
+                'description'       => __('fourth section of new mystique rose page'),
+                'render_template'   => 'blocks/NewMystiqueRose/best_seller_section.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
     }
 }
 

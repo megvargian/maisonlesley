@@ -868,7 +868,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
     </section> -->
 
     <!-- Single Full Width Image Section -->
-    <section class="single-image-section p-1">
+    <!-- <section class="single-image-section p-1">
         <?php
         // Single category image - customize as needed
         $single_category = array(
@@ -889,9 +889,9 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
                 <h3 class="single-image-title"><?php echo esc_html($single_category['name']); ?></h3>
             </div>
         </a>
-    </section>
+    </section> -->
 
-    <section class="products-section">
+    <!-- <section class="products-section">
         <div class="container-fluid px-1">
             <div class="products-grid">
                 <?php
@@ -947,7 +947,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
                 ?>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Best Sellers Section -->
     <section class="best-sellers-section">
