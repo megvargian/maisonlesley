@@ -62,7 +62,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 
     /* When scrolled - logo moves to header position */
     body.scrolled .mystique-logo-overlay {
-        top: 100px;
+        top: 70px;
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
     }

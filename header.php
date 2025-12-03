@@ -28,6 +28,7 @@ $is_MystiqueRose = is_page(460) || is_page(2409) || is_product_category(17) || i
 $header_menu = $is_MystiqueRose ? $all_generalFields['header_menu_mystique_rose'] : $all_generalFields['header_menu'];
 $current_url = home_url(add_query_arg(array(), $wp->request));
 $get_size_guide_fields = $all_generalFields;
+$is_new_mystiquerose_page = is_page(2409);
 if($_SERVER['REQUEST_URI'] == '/shop/'){
     header("Location: https://maisonlesley.com/");
     exit();
@@ -123,45 +124,47 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
         </div>
         <header>
             <section class="desktop-header d-none d-lg-block">
-                <section class="first-header bg-black">
-                    <div class="container">
-                        <div class="row justify-content-between">
-                            <div class="col px-0">
-                                <div class="d-flex float-left hover-js-drop-down custom-first-header-padding">
-                                    <a href="<?php echo $left_side_top_header_fields['main_link']; ?>"
-                                        class="default-button">
-                                        <?php echo $left_side_top_header_fields['main_text']; ?>
-                                    </a>
-                                    <!-- <div class="drop-down-customer-service">
-                                        <div class="headeing text-center">
-                                            <h6><?php // echo $left_side_top_header_fields['sub_main_label']; ?></h6>
-                                        </div>
-                                        <ul class="d-flex justify-content-between align-items-center">
-                                            <li>
-                                                <a href="<?php // echo $left_side_top_header_fields['first_sub_text_link']; ?>" class="icon-mail">
-                                                    <span><?php //echo $left_side_top_header_fields['first_sub_text']; ?></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php //echo $left_side_top_header_fields['second_sub_text_link']; ?>">
-                                                    <span><?php //echo $left_side_top_header_fields['second_sub_text']; ?></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div> -->
+                <?php if (!$is_new_mystiquerose_page) {?>
+                    <section class="first-header bg-black">
+                        <div class="container">
+                            <div class="row justify-content-between">
+                                <div class="col px-0">
+                                    <div class="d-flex float-left hover-js-drop-down custom-first-header-padding">
+                                        <a href="<?php echo $left_side_top_header_fields['main_link']; ?>"
+                                            class="default-button">
+                                            <?php echo $left_side_top_header_fields['main_text']; ?>
+                                        </a>
+                                        <!-- <div class="drop-down-customer-service">
+                                            <div class="headeing text-center">
+                                                <h6><?php // echo $left_side_top_header_fields['sub_main_label']; ?></h6>
+                                            </div>
+                                            <ul class="d-flex justify-content-between align-items-center">
+                                                <li>
+                                                    <a href="<?php // echo $left_side_top_header_fields['first_sub_text_link']; ?>" class="icon-mail">
+                                                        <span><?php //echo $left_side_top_header_fields['first_sub_text']; ?></span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php //echo $left_side_top_header_fields['second_sub_text_link']; ?>">
+                                                        <span><?php //echo $left_side_top_header_fields['second_sub_text']; ?></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div> -->
+                                    </div>
                                 </div>
+                                <!-- <div class="col px-0">
+                                    <div class="icon-pin d-flex float-right custom-first-header-padding">
+                                        <a class="default-button" href="<?php //echo $right_side_top_header_fields['main_link'] ?>">
+                                            <?php //echo $right_side_top_header_fields['mian_text'] ?>
+                                        </a>
+                                    </div>
+                                </div> -->
                             </div>
-                            <!-- <div class="col px-0">
-                                <div class="icon-pin d-flex float-right custom-first-header-padding">
-                                    <a class="default-button" href="<?php //echo $right_side_top_header_fields['main_link'] ?>">
-                                        <?php //echo $right_side_top_header_fields['mian_text'] ?>
-                                    </a>
-                                </div>
-                            </div> -->
                         </div>
-                    </div>
-                </section>
-                <section class="second-header" style="<?php echo is_page(2409) ? 'top: 25%;' : ''; ?>">
+                    </section>
+                <?php } ?>
+                <section class="second-header" style="<?php echo $is_new_mystiquerose_page ? 'top: 0;' : ''; ?>">
                     <div class="container h-100 px-0">
                         <div class="row h-100">
                             <div class="col-md-4 col-12 h-100">
@@ -187,22 +190,24 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                         </div>
                     </div>
                 </section>
-                <section class="bg-white main-logo-section">
-                    <div class="container">
-                        <div class="row justify-content-center"
-                            style="<?php echo is_page(2409) ? 'padding-top: 0px;' : 'padding-top: 70px;'; ?>">
-                            <a class="d-flex justify-content-center" style="width:fit-content;"
-                                href="<?php echo $is_MystiqueRose ? $main_logo_link_mystiquerose : $main_logo_link;?>">
-                                <?php if($is_MystiqueRose){ ?>
-                                <img class="main-logo" src="<?php echo $main_logo_mystiquerose; ?>" alt="Mystique Rose">
-                                <?php } else { ?>
-                                <img class="main-logo" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
-                                <?php } ?>
-                            </a>
+                <?php if(!$is_new_mystiquerose_page) { ?>
+                    <section class="bg-white main-logo-section">
+                        <div class="container">
+                            <div class="row justify-content-center"
+                                style="<?php echo $is_new_mystiquerose_page ? 'padding-top: 0px;' : 'padding-top: 70px;'; ?>">
+                                <a class="d-flex justify-content-center" style="width:fit-content;"
+                                    href="<?php echo $is_MystiqueRose ? $main_logo_link_mystiquerose : $main_logo_link;?>">
+                                    <?php if($is_MystiqueRose){ ?>
+                                    <img class="main-logo" src="<?php echo $main_logo_mystiquerose; ?>" alt="Mystique Rose">
+                                    <?php } else { ?>
+                                    <img class="main-logo" src="<?php echo $main_logo_image; ?>" alt="Maison Lesley">
+                                    <?php } ?>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </section>
-                <section class="bg-white main-nav-section" style="<?php echo is_page(2409) ? 'transform: translateY(20%);' : ''; ?>">
+                    </section>
+                <?php } ?>
+                <section class="bg-white main-nav-section" style="<?php echo $is_new_mystiquerose_page ? 'transform: translateY(60%);' : ''; ?>">
                     <div class="container px-0">
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list">
@@ -327,7 +332,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                         </nav>
                     </div>
                 </section>
-                <section class="bg-white main-nav-section-tablet <?php echo is_page(2409) ? 'py-3' : ''; ?>">
+                <section class="bg-white main-nav-section-tablet <?php echo $is_new_mystiquerose_page ? 'py-3' : ''; ?>">
                     <div class="container px-0 py-sm-0 py-2">
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list align-items-center">
@@ -359,7 +364,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                             </ul>
                             <div class="right-side">
                                 <ul class="d-flex">
-                                    <?php if(!is_page(2409)){ ?>
+                                    <?php if(!$is_new_mystiquerose_page){ ?>
                                         <li>
                                             <a class="my-account" href="/my-account"></a>
                                         </li>
@@ -445,7 +450,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
         <!-- <div class="header-active-background-gray"></div> -->
         <script>
         jQuery(document).ready(function($) {
-            <?php if(!is_page(2409)){ ?>
+            <?php if(!$is_new_mystiquerose_page){ ?>
                 $(window).scroll(function() {
                     var currentScreenPosition = $(document).scrollTop();
                     if (currentScreenPosition > 250) {
