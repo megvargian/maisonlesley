@@ -809,7 +809,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
     </section> -->
 
     <!-- Products Section -->
-    <section class="products-section">
+    <!-- <section class="products-section">
         <div class="container-fluid px-1">
             <div class="products-grid">
                 <?php
@@ -865,7 +865,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
                 ?>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Single Full Width Image Section -->
     <section class="single-image-section p-1">
