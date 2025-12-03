@@ -774,7 +774,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
     ?>
 
     <!-- Full Width Grid Section -->
-    <section class="full-width-grid-section">
+    <!-- <section class="full-width-grid-section">
         <div class="full-width-grid">
             <?php
             // Get two category images - you can customize these category IDs
@@ -806,7 +806,7 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
             </a>
             <?php endforeach; ?>
         </div>
-    </section>
+    </section> -->
 
     <!-- Products Section -->
     <section class="products-section">
