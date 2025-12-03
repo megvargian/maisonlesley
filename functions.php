@@ -361,6 +361,17 @@ function my_acf_init_block_types()
                 'keywords'          => array('testimonial', 'quote'),
             )
         );
+        acf_register_block_type(
+            array(
+                'name'              => 'MystiqueRose Full Width Grid Section',
+                'title'             => __('MystiqueRose Full Width Grid Section'),
+                'description'       => __('second section of new mystique rose page'),
+                'render_template'   => 'blocks/NewMystiqueRose/full_width_grid_section.php',
+                'category'          => 'formatting',
+                'icon'              => 'admin-comments',
+                'keywords'          => array('testimonial', 'quote'),
+            )
+        );
     }
 }
 

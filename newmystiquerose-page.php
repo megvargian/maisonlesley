@@ -763,10 +763,15 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
     </div>
 
     <!-- Hero Section -->
-    <section class="mystique-hero">
-        <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img.webp"
+    <!-- <section class="mystique-hero">
+        <img src="<?php //echo get_template_directory_uri(); ?>/inc/assets/images/main-img.webp"
              alt="Mystique Rose Collection">
-    </section>
+    </section> -->
+    <?php
+        while ( have_posts() ) : the_post();
+            the_content();
+        endwhile;
+    ?>
 
     <!-- Full Width Grid Section -->
     <section class="full-width-grid-section">
