@@ -711,8 +711,8 @@ function add_custom_add_to_cart_button() {
                         $attribute_name = $attribute->get_name();
                         // Get attribute value(s)
                         $attribute_values = $attribute->get_options();
-                        // Output the attribute
-                        if($attribute_label == 'Size'){
+                        // Output the attribute - check for global pa_size attribute
+                        if($attribute_name == 'pa_size'){
                             ?>
                             <div class="d-flex justify-content-between">
                                 <h6 class="mb-2"><?php echo $attribute_label; ?></h6>
@@ -722,8 +722,10 @@ function add_custom_add_to_cart_button() {
                             </div>
                             <?php
                             echo '<ul class="product-attributes-size w-100 d-flex justify-content-start pb-3">';
-                            foreach ( $attribute_values as $value ) {
-                                echo '<li><button>'. esc_html( $value ) .'</button></li>';
+                            // Get size terms for global attribute
+                            $terms = wc_get_product_terms($product->get_id(), $attribute_name, array('fields' => 'names'));
+                            foreach ( $terms as $term_name ) {
+                                echo '<li><button>'. esc_html( $term_name ) .'</button></li>';
                             }
                             echo '</ul>';
                         }
