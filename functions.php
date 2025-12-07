@@ -859,11 +859,12 @@ function add_custom_add_to_cart_button() {
                                 },
                                 success: function(res) {
                                     if(res.success) {
-                                        window.location.href = '/cart';
+                                        // Redirect immediately without waiting
+                                        window.location.href = res.data.cart_url || '/cart';
                                     } else {
                                         btn.prop('disabled', false);
                                         btn.removeClass('add-to-cart-blur');
-                                        $('.response').addClass('text-danger').text('Could not add to cart. Please try again.');
+                                        $('.response').addClass('text-danger').text(res.data.message || 'Could not add to cart. Please try again.');
                                     }
                                 },
                                 error: function() {
@@ -918,7 +919,6 @@ function form_custom_add_to_cart() {
 
     if ( ! $product ) {
         wp_send_json_error(array('message' => 'Product not found'));
-        wp_die();
     }
 
     $variation_id = 0;
@@ -926,90 +926,42 @@ function form_custom_add_to_cart() {
 
     // If it's a variable product, find the matching variation
     if ( $product->is_type('variable') ) {
-        // Get all available variations
-        $available_variations = $product->get_available_variations();
-
-        // Debug: collect all variations for error message
-        $debug_variations = array();
-        foreach ( $available_variations as $var ) {
-            $debug_variations[] = $var['attributes'];
-        }
-
-        // Try to find matching variation
-        foreach ( $available_variations as $variation_data ) {
-            $variation_attributes = $variation_data['attributes'];
-            $match = true;
-
-            // Check if size matches (note: size is a custom attribute, not global)
-            if ( ! empty( $selected_attr_size ) ) {
-                // Try both attribute_size (custom) and attribute_pa_size (global)
-                $size_key = isset($variation_attributes['attribute_size']) ? 'attribute_size' : 'attribute_pa_size';
-                $size_slug = sanitize_title($selected_attr_size);
-
-                if ( isset( $variation_attributes[$size_key] ) ) {
-                    // Empty string means "any" - always matches
-                    if ( $variation_attributes[$size_key] === '' ) {
-                        // Match - this variation accepts any size
-                    } else if ( $variation_attributes[$size_key] !== $size_slug ) {
-                        $match = false;
-                    }
-                } else {
-                    $match = false;
-                }
-            }
-
-            // Check if color matches
-            if ( $match && ! empty( $selected_attr_color ) ) {
-                $color_key = 'attribute_pa_color';
-                $color_slug = sanitize_title($selected_attr_color);
-
-                if ( isset( $variation_attributes[$color_key] ) ) {
-                    // Empty string means "any" - always matches
-                    if ( $variation_attributes[$color_key] === '' ) {
-                        // Match - this variation accepts any color
-                    } else if ( $variation_attributes[$color_key] !== $color_slug ) {
-                        $match = false;
-                    }
-                } else {
-                    $match = false;
-                }
-            }
-
-            if ( $match ) {
-                $variation_id = $variation_data['variation_id'];
-                break;
-            }
-        }
-
-        if ( ! $variation_id ) {
-            wp_send_json_error(array(
-                'message' => 'Variation not found for selected options'
-            ));
-            wp_die();
-        }
-
-        // Build attributes array for cart
-        // Determine which size attribute key to use
-        $size_attr_key = 'attribute_size'; // Custom attribute (not global)
-
+        // Build attributes array
         $attributes = array();
+
         if ( ! empty( $selected_attr_size ) ) {
-            $attributes[$size_attr_key] = sanitize_title($selected_attr_size);
+            $attributes['pa_size'] = sanitize_title($selected_attr_size);
         }
         if ( ! empty( $selected_attr_color ) ) {
-            $attributes['attribute_pa_color'] = sanitize_title($selected_attr_color);
+            $attributes['pa_color'] = sanitize_title($selected_attr_color);
+        }
+
+        // Use WooCommerce's data store to find matching variation (much faster)
+        $data_store = WC_Data_Store::load('product');
+        $variation_id = $data_store->find_matching_product_variation($product, $attributes);
+
+        if ( ! $variation_id ) {
+            wp_send_json_error(array('message' => 'Variation not found for selected options'));
+        }
+
+        // Prepare attributes for cart (with attribute_ prefix)
+        $cart_attributes = array();
+        foreach ($attributes as $key => $value) {
+            $cart_attributes['attribute_' . $key] = $value;
         }
 
         // Add variation to cart
-        $added = WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $attributes );
+        $added = WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $cart_attributes );
     } else {
         // Simple product
-        $attributes = array();
-        $added = WC()->cart->add_to_cart( $product_id, $quantity, 0, $attributes );
+        $added = WC()->cart->add_to_cart( $product_id, $quantity );
     }
 
     if ( $added ) {
-        wp_send_json_success(array('message' => 'Product added to cart'));
+        wp_send_json_success(array(
+            'message' => 'Product added to cart',
+            'cart_url' => wc_get_cart_url()
+        ));
     } else {
         wp_send_json_error(array('message' => 'Could not add product to cart'));
     }
