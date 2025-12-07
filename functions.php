@@ -1067,7 +1067,7 @@ function display_product_images_with_fancybox() {
                     <?php
                         $image_url = wp_get_attachment_url($attachment_id);
                         echo '<a href="' . $image_url . '" class="fancybox d-block" data-fancybox="gallery">';
-                        echo wp_get_attachment_image($attachment_id, 'custom-woocommerce-image-size');
+                        echo wp_get_attachment_image($attachment_id, 'large');
                         echo '</a>';
                     ?>
                 </div>
