@@ -1031,6 +1031,31 @@ function custom_enqueue_fancybox() {
 
     // Enqueue FancyBox JS
     wp_enqueue_script('fancybox-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js', array('jquery'), null, true);
+
+    // Add inline CSS for consistent Mystique Rose product images
+    wp_add_inline_style('fancybox-css', '
+        .mystique-product-image {
+            margin-bottom: 1rem;
+        }
+        .mystique-fancybox-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .mystique-product-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 3/4;
+        }
+        @media (max-width: 768px) {
+            .mystique-product-image {
+                margin-bottom: 0.5rem;
+            }
+        }
+    ');
 }
 add_action('wp_enqueue_scripts', 'custom_enqueue_fancybox');
 
@@ -1052,10 +1077,10 @@ function display_product_images_with_fancybox() {
         if (has_post_thumbnail()) {
             $main_image_url = wp_get_attachment_url(get_post_thumbnail_id($product->get_id()));
             ?>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-12 mystique-product-image">
                     <?php
-                    echo '<a href="' . $main_image_url . '" class="fancybox" data-fancybox="gallery">';
-                    the_post_thumbnail('shop_single');
+                    echo '<a href="' . $main_image_url . '" class="fancybox mystique-fancybox-link" data-fancybox="gallery">';
+                    echo wp_get_attachment_image(get_post_thumbnail_id($product->get_id()), 'large', false, array('class' => 'mystique-product-img'));
                     echo '</a>';
                     ?>
                 </div>
@@ -1063,11 +1088,11 @@ function display_product_images_with_fancybox() {
         }
         if ($attachment_ids) {
             foreach ($attachment_ids as $attachment_id) { ?>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-12 mystique-product-image">
                     <?php
                         $image_url = wp_get_attachment_url($attachment_id);
-                        echo '<a href="' . $image_url . '" class="fancybox d-block" data-fancybox="gallery">';
-                        echo wp_get_attachment_image($attachment_id, 'large');
+                        echo '<a href="' . $image_url . '" class="fancybox mystique-fancybox-link d-block" data-fancybox="gallery">';
+                        echo wp_get_attachment_image($attachment_id, 'large', false, array('class' => 'mystique-product-img'));
                         echo '</a>';
                     ?>
                 </div>
