@@ -625,12 +625,15 @@ header.active{
 	accent-color: black;
 	fill: black;
 }
-.add-to-cart, .whish-list{
+.add-to-cart, .whish-list, .search-icon, .my-account{
 	height: 50px;
 	width: 50px;
-	padding: 15px;
+	margin: 15px;
 	font-size: 20px;
 	line-height: 20px;
+}
+.search-icon{
+	margin-right: 0px !important;
 }
 .add-to-cart::before{
     content: "\E00A";
