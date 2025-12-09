@@ -626,14 +626,16 @@ header.active{
 	fill: black;
 }
 .add-to-cart, .whish-list, .search-icon, .my-account{
-	height: 50px;
-	width: 50px;
-	margin: 15px;
+	height: 20px;
+	width: 20px;
+	margin-left: 15px;
 	font-size: 20px;
 	line-height: 20px;
+	padding: 0 !important;
 }
 .search-icon{
 	margin-right: 0px !important;
+	line-height: 10px !important;
 }
 .add-to-cart::before{
     content: "\E00A";
