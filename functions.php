@@ -1292,3 +1292,27 @@ function maybe_add_color_fields_for_attribute() {
     // This runs when the form is about to be displayed
     // Nothing to do here, just for hook ordering
 }
+
+// Check if cart contains any Mystique Rose products
+function cart_has_mystique_rose_products() {
+    if (!function_exists('WC') || !WC()->cart) {
+        return false;
+    }
+
+    $mystique_cat_ids = array(17, 23, 18, 25, 20);
+
+    foreach (WC()->cart->get_cart() as $cart_item) {
+        $product_id = $cart_item['product_id'];
+        $terms = get_the_terms($product_id, 'product_cat');
+
+        if ($terms && !is_wp_error($terms)) {
+            foreach ($terms as $term) {
+                if (in_array($term->term_id, $mystique_cat_ids)) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
+}

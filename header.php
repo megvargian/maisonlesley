@@ -16,6 +16,13 @@ if(is_product()){
                                     has_term(25, 'product_cat', get_the_ID()) ||
                                     has_term(20, 'product_cat', get_the_ID()) ? 1 : 0;
 }
+
+// Check if cart/checkout has Mystique Rose products
+$cart_has_mystique = false;
+if ((is_cart() || is_checkout()) && function_exists('cart_has_mystique_rose_products')) {
+    $cart_has_mystique = cart_has_mystique_rose_products();
+}
+
 $all_generalFields = get_fields('options');
 $top_header_fields = $all_generalFields['top_header_fields'];
 $left_side_top_header_fields = $top_header_fields['left_side_top_header'];
@@ -24,7 +31,7 @@ $main_logo_image = $all_generalFields['main_logo'];
 $main_logo_link = $all_generalFields['main_logo_link'];
 $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 $main_logo_link_mystiquerose = $all_generalFields['main_logo_mystiquerose_link'];
-$is_MystiqueRose = is_page(460) || is_page(2409) || is_product_category(17) || is_product_category(23) || is_product_category(18) || is_product_category(25) || is_product_category(20) || !empty($is_product_from_mystiquerose);
+$is_MystiqueRose = is_page(460) || is_page(2409) || is_product_category(17) || is_product_category(23) || is_product_category(18) || is_product_category(25) || is_product_category(20) || !empty($is_product_from_mystiquerose) || $cart_has_mystique;
 $header_menu = $is_MystiqueRose ? $all_generalFields['header_menu_mystique_rose'] : $all_generalFields['header_menu'];
 $current_url = home_url(add_query_arg(array(), $wp->request));
 $get_size_guide_fields = $all_generalFields;
