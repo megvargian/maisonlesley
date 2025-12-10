@@ -732,20 +732,33 @@ function add_custom_add_to_cart_button() {
                                 $out_of_stock_class = '';
 
                                 if ( $product->is_type('variable') ) {
-                                    // Build attributes to find variation
-                                    $attributes = array('attribute_pa_size' => $term->slug);
-
                                     // Get all available variations
                                     $available_variations = $product->get_available_variations();
                                     $variation_in_stock = false;
 
                                     foreach ( $available_variations as $variation ) {
-                                        // Check if this variation matches the size
-                                        if ( isset($variation['attributes']['attribute_pa_size']) &&
-                                             $variation['attributes']['attribute_pa_size'] === $term->slug ) {
-                                            if ( $variation['is_in_stock'] ) {
-                                                $variation_in_stock = true;
-                                                break;
+                                        // Check if this variation matches the size (or accepts 'any' size)
+                                        $var_size = isset($variation['attributes']['attribute_pa_size']) ? $variation['attributes']['attribute_pa_size'] : '';
+
+                                        if ( $var_size === $term->slug || $var_size === '' ) {
+                                            // Get the actual variation product to check stock properly
+                                            $variation_obj = wc_get_product( $variation['variation_id'] );
+
+                                            if ( $variation_obj ) {
+                                                // Check if stock is managed
+                                                if ( $variation_obj->managing_stock() ) {
+                                                    // If managing stock, check quantity
+                                                    if ( $variation_obj->get_stock_quantity() > 0 && $variation_obj->is_in_stock() ) {
+                                                        $variation_in_stock = true;
+                                                        break;
+                                                    }
+                                                } else {
+                                                    // If not managing stock, just check stock status
+                                                    if ( $variation_obj->is_in_stock() ) {
+                                                        $variation_in_stock = true;
+                                                        break;
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -999,6 +1012,36 @@ function form_custom_add_to_cart() {
         // Use WooCommerce's data store to find matching variation (much faster)
         $data_store = WC_Data_Store::load('product');
         $variation_id = $data_store->find_matching_product_variation($product, $attributes);
+
+        // If not found, try manual matching (handles 'any' attribute cases)
+        if ( ! $variation_id ) {
+            $available_variations = $product->get_available_variations();
+
+            foreach ( $available_variations as $variation ) {
+                $match = true;
+
+                // Check size
+                if ( ! empty( $selected_attr_size ) ) {
+                    $var_size = isset($variation['attributes']['attribute_pa_size']) ? $variation['attributes']['attribute_pa_size'] : '';
+                    if ( $var_size !== '' && $var_size !== sanitize_title($selected_attr_size) ) {
+                        $match = false;
+                    }
+                }
+
+                // Check color
+                if ( $match && ! empty( $selected_attr_color ) ) {
+                    $var_color = isset($variation['attributes']['attribute_pa_color']) ? $variation['attributes']['attribute_pa_color'] : '';
+                    if ( $var_color !== '' && $var_color !== sanitize_title($selected_attr_color) ) {
+                        $match = false;
+                    }
+                }
+
+                if ( $match ) {
+                    $variation_id = $variation['variation_id'];
+                    break;
+                }
+            }
+        }
 
         if ( ! $variation_id ) {
             wp_send_json_error(array('message' => 'Variation not found for selected options'));
