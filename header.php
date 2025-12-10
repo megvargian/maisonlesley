@@ -457,7 +457,25 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
         <!-- <div class="header-active-background-gray"></div> -->
         <script>
         jQuery(document).ready(function($) {
-            <?php if(!$is_new_mystiquerose_page){ ?>
+            <?php if($is_MystiqueRose) { ?>
+                $(window).scroll(function() {
+                    var currentScreenPosition = $(document).scrollTop();
+                    if (currentScreenPosition > 250) {
+                        $("header").addClass("active");
+                        $('.main-nav-section').addClass("active-mystique-rose");
+                        $('.main-logo-section').addClass("active");
+                        $('.first-header').addClass("active-mystique-rose");
+                        $('.second-header').addClass("active-mystique-rose");
+                    }
+                    if (currentScreenPosition < 125) {
+                        $("header").removeClass("active");
+                        $('.main-nav-section').removeClass("active-mystique-rose");
+                        $('.main-logo-section').removeClass("active");
+                        $('.first-header').removeClass("active-mystique-rose");
+                        $('.second-header').removeClass("active-mystique-rose");
+                    }
+                });
+            <?php } else if(!$is_new_mystiquerose_page){ ?>
                 $(window).scroll(function() {
                     var currentScreenPosition = $(document).scrollTop();
                     if (currentScreenPosition > 250) {

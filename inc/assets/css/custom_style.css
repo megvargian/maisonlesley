@@ -529,6 +529,11 @@ header.active {
   background-color: white;
 }
 
+.main-nav-section.active-mystique-rose {
+  transform: translateY(50%);
+  background-color: white;
+}
+
 .drop-down-customer-service {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -652,6 +657,16 @@ header.active {
 
 .first-header.active {
   transform: translateY(415%);
+  transition-duration: 0.4s;
+}
+
+.first-header.active-mystique-rose {
+  transform: translateY(315%);
+  transition-duration: 0.4s;
+}
+
+.second-header.active-mystique-rose {
+  transform: translateY(245%);
   transition-duration: 0.4s;
 }
 
