@@ -724,11 +724,66 @@ function add_custom_add_to_cart_button() {
                             <?php
                             echo '<ul class="product-attributes-size w-100 d-flex justify-content-start pb-3">';
                             // Get size terms for global attribute
-                            $terms = wc_get_product_terms($product->get_id(), $attribute_name, array('fields' => 'names'));
-                            foreach ( $terms as $term_name ) {
-                                echo '<li><button>'. esc_html( $term_name ) .'</button></li>';
+                            $terms = wc_get_product_terms($product->get_id(), $attribute_name, array('fields' => 'all'));
+
+                            foreach ( $terms as $term ) {
+                                // Check stock for this specific size variation
+                                $is_in_stock = true;
+                                $out_of_stock_class = '';
+
+                                if ( $product->is_type('variable') ) {
+                                    // Build attributes to find variation
+                                    $attributes = array('attribute_pa_size' => $term->slug);
+
+                                    // Get all available variations
+                                    $available_variations = $product->get_available_variations();
+                                    $variation_in_stock = false;
+
+                                    foreach ( $available_variations as $variation ) {
+                                        // Check if this variation matches the size
+                                        if ( isset($variation['attributes']['attribute_pa_size']) &&
+                                             $variation['attributes']['attribute_pa_size'] === $term->slug ) {
+                                            if ( $variation['is_in_stock'] ) {
+                                                $variation_in_stock = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    if ( !$variation_in_stock ) {
+                                        $is_in_stock = false;
+                                        $out_of_stock_class = ' out-of-stock';
+                                    }
+                                }
+
+                                echo '<li><button class="size-btn' . $out_of_stock_class . '"' . (!$is_in_stock ? ' disabled' : '') . '>'. esc_html( $term->name ) .'</button></li>';
                             }
                             echo '</ul>';
+                            ?>
+                            <style>
+                                .product-attributes-size .size-btn.out-of-stock {
+                                    position: relative;
+                                    color: #999;
+                                    background-color: #f0f0f0;
+                                    cursor: not-allowed;
+                                    opacity: 0.6;
+                                }
+                                .product-attributes-size .size-btn.out-of-stock::before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 0;
+                                    right: 0;
+                                    height: 1px;
+                                    background-color: #666;
+                                    transform: translateY(-50%) rotate(-15deg);
+                                }
+                                .product-attributes-size .size-btn.out-of-stock:hover {
+                                    background-color: #f0f0f0;
+                                    color: #999;
+                                }
+                            </style>
+                            <?php
                         }
                         if($attribute_label == 'color'){
                             // Skip color display for Mystique Rose products (they have custom color display)
@@ -779,6 +834,10 @@ function add_custom_add_to_cart_button() {
                             jQuery(document).ready(function($) {
                                 // Handle size button clicks
                                 $('.product-attributes-size li button').on('click', function() {
+                                    // Prevent selection of out-of-stock sizes
+                                    if ($(this).hasClass('out-of-stock')) {
+                                        return false;
+                                    }
                                     $('.product-attributes-size li button').removeClass('active');
                                     $(this).addClass('active');
                                 });
