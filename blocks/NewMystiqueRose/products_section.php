@@ -38,7 +38,7 @@ $Mystique_rose_products_section_fields = get_fields();
                     $permalink = get_permalink( $product_id );
                     $title = get_the_title( $product_id );
                     $price_html = $wc_product->get_price_html();
-                    $thumbnail = get_the_post_thumbnail( $product_id, 'woocommerce_thumbnail' );
+                    $thumbnail = get_the_post_thumbnail( $product_id, 'mystique_rose_product', array('style' => 'width: 100%; height: auto; aspect-ratio: 2/3; object-fit: cover;') );
                     ?>
                     <a href="<?php echo esc_url( $permalink ); ?>" class="product-card">
                         <div class="product-image-wrapper">
@@ -59,7 +59,7 @@ $Mystique_rose_products_section_fields = get_fields();
                         ?>
                         <a href="#" class="product-card">
                             <div class="product-image-wrapper">
-                                <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-mystique-rose.avif" alt="Product <?php echo $i; ?>">
+                                <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-mystique-rose.avif" alt="Product <?php echo $i; ?>" style="width: 100%; height: auto; aspect-ratio: 2/3; object-fit: cover;">
                                 <div class="product-info">
                                     <h3 class="product-title">Product Title <?php echo $i; ?></h3>
                                     <div class="product-price">$0.00</div>
@@ -91,7 +91,7 @@ $Mystique_rose_products_section_fields = get_fields();
                         ?>
                         <a href="<?php echo get_permalink(); ?>" class="product-card">
                             <div class="product-image-wrapper">
-                                <?php echo woocommerce_get_product_thumbnail(); ?>
+                                <?php echo get_the_post_thumbnail( get_the_ID(), 'mystique_rose_product', array('style' => 'width: 100%; height: auto; aspect-ratio: 2/3; object-fit: cover;') ); ?>
                                 <div class="product-info">
                                     <h3 class="product-title"><?php the_title(); ?></h3>
                                     <div class="product-price"><?php echo $product->get_price_html(); ?></div>
@@ -107,7 +107,7 @@ $Mystique_rose_products_section_fields = get_fields();
                         ?>
                         <a href="#" class="product-card">
                             <div class="product-image-wrapper">
-                                <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-mystique-rose.avif" alt="Product <?php echo $i; ?>">
+                                <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-mystique-rose.avif" alt="Product <?php echo $i; ?>" style="width: 100%; height: auto; aspect-ratio: 2/3; object-fit: cover;">
                                 <div class="product-info">
                                     <h3 class="product-title">Product Title <?php echo $i; ?></h3>
                                     <div class="product-price">$0.00</div>

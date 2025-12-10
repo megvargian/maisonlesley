@@ -203,6 +203,7 @@ add_image_size('main_homepage_img', 1903, 690, true);
 add_image_size('main_img_company_services', 1903, 300, true);
 add_image_size('services_img', 656, 580, true);
 add_image_size('footer_img', 1903, 340, true);
+add_image_size('mystique_rose_product', 1000, 1500, true); // 2:3 aspect ratio for Mystique Rose products
 // Add backend styles for Gutenberg.
 add_action('enqueue_block_editor_assets', 'gutenberg_editor_assets');
 
@@ -944,6 +945,19 @@ function form_custom_add_to_cart() {
             wp_send_json_error(array('message' => 'Variation not found for selected options'));
         }
 
+        // Get the variation product to check stock
+        $variation_product = wc_get_product( $variation_id );
+
+        // Check if variation is in stock
+        if ( ! $variation_product || ! $variation_product->is_in_stock() ) {
+            wp_send_json_error(array('message' => 'Sorry, this product is out of stock'));
+        }
+
+        // Check if variation is purchasable
+        if ( ! $variation_product->is_purchasable() ) {
+            wp_send_json_error(array('message' => 'This product cannot be purchased at this time'));
+        }
+
         // Prepare attributes for cart (with attribute_ prefix)
         $cart_attributes = array();
         foreach ($attributes as $key => $value) {
@@ -953,7 +967,16 @@ function form_custom_add_to_cart() {
         // Add variation to cart
         $added = WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $cart_attributes );
     } else {
-        // Simple product
+        // Simple product - check stock first
+        if ( ! $product->is_in_stock() ) {
+            wp_send_json_error(array('message' => 'Sorry, this product is out of stock'));
+        }
+
+        // Check if product is purchasable
+        if ( ! $product->is_purchasable() ) {
+            wp_send_json_error(array('message' => 'This product cannot be purchased at this time'));
+        }
+
         $added = WC()->cart->add_to_cart( $product_id, $quantity );
     }
 
