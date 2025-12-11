@@ -1186,7 +1186,7 @@ function display_product_images_with_fancybox() {
         // Display gallery images with FancyBox
         if ($attachment_ids) {
             ?>
-            <div class="col-lg-6">
+            <div class="col-lg-3 col-4">
                 <?php
                     foreach ($attachment_ids as $attachment_id) {
                         $image_url = wp_get_attachment_url($attachment_id);
@@ -1204,7 +1204,7 @@ function display_product_images_with_fancybox() {
         if (has_post_thumbnail()) {
             $main_image_url = wp_get_attachment_url(get_post_thumbnail_id($product->get_id()));
             ?>
-                <div class="<?php echo $attachment_ids ? 'col-lg-9 col-8' : 'col-12'; ?>">
+                <div class="<?php echo $attachment_ids ? 'col' : 'col-12'; ?>">
                     <?php
                     echo '<a href="' . $main_image_url . '" class="fancybox" data-fancybox="gallery">';
                     the_post_thumbnail('shop_single');
