@@ -211,7 +211,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
 
                     <!-- Illustration -->
                     <div class="measurement-illustration" style="text-align: center; margin-top: 30px;">
-                        <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/size-guide-illustration.webp" alt="Measuring Guide" style="max-width: 200px; height: auto;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/size-guide-illustration.webp" alt="Measuring Guide" style="max-width: 300px; height: auto;">
                     </div>
                 </div>
 
@@ -221,7 +221,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                     <p style="font-size: 14px; color: #666; margin-bottom: 20px; line-height: 1.6;">
                         Speak to one of our dedicated Australian-based sales team members.
                     </p>
-                    <a href="/contact-us" class="btn btn-outline-dark" style="display: block; width: 100%; padding: 12px; text-align: center; text-decoration: none; border: 1px solid #000; color: #000; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s;">
+                    <a href="/contact-us" class="btn btn-outline-dark size-guide-contact-us">
                         CONTACT US
                     </a>
                 </div>
