@@ -69,32 +69,34 @@ if ($is_mystique) {
                 </div>
             </div>
             <div class="col-xxl-3 col-xxl-4 col-lg-4 col-md-5 col-12">
-                <div class="dissh-summary">
-                    <?php
-                    // Size and other summary content
-                    do_action('woocommerce_single_product_summary');
-                    ?>
-                    <div class="dissh-shipping-info mt-3">
-                        <?php echo $get_custom_fields['notes']; ?>
+                <div class="dissh-main position-sticky" style="top: 133px;">
+                    <div class="dissh-summary">
+                        <?php
+                        // Size and other summary content
+                        do_action('woocommerce_single_product_summary');
+                        ?>
+                        <div class="dissh-shipping-info mt-3">
+                            <?php echo $get_custom_fields['notes']; ?>
+                        </div>
                     </div>
-                </div>
-                <div class="dissh-accordion mt-4">
-                    <div class="accordion" id="accordionDissh">
-                        <?php foreach ($get_custom_fields['accordions'] as $key => $single_accordion) { ?>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading-<?php echo $key;?>">
-                                    <button class="accordion-button collapsed" type="button" style="background-color:transparent !important" data-bs-toggle="collapse" data-bs-target="#collapse-<?php echo $key;?>" aria-expanded="false" aria-controls="collapse-<?php echo $key;?>">
-                                        <?php echo $single_accordion['title']; ?>
-                                        <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
-                                    </button>
-                                </h2>
-                                <div id="collapse-<?php echo $key;?>" class="accordion-collapse collapse" aria-labelledby="heading-<?php echo $key;?>" data-bs-parent="#accordionDissh">
-                                    <div class="accordion-body">
-                                        <?php echo $single_accordion['description']; ?>
+                    <div class="dissh-accordion mt-4">
+                        <div class="accordion" id="accordionDissh">
+                            <?php foreach ($get_custom_fields['accordions'] as $key => $single_accordion) { ?>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading-<?php echo $key;?>">
+                                        <button class="accordion-button collapsed" type="button" style="background-color:transparent !important" data-bs-toggle="collapse" data-bs-target="#collapse-<?php echo $key;?>" aria-expanded="false" aria-controls="collapse-<?php echo $key;?>">
+                                            <?php echo $single_accordion['title']; ?>
+                                            <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse-<?php echo $key;?>" class="accordion-collapse collapse" aria-labelledby="heading-<?php echo $key;?>" data-bs-parent="#accordionDissh">
+                                        <div class="accordion-body">
+                                            <?php echo $single_accordion['description']; ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php } ?>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>
