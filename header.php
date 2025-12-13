@@ -89,43 +89,106 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
         </div>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="sizeGuideSidebar" aria-labelledby="sizeGuideLabel" aria-hidden="true">
             <div class="offcanvas-header">
-                <h2 id="sizeGuideLabel"><?php echo $get_size_guide_fields['title'];?></h2>
+                <h2 id="sizeGuideLabel">Size Guide</h2>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <p><?php echo $get_size_guide_fields['sub_title']; ?></p>
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <?php echo $get_size_guide_fields['size_guide_label'];?>
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show"
-                            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="sizeguide-table">
-                                    <div class="size-table-title-container">
-                                        <?php foreach ($get_size_guide_fields['size_guide_table']['labels'] as $label) {?>
-                                            <div class="size-table-title-element">
-                                                <?php echo $label['label']; ?>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="size-table-size-row-container">
-                                        <?php foreach ($get_size_guide_fields['size_guide_table']['rows'] as $rows) {?>
-                                            <div class="size-table-size-row">
-                                                <?php foreach ($rows['row'] as $main_text) { ?>
-                                                    <div class="size-table-size-element"><?php echo $main_text['main_text']; ?></div>
-                                                <?php } ?>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
+                    If your measurements are not consistent with a single column, use your waist measurement to determine your ideal size. Please note, the below measurements are displayed in US sizing. See the Size Conversion section, for local size conversion.
+                </p>
+
+                <!-- Size Table -->
+                <div class="size-guide-table-wrapper" style="margin-bottom: 30px;">
+                    <table class="size-guide-table" style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background-color: #f5f5f5;">
+                                <th style="padding: 12px 8px; text-align: left; font-weight: 600; border-bottom: 2px solid #ddd;">Size</th>
+                                <th style="padding: 12px 8px; text-align: center; font-weight: 600; border-bottom: 2px solid #ddd;">2/XS</th>
+                                <th style="padding: 12px 8px; text-align: center; font-weight: 600; border-bottom: 2px solid #ddd;">4/S</th>
+                                <th style="padding: 12px 8px; text-align: center; font-weight: 600; border-bottom: 2px solid #ddd;">6/M</th>
+                                <th style="padding: 12px 8px; text-align: center; font-weight: 600; border-bottom: 2px solid #ddd;">8/L</th>
+                                <th style="padding: 12px 8px; text-align: center; font-weight: 600; border-bottom: 2px solid #ddd;">10/XL</th>
+                                <th style="padding: 12px 8px; text-align: center; font-weight: 600; border-bottom: 2px solid #ddd;">12/XXL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 12px 8px; font-weight: 600; border-bottom: 1px solid #eee;">Bust</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">31</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">33</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">35</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">37</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">39</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">41</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 8px; font-weight: 600; border-bottom: 1px solid #eee;">Waist</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">25</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">27</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">29</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">31</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">33</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">35</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 8px; font-weight: 600; border-bottom: 1px solid #eee;">Hips</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">35</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">37</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">39</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">41</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">43</td>
+                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">45</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Unit Toggle -->
+                <div class="unit-toggle" style="margin-bottom: 30px;">
+                    <span style="font-weight: 600; margin-right: 10px;">IN</span>
+                    <span style="color: #999;">/ CM</span>
+                </div>
+
+                <!-- Measuring Guide -->
+                <div class="measuring-guide" style="margin-top: 30px;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 20px;">Measuring Guide</h3>
+
+                    <div class="measurement-item" style="margin-bottom: 20px;">
+                        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">A. Bust</h4>
+                        <p style="font-size: 14px; color: #666; line-height: 1.6;">
+                            Measure around your chest at the fullest part of your bra cup.
+                        </p>
                     </div>
+
+                    <div class="measurement-item" style="margin-bottom: 20px;">
+                        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">B. Waist</h4>
+                        <p style="font-size: 14px; color: #666; line-height: 1.6;">
+                            Measure around the smallest part of your waistline. Above your navel and below your rib cage.
+                        </p>
+                    </div>
+
+                    <div class="measurement-item" style="margin-bottom: 20px;">
+                        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">C. Hips</h4>
+                        <p style="font-size: 14px; color: #666; line-height: 1.6;">
+                            With your feet together, measure around the fullest part of your hips and buttocks, approximately 20 cm or 8 inches below your waistline.
+                        </p>
+                    </div>
+
+                    <!-- Illustration -->
+                    <div class="measurement-illustration" style="text-align: center; margin-top: 30px;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/size-guide-illustration.webp" alt="Measuring Guide" style="max-width: 200px; height: auto;">
+                    </div>
+                </div>
+
+                <!-- Need advice section -->
+                <div class="size-guide-contact" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">Need advice on sizing?</h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 20px; line-height: 1.6;">
+                        Speak to one of our dedicated Australian-based sales team members.
+                    </p>
+                    <a href="/contact-us" class="btn btn-outline-dark" style="display: block; width: 100%; padding: 12px; text-align: center; text-decoration: none; border: 1px solid #000; color: #000; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s;">
+                        CONTACT US
+                    </a>
                 </div>
             </div>
         </div>
