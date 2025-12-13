@@ -31,6 +31,8 @@ if ($terms && !is_wp_error($terms)) {
     }
 }
 
+$get_custom_fields = get_fields();
+
 if ($is_mystique) {
     // Custom Dissh-style layout for Mystique Rose products
     ?>
@@ -73,29 +75,34 @@ if ($is_mystique) {
                     do_action('woocommerce_single_product_summary');
                     ?>
                     <div class="dissh-shipping-info mt-3">
-                        <ul class="list-unstyled">
+                        <?php
+                            echo $get_custom_fields['notes'];
+                        ?>
+                        <!-- <ul class="list-unstyled">
                             <li><strong>Free Express Shipping Over $150</strong></li>
                             <li>Estimated Delivery 2-4 Business Days</li>
                             <li>Instant Refunds</li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
                 <div class="dissh-accordion mt-4">
                     <div class="accordion" id="accordionDissh">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingDesignNotes">
-                                <button class="accordion-button collapsed" type="button" style="background-color:transparent !important" data-bs-toggle="collapse" data-bs-target="#collapseDesignNotes" aria-expanded="false" aria-controls="collapseDesignNotes">
-                                    Design Notes
-                                    <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
-                                </button>
-                            </h2>
-                            <div id="collapseDesignNotes" class="accordion-collapse collapse" aria-labelledby="headingDesignNotes" data-bs-parent="#accordionDissh">
-                                <div class="accordion-body">
-                                    <?php echo $product->get_description(); ?>
+                        <?php foreach ($get_custom_fields['accordions'] as $key => $single_accordion) { ?>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading-<?php echo $key;?>">
+                                    <button class="accordion-button collapsed" type="button" style="background-color:transparent !important" data-bs-toggle="collapse" data-bs-target="#collapse-<?php echo $key;?>" aria-expanded="false" aria-controls="collapse-<?php echo $key;?>">
+                                        <?php echo $single_accordion['title']; ?>
+                                        <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
+                                    </button>
+                                </h2>
+                                <div id="collapse-<?php echo $key;?>" class="accordion-collapse collapse" aria-labelledby="heading-<?php echo $key;?>" data-bs-parent="#accordionDissh">
+                                    <div class="accordion-body">
+                                        <?php echo $single_accordion['description']; ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
+                        <?php } ?>
+                        <!-- <div class="accordion-item">
                             <h2 class="accordion-header" id="headingReturns">
                                 <button class="accordion-button collapsed" style="background-color:transparent !important" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturns" aria-expanded="false" aria-controls="collapseReturns">
                                     Delivery & Returns
@@ -107,7 +114,7 @@ if ($is_mystique) {
                                     <p>See our <a href="/shipping">Shipping</a> and <a href="/returns">Returns</a> pages for more info.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
