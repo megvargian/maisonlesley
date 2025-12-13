@@ -1441,33 +1441,3 @@ function cart_has_mystique_rose_products() {
 
     return false;
 }
-
-// Ensure Cash on Delivery is available for all products
-add_filter('woocommerce_available_payment_gateways', 'enable_cod_payment_gateway');
-function enable_cod_payment_gateway($available_gateways) {
-    // If COD is not in available gateways but is enabled in settings, add it back
-    if (!isset($available_gateways['cod'])) {
-        $payment_gateways = WC()->payment_gateways->payment_gateways();
-        if (isset($payment_gateways['cod']) && $payment_gateways['cod']->enabled === 'yes') {
-            $available_gateways['cod'] = $payment_gateways['cod'];
-        }
-    }
-    return $available_gateways;
-}
-
-// Allow COD for virtual products (if that's the issue)
-add_filter('woocommerce_cod_process_payment_order_status', 'change_cod_payment_order_status', 10, 2);
-function change_cod_payment_order_status($order_status, $order) {
-    return 'processing';
-}
-
-// Enable COD for all product types
-add_filter('woocommerce_cart_needs_shipping', 'force_cart_needs_shipping_for_cod', 10, 1);
-function force_cart_needs_shipping_for_cod($needs_shipping) {
-    // Only force if COD is the chosen payment method or we're on checkout
-    if (is_checkout()) {
-        // Check if cart has physical products or force COD availability
-        return true;
-    }
-    return $needs_shipping;
-}
