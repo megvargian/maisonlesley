@@ -98,7 +98,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                 </p>
 
                 <!-- Size Table -->
-                <div class="size-guide-table-wrapper" style="margin-bottom: 30px;">
+                <div class="size-guide-table-wrapper" style="margin-bottom: 30px; font-size: 12px;">
                     <table class="size-guide-table" style="width: 100%; border-collapse: collapse;">
                         <thead>
                             <tr style="background-color: #f5f5f5;">
@@ -144,7 +144,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                 </div>
 
                 <!-- Unit Toggle -->
-                <div class="unit-toggle" style="margin-bottom: 30px;">
+                <div class="unit-toggle" style="margin-bottom: 30px; font-size: 12px;">
                     <span id="unitInch" style="font-weight: 600; margin-right: 5px; cursor: pointer; text-decoration: underline;">IN</span>
                     <span style="color: #999;">/</span>
                     <span id="unitCm" style="color: #999; margin-left: 5px; cursor: pointer;">CM</span>
