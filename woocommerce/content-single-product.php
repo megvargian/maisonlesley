@@ -75,14 +75,7 @@ if ($is_mystique) {
                     do_action('woocommerce_single_product_summary');
                     ?>
                     <div class="dissh-shipping-info mt-3">
-                        <?php
-                            echo $get_custom_fields['notes'];
-                        ?>
-                        <!-- <ul class="list-unstyled">
-                            <li><strong>Free Express Shipping Over $150</strong></li>
-                            <li>Estimated Delivery 2-4 Business Days</li>
-                            <li>Instant Refunds</li>
-                        </ul> -->
+                        <?php echo $get_custom_fields['notes']; ?>
                     </div>
                 </div>
                 <div class="dissh-accordion mt-4">
@@ -102,19 +95,6 @@ if ($is_mystique) {
                                 </div>
                             </div>
                         <?php } ?>
-                        <!-- <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingReturns">
-                                <button class="accordion-button collapsed" style="background-color:transparent !important" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturns" aria-expanded="false" aria-controls="collapseReturns">
-                                    Delivery & Returns
-                                    <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
-                                </button>
-                            </h2>
-                            <div id="collapseReturns" class="accordion-collapse collapse" aria-labelledby="headingReturns" data-bs-parent="#accordionDissh">
-                                <div class="accordion-body">
-                                    <p>See our <a href="/shipping">Shipping</a> and <a href="/returns">Returns</a> pages for more info.</p>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -184,57 +164,6 @@ if ($is_mystique) {
             </div>
         </div>
     </div>
-    <style>
-        .dissh-mystique-product { background: #fff; font-weight: 300 !important;}
-        .dissh-gallery img { width: 100%; border-radius: 0px; }
-        .dissh-summary { font-size: 1.1rem; }
-        .dissh-shipping-info ul { padding-left: 0; font-size: 0.8rem; font-weight: 300; }
-        .dissh-shipping-info li { margin-bottom: 4px;  }
-        .dissh-accordion .accordion-button { font-weight: bold; position: relative; }
-        .dissh-accordion .accordion-body { background: #fff; }
-        .dissh-accordion .accordion-button::after { display: none !important; }
-        .custom-accordion-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 1.5em; pointer-events: none; }
-        .custom-accordion-icon .minus { color: #333; font-weight: 300; }
-        .custom-accordion-icon .plus { color: #333; font-weight: 300; }
-        /* Swiper bullets for you-may-also-like-swiper and product-gallery-swiper */
-        .you-may-also-like-swiper .swiper-pagination-bullet,
-        .product-gallery-swiper .swiper-pagination-bullet {
-            background: #e0e0e0 !important;
-            border-radius: 50%;
-            width: 10px;
-            height: 10px;
-            opacity: 1;
-            margin: 0 4px !important;
-            border: none;
-            transition: background 0.2s;
-        }
-        .you-may-also-like-main .swiper-pagination-bullet-active,
-        .product-gallery-main .swiper-pagination-bullet-active {
-            background: #000 !important;
-        }
-        .you-may-also-like-swiper-position, .product-gallery-pagination{
-            top: 100% !important;
-        }
-    </style>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var buttons = document.querySelectorAll('.dissh-accordion .accordion-button');
-        buttons.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                setTimeout(function() {
-                    var icon = btn.querySelector('.custom-accordion-icon');
-                    if (btn.classList.contains('collapsed')) {
-                        icon.querySelector('.plus').style.display = '';
-                        icon.querySelector('.minus').style.display = 'none';
-                    } else {
-                        icon.querySelector('.plus').style.display = 'none';
-                        icon.querySelector('.minus').style.display = '';
-                    }
-                }, 200);
-            });
-        });
-    });
-    </script>
     <?php
 } else {  ?>
     <div class="container">
@@ -300,25 +229,52 @@ if ($is_mystique) {
                          */
                         // do_action( 'woocommerce_after_single_product_summary' );
                         $long_description = $product->get_description();
-                        if($long_description){
-                        ?>
-                        <div class="single-description-section">
-                            <div class="accordion w-100" id="accordionExample-description">
-                                <div class="accordion-item" style="border-top: none !important; border-left: none !important; border-right: none !important;">
-                                    <h2 class="accordion-header mt-0" id="heading-description">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-description" aria-expanded="true" aria-controls="collapse-description">
-                                            Description
-                                        </button>
-                                    </h2>
-                                    <div id="collapse-description" class="accordion-collapse collapse" aria-labelledby="heading-description" data-bs-parent="#accordionExample-description">
-                                        <div class="accordion-body">
-                                            <p><?php echo $long_description; ?></p>
+                        if($long_description && empty($get_custom_fields['notes']) && empty($get_custom_fields['accordions'])) { ?>
+                            <div class="single-description-section">
+                                <div class="accordion w-100" id="accordionExample-description">
+                                    <div class="accordion-item" style="border-top: none !important; border-left: none !important; border-right: none !important;">
+                                        <h2 class="accordion-header mt-0" id="heading-description">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-description" aria-expanded="true" aria-controls="collapse-description">
+                                                Description
+                                            </button>
+                                        </h2>
+                                        <div id="collapse-description" class="accordion-collapse collapse" aria-labelledby="heading-description" data-bs-parent="#accordionExample-description">
+                                            <div class="accordion-body">
+                                                <p><?php echo $long_description; ?></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         <?php } ?>
+                        <?php if ($get_custom_fields['notes']) { ?>
+                            <div class="dissh-summary">
+                                <div class="dissh-shipping-info mt-3">
+                                    <?php echo $get_custom_fields['notes']; ?>
+                                </div>
+                            </div>
+                        <?php } ?>
+                        <?php if($get_custom_fields['accordions']){ ?>
+                            <div class="dissh-accordion mt-4">
+                                <div class="accordion" id="accordionDissh">
+                                    <?php foreach ($get_custom_fields['accordions'] as $key => $single_accordion) { ?>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="heading-<?php echo $key;?>">
+                                                <button class="accordion-button collapsed" type="button" style="background-color:transparent !important" data-bs-toggle="collapse" data-bs-target="#collapse-<?php echo $key;?>" aria-expanded="false" aria-controls="collapse-<?php echo $key;?>">
+                                                    <?php echo $single_accordion['title']; ?>
+                                                    <span class="custom-accordion-icon"><span class="plus">+</span><span class="minus" style="display:none">-</span></span>
+                                                </button>
+                                            </h2>
+                                            <div id="collapse-<?php echo $key;?>" class="accordion-collapse collapse" aria-labelledby="heading-<?php echo $key;?>" data-bs-parent="#accordionDissh">
+                                                <div class="accordion-body">
+                                                    <?php echo $single_accordion['description']; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        <?php }?>
                     </div>
                 </div>
             </div>
@@ -360,4 +316,57 @@ if ($is_mystique) {
         </div>
     </div>
     <?php
-}
+} ?>
+
+<style>
+    .dissh-mystique-product { background: #fff; font-weight: 300 !important;}
+    .dissh-gallery img { width: 100%; border-radius: 0px; }
+    .dissh-summary { font-size: 1.1rem; }
+    .dissh-shipping-info ul { padding-left: 0; font-size: 0.8rem; font-weight: 300; }
+    .dissh-shipping-info li { margin-bottom: 4px;  }
+    .dissh-accordion .accordion-button { font-weight: bold; position: relative; }
+    .dissh-accordion .accordion-body { background: #fff; }
+    .dissh-accordion .accordion-button::after { display: none !important; }
+    .custom-accordion-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 1.5em; pointer-events: none; }
+    .custom-accordion-icon .minus { color: #333; font-weight: 300; }
+    .custom-accordion-icon .plus { color: #333; font-weight: 300; }
+    /* Swiper bullets for you-may-also-like-swiper and product-gallery-swiper */
+    .you-may-also-like-swiper .swiper-pagination-bullet,
+    .product-gallery-swiper .swiper-pagination-bullet {
+        background: #e0e0e0 !important;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        opacity: 1;
+        margin: 0 4px !important;
+        border: none;
+        transition: background 0.2s;
+    }
+    .you-may-also-like-main .swiper-pagination-bullet-active,
+    .product-gallery-main .swiper-pagination-bullet-active {
+        background: #000 !important;
+    }
+    .you-may-also-like-swiper-position, .product-gallery-pagination{
+        top: 100% !important;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var buttons = document.querySelectorAll('.dissh-accordion .accordion-button');
+        buttons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                setTimeout(function() {
+                    var icon = btn.querySelector('.custom-accordion-icon');
+                    if (btn.classList.contains('collapsed')) {
+                        icon.querySelector('.plus').style.display = '';
+                        icon.querySelector('.minus').style.display = 'none';
+                    } else {
+                        icon.querySelector('.plus').style.display = 'none';
+                        icon.querySelector('.minus').style.display = '';
+                    }
+                }, 200);
+            });
+        });
+    });
+</script>
+<?php // End of file
