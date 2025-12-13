@@ -114,30 +114,30 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                         <tbody>
                             <tr>
                                 <td style="padding: 12px 8px; font-weight: 600; border-bottom: 1px solid #eee;">Bust</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">31</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">33</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">35</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">37</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">39</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">41</td>
+                                <td class="measurement" data-inch="31" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">31</td>
+                                <td class="measurement" data-inch="33" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">33</td>
+                                <td class="measurement" data-inch="35" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">35</td>
+                                <td class="measurement" data-inch="37" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">37</td>
+                                <td class="measurement" data-inch="39" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">39</td>
+                                <td class="measurement" data-inch="41" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">41</td>
                             </tr>
                             <tr>
                                 <td style="padding: 12px 8px; font-weight: 600; border-bottom: 1px solid #eee;">Waist</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">25</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">27</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">29</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">31</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">33</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">35</td>
+                                <td class="measurement" data-inch="25" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">25</td>
+                                <td class="measurement" data-inch="27" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">27</td>
+                                <td class="measurement" data-inch="29" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">29</td>
+                                <td class="measurement" data-inch="31" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">31</td>
+                                <td class="measurement" data-inch="33" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">33</td>
+                                <td class="measurement" data-inch="35" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">35</td>
                             </tr>
                             <tr>
                                 <td style="padding: 12px 8px; font-weight: 600; border-bottom: 1px solid #eee;">Hips</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">35</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">37</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">39</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">41</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">43</td>
-                                <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">45</td>
+                                <td class="measurement" data-inch="35" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">35</td>
+                                <td class="measurement" data-inch="37" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">37</td>
+                                <td class="measurement" data-inch="39" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">39</td>
+                                <td class="measurement" data-inch="41" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">41</td>
+                                <td class="measurement" data-inch="43" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">43</td>
+                                <td class="measurement" data-inch="45" style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee;">45</td>
                             </tr>
                         </tbody>
                     </table>
@@ -145,9 +145,44 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
 
                 <!-- Unit Toggle -->
                 <div class="unit-toggle" style="margin-bottom: 30px;">
-                    <span style="font-weight: 600; margin-right: 10px;">IN</span>
-                    <span style="color: #999;">/ CM</span>
+                    <span id="unitInch" style="font-weight: 600; margin-right: 5px; cursor: pointer; text-decoration: underline;">IN</span>
+                    <span style="color: #999;">/</span>
+                    <span id="unitCm" style="color: #999; margin-left: 5px; cursor: pointer;">CM</span>
                 </div>
+
+                <script>
+                    jQuery(document).ready(function($) {
+                        var currentUnit = 'inch';
+
+                        $('#unitInch, #unitCm').on('click', function() {
+                            var clickedUnit = $(this).attr('id') === 'unitInch' ? 'inch' : 'cm';
+
+                            if (currentUnit === clickedUnit) return;
+
+                            currentUnit = clickedUnit;
+
+                            // Update styling
+                            if (currentUnit === 'inch') {
+                                $('#unitInch').css({'font-weight': '600', 'color': '#000', 'text-decoration': 'underline'});
+                                $('#unitCm').css({'font-weight': '400', 'color': '#999', 'text-decoration': 'none'});
+                            } else {
+                                $('#unitCm').css({'font-weight': '600', 'color': '#000', 'text-decoration': 'underline'});
+                                $('#unitInch').css({'font-weight': '400', 'color': '#999', 'text-decoration': 'none'});
+                            }
+
+                            // Update measurements
+                            $('.measurement').each(function() {
+                                var inchValue = parseFloat($(this).attr('data-inch'));
+                                if (currentUnit === 'cm') {
+                                    var cmValue = Math.round(inchValue * 2.54);
+                                    $(this).text(cmValue);
+                                } else {
+                                    $(this).text(inchValue);
+                                }
+                            });
+                        });
+                    });
+                </script>
 
                 <!-- Measuring Guide -->
                 <div class="measuring-guide" style="margin-top: 30px;">
