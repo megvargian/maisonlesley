@@ -38,8 +38,7 @@ $Mystique_rose_best_seller_section_fields = get_fields();
 
                         // Get product sizes from attributes with stock status
                         $available_sizes = array();
-                        $product_color = '';
-                        $product_color_hex = '';
+                        $product_colors = array();
 
                         if ( $product->has_attributes() ) {
                             foreach ( $product->get_attributes() as $attribute ) {
@@ -108,33 +107,27 @@ $Mystique_rose_best_seller_section_fields = get_fields();
                                             );
                                         }
                                     }
-                                    break;
                                 }
 
                                 // Get color attribute
                                 if ( $attribute_label == 'Color' || $attribute_name == 'pa_color' || $attribute_name == 'color' ) {
                                     if ( $attribute->is_taxonomy() ) {
                                         $color_terms = wc_get_product_terms($product_id, $attribute_name, array('fields' => 'all'));
-                                        if ( !empty($color_terms) ) {
-                                            $first_color = $color_terms[0];
-                                            $product_color = $first_color->name;
-
+                                        foreach ( $color_terms as $color_term ) {
                                             // Get the hex color from term meta
-                                            $color_hex = get_term_meta($first_color->term_id, 'mystique_color_hex', true);
+                                            $color_hex = get_term_meta($color_term->term_id, 'mystique_color_hex', true);
                                             // Fallback to ACF if available
                                             if (!$color_hex && function_exists('get_field')) {
-                                                $color_hex = get_field('mystique_color_hex', 'term_' . $first_color->term_id);
+                                                $color_hex = get_field('mystique_color_hex', 'term_' . $color_term->term_id);
                                             }
                                             // Default color if neither exists
                                             if (!$color_hex) {
                                                 $color_hex = '#d3d3d3';
                                             }
-                                            $product_color_hex = $color_hex;
-                                        }
-                                    } else {
-                                        $attribute_values = $attribute->get_options();
-                                        if (!empty($attribute_values)) {
-                                            $product_color = $attribute_values[0];
+                                            $product_colors[] = array(
+                                                'name' => $color_term->name,
+                                                'hex' => $color_hex
+                                            );
                                         }
                                     }
                                 }
@@ -172,8 +165,12 @@ $Mystique_rose_best_seller_section_fields = get_fields();
                                     <h3><?php echo esc_html( get_the_title( $product_id ) ); ?></h3>
                                     <div class="best-seller-price">
                                         <?php echo wp_kses_post( $product->get_price_html() ); ?>
-                                        <?php if ( $product_color_hex ) : ?>
-                                            <span class="best-seller-color" style="background-color: <?php echo esc_attr($product_color_hex); ?>;" title="<?php echo esc_attr($product_color); ?>"></span>
+                                        <?php if ( ! empty( $product_colors ) ) : ?>
+                                            <span class="best-seller-colors-wrapper">
+                                                <?php foreach ( $product_colors as $color_data ) : ?>
+                                                    <span class="best-seller-color-swatch" style="background-color: <?php echo esc_attr($color_data['hex']); ?>;" title="<?php echo esc_attr($color_data['name']); ?>"></span>
+                                                <?php endforeach; ?>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
