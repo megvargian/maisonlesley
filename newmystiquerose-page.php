@@ -592,6 +592,29 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         color: #000;
     }
 
+    .size-option.out-of-stock {
+        position: relative;
+        color: #999;
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .size-option.out-of-stock::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #666;
+        transform: translateY(-50%) rotate(-15deg);
+    }
+
+    .size-option.out-of-stock:hover {
+        background-color: transparent;
+        color: #999;
+    }
+
     .best-seller-info h3 {
         font-size: 0.9rem;
         font-family: "Rutan-Regular", sans-serif;

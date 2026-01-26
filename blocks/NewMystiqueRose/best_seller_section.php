@@ -36,25 +36,107 @@ $Mystique_rose_best_seller_section_fields = get_fields();
                         $product = wc_get_product( $product_id );
                         if ( ! $product ) continue;
 
-                        // Get product sizes from attributes
+                        // Get product sizes from attributes with stock status
                         $available_sizes = array();
+                        $product_color = '';
+                        $product_color_hex = '';
+
                         if ( $product->has_attributes() ) {
                             foreach ( $product->get_attributes() as $attribute ) {
                                 $attribute_label = wc_attribute_label( $attribute->get_name(), $product );
+                                $attribute_name = $attribute->get_name();
 
-                                if ( $attribute_label == 'Size' || $attribute->get_name() == 'pa_size' || $attribute->get_name() == 'size' ) {
-                                    $attribute_values = $attribute->get_options();
+                                if ( $attribute_label == 'Size' || $attribute_name == 'pa_size' || $attribute_name == 'size' ) {
                                     if ( $attribute->is_taxonomy() ) {
-                                        foreach ( $attribute_values as $term_id ) {
-                                            $term = get_term( $term_id );
-                                            if ( $term && ! is_wp_error( $term ) ) {
-                                                $available_sizes[] = $term->name;
+                                        // Get size terms for global attribute
+                                        $terms = wc_get_product_terms($product_id, $attribute_name, array('fields' => 'all'));
+
+                                        foreach ( $terms as $term ) {
+                                            // Check stock for this specific size variation
+                                            $is_in_stock = true;
+
+                                            if ( $product->is_type('variable') ) {
+                                                // Get all available variations
+                                                $available_variations = $product->get_available_variations();
+                                                $variation_in_stock = false;
+
+                                                foreach ( $available_variations as $variation ) {
+                                                    // Check if this variation matches the size (or accepts 'any' size)
+                                                    $var_size = isset($variation['attributes']['attribute_pa_size']) ? $variation['attributes']['attribute_pa_size'] : '';
+
+                                                    if ( $var_size === $term->slug || $var_size === '' ) {
+                                                        // Get the actual variation product to check stock properly
+                                                        $variation_obj = wc_get_product( $variation['variation_id'] );
+
+                                                        if ( $variation_obj ) {
+                                                            // Check if stock is managed
+                                                            if ( $variation_obj->managing_stock() ) {
+                                                                // If managing stock, check quantity
+                                                                if ( $variation_obj->get_stock_quantity() > 0 && $variation_obj->is_in_stock() ) {
+                                                                    $variation_in_stock = true;
+                                                                    break;
+                                                                }
+                                                            } else {
+                                                                // If not managing stock, just check stock status
+                                                                if ( $variation_obj->is_in_stock() ) {
+                                                                    $variation_in_stock = true;
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                if ( !$variation_in_stock ) {
+                                                    $is_in_stock = false;
+                                                }
                                             }
+
+                                            // Store size with its stock status
+                                            $available_sizes[] = array(
+                                                'name' => $term->name,
+                                                'in_stock' => $is_in_stock
+                                            );
                                         }
                                     } else {
-                                        $available_sizes = $attribute_values;
+                                        // For non-taxonomy attributes, assume all sizes are in stock
+                                        $attribute_values = $attribute->get_options();
+                                        foreach ( $attribute_values as $size_value ) {
+                                            $available_sizes[] = array(
+                                                'name' => $size_value,
+                                                'in_stock' => true
+                                            );
+                                        }
                                     }
                                     break;
+                                }
+
+                                // Get color attribute
+                                if ( $attribute_label == 'Color' || $attribute_name == 'pa_color' || $attribute_name == 'color' ) {
+                                    if ( $attribute->is_taxonomy() ) {
+                                        $color_terms = wc_get_product_terms($product_id, $attribute_name, array('fields' => 'all'));
+                                        if ( !empty($color_terms) ) {
+                                            $first_color = $color_terms[0];
+                                            $product_color = $first_color->name;
+
+                                            // Get the hex color from term meta
+                                            $color_hex = get_term_meta($first_color->term_id, 'mystique_color_hex', true);
+                                            // Fallback to ACF if available
+                                            if (!$color_hex && function_exists('get_field')) {
+                                                $color_hex = get_field('mystique_color_hex', 'term_' . $first_color->term_id);
+                                            }
+                                            // Default color if neither exists
+                                            if (!$color_hex) {
+                                                $color_hex = '#d3d3d3';
+                                            }
+                                            $product_color_hex = $color_hex;
+                                        }
+                                    } else {
+                                        $attribute_values = $attribute->get_options();
+                                        if (!empty($attribute_values)) {
+                                            $product_color = $attribute_values[0];
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -62,7 +144,7 @@ $Mystique_rose_best_seller_section_fields = get_fields();
                         ?>
                         <div class="swiper-slide">
                             <a href="<?php echo esc_url( get_permalink( $product_id ) ); ?>" class="best-seller-card">
-                                <span class="best-seller-badge"><?php echo esc_html( $Mystique_rose_best_seller_section_fields['badge_text'] ?? 'Collab Alert!' ); ?></span>
+                                <!-- <span class="best-seller-badge"><?php //echo esc_html( $Mystique_rose_best_seller_section_fields['badge_text'] ?? 'Collab Alert!' ); ?></span> -->
                                 <div class="best-seller-image-wrapper">
                                     <?php echo get_the_post_thumbnail( $product_id, 'full' ); ?>
                                     <div class="best-seller-wishlist">
@@ -74,10 +156,11 @@ $Mystique_rose_best_seller_section_fields = get_fields();
                                         <?php
                                         if ( ! empty( $available_sizes ) ) :
                                             $size_count = 0;
-                                            foreach ( $available_sizes as $size ) :
+                                            foreach ( $available_sizes as $size_data ) :
                                                 if ( $size_count >= 8 ) break;
+                                                $out_of_stock_class = !$size_data['in_stock'] ? ' out-of-stock' : '';
                                                 ?>
-                                                <span class="size-option"><?php echo esc_html( $size ); ?></span>
+                                                <span class="size-option<?php echo $out_of_stock_class; ?>"><?php echo esc_html( $size_data['name'] ); ?></span>
                                                 <?php
                                                 $size_count++;
                                             endforeach;
@@ -89,7 +172,9 @@ $Mystique_rose_best_seller_section_fields = get_fields();
                                     <h3><?php echo esc_html( get_the_title( $product_id ) ); ?></h3>
                                     <div class="best-seller-price">
                                         <?php echo wp_kses_post( $product->get_price_html() ); ?>
-                                        <span class="best-seller-color"></span>
+                                        <?php if ( $product_color_hex ) : ?>
+                                            <span class="best-seller-color" style="background-color: <?php echo esc_attr($product_color_hex); ?>;" title="<?php echo esc_attr($product_color); ?>"></span>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </a>
@@ -105,7 +190,7 @@ $Mystique_rose_best_seller_section_fields = get_fields();
                             ?>
                             <div class="swiper-slide">
                                 <a href="#" class="best-seller-card">
-                                    <span class="best-seller-badge"><?php echo esc_html( $Mystique_rose_best_seller_section_fields['badge_text'] ?? 'Collab Alert!' ); ?></span>
+                                    <!-- <span class="best-seller-badge"><?php //echo esc_html( $Mystique_rose_best_seller_section_fields['badge_text'] ?? 'Collab Alert!' ); ?></span> -->
                                     <div class="best-seller-image-wrapper">
                                         <img src="<?php echo get_template_directory_uri(); ?>/inc/assets/images/main-img-mystique-rose.avif" alt="Best Seller <?php echo $i; ?>">
                                         <div class="best-seller-wishlist">
