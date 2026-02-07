@@ -32,27 +32,53 @@ $main_logo_link = $all_generalFields['main_logo_link'];
 $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
 $main_logo_link_mystiquerose = $all_generalFields['main_logo_mystiquerose_link'];
 
-// Check for Mystique Rose categories including child categories
-$mystique_rose_categories = [17, 23, 18, 25, 20];
-$is_mystique_category = false;
+// Function to get all category IDs including children (recursive)
+function get_all_mystique_rose_category_ids() {
+    $parent_categories = [17, 23, 18, 25, 20];
+    $all_category_ids = [];
 
+    foreach ($parent_categories as $parent_id) {
+        $all_category_ids[] = $parent_id; // Add parent category
+        $all_category_ids = array_merge($all_category_ids, get_all_child_categories($parent_id));
+    }
+
+    return array_unique($all_category_ids);
+}
+
+// Recursive function to get all child categories at any depth
+function get_all_child_categories($parent_id) {
+    $child_ids = [];
+
+    // Get direct children of this parent
+    $children = get_terms([
+        'taxonomy' => 'product_cat',
+        'parent' => $parent_id,
+        'hide_empty' => false,
+        'fields' => 'ids'
+    ]);
+
+    if (!is_wp_error($children) && !empty($children)) {
+        foreach ($children as $child_id) {
+            $child_ids[] = $child_id; // Add this child
+            // Recursively get children of this child
+            $grandchildren = get_all_child_categories($child_id);
+            $child_ids = array_merge($child_ids, $grandchildren);
+        }
+    }
+
+    return $child_ids;
+}
+
+// Get all Mystique Rose category IDs (parents + children)
+$all_mystique_rose_categories = get_all_mystique_rose_category_ids();
+
+// Check if current page is any of the Mystique Rose categories
+$is_mystique_category = false;
 if (is_product_category()) {
     $current_category = get_queried_object();
     if ($current_category && isset($current_category->term_id)) {
         $current_category_id = $current_category->term_id;
-
-        // Check if current category is one of the Mystique Rose categories
-        if (in_array($current_category_id, $mystique_rose_categories)) {
-            $is_mystique_category = true;
-        } else {
-            // Check if current category is a child of any Mystique Rose category
-            foreach ($mystique_rose_categories as $mystique_cat_id) {
-                if (term_is_ancestor_of($mystique_cat_id, $current_category_id, 'product_cat')) {
-                    $is_mystique_category = true;
-                    break;
-                }
-            }
-        }
+        $is_mystique_category = in_array($current_category_id, $all_mystique_rose_categories);
     }
 }
 
