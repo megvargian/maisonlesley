@@ -396,9 +396,14 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                                                 <div class="col-3">
                                                     <a class="sub-menu-image-link"
                                                         href="<?php echo $single_image_section['url']; ?>">
+                                                        <?php if(!$is_MystiqueRose){ ?>
                                                         <img class="w-100 px-0"
                                                             src="<?php echo $single_image_section['image']; ?>"
                                                             alt="<?php echo $single_image_section['text']; ?>">
+                                                        <?php }?>
+                                                        <!-- <img class="w-100 px-0"
+                                                            src="<?php // echo $single_image_section['image']; ?>"
+                                                            alt="<?php // echo $single_image_section['text']; ?>"> -->
                                                         <p class="sub-menu-image-text">
                                                             <?php echo $single_image_section['text']; ?></p>
                                                     </a>
