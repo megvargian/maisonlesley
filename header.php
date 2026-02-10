@@ -619,7 +619,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                         $('.main-nav-section').addClass("active-mystique-rose");
                         $('.main-logo-section').addClass("active");
                         $('.first-header').addClass("active-mystique-rose");
-                        $('.second-header').addClass("active-mystique-rose");
+                        // $('.second-header').addClass("active-mystique-rose");
                     }
                     if (currentScreenPosition < 125) {
                         $("header").removeClass("active");
