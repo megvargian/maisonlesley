@@ -321,7 +321,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                     </section>
                 <?php } ?>
                 <section class="second-header" style="<?php echo $is_new_mystiquerose_page ? 'top: 0;' : ''; ?>">
-                    <div class="container h-100 px-0">
+                    <div class="container h-100 px-0 container-mystique-rose">
                         <div class="row h-100">
                             <div class="col-md-4 col-12 h-100">
                                 <div class="row h-100">
@@ -364,7 +364,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                     </section>
                 <?php } ?>
                 <section class="bg-white main-nav-section" style="<?php echo $is_new_mystiquerose_page ? 'transform: translateY(60%);' : ''; ?>">
-                    <div class="container px-0">
+                    <div class="container px-0 container-mystique-rose">
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list">
                                 <?php foreach($header_menu as $single_menu){ ?>

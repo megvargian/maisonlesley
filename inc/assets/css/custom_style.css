@@ -1703,3 +1703,7 @@ header.active {
   color: #fff;
   text-decoration: none;
 }
+
+.new-mystiquerose-page .container-mystique-rose {
+  max-width: 1520px !important;
+}
