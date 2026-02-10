@@ -615,10 +615,10 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                 $(window).scroll(function() {
                     var currentScreenPosition = $(document).scrollTop();
                     if (currentScreenPosition > 250) {
-                        $("header").addClass("active");
-                        $('.main-nav-section').addClass("active-mystique-rose");
-                        $('.main-logo-section').addClass("active");
-                        $('.first-header').addClass("active-mystique-rose");
+                        // $("header").addClass("active");
+                        // $('.main-nav-section').addClass("active-mystique-rose");
+                        // $('.main-logo-section').addClass("active");
+                        // $('.first-header').addClass("active-mystique-rose");
                         // $('.second-header').addClass("active-mystique-rose");
                     }
                     if (currentScreenPosition < 125) {
