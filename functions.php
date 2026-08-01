@@ -705,21 +705,28 @@ function add_custom_add_to_cart_button() {
             // Check if the product exists and has attributes
             if ($product->has_attributes()) { ?>
                     <?php
-                    // Build size<->color availability maps for client-side filtering
+                    // Build size<->color availability maps (only variations with stock_quantity > 0)
                     $variation_map_size_to_colors = [];
                     $variation_map_color_to_sizes = [];
                     if ($product->is_type('variable')) {
-                        foreach ($product->get_available_variations() as $avail_var) {
-                            $v_size  = isset($avail_var['attributes']['attribute_pa_size'])  ? $avail_var['attributes']['attribute_pa_size']  : '';
-                            $v_color = isset($avail_var['attributes']['attribute_pa_color']) ? $avail_var['attributes']['attribute_pa_color'] : '';
-                            if ($v_size !== '' && $v_color !== '') {
-                                if (empty($variation_map_size_to_colors[$v_size]) || !in_array($v_color, $variation_map_size_to_colors[$v_size])) {
-                                    $variation_map_size_to_colors[$v_size][] = $v_color;
-                                }
-                                if (empty($variation_map_color_to_sizes[$v_color]) || !in_array($v_size, $variation_map_color_to_sizes[$v_color])) {
-                                    $variation_map_color_to_sizes[$v_color][] = $v_size;
-                                }
+                        foreach ($product->get_children() as $var_id) {
+                            $var_obj = wc_get_product($var_id);
+                            if (!$var_obj) continue;
+                            // Explicit stock-quantity check
+                            if ($var_obj->managing_stock()) {
+                                $qty = (int) $var_obj->get_stock_quantity();
+                                if ($qty <= 0) continue;
+                            } elseif (!$var_obj->is_in_stock()) {
+                                continue;
                             }
+                            $var_attrs = $var_obj->get_variation_attributes();
+                            $v_size  = isset($var_attrs['attribute_pa_size'])  ? $var_attrs['attribute_pa_size']  : '';
+                            $v_color = isset($var_attrs['attribute_pa_color']) ? $var_attrs['attribute_pa_color'] : '';
+                            if ($v_size === '' || $v_color === '') continue;
+                            if (!isset($variation_map_size_to_colors[$v_size])) $variation_map_size_to_colors[$v_size] = [];
+                            if (!isset($variation_map_color_to_sizes[$v_color])) $variation_map_color_to_sizes[$v_color] = [];
+                            if (!in_array($v_color, $variation_map_size_to_colors[$v_size])) $variation_map_size_to_colors[$v_size][] = $v_color;
+                            if (!in_array($v_size, $variation_map_color_to_sizes[$v_color])) $variation_map_color_to_sizes[$v_color][] = $v_size;
                         }
                     }
                     // Loop through each attribute
@@ -870,25 +877,39 @@ function add_custom_add_to_cart_button() {
                                 var sizeToColors = <?php echo json_encode($variation_map_size_to_colors); ?>;
                                 var colorToSizes = <?php echo json_encode($variation_map_color_to_sizes); ?>;
 
-                                // Store original out-of-stock status per slug
+                                // Snapshot the PHP-rendered OOS state so resets are accurate
                                 var originalOos = {};
                                 $('.product-attributes-size li button').each(function() {
                                     originalOos[$(this).data('size-slug')] = $(this).hasClass('out-of-stock');
                                 });
 
-                                // Size click: filter available colors
+                                function resetColors() {
+                                    $('.color-swatch-btn').removeClass('color-unavailable').prop('disabled', false);
+                                }
+
+                                function resetSizes() {
+                                    $('.product-attributes-size li button').each(function() {
+                                        var sSlug = $(this).data('size-slug');
+                                        if (originalOos[sSlug]) {
+                                            $(this).addClass('out-of-stock').prop('disabled', true);
+                                        } else {
+                                            $(this).removeClass('out-of-stock').prop('disabled', false);
+                                        }
+                                    });
+                                }
+
+                                // Size click: reset color filters, then show only colors available for this size
                                 $('.product-attributes-size li button').off('click.vf').on('click.vf', function() {
                                     if ($(this).hasClass('out-of-stock')) return false;
                                     $('.product-attributes-size li button').removeClass('active');
                                     $(this).addClass('active');
                                     var selectedSize = $(this).data('size-slug');
+                                    resetColors();
                                     if (sizeToColors[selectedSize]) {
                                         var availColors = sizeToColors[selectedSize];
                                         $('.color-swatch-btn').each(function() {
                                             if (availColors.indexOf($(this).data('color-slug')) === -1) {
                                                 $(this).addClass('color-unavailable').prop('disabled', true);
-                                            } else {
-                                                $(this).removeClass('color-unavailable').prop('disabled', false);
                                             }
                                         });
                                         // If active color became unavailable, switch to first available
@@ -901,22 +922,21 @@ function add_custom_add_to_cart_button() {
                                     }
                                 });
 
-                                // Color click: disable sizes unavailable for this color
+                                // Color click: reset size filters to original state, then disable sizes unavailable for this color
                                 $('.color-swatch-btn').off('click.vf').on('click.vf', function() {
                                     if ($(this).hasClass('color-unavailable')) return false;
                                     $('.color-swatch-btn').removeClass('active');
                                     $(this).addClass('active');
                                     $('.color-header span').text($(this).data('color-name'));
                                     var selectedColor = $(this).data('color-slug');
+                                    resetSizes();
                                     if (colorToSizes[selectedColor]) {
                                         var availSizes = colorToSizes[selectedColor];
                                         $('.product-attributes-size li button').each(function() {
                                             var sSlug = $(this).data('size-slug');
-                                            if (originalOos[sSlug]) return; // keep originally OOS
+                                            if (originalOos[sSlug]) return;
                                             if (availSizes.indexOf(sSlug) === -1) {
                                                 $(this).addClass('out-of-stock').prop('disabled', true);
-                                            } else {
-                                                $(this).removeClass('out-of-stock').prop('disabled', false);
                                             }
                                         });
                                         // Deselect active size if it became disabled
@@ -926,7 +946,7 @@ function add_custom_add_to_cart_button() {
                                     }
                                 });
 
-                                // Set first available color active by default
+                                // Activate first available color on load
                                 $('.color-swatch-btn:not(.color-unavailable)').first().addClass('active');
                             });
                         </script>
