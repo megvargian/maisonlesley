@@ -705,23 +705,35 @@ function add_custom_add_to_cart_button() {
             // Check if the product exists and has attributes
             if ($product->has_attributes()) { ?>
                     <?php
+                    // Discover exact variation attribute keys from the product's own attribute list
+                    $size_variation_key  = '';
+                    $color_variation_key = '';
+                    foreach ($product->get_attributes() as $_pa_key => $_pa_attr) {
+                        $_pa_name  = $_pa_attr->get_name();
+                        $_pa_label = strtolower(wc_attribute_label($_pa_name, $product));
+                        if ($_pa_name === 'pa_size') {
+                            $size_variation_key = 'attribute_pa_size';
+                        }
+                        if ($_pa_label === 'color' || $_pa_label === 'colour') {
+                            $color_variation_key = 'attribute_' . $_pa_name;
+                        }
+                    }
                     // Build size<->color availability maps (only variations with stock_quantity > 0)
                     $variation_map_size_to_colors = [];
                     $variation_map_color_to_sizes = [];
-                    if ($product->is_type('variable')) {
+                    if ($product->is_type('variable') && $size_variation_key && $color_variation_key) {
                         foreach ($product->get_children() as $var_id) {
                             $var_obj = wc_get_product($var_id);
-                            if (!$var_obj) continue;
-                            // Explicit stock-quantity check
+                            if (!$var_obj || $var_obj->get_status() !== 'publish') continue;
+                            // Explicit stock-quantity check (handles "continue selling when out of stock")
                             if ($var_obj->managing_stock()) {
-                                $qty = (int) $var_obj->get_stock_quantity();
-                                if ($qty <= 0) continue;
+                                if ((int)$var_obj->get_stock_quantity() <= 0) continue;
                             } elseif (!$var_obj->is_in_stock()) {
                                 continue;
                             }
                             $var_attrs = $var_obj->get_variation_attributes();
-                            $v_size  = isset($var_attrs['attribute_pa_size'])  ? $var_attrs['attribute_pa_size']  : '';
-                            $v_color = isset($var_attrs['attribute_pa_color']) ? $var_attrs['attribute_pa_color'] : '';
+                            $v_size  = isset($var_attrs[$size_variation_key])  ? $var_attrs[$size_variation_key]  : '';
+                            $v_color = isset($var_attrs[$color_variation_key]) ? $var_attrs[$color_variation_key] : '';
                             if ($v_size === '' || $v_color === '') continue;
                             if (!isset($variation_map_size_to_colors[$v_size])) $variation_map_size_to_colors[$v_size] = [];
                             if (!isset($variation_map_color_to_sizes[$v_color])) $variation_map_color_to_sizes[$v_color] = [];
@@ -905,8 +917,8 @@ function add_custom_add_to_cart_button() {
                                     $(this).addClass('active');
                                     var selectedSize = $(this).data('size-slug');
                                     resetColors();
-                                    if (sizeToColors[selectedSize]) {
-                                        var availColors = sizeToColors[selectedSize];
+                                    var availColors = sizeToColors[selectedSize] || [];
+                                    if (availColors.length > 0) {
                                         $('.color-swatch-btn').each(function() {
                                             if (availColors.indexOf($(this).data('color-slug')) === -1) {
                                                 $(this).addClass('color-unavailable').prop('disabled', true);
@@ -930,17 +942,10 @@ function add_custom_add_to_cart_button() {
                                     $('.color-header span').text($(this).data('color-name'));
                                     var selectedColor = $(this).data('color-slug');
                                     resetSizes();
-                                    if (colorToSizes[selectedColor]) {
-                                        var availSizes = colorToSizes[selectedColor];
+                                    var availSizes = colorToSizes[selectedColor] || [];
+                                    if (availSizes.length > 0) {
                                         $('.product-attributes-size li button').each(function() {
                                             var sSlug = $(this).data('size-slug');
-                                            if (originalOos[sSlug]) return;
-                                            if (availSizes.indexOf(sSlug) === -1) {
-                                                $(this).addClass('out-of-stock').prop('disabled', true);
-                                            }
-                                        });
-                                        // Deselect active size if it became disabled
-                                        if ($('.product-attributes-size button.active').hasClass('out-of-stock')) {
                                             $('.product-attributes-size button.active').removeClass('active');
                                         }
                                     }
