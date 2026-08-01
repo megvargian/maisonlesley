@@ -1436,7 +1436,6 @@ header.active {
 }
 .product-attributes-size li,
 .product-attributes-color li {
-  cursor: pointer;
   margin: 0 10px;
   display: inline-block;
 }

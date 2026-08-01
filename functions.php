@@ -751,11 +751,14 @@ function add_custom_add_to_cart_button() {
                         // Output the attribute - check for global pa_size attribute
                         if($attribute_name == 'pa_size'){
                             ?>
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between align-items-center">
                                 <h6 class="mb-2"><?php echo $attribute_label; ?></h6>
-                                <button type="button" class="size-guide-class" data-bs-toggle="offcanvas" data-bs-target="#sizeGuideSidebar" name="sizeGuide-button">
-                                    Size guide
-                                </button>
+                                <div class="d-flex gap-3 align-items-center">
+                                    <button type="button" id="variation-reset-btn" class="size-guide-class" style="display:none;">Reset</button>
+                                    <button type="button" class="size-guide-class" data-bs-toggle="offcanvas" data-bs-target="#sizeGuideSidebar" name="sizeGuide-button">
+                                        Size guide
+                                    </button>
+                                </div>
                             </div>
                             <?php
                             echo '<ul class="product-attributes-size w-100 d-flex justify-content-start pb-3">';
@@ -923,6 +926,9 @@ function add_custom_add_to_cart_button() {
                                     });
                                 }
 
+                                function showResetBtn() { $('#variation-reset-btn').show(); }
+                                function hideResetBtn() { $('#variation-reset-btn').hide(); }
+
                                 // Size click: restore colors to original, then gray out colors not available for this size
                                 $('.product-attributes-size li button').off('click.vf').on('click.vf', function() {
                                     if ($(this).hasClass('out-of-stock')) return false;
@@ -946,6 +952,7 @@ function add_custom_add_to_cart_button() {
                                             $('.color-header span').text(firstAvail.data('color-name'));
                                         }
                                     }
+                                    showResetBtn();
                                 });
 
                                 // Color click: select color; only filter sizes when no size is selected yet
@@ -954,6 +961,7 @@ function add_custom_add_to_cart_button() {
                                     $('.color-swatch-btn').removeClass('active');
                                     $(this).addClass('active');
                                     $('.color-header span').text($(this).data('color-name'));
+                                    showResetBtn();
                                     // If a size is already selected, keep all size state as-is
                                     if ($('.product-attributes-size button.active').length > 0) return;
                                     // No size selected: show which sizes are available for this color
@@ -968,6 +976,17 @@ function add_custom_add_to_cart_button() {
                                             }
                                         });
                                     }
+                                });
+
+                                // Reset: clear all selections, restore original states
+                                $('#variation-reset-btn').on('click', function() {
+                                    $('.product-attributes-size li button').removeClass('active');
+                                    resetSizes();
+                                    resetColors();
+                                    var firstAvail = $('.color-swatch-btn:not(.color-unavailable)').first();
+                                    firstAvail.addClass('active');
+                                    $('.color-header span').text(firstAvail.data('color-name'));
+                                    hideResetBtn();
                                 });
 
                                 // Activate first available color on load
