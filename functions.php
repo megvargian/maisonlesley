@@ -963,6 +963,7 @@ function add_custom_add_to_cart_button() {
 
                                 // Color click: select color; only filter sizes when no size is selected yet
                                 $('.color-swatch-btn').off('click.vf').on('click.vf', function() {
+                                    console.log($(this).hasClass('color-unavailable'));
                                     if ($(this).prop('disabled') || $(this).hasClass('color-unavailable')) return false;
                                     $('.color-swatch-btn').removeClass('active');
                                     $(this).addClass('active');
