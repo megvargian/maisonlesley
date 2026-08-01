@@ -705,6 +705,23 @@ function add_custom_add_to_cart_button() {
             // Check if the product exists and has attributes
             if ($product->has_attributes()) { ?>
                     <?php
+                    // Build size<->color availability maps for client-side filtering
+                    $variation_map_size_to_colors = [];
+                    $variation_map_color_to_sizes = [];
+                    if ($product->is_type('variable')) {
+                        foreach ($product->get_available_variations() as $avail_var) {
+                            $v_size  = isset($avail_var['attributes']['attribute_pa_size'])  ? $avail_var['attributes']['attribute_pa_size']  : '';
+                            $v_color = isset($avail_var['attributes']['attribute_pa_color']) ? $avail_var['attributes']['attribute_pa_color'] : '';
+                            if ($v_size !== '' && $v_color !== '') {
+                                if (empty($variation_map_size_to_colors[$v_size]) || !in_array($v_color, $variation_map_size_to_colors[$v_size])) {
+                                    $variation_map_size_to_colors[$v_size][] = $v_color;
+                                }
+                                if (empty($variation_map_color_to_sizes[$v_color]) || !in_array($v_size, $variation_map_color_to_sizes[$v_color])) {
+                                    $variation_map_color_to_sizes[$v_color][] = $v_size;
+                                }
+                            }
+                        }
+                    }
                     // Loop through each attribute
                     foreach ( $product->get_attributes() as $attribute ) {
                         // Get attribute label (name)
@@ -769,7 +786,7 @@ function add_custom_add_to_cart_button() {
                                     }
                                 }
 
-                                echo '<li><button class="size-btn' . $out_of_stock_class . '"' . (!$is_in_stock ? ' disabled' : '') . '>'. esc_html( $term->name ) .'</button></li>';
+                                echo '<li><button class="size-btn' . $out_of_stock_class . '"' . (!$is_in_stock ? ' disabled' : '') . ' data-size-slug="' . esc_attr($term->slug) . '">'. esc_html( $term->name ) .'</button></li>';
                             }
                             echo '</ul>';
                             ?>
@@ -823,7 +840,7 @@ function add_custom_add_to_cart_button() {
                                         }
                                         ?>
                                         <li>
-                                            <button type="button" class="color-swatch-btn" data-color-name="<?php echo esc_attr($term->name); ?>" style="background-color: <?php echo esc_attr($color); ?>; width: 24px; height: 24px; border-radius: 50%; border: none; cursor: pointer; padding: 0; transition: all 0.2s;">
+                                            <button type="button" class="color-swatch-btn" data-color-name="<?php echo esc_attr($term->name); ?>" data-color-slug="<?php echo esc_attr($term->slug); ?>" style="background-color: <?php echo esc_attr($color); ?>; width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid rgba(0,0,0,0.18); cursor: pointer; padding: 0; transition: all 0.2s;">
                                                 <span class="d-none"><?php echo esc_html($term->name); ?></span>
                                             </button>
                                         </li>
@@ -839,30 +856,78 @@ function add_custom_add_to_cart_button() {
                                 .color-swatch-btn.active {
                                     box-shadow: 0 0 0 2px #fff, 0 0 0 3px #cdcdcd;
                                 }
+                                .color-swatch-btn.color-unavailable {
+                                    opacity: 0.25;
+                                    cursor: not-allowed;
+                                    transform: none !important;
+                                }
                             </style>
                             <?php
                         }
                         ?>
                         <script>
                             jQuery(document).ready(function($) {
-                                // Handle size button clicks
-                                $('.product-attributes-size li button').on('click', function() {
-                                    // Prevent selection of out-of-stock sizes
-                                    if ($(this).hasClass('out-of-stock')) {
-                                        return false;
-                                    }
+                                var sizeToColors = <?php echo json_encode($variation_map_size_to_colors); ?>;
+                                var colorToSizes = <?php echo json_encode($variation_map_color_to_sizes); ?>;
+
+                                // Store original out-of-stock status per slug
+                                var originalOos = {};
+                                $('.product-attributes-size li button').each(function() {
+                                    originalOos[$(this).data('size-slug')] = $(this).hasClass('out-of-stock');
+                                });
+
+                                // Size click: filter available colors
+                                $('.product-attributes-size li button').off('click.vf').on('click.vf', function() {
+                                    if ($(this).hasClass('out-of-stock')) return false;
                                     $('.product-attributes-size li button').removeClass('active');
                                     $(this).addClass('active');
+                                    var selectedSize = $(this).data('size-slug');
+                                    if (sizeToColors[selectedSize]) {
+                                        var availColors = sizeToColors[selectedSize];
+                                        $('.color-swatch-btn').each(function() {
+                                            if (availColors.indexOf($(this).data('color-slug')) === -1) {
+                                                $(this).addClass('color-unavailable').prop('disabled', true);
+                                            } else {
+                                                $(this).removeClass('color-unavailable').prop('disabled', false);
+                                            }
+                                        });
+                                        // If active color became unavailable, switch to first available
+                                        if ($('.color-swatch-btn.active').hasClass('color-unavailable')) {
+                                            $('.color-swatch-btn.active').removeClass('active');
+                                            var firstAvail = $('.color-swatch-btn:not(.color-unavailable)').first();
+                                            firstAvail.addClass('active');
+                                            $('.color-header span').text(firstAvail.data('color-name'));
+                                        }
+                                    }
                                 });
-                                // Handle color button clicks
-                                $('.color-swatch-btn').on('click', function() {
+
+                                // Color click: disable sizes unavailable for this color
+                                $('.color-swatch-btn').off('click.vf').on('click.vf', function() {
+                                    if ($(this).hasClass('color-unavailable')) return false;
                                     $('.color-swatch-btn').removeClass('active');
                                     $(this).addClass('active');
-                                    const colorName = $(this).data('color-name');
-                                    $('.color-header span').text(colorName);
+                                    $('.color-header span').text($(this).data('color-name'));
+                                    var selectedColor = $(this).data('color-slug');
+                                    if (colorToSizes[selectedColor]) {
+                                        var availSizes = colorToSizes[selectedColor];
+                                        $('.product-attributes-size li button').each(function() {
+                                            var sSlug = $(this).data('size-slug');
+                                            if (originalOos[sSlug]) return; // keep originally OOS
+                                            if (availSizes.indexOf(sSlug) === -1) {
+                                                $(this).addClass('out-of-stock').prop('disabled', true);
+                                            } else {
+                                                $(this).removeClass('out-of-stock').prop('disabled', false);
+                                            }
+                                        });
+                                        // Deselect active size if it became disabled
+                                        if ($('.product-attributes-size button.active').hasClass('out-of-stock')) {
+                                            $('.product-attributes-size button.active').removeClass('active');
+                                        }
+                                    }
                                 });
-                                // Set first color as active by default
-                                $('.color-swatch-btn').first().addClass('active');
+
+                                // Set first available color active by default
+                                $('.color-swatch-btn:not(.color-unavailable)').first().addClass('active');
                             });
                         </script>
                         <?php
