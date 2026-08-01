@@ -947,7 +947,7 @@ function add_custom_add_to_cart_button() {
                                         $('.product-attributes-size li button').each(function() {
                                             var sSlug = $(this).data('size-slug');
                                             $('.product-attributes-size button.active').removeClass('active');
-                                        }
+                                        });
                                     }
                                 });
 
