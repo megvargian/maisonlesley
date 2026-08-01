@@ -1688,3 +1688,11 @@ header.active {
     max-width: 1520px !important;
   }
 }
+
+/* Unavailable color swatches must be completely non-interactive */
+.color-swatch-btn.color-unavailable,
+.color-swatch-btn[disabled] {
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+  opacity: 0.25;
+}
