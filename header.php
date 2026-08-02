@@ -371,7 +371,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
                         </div>
                     </section>
                 <?php } ?>
-                <section class="bg-white main-nav-section" style="<?php echo $is_new_mystiquerose_page ? 'transform: translateY(60%);' : ''; ?>">
+                <section class="bg-white main-nav-section" style="<?php echo $is_new_mystiquerose_page ? 'position: relative; top: 36px;' : ''; ?>">
                     <div class="container px-0 container-mystique-rose">
                         <nav class="text-left main-nav d-flex justify-content-between">
                             <ul class="d-flex justify-content-start main-menu-list">
