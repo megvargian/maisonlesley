@@ -134,7 +134,7 @@ function wp_bootstrap_starter_scripts()
     if (is_front_page()) {
         // wp_enqueue_style( 'maze-animate_headlines', get_template_directory_uri() . '/inc/assets/css/animate_headlines.css' );
     }
-    wp_enqueue_style('maze-custom_style', get_template_directory_uri() . '/inc/assets/css/custom_style.css', array(), '1.41');
+    wp_enqueue_style('maze-custom_style', get_template_directory_uri() . '/inc/assets/css/custom_style.css', array(), '1.40');
     wp_enqueue_style('maze-responsive_style', get_template_directory_uri() . '/inc/assets/css/responsive.css', array(), '1.40');
 
     wp_enqueue_script('jquery');
@@ -886,10 +886,21 @@ function add_custom_add_to_cart_button() {
                                     box-shadow: 0 0 0 2px #fff, 0 0 0 3px #cdcdcd;
                                 }
                                 .color-swatch-btn.color-unavailable {
-                                    opacity: 0.25;
+                                    opacity: 0.6;
                                     cursor: not-allowed;
                                     pointer-events: none;
                                     transform: none !important;
+                                    position: relative;
+                                }
+                                .color-swatch-btn.color-unavailable::before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 50%;
+                                    left: -20%;
+                                    right: -20%;
+                                    height: 1.5px;
+                                    background-color: rgba(0,0,0,0.65);
+                                    transform: translateY(-50%) rotate(-45deg);
                                 }
                             </style>
                             <?php
@@ -963,7 +974,6 @@ function add_custom_add_to_cart_button() {
 
                                 // Color click: select color; only filter sizes when no size is selected yet
                                 $('.color-swatch-btn').off('click.vf').on('click.vf', function() {
-                                    console.log($(this).hasClass('color-unavailable'));
                                     if ($(this).prop('disabled') || $(this).hasClass('color-unavailable')) return false;
                                     $('.color-swatch-btn').removeClass('active');
                                     $(this).addClass('active');
