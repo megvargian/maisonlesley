@@ -287,7 +287,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
             </div>
         </div>
         <header>
-            <section class="desktop-header d-none d-lg-block" style="<?php echo !is_admin_bar_showing() && $is_new_mystiquerose_page ? 'padding-bottom: 36px;' : ''; ?>">
+            <section class="desktop-header d-none d-lg-block" style="<?php echo $is_new_mystiquerose_page ? 'padding-bottom: 36px;' : ''; ?>">
                 <?php if (!$is_new_mystiquerose_page) {?>
                     <section class="first-header bg-black">
                         <div class="container">
