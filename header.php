@@ -93,7 +93,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
 }
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> style="margin-bottom: 0 !important;">
 
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
@@ -287,7 +287,7 @@ if($_SERVER['REQUEST_URI'] == '/shop/'){
             </div>
         </div>
         <header>
-            <section class="desktop-header d-none d-lg-block" style="<?php echo $is_new_mystiquerose_page ? 'padding-bottom: 36px;' : ''; ?>">
+            <section class="desktop-header d-none d-lg-block">
                 <?php if (!$is_new_mystiquerose_page) {?>
                     <section class="first-header bg-black">
                         <div class="container">
