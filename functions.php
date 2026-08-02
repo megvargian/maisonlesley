@@ -721,6 +721,9 @@ function add_custom_add_to_cart_button() {
                     // Build size<->color availability maps (only variations with stock_quantity > 0)
                     $variation_map_size_to_colors = [];
                     $variation_map_color_to_sizes = [];
+                    // Sizes/colors from "Any" attribute variations (available for every counterpart)
+                    $any_color_sizes = [];
+                    $any_size_colors = [];
                     if ($product->is_type('variable') && $size_variation_key && $color_variation_key) {
                         foreach ($product->get_children() as $var_id) {
                             $var_obj = wc_get_product($var_id);
@@ -734,11 +737,20 @@ function add_custom_add_to_cart_button() {
                             $var_attrs = $var_obj->get_variation_attributes();
                             $v_size  = isset($var_attrs[$size_variation_key])  ? $var_attrs[$size_variation_key]  : '';
                             $v_color = isset($var_attrs[$color_variation_key]) ? $var_attrs[$color_variation_key] : '';
-                            if ($v_size === '' || $v_color === '') continue;
-                            if (!isset($variation_map_size_to_colors[$v_size])) $variation_map_size_to_colors[$v_size] = [];
-                            if (!isset($variation_map_color_to_sizes[$v_color])) $variation_map_color_to_sizes[$v_color] = [];
-                            if (!in_array($v_color, $variation_map_size_to_colors[$v_size])) $variation_map_size_to_colors[$v_size][] = $v_color;
-                            if (!in_array($v_size, $variation_map_color_to_sizes[$v_color])) $variation_map_color_to_sizes[$v_color][] = $v_size;
+                            if ($v_size === '' && $v_color === '') continue;
+                            if ($v_size !== '' && $v_color !== '') {
+                                // Both specific: add to both directional maps
+                                if (!isset($variation_map_size_to_colors[$v_size])) $variation_map_size_to_colors[$v_size] = [];
+                                if (!isset($variation_map_color_to_sizes[$v_color])) $variation_map_color_to_sizes[$v_color] = [];
+                                if (!in_array($v_color, $variation_map_size_to_colors[$v_size])) $variation_map_size_to_colors[$v_size][] = $v_color;
+                                if (!in_array($v_size, $variation_map_color_to_sizes[$v_color])) $variation_map_color_to_sizes[$v_color][] = $v_size;
+                            } elseif ($v_size !== '' && $v_color === '') {
+                                // Specific size, any color: size is available regardless of color
+                                if (!in_array($v_size, $any_color_sizes)) $any_color_sizes[] = $v_size;
+                            } elseif ($v_size === '' && $v_color !== '') {
+                                // Any size, specific color: color is available regardless of size
+                                if (!in_array($v_color, $any_size_colors)) $any_size_colors[] = $v_color;
+                            }
                         }
                     }
                     // Loop through each attribute
@@ -910,6 +922,9 @@ function add_custom_add_to_cart_button() {
                             jQuery(document).ready(function($) {
                                 var sizeToColors = <?php echo json_encode($variation_map_size_to_colors); ?>;
                                 var colorToSizes = <?php echo json_encode($variation_map_color_to_sizes); ?>;
+                                // Sizes/colors available for ANY counterpart (WC "Any" attribute variations)
+                                var anyColorSizes = <?php echo json_encode($any_color_sizes); ?>;
+                                var anySizeColors = <?php echo json_encode($any_size_colors); ?>;
 
                                 // Snapshot PHP-rendered OOS/unavailable state for both sizes and colors
                                 var originalOos = {};
@@ -954,7 +969,9 @@ function add_custom_add_to_cart_button() {
                                     $(this).addClass('active');
                                     var selectedSize = $(this).data('size-slug');
                                     resetColors();
-                                    var availColors = sizeToColors[selectedSize] || [];
+                                    // Merge explicit colors with colors available for any size
+                                    var availColors = (sizeToColors[selectedSize] || []).concat(anySizeColors);
+                                    availColors = availColors.filter(function(v, i, a) { return a.indexOf(v) === i; });
                                     if (availColors.length > 0) {
                                         $('.color-swatch-btn').each(function() {
                                             var cSlug = $(this).data('color-slug');
@@ -984,7 +1001,9 @@ function add_custom_add_to_cart_button() {
                                     // No size selected: show which sizes are available for this color
                                     resetSizes();
                                     var selectedColor = $(this).data('color-slug');
-                                    var availSizes = colorToSizes[selectedColor] || [];
+                                    // Merge explicit sizes with sizes available for any color
+                                    var availSizes = (colorToSizes[selectedColor] || []).concat(anyColorSizes);
+                                    availSizes = availSizes.filter(function(v, i, a) { return a.indexOf(v) === i; });
                                     if (availSizes.length > 0) {
                                         $('.product-attributes-size li button').each(function() {
                                             var sSlug = $(this).data('size-slug');
@@ -992,6 +1011,10 @@ function add_custom_add_to_cart_button() {
                                                 $(this).addClass('out-of-stock').prop('disabled', true);
                                             }
                                         });
+                                        // Safety net: revert if slug mismatch caused all sizes to be filtered
+                                        if ($('.product-attributes-size li button:not(.out-of-stock)').length === 0) {
+                                            resetSizes();
+                                        }
                                     }
                                 });
 
