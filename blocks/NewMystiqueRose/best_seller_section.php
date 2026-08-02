@@ -135,10 +135,26 @@ $Mystique_rose_best_seller_section_fields = get_fields();
                         }
 
                         ?>
+                        <?php
+                        // Determine sold-out: no stock at all, or every size is out of stock
+                        $is_sold_out = false;
+                        if ( ! $product->is_in_stock() ) {
+                            $is_sold_out = true;
+                        } elseif ( ! empty( $available_sizes ) ) {
+                            $all_oos = true;
+                            foreach ( $available_sizes as $_sd ) {
+                                if ( $_sd['in_stock'] ) { $all_oos = false; break; }
+                            }
+                            if ( $all_oos ) $is_sold_out = true;
+                        }
+                        ?>
                         <div class="swiper-slide">
                             <a href="<?php echo esc_url( get_permalink( $product_id ) ); ?>" class="best-seller-card">
                                 <!-- <span class="best-seller-badge"><?php //echo esc_html( $Mystique_rose_best_seller_section_fields['badge_text'] ?? 'Collab Alert!' ); ?></span> -->
                                 <div class="best-seller-image-wrapper">
+                                    <?php if ( $is_sold_out ) : ?>
+                                        <span class="best-seller-sold-out-tag">Sold out</span>
+                                    <?php endif; ?>
                                     <?php echo get_the_post_thumbnail( $product_id, 'full' ); ?>
                                     <div class="best-seller-wishlist">
                                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

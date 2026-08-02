@@ -507,6 +507,22 @@ $main_logo_mystiquerose = $all_generalFields['main_logo_mystiquerose'];
         z-index: 10;
     }
 
+    .best-seller-sold-out-tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        color: #fff;
+        padding: 5px 15px;
+        font-size: 0.65rem;
+        font-family: "Rutan-Regular", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        z-index: 10;
+    }
+
     .best-seller-image-wrapper {
         position: relative;
         overflow: hidden;
