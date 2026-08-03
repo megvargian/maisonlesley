@@ -73,7 +73,24 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                 $first_image_id = $attachment_ids[0]; // Get the first image ID
                 $first_image_url = wp_get_attachment_image_src($first_image_id, 'full'); // Get the URL of the first image
         }
-        $is_sold_out = $product->get_stock_status() === 'outofstock';
+        $is_sold_out = false;
+        if ( ! $product->is_in_stock() ) {
+            $is_sold_out = true;
+        } elseif ( $product->is_type( 'variable' ) ) {
+            // Parent status can lag; check each published variation directly
+            $has_stock = false;
+            foreach ( $product->get_children() as $var_id ) {
+                $var = wc_get_product( $var_id );
+                if ( $var && $var->get_status() === 'publish' ) {
+                    if ( $var->managing_stock() ) {
+                        if ( (int) $var->get_stock_quantity() > 0 ) { $has_stock = true; break; }
+                    } elseif ( $var->is_in_stock() ) {
+                        $has_stock = true; break;
+                    }
+                }
+            }
+            $is_sold_out = ! $has_stock;
+        }
         ?>
         <a class="w-100 h-100 d-block pb-3 <?php echo $first_image_url ? 'cat-single-product' : '' ?>" href="<?php echo esc_url( $product->get_permalink() ) ?>">
         <div class="product-thumbnail-wrapper">
