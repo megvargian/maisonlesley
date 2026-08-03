@@ -1696,3 +1696,25 @@ header.active {
   cursor: not-allowed !important;
   opacity: 0.25;
 }
+
+
+.product-thumbnail-wrapper {
+  position: relative;
+}
+
+.product-sold-out-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  padding: 5px 15px;
+  font-size: 0.65rem;
+  font-family: "Rutan-Regular", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 10;
+  pointer-events: none;
+}

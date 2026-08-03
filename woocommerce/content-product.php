@@ -72,8 +72,14 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         if ($attachment_ids && !empty($attachment_ids)) {
                 $first_image_id = $attachment_ids[0]; // Get the first image ID
                 $first_image_url = wp_get_attachment_image_src($first_image_id, 'full'); // Get the URL of the first image
-        } ?>
+        }
+        $is_sold_out = $product->get_stock_status() === 'outofstock';
+        ?>
         <a class="w-100 h-100 d-block pb-3 <?php echo $first_image_url ? 'cat-single-product' : '' ?>" href="<?php echo esc_url( $product->get_permalink() ) ?>">
+        <div class="product-thumbnail-wrapper">
+        <?php if ( $is_sold_out ) : ?>
+            <span class="product-sold-out-tag">Sold out</span>
+        <?php endif; ?>
         <?php
                 $attachment_id = $product->get_image_id(); // Get the product image ID
                 $image_url_mobile = isMob() ? wp_get_attachment_image_src($attachment_id, 'custom-woocommerce-thumbnail') : wp_get_attachment_image_src($attachment_id, 'full');
@@ -87,6 +93,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                         echo '<img class="first-gallery-image d-none" src="' . esc_url($first_image_url[0]) . '" alt="First Gallery Image">';
                 }
                 ?>
+        </div>
                 <h2 class="woocommerce-loop-product__title"><?php echo $product -> get_name(); ?></h2>
                 <?php
                 if ( ! empty( $short_description ) ) {
