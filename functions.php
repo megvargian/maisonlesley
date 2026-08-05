@@ -735,8 +735,8 @@ function add_custom_add_to_cart_button() {
                                 continue;
                             }
                             $var_attrs = $var_obj->get_variation_attributes();
-                            $v_size  = isset($var_attrs[$size_variation_key])  ? $var_attrs[$size_variation_key]  : '';
-                            $v_color = isset($var_attrs[$color_variation_key]) ? $var_attrs[$color_variation_key] : '';
+                            $v_size  = isset($var_attrs[$size_variation_key])  ? strtolower($var_attrs[$size_variation_key])  : '';
+                            $v_color = isset($var_attrs[$color_variation_key]) ? strtolower($var_attrs[$color_variation_key]) : '';
                             if ($v_size === '' && $v_color === '') continue;
                             if ($v_size !== '' && $v_color !== '') {
                                 // Both specific: add to both directional maps
