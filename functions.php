@@ -989,16 +989,14 @@ function add_custom_add_to_cart_button() {
                                     showResetBtn();
                                 });
 
-                                // Color click: select color; only filter sizes when no size is selected yet
+                                // Color click: select color and filter available sizes
                                 $('.color-swatch-btn').off('click.vf').on('click.vf', function() {
                                     if ($(this).prop('disabled') || $(this).hasClass('color-unavailable')) return false;
                                     $('.color-swatch-btn').removeClass('active');
                                     $(this).addClass('active');
                                     $('.color-header span').text($(this).data('color-name'));
                                     showResetBtn();
-                                    // If a size is already selected, keep all size state as-is
-                                    if ($('.product-attributes-size button.active').length > 0) return;
-                                    // No size selected: show which sizes are available for this color
+                                    // Always filter sizes based on selected color
                                     resetSizes();
                                     var selectedColor = $(this).data('color-slug');
                                     // Merge explicit sizes with sizes available for any color
