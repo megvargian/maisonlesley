@@ -1002,18 +1002,15 @@ function add_custom_add_to_cart_button() {
                                     // Merge explicit sizes with sizes available for any color
                                     var availSizes = (colorToSizes[selectedColor] || []).concat(anyColorSizes);
                                     availSizes = availSizes.filter(function(v, i, a) { return a.indexOf(v) === i; });
-                                    console.log('availSizes', availSizes);
                                     if (availSizes.length > 0) {
                                         $('.product-attributes-size li button').each(function() {
                                             var sSlug = $(this).data('size-slug');
-                                            // if (!originalOos[sSlug] && availSizes.indexOf(sSlug) === -1) {
+                                            if (availSizes.indexOf(sSlug) !== -1) {
+                                                $(this).removeClass('out-of-stock').prop('disabled', false);
+                                            } else {
                                                 $(this).addClass('out-of-stock').prop('disabled', true);
-                                            // }
+                                            }
                                         });
-                                        // Safety net: revert if slug mismatch caused all sizes to be filtered
-                                        if ($('.product-attributes-size li button:not(.out-of-stock)').length === 0) {
-                                            resetSizes();
-                                        }
                                     }
                                 });
 
