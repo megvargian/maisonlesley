@@ -95,7 +95,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         <a class="w-100 h-100 d-block pb-3 <?php echo $first_image_url ? 'cat-single-product' : '' ?>" href="<?php echo esc_url( $product->get_permalink() ) ?>">
         <div class="product-thumbnail-wrapper">
         <?php if ( $is_sold_out ) : ?>
-            <span class="product-sold-out-tag">Sold out</span>
+            <span class="best-seller-sold-out-tag">Sold out</span>
         <?php endif; ?>
         <?php
                 $attachment_id = $product->get_image_id(); // Get the product image ID

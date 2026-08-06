@@ -33,12 +33,31 @@ if ($terms && !is_wp_error($terms)) {
 
 $get_custom_fields = get_fields();
 
+$is_sold_out = false;
+if ( !$product->is_in_stock() ) {
+    $is_sold_out = true;
+} elseif ( $product->is_type('variable') ) {
+    $has_any_stock = false;
+    foreach ( $product->get_children() as $var_id ) {
+        $var = wc_get_product($var_id);
+        if ( $var && $var->get_status() === 'publish' ) {
+            if ( $var->managing_stock() ) {
+                if ( (int)$var->get_stock_quantity() > 0 ) { $has_any_stock = true; break; }
+            } elseif ( $var->is_in_stock() ) {
+                $has_any_stock = true; break;
+            }
+        }
+    }
+    $is_sold_out = !$has_any_stock;
+}
+
 if ($is_mystique) {
     // Custom Dissh-style layout for Mystique Rose products
     ?>
     <div class="dissh-mystique-product container-fluid py-5">
         <div class="row gx-4 justify-content-start">
-            <div class="col-md-7 col-12 mb-4 mb-lg-0">
+            <div class="col-md-7 col-12 mb-4 mb-lg-0" style="position: relative;">
+                <?php if ($is_sold_out): ?><span class="best-seller-sold-out-tag">Sold out</span><?php endif; ?>
                 <!-- Desktop gallery -->
                 <div class="dissh-gallery row gx-2 d-none d-md-flex">
                     <?php do_action('woocommerce_before_single_product_summary'); ?>
@@ -189,7 +208,8 @@ if ($is_mystique) {
     <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?> class="px-0">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-12">
+                <div class="col-md-8 col-12" style="position: relative;">
+                   <?php if ($is_sold_out): ?><span class="best-seller-sold-out-tag">Sold out</span><?php endif; ?>
                    <div class="row px-0">
                         <?php
                         /**

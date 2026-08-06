@@ -31,10 +31,30 @@ $products = $query->get_products();
 		<div class="row justify-content-center">
 			<?php foreach ( $products as $product ) {
 				$product_obj = wc_get_product( $product->get_id() );
+				$is_sold_out = false;
+				if ( !$product_obj->is_in_stock() ) {
+					$is_sold_out = true;
+				} elseif ( $product_obj->is_type('variable') ) {
+					$has_any_stock = false;
+					foreach ( $product_obj->get_children() as $var_id ) {
+						$var = wc_get_product($var_id);
+						if ( $var && $var->get_status() === 'publish' ) {
+							if ( $var->managing_stock() ) {
+								if ( (int)$var->get_stock_quantity() > 0 ) { $has_any_stock = true; break; }
+							} elseif ( $var->is_in_stock() ) {
+								$has_any_stock = true; break;
+							}
+						}
+					}
+					$is_sold_out = !$has_any_stock;
+				}
 			?>
 				<div class="col-md-4 col-12">
 					<a href="<?php echo get_permalink($product_obj->get_id()); ?>">
-						<img class="w-100" src="<?php echo get_the_post_thumbnail_url( $product_obj->get_id()); ?>" alt="<?php echo $product_obj->get_name() ?>">
+						<div style="position: relative;">
+							<?php if ($is_sold_out): ?><span class="best-seller-sold-out-tag">Sold out</span><?php endif; ?>
+							<img class="w-100" src="<?php echo get_the_post_thumbnail_url( $product_obj->get_id()); ?>" alt="<?php echo $product_obj->get_name() ?>">
+						</div>
 						<h2><?php echo $product_obj->get_name() ?></h2>
 					</a>
 				</div>
