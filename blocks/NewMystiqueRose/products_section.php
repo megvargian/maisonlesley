@@ -39,9 +39,27 @@ $Mystique_rose_products_section_fields = get_fields();
                     $title = get_the_title( $product_id );
                     $price_html = $wc_product->get_price_html();
                     $thumbnail = get_the_post_thumbnail( $product_id, 'mystique_rose_product', array('style' => 'width: 100%; height: auto; aspect-ratio: 2/3; object-fit: cover;') );
+                    $is_sold_out = false;
+                    if ( !$wc_product->is_in_stock() ) {
+                        $is_sold_out = true;
+                    } elseif ( $wc_product->is_type('variable') ) {
+                        $has_any_stock = false;
+                        foreach ( $wc_product->get_children() as $var_id ) {
+                            $var = wc_get_product($var_id);
+                            if ( $var && $var->get_status() === 'publish' ) {
+                                if ( $var->managing_stock() ) {
+                                    if ( (int)$var->get_stock_quantity() > 0 ) { $has_any_stock = true; break; }
+                                } elseif ( $var->is_in_stock() ) {
+                                    $has_any_stock = true; break;
+                                }
+                            }
+                        }
+                        $is_sold_out = !$has_any_stock;
+                    }
                     ?>
                     <a href="<?php echo esc_url( $permalink ); ?>" class="product-card">
                         <div class="product-image-wrapper">
+                            <?php if ($is_sold_out): ?><span class="best-seller-sold-out-tag">Sold out</span><?php endif; ?>
                             <?php echo $thumbnail; ?>
                             <div class="product-info">
                                 <h3 class="product-title"><?php echo esc_html( $title ); ?></h3>
@@ -88,9 +106,27 @@ $Mystique_rose_products_section_fields = get_fields();
                 if ($products->have_posts()) :
                     while ($products->have_posts()) : $products->the_post();
                         global $product;
+                        $is_sold_out = false;
+                        if ( !$product->is_in_stock() ) {
+                            $is_sold_out = true;
+                        } elseif ( $product->is_type('variable') ) {
+                            $has_any_stock = false;
+                            foreach ( $product->get_children() as $var_id ) {
+                                $var = wc_get_product($var_id);
+                                if ( $var && $var->get_status() === 'publish' ) {
+                                    if ( $var->managing_stock() ) {
+                                        if ( (int)$var->get_stock_quantity() > 0 ) { $has_any_stock = true; break; }
+                                    } elseif ( $var->is_in_stock() ) {
+                                        $has_any_stock = true; break;
+                                    }
+                                }
+                            }
+                            $is_sold_out = !$has_any_stock;
+                        }
                         ?>
                         <a href="<?php echo get_permalink(); ?>" class="product-card">
                             <div class="product-image-wrapper">
+                                <?php if ($is_sold_out): ?><span class="best-seller-sold-out-tag">Sold out</span><?php endif; ?>
                                 <?php echo get_the_post_thumbnail( get_the_ID(), 'mystique_rose_product', array('style' => 'width: 100%; height: auto; aspect-ratio: 2/3; object-fit: cover;') ); ?>
                                 <div class="product-info">
                                     <h3 class="product-title"><?php the_title(); ?></h3>
