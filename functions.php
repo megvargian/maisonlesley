@@ -922,25 +922,23 @@ function add_custom_add_to_cart_button() {
                             jQuery(document).ready(function($) {
                                 var sizeToColors = <?php echo json_encode($variation_map_size_to_colors); ?>;
                                 var colorToSizes = <?php echo json_encode($variation_map_color_to_sizes); ?>;
-                                // Sizes/colors available for ANY counterpart (WC "Any" attribute variations)
                                 var anyColorSizes = <?php echo json_encode($any_color_sizes); ?>;
                                 var anySizeColors = <?php echo json_encode($any_size_colors); ?>;
 
-                                // Snapshot PHP-rendered OOS/unavailable state for both sizes and colors
+                                // Use attr() not data() to avoid jQuery auto-converting numeric slugs to integers
                                 var originalOos = {};
                                 $('.product-attributes-size li button').each(function() {
-                                    originalOos[$(this).data('size-slug')] = $(this).hasClass('out-of-stock');
+                                    originalOos[$(this).attr('data-size-slug')] = $(this).hasClass('out-of-stock');
                                 });
                                 var originalColorUnavail = {};
                                 $('.color-swatch-btn').each(function() {
-                                    originalColorUnavail[$(this).data('color-slug')] = $(this).hasClass('color-unavailable');
+                                    originalColorUnavail[$(this).attr('data-color-slug')] = $(this).hasClass('color-unavailable');
                                 });
 
                                 function resetColors() {
                                     $('.color-swatch-btn').each(function() {
-                                        var cSlug = $(this).data('color-slug');
+                                        var cSlug = $(this).attr('data-color-slug');
                                         if (originalColorUnavail[cSlug]) {
-                                            // Strip active so unavailable colors can never keep the active ring
                                             $(this).removeClass('active').addClass('color-unavailable').prop('disabled', true);
                                         } else {
                                             $(this).removeClass('color-unavailable').prop('disabled', false);
@@ -950,7 +948,7 @@ function add_custom_add_to_cart_button() {
 
                                 function resetSizes() {
                                     $('.product-attributes-size li button').each(function() {
-                                        var sSlug = $(this).data('size-slug');
+                                        var sSlug = $(this).attr('data-size-slug');
                                         if (originalOos[sSlug]) {
                                             $(this).addClass('out-of-stock').prop('disabled', true);
                                         } else {
@@ -962,49 +960,43 @@ function add_custom_add_to_cart_button() {
                                 function showResetBtn() { $('#variation-reset-btn').show(); }
                                 function hideResetBtn() { $('#variation-reset-btn').hide(); }
 
-                                // Size click: restore colors to original, then gray out colors not available for this size
                                 $('.product-attributes-size li button').off('click.vf').on('click.vf', function() {
                                     if ($(this).hasClass('out-of-stock')) return false;
                                     $('.product-attributes-size li button').removeClass('active');
                                     $(this).addClass('active');
-                                    var selectedSize = $(this).data('size-slug');
+                                    var selectedSize = $(this).attr('data-size-slug');
                                     resetColors();
-                                    // Merge explicit colors with colors available for any size
                                     var availColors = (sizeToColors[selectedSize] || []).concat(anySizeColors);
                                     availColors = availColors.filter(function(v, i, a) { return a.indexOf(v) === i; });
                                     if (availColors.length > 0) {
                                         $('.color-swatch-btn').each(function() {
-                                            var cSlug = $(this).data('color-slug');
+                                            var cSlug = $(this).attr('data-color-slug');
                                             if (!originalColorUnavail[cSlug] && availColors.indexOf(cSlug) === -1) {
                                                 $(this).removeClass('active').addClass('color-unavailable').prop('disabled', true);
                                             }
                                         });
-                                        // If active color was removed, auto-select first remaining available
                                         if (!$('.color-swatch-btn.active').length) {
                                             var firstAvail = $('.color-swatch-btn:not(.color-unavailable)').first();
                                             firstAvail.addClass('active');
-                                            $('.color-header span').text(firstAvail.data('color-name'));
+                                            $('.color-header span').text(firstAvail.attr('data-color-name'));
                                         }
                                     }
                                     showResetBtn();
                                 });
 
-                                // Color click: select color and filter available sizes
                                 $('.color-swatch-btn').off('click.vf').on('click.vf', function() {
                                     if ($(this).prop('disabled') || $(this).hasClass('color-unavailable')) return false;
                                     $('.color-swatch-btn').removeClass('active');
                                     $(this).addClass('active');
-                                    $('.color-header span').text($(this).data('color-name'));
+                                    $('.color-header span').text($(this).attr('data-color-name'));
                                     showResetBtn();
-                                    // Always filter sizes based on selected color
                                     resetSizes();
-                                    var selectedColor = $(this).data('color-slug');
-                                    // Merge explicit sizes with sizes available for any color
+                                    var selectedColor = $(this).attr('data-color-slug');
                                     var availSizes = (colorToSizes[selectedColor] || []).concat(anyColorSizes);
                                     availSizes = availSizes.filter(function(v, i, a) { return a.indexOf(v) === i; });
                                     if (availSizes.length > 0) {
                                         $('.product-attributes-size li button').each(function() {
-                                            var sSlug = $(this).data('size-slug');
+                                            var sSlug = $(this).attr('data-size-slug');
                                             if (availSizes.indexOf(sSlug) !== -1) {
                                                 $(this).removeClass('out-of-stock').prop('disabled', false);
                                             } else {
@@ -1014,22 +1006,20 @@ function add_custom_add_to_cart_button() {
                                     }
                                 });
 
-                                // Reset: clear all selections, restore original states
                                 $('#variation-reset-btn').on('click', function() {
                                     $('.product-attributes-size li button').removeClass('active');
                                     resetSizes();
                                     resetColors();
                                     var firstAvail = $('.color-swatch-btn:not(.color-unavailable)').first();
                                     firstAvail.addClass('active');
-                                    $('.color-header span').text(firstAvail.data('color-name'));
+                                    $('.color-header span').text(firstAvail.attr('data-color-name'));
                                     hideResetBtn();
                                 });
 
-                                // Activate first available color on load and sync header
                                 var firstAvailOnLoad = $('.color-swatch-btn:not(.color-unavailable)').first();
                                 if (firstAvailOnLoad.length) {
                                     firstAvailOnLoad.addClass('active');
-                                    $('.color-header span').text(firstAvailOnLoad.data('color-name'));
+                                    $('.color-header span').text(firstAvailOnLoad.attr('data-color-name'));
                                 }
                             });
                         </script>
