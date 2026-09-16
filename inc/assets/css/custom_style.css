@@ -1468,11 +1468,11 @@ header.active {
 }
 
 .wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained,
-.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained {
-  background-color: #000;
-  color: #fff;
-  outline: none;
-  border: none;
+.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained, .aramex-rate-calc-btn, #aramex-rate-form .button-primary {
+  background-color: #000 !important;
+  color: #fff !important;
+  outline: none !important;
+  border: none !important;
 }
 
 .size-guide-class {
