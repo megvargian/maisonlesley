@@ -1026,7 +1026,7 @@ function add_custom_add_to_cart_button() {
                         <?php
                     }
                     ?>
-                    <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>">
+                    <button disabled type="submit" id="form-add-to-cart-button" class="submit-button text-white d-block w-100" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'form_custom_add_to_cart' ) ); ?>">
                         <?php esc_html_e( 'Add to Cart', 'woocommerce' ); ?>
                     </button>
                     <span class="response d-block"></span>
@@ -1058,7 +1058,7 @@ function add_custom_add_to_cart_button() {
                             if(hasSizeAttr) {
                                 var sizeBtn = $('.product-attributes-size button.active');
                                 if(sizeBtn.length) {
-                                    size = sizeBtn.text();
+                                    size = sizeBtn.attr('data-size-slug');
                                 } else {
                                     $('.response').addClass('text-danger').text('Please select a size');
                                     return false;
@@ -1069,7 +1069,7 @@ function add_custom_add_to_cart_button() {
                             if(hasColorAttr) {
                                 var colorBtn = $('.color-swatch-btn.active:not(.color-unavailable)');
                                 if(colorBtn.length) {
-                                    color = colorBtn.find('span').text();
+                                    color = colorBtn.attr('data-color-slug');
                                 } else {
                                     $('.response').addClass('text-danger').text('Please select a color');
                                     return false;
@@ -1084,6 +1084,7 @@ function add_custom_add_to_cart_button() {
                                 type: 'POST',
                                 data: {
                                     action: 'form_custom_add_to_cart',
+                                    nonce: btn.data('nonce'),
                                     product_id: productId,
                                     selected_attr_size: size,
                                     selected_attr_color: color
@@ -1140,10 +1141,19 @@ function custom_add_to_cart() {
 add_action( 'wp_ajax_custom_add_to_cart', 'custom_add_to_cart' );
 add_action( 'wp_ajax_nopriv_custom_add_to_cart', 'custom_add_to_cart' );
 
+/**
+ * AJAX handler: add a variable (or simple) product to the cart.
+ *
+ * Matches the selected size/color to a variation using WooCommerce's
+ * find_matching_product_variation() and a manual fallback for "any"
+ * attribute variations, then adds the matched variation to the cart.
+ */
 function form_custom_add_to_cart() {
-    $product_id = intval( $_POST['product_id'] );
-    $selected_attr_size = sanitize_text_field( $_POST['selected_attr_size'] );
-    $selected_attr_color = sanitize_text_field( $_POST['selected_attr_color'] );
+    check_ajax_referer( 'form_custom_add_to_cart', 'nonce' );
+
+    $product_id          = isset( $_POST['product_id'] ) ? absint( $_POST['product_id'] ) : 0;
+    $selected_attr_size  = isset( $_POST['selected_attr_size'] ) ? sanitize_text_field( wp_unslash( $_POST['selected_attr_size'] ) ) : '';
+    $selected_attr_color = isset( $_POST['selected_attr_color'] ) ? sanitize_text_field( wp_unslash( $_POST['selected_attr_color'] ) ) : '';
 
     // Get the product
     $product = wc_get_product( $product_id );
@@ -1153,44 +1163,59 @@ function form_custom_add_to_cart() {
     }
 
     $variation_id = 0;
-    $quantity = 1;
+    $quantity     = 1;
+    $added        = false;
 
     // If it's a variable product, find the matching variation
     if ( $product->is_type('variable') ) {
-        // Build attributes array
         $attributes = array();
 
-        if ( ! empty( $selected_attr_size ) ) {
-            $attributes['pa_size'] = sanitize_title($selected_attr_size);
-        }
-        if ( ! empty( $selected_attr_color ) ) {
-            $attributes['pa_color'] = sanitize_title($selected_attr_color);
+        // Discover the actual attribute keys (same discovery used by the frontend)
+        // instead of hardcoding pa_size / pa_color.
+        foreach ( $product->get_attributes() as $attribute ) {
+            if ( ! $attribute->get_variation() ) {
+                continue;
+            }
+
+            $attribute_name  = $attribute->get_name();
+            $attribute_label = strtolower( wc_attribute_label( $attribute_name, $product ) );
+
+            if ( 'pa_size' === $attribute_name && '' !== $selected_attr_size ) {
+                $attributes[ 'attribute_' . $attribute_name ] = sanitize_title( $selected_attr_size );
+            }
+
+            if ( in_array( $attribute_label, array( 'color', 'colour' ), true ) && '' !== $selected_attr_color ) {
+                $attributes[ 'attribute_' . $attribute_name ] = sanitize_title( $selected_attr_color );
+            }
         }
 
-        // Use WooCommerce's data store to find matching variation (much faster)
-        $data_store = WC_Data_Store::load('product');
-        $variation_id = $data_store->find_matching_product_variation($product, $attributes);
+        if ( empty( $attributes ) ) {
+            wp_send_json_error(array('message' => 'Please select all options before adding to cart'));
+        }
 
-        // If not found, try manual matching (handles 'any' attribute cases)
+        // Use WooCommerce's data store to find matching variation.
+        $data_store   = WC_Data_Store::load('product');
+        $variation_id = $data_store->find_matching_product_variation( $product, $attributes );
+
+        // If not found, try manual matching (handles 'any' attribute cases and
+        // non-canonical stored attribute values).
         if ( ! $variation_id ) {
             $available_variations = $product->get_available_variations();
 
             foreach ( $available_variations as $variation ) {
                 $match = true;
 
-                // Check size
-                if ( ! empty( $selected_attr_size ) ) {
-                    $var_size = isset($variation['attributes']['attribute_pa_size']) ? $variation['attributes']['attribute_pa_size'] : '';
-                    if ( $var_size !== '' && $var_size !== sanitize_title($selected_attr_size) ) {
-                        $match = false;
-                    }
-                }
+                foreach ( $attributes as $attribute_key => $attribute_value ) {
+                    $variation_value = isset( $variation['attributes'][ $attribute_key ] ) ? $variation['attributes'][ $attribute_key ] : '';
 
-                // Check color
-                if ( $match && ! empty( $selected_attr_color ) ) {
-                    $var_color = isset($variation['attributes']['attribute_pa_color']) ? $variation['attributes']['attribute_pa_color'] : '';
-                    if ( $var_color !== '' && $var_color !== sanitize_title($selected_attr_color) ) {
+                    // An empty value means the variation accepts any value for this attribute.
+                    if ( '' === $variation_value ) {
+                        continue;
+                    }
+
+                    if ( sanitize_title( $variation_value ) !== sanitize_title( $attribute_value ) ) {
                         $match = false;
+                        break;
                     }
                 }
 
@@ -1218,14 +1243,8 @@ function form_custom_add_to_cart() {
             wp_send_json_error(array('message' => 'This product cannot be purchased at this time'));
         }
 
-        // Prepare attributes for cart (with attribute_ prefix)
-        $cart_attributes = array();
-        foreach ($attributes as $key => $value) {
-            $cart_attributes['attribute_' . $key] = $value;
-        }
-
-        // Add variation to cart
-        $added = WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $cart_attributes );
+        // Add variation to cart. $attributes is already keyed with the attribute_ prefix.
+        $added = WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $attributes );
     } else {
         // Simple product - check stock first
         if ( ! $product->is_in_stock() ) {
